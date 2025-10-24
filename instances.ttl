@@ -2,6 +2,7 @@
 # --- Example Individuals (Data)
 # -----------------------------------------------------------------
 
+@prefix : <http://example.org/music#> .
 @prefix rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dbr:	<http://dbpedia.org/resource/> .
 @prefix owl:	<http://www.w3.org/2002/07/owl#> .
