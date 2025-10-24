@@ -1,0 +1,229 @@
+@prefix : <http://example.org/music#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+
+<http://example.org/music> rdf:type owl:Ontology ;
+    rdfs:label "Music Domain Ontology" ;
+    rdfs:comment "An ontology for describing music, artists, genres, and their relationships. Includes hooks to DBpedia." .
+
+# -----------------------------------------------------------------
+# --- Classes
+# -----------------------------------------------------------------
+
+:Artist rdf:type owl:Class ;
+    rdfs:label "Artist" ;
+    rdfs:comment "A musician, band, or creator of music." ;
+    owl:sameAs dbo:MusicalArtist .
+
+:Genre rdf:type owl:Class ;
+    rdfs:label "Genre" ;
+    rdfs:comment "A category of music (e.g., Rock, Pop, Electronic)." ;
+    owl:sameAs dbo:MusicGenre .
+
+:Album rdf:type owl:Class ;
+    rdfs:label "Album" ;
+    rdfs:comment "A collection of tracks released by an artist." ;
+    owl:sameAs dbo:Album .
+
+:Track rdf:type owl:Class ;
+    rdfs:label "Track" ;
+    rdfs:comment "A single song or piece of music." ;
+    owl:sameAs dbo:Song .
+
+:Playlist rdf:type owl:Class ;
+    rdfs:label "Playlist" ;
+    rdfs:comment "A custom collection of tracks." .
+
+:Country rdf:type owl:Class ;
+    rdfs:label "Country" ;
+    rdfs:comment "A country, typically of origin for an artist." ;
+    owl:sameAs dbo:Country .
+
+:City rdf:type owl:Class ;
+    rdfs:label "City" ;
+    rdfs:comment "A city, typically of origin for an artist or a music hub." ;
+    owl:sameAs dbo:City .
+
+:RecordLabel rdf:type owl:Class ;
+    rdfs:label "Record Label" ;
+    rdfs:comment "A company that manages music recording and publishing." ;
+    owl:sameAs dbo:RecordLabel .
+
+# -----------------------------------------------------------------
+# --- Object Properties
+# -----------------------------------------------------------------
+
+:hasGenre rdf:type owl:ObjectProperty ;
+    rdfs:label "has genre" ;
+    rdfs:domain [
+        rdf:type owl:Class ;
+        owl:unionOf ( :Artist :Album :Track )
+    ] ;
+    rdfs:range :Genre .
+
+:producedBy rdf:type owl:ObjectProperty ;
+    rdfs:label "produced by" ;
+    rdfs:domain [
+        rdf:type owl:Class ;
+        owl:unionOf ( :Album :Track )
+    ] ;
+    rdfs:range :Artist .
+
+:includesTrack rdf:type owl:ObjectProperty ;
+    rdfs:label "includes track" ;
+    rdfs:domain [
+        rdf:type owl:Class ;
+        owl:unionOf ( :Album :Playlist )
+    ] ;
+    rdfs:range :Track .
+
+:collaboratedWith rdf:type owl:ObjectProperty ;
+    rdfs:label "collaborated with" ;
+    rdf:type owl:SymmetricProperty ;
+    rdfs:domain :Artist ;
+    rdfs:range :Artist .
+
+:isFromCountry rdf:type owl:ObjectProperty ;
+    rdfs:label "is from country" ;
+    rdfs:domain :Artist ;
+    rdfs:range :Country .
+
+:isFromCity rdf:type owl:ObjectProperty ;
+    rdfs:label "is from city" ;
+    rdfs:domain :Artist ;
+    rdfs:range :City .
+
+:signedTo rdf:type owl:ObjectProperty ;
+    rdfs:label "signed to" ;
+    rdfs:domain :Artist ;
+    rdfs:range :RecordLabel .
+
+:influenced rdf:type owl:ObjectProperty ;
+    rdfs:label "influenced" ;
+    rdfs:comment "Indicates that one artist influenced another." ;
+    rdfs:domain :Artist ;
+    rdfs:range :Artist .
+
+# -----------------------------------------------------------------
+# --- Data Properties
+# -----------------------------------------------------------------
+
+:artistName rdf:type owl:DatatypeProperty ;
+    rdfs:label "artist name" ;
+    rdfs:domain :Artist ;
+    rdfs:range xsd:string .
+
+:genreName rdf:type owl:DatatypeProperty ;
+    rdfs:label "genre name" ;
+    rdfs:domain :Genre ;
+    rdfs:range xsd:string .
+
+:albumTitle rdf:type owl:DatatypeProperty ;
+    rdfs:label "album title" ;
+    rdfs:domain :Album ;
+    rdfs:range xsd:string .
+
+:trackTitle rdf:type owl:DatatypeProperty ;
+    rdfs:label "track title" ;
+    rdfs:domain :Track ;
+    rdfs:range xsd:string .
+
+:releaseYear rdf:type owl:DatatypeProperty ;
+    rdfs:label "release year" ;
+    rdfs:domain [
+        rdf:type owl:Class ;
+        owl:unionOf ( :Album :Track )
+    ] ;
+    rdfs:range xsd:gYear .
+
+:durationInSeconds rdf:type owl:DatatypeProperty ;
+    rdfs:label "duration in seconds" ;
+    rdfs:domain :Track ;
+    rdfs:range xsd:positiveInteger .
+
+:population rdf:type owl:DatatypeProperty ;
+    rdfs:label "population" ;
+    rdfs:domain :Country ;
+    rdfs:range xsd:positiveInteger .
+
+:activeStartYear rdf:type owl:DatatypeProperty ;
+    rdfs:label "active start year" ;
+    rdfs:domain :Artist ;
+    rdfs:range xsd:gYear .
+
+:activeEndYear rdf:type owl:DatatypeProperty ;
+    rdfs:label "active end year" ;
+    rdfs:domain :Artist ;
+    rdfs:range xsd:gYear .
+
+:popularityScore rdf:type owl:DatatypeProperty ;
+    rdfs:label "popularity score" ;
+    rdfs:comment "A score from 0 (not popular) to 100 (very popular)." ;
+    rdfs:domain [
+        rdf:type owl:Class ;
+        owl:unionOf ( :Artist :Album :Track )
+    ] ;
+    rdfs:range [
+        rdf:type rdfs:Datatype ;
+        owl:onDatatype xsd:integer ;
+        owl:withRestrictions (
+            [ xsd:minInclusive "0"^^xsd:integer ]
+            [ xsd:maxInclusive "100"^^xsd:integer ]
+        )
+    ] .
+
+# -----------------------------------------------------------------
+# --- Restrictions (Constraints on Classes)
+# -----------------------------------------------------------------
+
+:Artist rdfs:subClassOf [
+    rdf:type owl:Restriction ;
+    owl:onProperty :artistName ;
+    owl:cardinality "1"^^xsd:int ;
+    rdfs:comment "An Artist must have exactly one name."
+] .
+
+:Track rdfs:subClassOf [
+    rdf:type owl:Restriction ;
+    owl:onProperty :trackTitle ;
+    owl:cardinality "1"^^xsd:int ;
+    rdfs:comment "A Track must have exactly one title."
+] .
+
+:Track rdfs:subClassOf [
+    rdf:type owl:Restriction ;
+    owl:onProperty :durationInSeconds ;
+    owl:cardinality "1"^^xsd:int ;
+    rdfs:comment "A Track must have exactly one duration."
+] .
+
+:Track rdfs:subClassOf [
+    rdf:type owl:Restriction ;
+    owl:onProperty :hasGenre ;
+    owl:someValuesFrom :Genre ;
+    rdfs:comment "A Track must have at least one genre."
+] .
+
+:Track rdfs:subClassOf [
+    rdf:type owl:Restriction ;
+    owl:onProperty :releaseYear ;
+    owl:cardinality "1"^^xsd:int ;
+    rdfs:comment "A Track must have exactly one release year."
+] .
+
+:Album rdfs:subClassOf [
+    rdf:type owl:Restriction ;
+    owl:onProperty :producedBy ;
+    owl:someValuesFrom :Artist ;
+    rdfs:comment "An Album must be produced by at least one Artist."
+] .
+
+:Album rdfs:subClassOf [
+    rdf:type owl:Restriction ;
+    owl:onProperty :includesTrack ;
+    owl:someValuesFrom :Track ;
+    rdfs:comment "An Album must include at least one Track."
+] .
