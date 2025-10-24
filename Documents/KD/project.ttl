@@ -1,0 +1,4934 @@
+@prefix : <http://example.org/music#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+
+<http://example.org/music> rdf:type owl:Ontology ;
+    rdfs:label "Music Domain Ontology" ;
+    rdfs:comment "An ontology for describing music, artists, genres, and their relationships. Includes hooks to DBpedia." .
+
+# -----------------------------------------------------------------
+# --- Classes
+# -----------------------------------------------------------------
+
+:Artist rdf:type owl:Class ;
+    rdfs:label "Artist" ;
+    rdfs:comment "A musician, band, or creator of music." ;
+    owl:sameAs dbo:MusicalArtist .
+
+:Genre rdf:type owl:Class ;
+    rdfs:label "Genre" ;
+    rdfs:comment "A category of music (e.g., Rock, Pop, Electronic)." ;
+    owl:sameAs dbo:MusicGenre .
+
+:Album rdf:type owl:Class ;
+    rdfs:label "Album" ;
+    rdfs:comment "A collection of tracks released by an artist." ;
+    owl:sameAs dbo:Album .
+
+:Track rdf:type owl:Class ;
+    rdfs:label "Track" ;
+    rdfs:comment "A single song or piece of music." ;
+    owl:sameAs dbo:Song .
+
+:Playlist rdf:type owl:Class ;
+    rdfs:label "Playlist" ;
+    rdfs:comment "A custom collection of tracks." .
+
+:Country rdf:type owl:Class ;
+    rdfs:label "Country" ;
+    rdfs:comment "A country, typically of origin for an artist." ;
+    owl:sameAs dbo:Country .
+
+:City rdf:type owl:Class ;
+    rdfs:label "City" ;
+    rdfs:comment "A city, typically of origin for an artist or a music hub." ;
+    owl:sameAs dbo:City .
+
+:RecordLabel rdf:type owl:Class ;
+    rdfs:label "Record Label" ;
+    rdfs:comment "A company that manages music recording and publishing." ;
+    owl:sameAs dbo:RecordLabel .
+
+# -----------------------------------------------------------------
+# --- Object Properties
+# -----------------------------------------------------------------
+
+:hasGenre rdf:type owl:ObjectProperty ;
+    rdfs:label "has genre" ;
+    rdfs:domain [
+        rdf:type owl:Class ;
+        owl:unionOf ( :Artist :Album :Track )
+    ] ;
+    rdfs:range :Genre .
+
+:producedBy rdf:type owl:ObjectProperty ;
+    rdfs:label "produced by" ;
+    rdfs:domain [
+        rdf:type owl:Class ;
+        owl:unionOf ( :Album :Track )
+    ] ;
+    rdfs:range :Artist .
+
+:includesTrack rdf:type owl:ObjectProperty ;
+    rdfs:label "includes track" ;
+    rdfs:domain [
+        rdf:type owl:Class ;
+        owl:unionOf ( :Album :Playlist )
+    ] ;
+    rdfs:range :Track .
+
+:collaboratedWith rdf:type owl:ObjectProperty ;
+    rdfs:label "collaborated with" ;
+    rdf:type owl:SymmetricProperty ;
+    rdfs:domain :Artist ;
+    rdfs:range :Artist .
+
+:isFromCountry rdf:type owl:ObjectProperty ;
+    rdfs:label "is from country" ;
+    rdfs:domain :Artist ;
+    rdfs:range :Country .
+
+:isFromCity rdf:type owl:ObjectProperty ;
+    rdfs:label "is from city" ;
+    rdfs:domain :Artist ;
+    rdfs:range :City .
+
+:signedTo rdf:type owl:ObjectProperty ;
+    rdfs:label "signed to" ;
+    rdfs:domain :Artist ;
+    rdfs:range :RecordLabel .
+
+:influenced rdf:type owl:ObjectProperty ;
+    rdfs:label "influenced" ;
+    rdfs:comment "Indicates that one artist influenced another." ;
+    rdfs:domain :Artist ;
+    rdfs:range :Artist .
+
+# -----------------------------------------------------------------
+# --- Data Properties
+# -----------------------------------------------------------------
+
+:artistName rdf:type owl:DatatypeProperty ;
+    rdfs:label "artist name" ;
+    rdfs:domain :Artist ;
+    rdfs:range xsd:string .
+
+:genreName rdf:type owl:DatatypeProperty ;
+    rdfs:label "genre name" ;
+    rdfs:domain :Genre ;
+    rdfs:range xsd:string .
+
+:albumTitle rdf:type owl:DatatypeProperty ;
+    rdfs:label "album title" ;
+    rdfs:domain :Album ;
+    rdfs:range xsd:string .
+
+:trackTitle rdf:type owl:DatatypeProperty ;
+    rdfs:label "track title" ;
+    rdfs:domain :Track ;
+    rdfs:range xsd:string .
+
+:releaseYear rdf:type owl:DatatypeProperty ;
+    rdfs:label "release year" ;
+    rdfs:domain [
+        rdf:type owl:Class ;
+        owl:unionOf ( :Album :Track )
+    ] ;
+    rdfs:range xsd:gYear .
+
+:durationInSeconds rdf:type owl:DatatypeProperty ;
+    rdfs:label "duration in seconds" ;
+    rdfs:domain :Track ;
+    rdfs:range xsd:positiveInteger .
+
+:population rdf:type owl:DatatypeProperty ;
+    rdfs:label "population" ;
+    rdfs:domain :Country ;
+    rdfs:range xsd:positiveInteger .
+
+:activeStartYear rdf:type owl:DatatypeProperty ;
+    rdfs:label "active start year" ;
+    rdfs:domain :Artist ;
+    rdfs:range xsd:gYear .
+
+:activeEndYear rdf:type owl:DatatypeProperty ;
+    rdfs:label "active end year" ;
+    rdfs:domain :Artist ;
+    rdfs:range xsd:gYear .
+
+:popularityScore rdf:type owl:DatatypeProperty ;
+    rdfs:label "popularity score" ;
+    rdfs:comment "A score from 0 (not popular) to 100 (very popular)." ;
+    rdfs:domain [
+        rdf:type owl:Class ;
+        owl:unionOf ( :Artist :Album :Track )
+    ] ;
+    rdfs:range [
+        rdf:type rdfs:Datatype ;
+        owl:onDatatype xsd:integer ;
+        owl:withRestrictions (
+            [ xsd:minInclusive "0"^^xsd:integer ]
+            [ xsd:maxInclusive "100"^^xsd:integer ]
+        )
+    ] .
+
+# -----------------------------------------------------------------
+# --- Restrictions (Constraints on Classes)
+# -----------------------------------------------------------------
+
+:Artist rdfs:subClassOf [
+    rdf:type owl:Restriction ;
+    owl:onProperty :artistName ;
+    owl:cardinality "1"^^xsd:int ;
+    rdfs:comment "An Artist must have exactly one name."
+] .
+
+:Track rdfs:subClassOf [
+    rdf:type owl:Restriction ;
+    owl:onProperty :trackTitle ;
+    owl:cardinality "1"^^xsd:int ;
+    rdfs:comment "A Track must have exactly one title."
+] .
+
+:Track rdfs:subClassOf [
+    rdf:type owl:Restriction ;
+    owl:onProperty :durationInSeconds ;
+    owl:cardinality "1"^^xsd:int ;
+    rdfs:comment "A Track must have exactly one duration."
+] .
+
+:Track rdfs:subClassOf [
+    rdf:type owl:Restriction ;
+    owl:onProperty :hasGenre ;
+    owl:someValuesFrom :Genre ;
+    rdfs:comment "A Track must have at least one genre."
+] .
+
+:Track rdfs:subClassOf [
+    rdf:type owl:Restriction ;
+    owl:onProperty :releaseYear ;
+    owl:cardinality "1"^^xsd:int ;
+    rdfs:comment "A Track must have exactly one release year."
+] .
+
+:Album rdfs:subClassOf [
+    rdf:type owl:Restriction ;
+    owl:onProperty :producedBy ;
+    owl:someValuesFrom :Artist ;
+    rdfs:comment "An Album must be produced by at least one Artist."
+] .
+
+:Album rdfs:subClassOf [
+    rdf:type owl:Restriction ;
+    owl:onProperty :includesTrack ;
+    owl:someValuesFrom :Track ;
+    rdfs:comment "An Album must include at least one Track."
+] .
+
+# -----------------------------------------------------------------
+# --- Example Individuals (Data)
+# -----------------------------------------------------------------
+
+@prefix rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dbr:	<http://dbpedia.org/resource/> .
+@prefix owl:	<http://www.w3.org/2002/07/owl#> .
+dbr:Cajun_Dance_Party	rdf:type	owl:NamedIndividual .
+@prefix ns3:	<http://example.org/music#> .
+dbr:Cajun_Dance_Party	rdf:type	ns3:Artist ;
+	ns3:artistName	"Cajun Dance Party"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Calpurnia_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Calpurnia (band)"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock ,
+		dbr:Alternative_rock .
+dbr:Camp_Cope	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Camp Cope"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Indie_rock ,
+		dbr:Alternative_rock .
+<http://dbpedia.org/resource/Bear_Mountain_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Bear Mountain (band)"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Beatmasters	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Beatmasters"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Bel_Tempo	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Bel Tempo"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock .
+<http://dbpedia.org/resource/Bellavista_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Bellavista (band)"@en ;
+	ns3:isFromCity	dbr:San_Francisco ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+<http://dbpedia.org/resource/Ben\u0027s_Brother>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Ben's Brother"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_pop .
+@prefix ns4:	<http://dbpedia.org/resource/Benevento/> .
+ns4:Russo_Duo	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Benevento/Russo Duo"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Pray_TV_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Pray TV (band)"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Prides	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Prides"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Primal_Scream	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Primal Scream"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Psychedelic_rock	rdf:type	owl:NamedIndividual ,
+		ns3:Genre ;
+	ns3:genreName	"Psychedelic rock"@en .
+dbr:Pull_Tiger_Tail	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Pull Tiger Tail"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Pure_(Canadian_band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Pure (Canadian band)"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Queenadreena	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Queenadreena"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Roddy_Hart_&_the_Lonesome_Fire>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Roddy Hart & the Lonesome Fire"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Rose_Chronicles	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Rose Chronicles"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Sam_Roberts_(singer-songwriter)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Sam Roberts (singer-songwriter)"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/San_Fermin_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"San Fermin (band)"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:San_Francisco	rdf:type	ns3:City ,
+		owl:NamedIndividual .
+@prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#> .
+dbr:San_Francisco	rdfs:label	"San Francisco"@en .
+<http://dbpedia.org/resource/Santana_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Santana (band)"@en ;
+	ns3:isFromCity	dbr:San_Francisco ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+<http://dbpedia.org/resource/Sa\u0161a_Habi\u0107>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Sa\u0161a Habi\u0107"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:Scatterheart	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Scatterheart"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Scouting_for_Girls	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Scouting for Girls"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_pop .
+dbr:Elastica	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Elastica"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+<http://dbpedia.org/resource/Elektri\u010Dni_Orgazam>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Elektri\u010Dni Orgazam"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Rock_music .
+<http://dbpedia.org/resource/Elephant_Stone_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Elephant Stone (band)"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Eli_&_Fur>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Eli & Fur"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Mika_Bomb	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Mika Bomb"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Mirror_(multimedia_project)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Mirror (multimedia project)"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Mongrel_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Mongrel (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Moose_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Moose (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Tragic_Mulatto	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Tragic Mulatto"@en ;
+	ns3:isFromCity	dbr:San_Francisco ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+<http://dbpedia.org/resource/Monograph_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Monograph (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Spirea_X	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Spirea X"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:One_Ring_Zero	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"One Ring Zero"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Parlovr	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Parlovr"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Cloud_Room	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Cloud Room"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_New_York_Fund	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The New York Fund"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Revolving_Paint_Dream	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Revolving Paint Dream"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_pop .
+dbr:The_Violets	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Violets"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Prljavi_Inspektor_Bla\u017Ea_i_Kljunovi>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Prljavi Inspektor Bla\u017Ea i Kljunovi"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:Thenewno2	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Thenewno2"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock ,
+		dbr:Psychedelic_rock .
+dbr:Basement_Jaxx	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Basement Jaxx"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Bearfoot_Beware	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Bearfoot Beware"@en ;
+	ns3:isFromCity	dbr:Leeds ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Bedrock_(duo)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Bedrock (duo)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Belgrade	rdf:type	ns3:City ,
+		owl:NamedIndividual ;
+	rdfs:label	"Belgrade"@en .
+dbr:Belle_and_Sebastian	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Belle and Sebastian"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Ben_Watt	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Ben Watt"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Beth_Mburu-Bowie	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Beth Mburu-Bowie"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_pop .
+dbr:Big_Joanie	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Big Joanie"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+<http://dbpedia.org/resource/Big_Ups_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Big Ups (band)"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Big_Wreck	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Big Wreck"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Billy_Nicholls	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Billy Nicholls"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+dbr:Billy_Pettinger	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Billy Pettinger"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Black_Midi	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Black Midi"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:Black_Rebel_Motorcycle_Club	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Black Rebel Motorcycle Club"@en ;
+	ns3:isFromCity	dbr:San_Francisco ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+dbr:Blaine_Thurier	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Blaine Thurier"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Blanco_White	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Blanco White"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+dbr:Blowzabella	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Blowzabella"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+dbr:Blue_Cheer	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Blue Cheer"@en ;
+	ns3:isFromCity	dbr:San_Francisco ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+<http://dbpedia.org/resource/Blur_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Blur (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Bombay_Bicycle_Club	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Bombay Bicycle Club"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Bon_Savants	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Bon Savants"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Boston	rdf:type	ns3:City ,
+		owl:NamedIndividual ;
+	rdfs:label	"Boston"@en .
+<http://dbpedia.org/resource/Brian_McGee_(drummer)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Brian McGee (drummer)"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Dave_Clarke_(DJ)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Dave Clarke (DJ)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Daytona_Lights	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Daytona Lights"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_pop ,
+		dbr:Indie_rock .
+dbr:Deadcuts	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Deadcuts"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:Deep_Purple	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Deep Purple"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+<http://dbpedia.org/resource/Dejan_Cuki\u0107>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Dejan Cuki\u0107"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Rock_music ,
+		dbr:Pop_rock .
+<http://dbpedia.org/resource/Destroyer_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Destroyer (band)"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Alisa_(Serbian_band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Alisa (Serbian band)"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock .
+<http://dbpedia.org/resource/All_Stars_Osvaja\u010Di>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"All Stars Osvaja\u010Di"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:Animals_That_Swim	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Animals That Swim"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Another_Sky_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Another Sky (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock ,
+		dbr:Post-punk .
+<http://dbpedia.org/resource/Anteros_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Anteros (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_pop .
+dbr:Antiskeptic	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Antiskeptic"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:Hitechjet	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Hitechjet"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Hope_&_Social>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Hope & Social"@en ;
+	ns3:isFromCity	dbr:Leeds ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Hot_Chip	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Hot Chip"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Hot_Natured	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Hot Natured"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+<http://dbpedia.org/resource/How_to_Swim_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"How to Swim (band)"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock ,
+		dbr:Indie_rock .
+dbr:Howard_Bilerman	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Howard Bilerman"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Hunters_&_Collectors>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Hunters & Collectors"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:Jon_Fratelli	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Jon Fratelli"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Jonah_Jenkins	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Jonah Jenkins"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Jordan_Robson-Cramer	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Jordan Robson-Cramer"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Bethlehem_Steel_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Bethlehem Steel (band)"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Bezobrazno_Zeleno	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Bezobrazno Zeleno"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock .
+<http://dbpedia.org/resource/Little_Eye_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Little Eye (band)"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Little_Red_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Little Red (band)"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:Paul_Samwell-Smith	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Paul Samwell-Smith"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+<http://dbpedia.org/resource/Paws_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Paws (band)"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock ,
+		dbr:Indie_rock .
+<http://dbpedia.org/resource/Peach_Pit_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Peach Pit (band)"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Pet_Shop_Boys	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Pet Shop Boys"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Pete_Roe	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Pete Roe"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+dbr:Peter_Starkie	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Peter Starkie"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+<http://dbpedia.org/resource/Riblja_\u010Corba>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Riblja \u010Corba"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Rock_music .
+<http://dbpedia.org/resource/Ribs_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Ribs (band)"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Riverbeds_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Riverbeds (band)"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Robert_Grey_(musician)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Robert Grey (musician)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:Custom_Blue	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Custom Blue"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+dbr:Cut_Worms	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Cut Worms"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Daisy_Chainsaw	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Daisy Chainsaw"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Ugly_As_Sin	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Ugly As Sin"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:Ultravox	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Ultravox"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:Underground_Lovers	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Underground Lovers"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Uriel_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Uriel (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+<http://dbpedia.org/resource/Uzi_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Uzi (band)"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:VIA_Talas	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"VIA Talas"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock .
+dbr:Vancouver	rdf:type	owl:NamedIndividual ,
+		ns3:City ;
+	rdfs:label	"Vancouver"@en .
+<http://dbpedia.org/resource/Various_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Various (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+dbr:Vary_Lumar	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Vary Lumar"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Veal_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Veal (band)"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Victory_at_Sea_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Victory at Sea (band)"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Viktorija_(singer)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Viktorija (singer)"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock .
+dbr:Viv_Albertine	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Viv Albertine"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:Vlada_Divljan	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Vlada Divljan"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock .
+<http://dbpedia.org/resource/Vondelpark_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Vondelpark (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_pop .
+<http://dbpedia.org/resource/De_Rosa_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"De Rosa (band)"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Deacon_Blue	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Deacon Blue"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Dear_Rouge	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Dear Rouge"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Death_and_the_Penguin_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Death and the Penguin (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Default_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Default (band)"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Del_Amitri	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Del Amitri"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Del_Arno_Band	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Del Arno Band"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock .
+dbr:Dougie_Poole	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Dougie Poole"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Dukes_of_Windsor	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Dukes of Windsor"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/D\u017Eentlmeni>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"D\u017Eentlmeni"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Rock_music .
+<http://dbpedia.org/resource/D\u02BC_Boys>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"D\u02BC Boys"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock .
+dbr:Earl_Brutus	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Earl Brutus"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock ,
+		dbr:Indie_rock .
+dbr:Indie_rock	rdf:type	ns3:Genre ,
+		owl:NamedIndividual ;
+	ns3:genreName	"Indie rock"@en .
+dbr:Infadels	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Infadels"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Infinity_Ink	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Infinity Ink"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+<http://dbpedia.org/resource/Jakarta_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Jakarta (band)"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock .
+dbr:Jamie_Wednesday	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Jamie Wednesday"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_pop .
+<http://dbpedia.org/resource/Let\u0027s_Wrestle>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Let's Wrestle"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Levitation_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Levitation (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock ,
+		dbr:Psychedelic_rock .
+<http://dbpedia.org/resource/Life_After_Life_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Life After Life (band)"@en ;
+	ns3:isFromCity	dbr:San_Francisco ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+dbr:Lightning_Dust	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Lightning Dust"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Lightning_Raiders	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Lightning Raiders"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+dbr:Nun_Gun	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Nun Gun"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:The_Big_Pink	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Big Pink"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Folk_Implosion	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Folk Implosion"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Alternative_rock ,
+		dbr:Indie_rock .
+dbr:Song_of_Return	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Song of Return"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Pottery_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Pottery (band)"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Psapp	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Psapp"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_pop .
+dbr:Said_the_Whale	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Said the Whale"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Skipping_Girl_Vinegar	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Skipping Girl Vinegar"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:We_Are_Balboa	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"We Are Balboa"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Blanche_Hudson_Weekend	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Blanche Hudson Weekend"@en ;
+	ns3:isFromCity	dbr:Leeds ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Wilder_Maker	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Wilder Maker"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Come_(American_band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Come (American band)"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Craig_Armstrong_(composer)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Craig Armstrong (composer)"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Crowded_House	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Crowded House"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock ,
+		dbr:Rock_music ,
+		dbr:Indie_rock .
+dbr:Crystal_Fighters	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Crystal Fighters"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock ,
+		dbr:Folk_music ,
+		dbr:Indie_pop .
+dbr:Me_Rex	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Me Rex"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock ,
+		dbr:Indie_pop .
+<http://dbpedia.org/resource/Meck_(musician)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Meck (musician)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+<http://dbpedia.org/resource/Meiko_(American_singer)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Meiko (American singer)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_pop ,
+		dbr:Folk_music .
+dbr:Melbourne	rdf:type	owl:NamedIndividual ,
+		ns3:City ;
+	rdfs:label	"Melbourne"@en .
+dbr:Men_I_Trust	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Men I Trust"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Ru\u017E>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Ru\u017E"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock .
+dbr:Ryanhood	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Ryanhood"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Sadie_and_the_Hotheads	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Sadie and the Hotheads"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+dbr:Chiiild	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Chiiild"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Ellis_Island_Sound	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Ellis Island Sound"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+<http://dbpedia.org/resource/Gay_Nineties_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Gay Nineties (band)"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock ,
+		dbr:Indie_rock .
+dbr:Gengahr	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Gengahr"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Psychedelic_rock ,
+		dbr:Indie_rock .
+dbr:Loveable_Rogues	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Loveable Rogues"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_pop .
+dbr:Lovestation	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Lovestation"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Lowtide	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Lowtide"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Negative_(Serbian_band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Negative (Serbian band)"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock .
+<http://dbpedia.org/resource/New_Adventures_(British_band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"New Adventures (British band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/OT_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"OT (band)"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Rock_music ,
+		dbr:Pop_rock .
+<http://dbpedia.org/resource/Orbit_(American_band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Orbit (American band)"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Alternative_rock ,
+		dbr:Indie_rock .
+<http://dbpedia.org/resource/Ought_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Ought (band)"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Mighty_Baby	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Mighty Baby"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+<http://dbpedia.org/resource/Mike_Donovan_(musician)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Mike Donovan (musician)"@en ;
+	ns3:isFromCity	dbr:San_Francisco ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+dbr:World_Party	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"World Party"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_pop .
+<http://dbpedia.org/resource/Sunforest_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Sunforest (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+dbr:The_Band_of_Holy_Joy	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Band of Holy Joy"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+dbr:The_Lovely_Feathers	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Lovely Feathers"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Wonderswan_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Wonderswan (band)"@en ;
+	ns3:isFromCity	dbr:Leeds ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:The_Homosexuals	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Homosexuals"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:The_Gone_Jackals	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Gone Jackals"@en ;
+	ns3:isFromCity	dbr:San_Francisco ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+<http://dbpedia.org/resource/Purson_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Purson (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+dbr:Tiny_Little_Houses	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Tiny Little Houses"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Indie_rock ,
+		dbr:Alternative_rock .
+<http://dbpedia.org/resource/1990s_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"1990s (band)"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Chris_Cross	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Chris Cross"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+<http://dbpedia.org/resource/Citizens!>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Citizens!"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Clem_Snide	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Clem Snide"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Clock_Opera	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Clock Opera"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Cold_Engines	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Cold Engines"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Coldcut	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Coldcut"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Colin_Newman	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Colin Newman"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:Ekatarina_Velika	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Ekatarina Velika"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Rock_music .
+<http://dbpedia.org/resource/Elizabeth_&_the_Catapult>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Elizabeth & the Catapult"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Emma_Pollock	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Emma Pollock"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Frank_Hamilton_(singer)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Frank Hamilton (singer)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+<http://dbpedia.org/resource/Franz_Ferdinand_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Franz Ferdinand (band)"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Freeform_Five	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Freeform Five"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+<http://dbpedia.org/resource/Frente!>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Frente!"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Fresh_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Fresh (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Futuristic_Polar_Bears	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Futuristic Polar Bears"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+<http://dbpedia.org/resource/F\u00E9lix_Dyotte>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"F\u00E9lix Dyotte"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Gabe_Mantle	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Gabe Mantle"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Girl_Monstar	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Girl Monstar"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music ,
+		dbr:Indie_rock .
+dbr:Glamma_Kid	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Glamma Kid"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Glasgow	rdf:type	ns3:City ,
+		owl:NamedIndividual ;
+	rdfs:label	"Glasgow"@en .
+<http://dbpedia.org/resource/Gold_&_Youth>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Gold & Youth"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Goodboys	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Goodboys"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Gotye	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Gotye"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock ,
+		dbr:Indie_rock .
+dbr:Grant_Nelson	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Grant Nelson"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Gravity_Noir	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Gravity Noir"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Boy_Kill_Boy	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Boy Kill Boy"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Miracle_Fortress	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Miracle Fortress"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Moby_Grape	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Moby Grape"@en ;
+	ns3:isFromCity	dbr:San_Francisco ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+<http://dbpedia.org/resource/Moist_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Moist (band)"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Mondo_Rock	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Mondo Rock"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:Mono_Club	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Mono Club"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Monster_Movie_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Monster Movie (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Montreal	rdf:type	ns3:City ,
+		owl:NamedIndividual ;
+	rdfs:label	"Montreal"@en .
+dbr:Moon_Duo	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Moon Duo"@en ;
+	ns3:isFromCity	dbr:San_Francisco ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+dbr:Mr_Floppy	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Mr Floppy"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:My_Drug_Hell	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"My Drug Hell"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/NAPT_(DJs)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"NAPT (DJs)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+<http://dbpedia.org/resource/Constants_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Constants (band)"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Cordrazine_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Cordrazine (band)"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:Cosmic_Rough_Riders	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Cosmic Rough Riders"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Creaming_Jesus	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Creaming Jesus"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:Crni_Biseri	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Crni Biseri"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Rock_music .
+<http://dbpedia.org/resource/Crumb_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Crumb (band)"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Living_End	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Living End"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:The_Luyas	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Luyas"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Manhattan_Love_Suicides	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Manhattan Love Suicides"@en ;
+	ns3:isFromCity	dbr:Leeds ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:The_Manvils	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Manvils"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Meanies	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Meanies"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:The_Mermen	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Mermen"@en ;
+	ns3:isFromCity	dbr:San_Francisco ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+<http://dbpedia.org/resource/The_Mission_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Mission (band)"@en ;
+	ns3:isFromCity	dbr:Leeds ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:The_Morning_After_Girls	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Morning After Girls"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/The_Moths!>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Moths!"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Motion_Sick	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Motion Sick"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Alternative_rock ,
+		dbr:Indie_rock .
+dbr:The_New_Pornographers	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The New Pornographers"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Night_Game	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Night Game"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/The_Opposition_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Opposition (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+<http://dbpedia.org/resource/The_Pack_A.D.>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Pack A.D."@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock ,
+		dbr:Alternative_rock .
+dbr:The_Paper_Kites	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Paper Kites"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Pictures	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Pictures"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:The_Pink_Singers	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Pink Singers"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+dbr:The_Police	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Police"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:The_Psychedelic_Furs	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Psychedelic Furs"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:The_Rare_Occasions	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Rare Occasions"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Revelators	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Revelators"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:The_Ricecookers	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Ricecookers"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:The_Salteens	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Salteens"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Smith_Street_Band	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Smith Street Band"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/The_Smugglers_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Smugglers (band)"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Snapdragons	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Snapdragons"@en ;
+	ns3:isFromCity	dbr:Leeds ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:The_Sports	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Sports"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:The_Still_Tide	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Still Tide"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/The_Strangers_(Australian_band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Strangers (Australian band)"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:The_Temper_Trap	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Temper Trap"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock ,
+		dbr:Indie_rock .
+dbr:The_The	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The The"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:The_Tourist_Company	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Tourist Company"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:The_Veer_Union	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Veer Union"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:The_Veils	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Veils"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Winston_Giles_Orchestra	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Winston Giles Orchestra"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Theo_Goutzinakis	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Theo Goutzinakis"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/They_Shoot_Horses,_Don\u0027t_They%3F_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"They Shoot Horses, Don't They? (band)"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Things_of_Stone_and_Wood	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Things of Stone and Wood"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music ,
+		dbr:Indie_rock .
+dbr:Think_About_Life	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Think About Life"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:This_Et_Al	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"This Et Al"@en ;
+	ns3:isFromCity	dbr:Leeds ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Thomas_Headon	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Thomas Headon"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Brooklyn,_New_York>	rdf:type	ns3:City ,
+		owl:NamedIndividual ;
+	rdfs:label	"Brooklyn, New York"@en .
+dbr:Damjan_od_Resnika	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Damjan od Resnika"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock .
+dbr:Dananananaykroyd	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Dananananaykroyd"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Spirits_Burning	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Spirits Burning"@en ;
+	ns3:isFromCity	dbr:San_Francisco ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+dbr:Operahouse	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Operahouse"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Sean_Stubbs	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Sean Stubbs"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Tellison	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Tellison"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Supafly	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Supafly"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Andrew_Findon	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Andrew Findon"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+dbr:Andrew_Howie	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Andrew Howie"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Andrew_White_(musician)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Andrew White (musician)"@en ;
+	ns3:isFromCity	dbr:Leeds ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Angela_McCluskey	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Angela McCluskey"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Animal_Hands	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Animal Hands"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Arcade_Fire	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Arcade Fire"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Leeds	rdf:type	owl:NamedIndividual ,
+		ns3:City ;
+	rdfs:label	"Leeds"@en .
+dbr:Lemon_Demon	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Lemon Demon"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Indie_rock ,
+		dbr:Alternative_rock .
+<http://dbpedia.org/resource/Leo_Williams_(musician)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Leo Williams (musician)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:Les_Breastfeeders	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Les Breastfeeders"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Letters_to_Cleo	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Letters to Cleo"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Limblifter	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Limblifter"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Lions_Lions	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Lions Lions"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:London	rdf:type	owl:NamedIndividual ,
+		ns3:City ;
+	rdfs:label	"London"@en .
+<http://dbpedia.org/resource/London_Gay_Men\u0027s_Chorus>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"London Gay Men's Chorus"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+<http://dbpedia.org/resource/Lucia_&_The_Best_Boys>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Lucia & The Best Boys"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Luke_Doucet	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Luke Doucet"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Lustra_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Lustra (band)"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Indie_rock ,
+		dbr:Alternative_rock .
+<http://dbpedia.org/resource/Mabel_Greer\u0027s_Toyshop>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Mabel Greer's Toyshop"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+dbr:Malajube	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Malajube"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Calling_All_Cars_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Calling All Cars (band)"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Shopping_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Shopping (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:Sidney_Gish	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Sidney Gish"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Simon_Shackleton	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Simon Shackleton"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Skinny_Lister	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Skinny Lister"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music ,
+		dbr:Indie_rock .
+dbr:Skinnyman	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Skinnyman"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+<http://dbpedia.org/resource/Skyhooks_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Skyhooks (band)"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:Slothrust	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Slothrust"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Snout_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Snout (band)"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Indie_rock ,
+		dbr:Alternative_rock .
+dbr:Stacy_Jones	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Stacy Jones"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Stagecoach_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Stagecoach (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:State_River_Widening	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"State River Widening"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+<http://dbpedia.org/resource/State_of_Shock_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"State of Shock (band)"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Status_Quo_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Status Quo (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+dbr:Steve_Nieve	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Steve Nieve"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:Steven_Fairweather	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Steven Fairweather"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Stiff_Valentine	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Stiff Valentine"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Storm_the_Sky	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Storm the Sky"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Stray_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Stray (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+<http://dbpedia.org/resource/Stroszek_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Stroszek (band)"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Stuck_Out	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Stuck Out"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Clive_Painter	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Clive Painter"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Closure_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Closure (band)"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Clues_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Clues (band)"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Common_Prayer_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Common Prayer (band)"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Yuck_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Yuck (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/\u0110or\u0111e_Marjanovi\u0107>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"\u0110or\u0111e Marjanovi\u0107"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Rock_music .
+<http://dbpedia.org/resource/Francine_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Francine (band)"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Frumious_Bandersnatch	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Frumious Bandersnatch"@en ;
+	ns3:isFromCity	dbr:San_Francisco ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+dbr:Full_Intention	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Full Intention"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+<http://dbpedia.org/resource/Furthur_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Furthur (band)"@en ;
+	ns3:isFromCity	dbr:San_Francisco ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+dbr:Half_Moon_Run	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Half Moon Run"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Hallelujah_the_Hills	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Hallelujah the Hills"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Indie_rock ,
+		dbr:Alternative_rock .
+<http://dbpedia.org/resource/Help_Yourself_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Help Yourself (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+<http://dbpedia.org/resource/Henry\u0027s_Final_Dream>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Henry's Final Dream"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:Hotel_Mira	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Hotel Mira"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:House_music	rdf:type	owl:NamedIndividual ,
+		ns3:Genre ;
+	ns3:genreName	"House music"@en .
+dbr:Idoli	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Idoli"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock .
+<http://dbpedia.org/resource/Koven_(group)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Koven (group)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Krankschaft	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Krankschaft"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+dbr:Krista_Polvere	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Krista Polvere"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:Kristali	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Kristali"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock .
+dbr:Love_Outside_Andromeda	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Love Outside Andromeda"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Siouxsie_and_the_Banshees	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Siouxsie and the Banshees"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+<http://dbpedia.org/resource/The_Attack_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Attack (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+dbr:Thomas_Anselmi	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Thomas Anselmi"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Police_Dog_Hogan	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Police Dog Hogan"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+dbr:Pop_rock	rdf:type	ns3:Genre ,
+		owl:NamedIndividual ;
+	ns3:genreName	"Pop rock"@en .
+dbr:Poslednja_Igra_Leptira	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Poslednja Igra Leptira"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Rock_music ,
+		dbr:Pop_rock .
+<http://dbpedia.org/resource/The_Passions_(British_band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Passions (British band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:The_Pastels	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Pastels"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:The_Phantom_Band	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Phantom Band"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Madame_Piano	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Madame Piano"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:Makethisrelate	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Makethisrelate"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Silver_Sun	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Silver Sun"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Stateless_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Stateless (band)"@en ;
+	ns3:isFromCity	dbr:Leeds ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Strike_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Strike (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Stu_Fisher	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Stu Fisher"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock ,
+		dbr:Psychedelic_rock .
+@prefix ns6:	<http://dbpedia.org/resource/Stuffy/> .
+ns6:The_Fuses	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Stuffy/The Fuses"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Stump_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Stump (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+<http://dbpedia.org/resource/Submarine_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Submarine (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Psychedelic_rock ,
+		dbr:Indie_rock .
+<http://dbpedia.org/resource/Subterraneans_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Subterraneans (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk ,
+		dbr:Psychedelic_rock .
+<http://dbpedia.org/resource/Sunday_Driver_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Sunday Driver (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+<http://dbpedia.org/resource/Sunhouse_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Sunhouse (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+<http://dbpedia.org/resource/Sunshine_(Serbian_band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Sunshine (Serbian band)"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Rock_music .
+<http://dbpedia.org/resource/Superstar_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Superstar (band)"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:TISM	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"TISM"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:The_Stills	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Stills"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Supernaturals	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Supernaturals"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Maow	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Maow"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/McAlmont_&_Butler>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"McAlmont & Butler"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Mean_Creek_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Mean Creek (band)"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Pulled_Apart_by_Horses	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Pulled Apart by Horses"@en ;
+	ns3:isFromCity	dbr:Leeds ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Babe_Rainbow_(musician)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Babe Rainbow (musician)"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Baby_Jey	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Baby Jey"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/67_Special>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"67 Special"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:Brigid_Mae_Power	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Brigid Mae Power"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+dbr:Broderick_Smith	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Broderick Smith"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+<http://dbpedia.org/resource/Brundlefly_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Brundlefly (band)"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Buchanan_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Buchanan (band)"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Indie_rock ,
+		dbr:Alternative_rock .
+dbr:Cattletruck	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Cattletruck"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:Age_of_Chance	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Age of Chance"@en ;
+	ns3:isFromCity	dbr:Leeds ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Tim_Arnold_(musician)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Tim Arnold (musician)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Toby_Rand	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Toby Rand"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Total_Control_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Total Control (band)"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Trailer_Trash_Tracys	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Trailer Trash Tracys"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Trash_Kit	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Trash Kit"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:Treetop_Flyers	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Treetop Flyers"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+dbr:True_Live	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"True Live"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:Ttrruuces	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Ttrruuces"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+dbr:Tubeway_Army	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Tubeway Army"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:Twin_Atlantic	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Twin Atlantic"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock ,
+		dbr:Indie_rock .
+<http://dbpedia.org/resource/Dardanelles_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Dardanelles (band)"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Dark_Star_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Dark Star (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Psychedelic_rock ,
+		dbr:Indie_rock .
+<http://dbpedia.org/resource/Darren_Hayman_&_the_Secondary_Modern>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Darren Hayman & the Secondary Modern"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Data_Romance	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Data Romance"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Way_to_Go,_Einstein>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Way to Go, Einstein"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:We_Are_the_Physics	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"We Are the Physics"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Wetdog	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Wetdog"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:White_Lung	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"White Lung"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Wikluh_Sky	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Wikluh Sky"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:Wildcat_Apollo	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Wildcat Apollo"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:William_Orbit	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"William Orbit"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Winter_Gloves	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Winter Gloves"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Divlji_An\u0111eli>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Divlji An\u0111eli"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock .
+<http://dbpedia.org/resource/Dobrovoljno_Peva\u010Dko_Dru\u0161tvo>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Dobrovoljno Peva\u010Dko Dru\u0161tvo"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock .
+<http://dbpedia.org/resource/Doe_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Doe (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Dogs_(British_band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Dogs (British band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Dreem_Teem	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Dreem Teem"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Drop_Nineteens	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Drop Nineteens"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Drowning_Craze	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Drowning Craze"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+<http://dbpedia.org/resource/Fuzz_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Fuzz (band)"@en ;
+	ns3:isFromCity	dbr:San_Francisco ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+<http://dbpedia.org/resource/Galaxie_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Galaxie (band)"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Gallon_Drunk	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Gallon Drunk"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:Glasvegas	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Glasvegas"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Hawk_Eyes	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Hawk Eyes"@en ;
+	ns3:isFromCity	dbr:Leeds ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Head_Automatica	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Head Automatica"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Hefner_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Hefner (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Helium_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Helium (band)"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Jets_to_Brazil	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Jets to Brazil"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Joe_Gideon_&_the_Shark>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Joe Gideon & the Shark"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Joe_Innes_&_The_Cavalcade>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Joe Innes & The Cavalcade"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+dbr:Jugosloveni	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Jugosloveni"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Rock_music ,
+		dbr:Pop_rock .
+dbr:Juke_Kartel	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Juke Kartel"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Junior\u0027s_Eyes>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Junior's Eyes"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+dbr:Laki_Pingvini	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Laki Pingvini"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock .
+dbr:Land_of_Talk	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Land of Talk"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Larrikin_Love	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Larrikin Love"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Laura_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Laura (band)"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Linoleum_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Linoleum (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Linus_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Linus (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Lira_Vega	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Lira Vega"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock .
+dbr:Lo_Fidelity_Allstars	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Lo Fidelity Allstars"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+<http://dbpedia.org/resource/Lodger_(British_band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Lodger (British band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Taxiride	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Taxiride"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/U_\u0160kripcu>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"U \u0160kripcu"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock .
+dbr:Miranda_Sex_Garden	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Miranda Sex Garden"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+dbr:Miserylab	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Miserylab"@en ;
+	ns3:isFromCity	dbr:Leeds ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:The_Wolfgang_Press	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Wolfgang Press"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:Tin_Alley	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Tin Alley"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock ,
+		dbr:Rock_music .
+<http://dbpedia.org/resource/Tse_Tse_Fly_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Tse Tse Fly (band)"@en ;
+	ns3:isFromCity	dbr:Leeds ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:X-Press_2	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"X-Press 2"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Ninetynine	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Ninetynine"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Sluts_of_Trust	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Sluts of Trust"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Fratellis	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Fratellis"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Indie_rock ,
+		dbr:Alternative_rock .
+<http://dbpedia.org/resource/A._C._Newman>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"A. C. Newman"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Aaron_West_and_the_Roaring_Twenties	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Aaron West and the Roaring Twenties"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/About_Group_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"About Group (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Adam_Perry_(drummer)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Adam Perry (drummer)"@en ;
+	ns3:isFromCity	dbr:Leeds ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Adam_and_the_Amethysts	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Adam and the Amethysts"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Adam_and_the_Ants	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Adam and the Ants"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:Airway_Lanes	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Airway Lanes"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:Alan_McGee	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Alan McGee"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Alex_Day	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Alex Day"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+dbr:Alice_Ivy	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Alice Ivy"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Amanda_Palmer	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Amanda Palmer"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:American_Authors	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"American Authors"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Indie_rock ,
+		dbr:Alternative_rock .
+dbr:American_Hi-Fi	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"American Hi-Fi"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Ana_Stani\u0107>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Ana Stani\u0107"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock .
+<http://dbpedia.org/resource/3_Man_Island>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"3 Man Island"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+<http://dbpedia.org/resource/Cymbals_(British_band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Cymbals (British band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:Dakona	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Dakona"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Dallas_Crane	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Dallas Crane"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Dan_Mangan	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Dan Mangan"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Dan_Webb	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Dan Webb"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Daniel_Blumberg	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Daniel Blumberg"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Danny_and_the_Champions_of_the_World	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Danny and the Champions of the World"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+<http://dbpedia.org/resource/Dressmaker_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Dressmaker (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+dbr:Dusky	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Dusky"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Eat_Lights_Become_Lights	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Eat Lights Become Lights"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Ecca_Vandal	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Ecca Vandal"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Aloud	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Aloud"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Alternative_TV	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Alternative TV"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:Alternative_rock	rdf:type	owl:NamedIndividual ,
+		ns3:Genre ;
+	ns3:genreName	"Alternative rock"@en .
+<http://dbpedia.org/resource/Alvin_Purple_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Alvin Purple (band)"@en ;
+	ns3:isFromCity	dbr:Leeds ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Esmerine	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Esmerine"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Eugene_Kelly	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Eugene Kelly"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Evans_the_Death	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Evans the Death"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Family_Fodder	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Family Fodder"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk ,
+		dbr:Indie_rock .
+<http://dbpedia.org/resource/Farrah_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Farrah (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Feature_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Feature (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:Fews	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Fews"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:First_You_Get_the_Sugar	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"First You Get the Sugar"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Flamingods	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Flamingods"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+dbr:Flash_Fiktion	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Flash Fiktion"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Fleece_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Fleece (band)"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Florence_and_the_Machine	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Florence and the Machine"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Folk_Face	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Folk Face"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+dbr:Frances_McKee	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Frances McKee"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Francesca_Lombardo	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Francesca Lombardo"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+<http://dbpedia.org/resource/Banana_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Banana (band)"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Rock_music ,
+		dbr:Pop_rock .
+dbr:Brasstronaut	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Brasstronaut"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Bra\u0107a_Left>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Bra\u0107a Left"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Rock_music .
+<http://dbpedia.org/resource/Breathless_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Breathless (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock ,
+		dbr:Post-punk .
+<http://dbpedia.org/resource/Breton_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Breton (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/British_India_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"British India (band)"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Broken_Chanter	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Broken Chanter"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock ,
+		dbr:Indie_rock .
+dbr:Broken_Dog	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Broken Dog"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Nick_Cave_and_the_Bad_Seeds	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Nick Cave and the Bad Seeds"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Nick_Mason	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Nick Mason"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+<http://dbpedia.org/resource/Nikola_\u010Cuturilo>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Nikola \u010Cuturilo"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock ,
+		dbr:Rock_music .
+<http://dbpedia.org/resource/Ninja_(British_rapper)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Ninja (British rapper)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Nodens_Ictus	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Nodens Ictus"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+dbr:Noisettes	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Noisettes"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Northeast_Party_House	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Northeast Party House"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Not_from_There	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Not from There"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Outside_Royalty	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Outside Royalty"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Paint_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Paint (band)"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock ,
+		dbr:Indie_rock .
+<http://dbpedia.org/resource/Passwords_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Passwords (band)"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Capitol_6	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Capitol 6"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock ,
+		dbr:Alternative_rock .
+dbr:Carcrash_International	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Carcrash International"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+<http://dbpedia.org/resource/Cause_Co-Motion!>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Cause Co-Motion!"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Caveman_(American_band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Caveman (American band)"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Charlie_Hugall	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Charlie Hugall"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Cicada_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Cicada (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+<http://dbpedia.org/resource/Ciccone_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Ciccone (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Danny_J_Lewis	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Danny J Lewis"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+<http://dbpedia.org/resource/Dial_M_for_Murder!>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Dial M for Murder!"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Dillon_&_Dickins>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Dillon & Dickins"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Dirty_on_Purpose	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Dirty on Purpose"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Fairground_Attraction	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Fairground Attraction"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+dbr:Fake_Shark	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Fake Shark"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Familija	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Familija"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock ,
+		dbr:Rock_music .
+dbr:Fanfarlo	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Fanfarlo"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Fans_of_Kate	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Fans of Kate"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Flotation_Toy_Warning	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Flotation Toy Warning"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Folk_music	rdf:type	owl:NamedIndividual ,
+		ns3:Genre ;
+	ns3:genreName	"Folk music"@en .
+<http://dbpedia.org/resource/Foxface_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Foxface (band)"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Gersey	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Gersey"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock ,
+		dbr:Rock_music .
+dbr:Goat_Girl	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Goat Girl"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:Goldheart_Assembly	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Goldheart Assembly"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Good_Morning_(duo)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Good Morning (duo)"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Good_Shoes	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Good Shoes"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Goodbyemotel	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Goodbyemotel"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:Grammatics	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Grammatics"@en ;
+	ns3:isFromCity	dbr:Leeds ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Grand_National_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Grand National (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk ,
+		dbr:Indie_rock .
+dbr:Grand_Theft_Audio	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Grand Theft Audio"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/It\u0027s_a_Beautiful_Day>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"It's a Beautiful Day"@en ;
+	ns3:isFromCity	dbr:San_Francisco ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+<http://dbpedia.org/resource/Kaleidoscope_(British_band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Kaleidoscope (British band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+<http://dbpedia.org/resource/Kanda,_Kod\u017Ea_i_Neboj\u0161a>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Kanda, Kod\u017Ea i Neboj\u0161a"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Rock_music .
+<http://dbpedia.org/resource/Keith_Top_of_the_Pops_&_His_Minor_UK_Indie_Celebrity_All-Star_Backing_Band>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Keith Top of the Pops & His Minor UK Indie Celebrity All-Star Backing Band"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Kindred_Spirit_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Kindred Spirit (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+dbr:The_Monochrome_Set	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Monochrome Set"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+<http://dbpedia.org/resource/Leif_Erikson_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Leif Erikson (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Count_Bishops	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Count Bishops"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Creatures	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Creatures"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:List_of_Men_at_Work_band_members	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"List of Men at Work band members"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:The_Delgados	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Delgados"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Devastations	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Devastations"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Fades	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Fades"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Fut	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Fut"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+<http://dbpedia.org/resource/Propaganda_(Yugoslav_band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Propaganda (Yugoslav band)"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock .
+dbr:Rubber_Soul_Project	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Rubber Soul Project"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:Grinderman	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Grinderman"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+<http://dbpedia.org/resource/Grizzly_Bear_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Grizzly Bear (band)"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Grupa_I	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Grupa I"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock .
+dbr:HMLTD	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"HMLTD"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:Hamilton_Lee	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Hamilton Lee"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Psychedelic_rock ,
+		dbr:Post-punk .
+dbr:Handsome_Furs	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Handsome Furs"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Happy_Refugees	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Happy Refugees"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:Hapshash_and_the_Coloured_Coat	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Hapshash and the Coloured Coat"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+dbr:Heather_Small	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Heather Small"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Hey_Colossus	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Hey Colossus"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk ,
+		dbr:Psychedelic_rock .
+<http://dbpedia.org/resource/Hey_Ocean!>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Hey Ocean!"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/High_Pass_Filter_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"High Pass Filter (band)"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:Atomic_Tom	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Atomic Tom"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Attic_Lights	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Attic Lights"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Irwin_Thomas	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Irwin Thomas"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music ,
+		dbr:Alternative_rock .
+dbr:Isaac_Gracie	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Isaac Gracie"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:James_Blackshaw	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"James Blackshaw"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+<http://dbpedia.org/resource/James_Brown_(guitarist)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"James Brown (guitarist)"@en ;
+	ns3:isFromCity	dbr:Leeds ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:James_Gurley	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"James Gurley"@en ;
+	ns3:isFromCity	dbr:San_Francisco ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+dbr:Jamie_xx	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Jamie xx"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Japandroids	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Japandroids"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock ,
+		dbr:Alternative_rock .
+dbr:Jay_Malinowski	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Jay Malinowski"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Babe_(Serbian_band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Babe (Serbian band)"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock ,
+		dbr:Rock_music .
+<http://dbpedia.org/resource/Bad_Books_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Bad Books (band)"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Bad_Rabbits	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Bad Rabbits"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Bajaga_i_Instruktori	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Bajaga i Instruktori"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock .
+dbr:Tanlines	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Tanlines"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Test_Icicles	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Test Icicles"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:That_Fucking_Tank	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"That Fucking Tank"@en ;
+	ns3:isFromCity	dbr:Leeds ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:That_Handsome_Devil	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"That Handsome Devil"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:The_Ailerons	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Ailerons"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Besnard_Lakes	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Besnard Lakes"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Big_Moon	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Big Moon"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Black_Sorrows	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Black Sorrows"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:The_Blockheads	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Blockheads"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:The_Bo-Weevils	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Bo-Weevils"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+<http://dbpedia.org/resource/The_Boyfriends_(British_band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Boyfriends (British band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Bridport_Dagger	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Bridport Dagger"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Capes	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Capes"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Cat_Empire	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Cat Empire"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:The_Chavs	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Chavs"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Cinematics	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Cinematics"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock ,
+		dbr:Indie_rock .
+dbr:The_Clash	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Clash"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+<http://dbpedia.org/resource/The_Corrections_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Corrections (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Cureheads	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Cureheads"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+<http://dbpedia.org/resource/The_Damned_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Damned (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:The_Deakins	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Deakins"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:The_Dears	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Dears"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Dirty_Tricks	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Dirty Tricks"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Fallen_Leaves	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Fallen Leaves"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+<http://dbpedia.org/resource/The_Fauves_(group)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Fauves (group)"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+<http://dbpedia.org/resource/The_Fresh_&_Onlys>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Fresh & Onlys"@en ;
+	ns3:isFromCity	dbr:San_Francisco ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+dbr:The_Gingers	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Gingers"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+<http://dbpedia.org/resource/The_Golden_Dawn_(Scottish_band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Golden Dawn (Scottish band)"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Just_Joans	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Just Joans"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Hush_the_Many	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Hush the Many"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+<http://dbpedia.org/resource/Husky_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Husky (band)"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Border_Surrender	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Border Surrender"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+dbr:Yellow_Ostrich	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Yellow Ostrich"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Todd_Fancey	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Todd Fancey"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Zdravo	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Zdravo"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock .
+dbr:The_Basics	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Basics"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+<http://dbpedia.org/resource/The_Boxer_Rebellion_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Boxer Rebellion (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Swirlies	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Swirlies"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Snapped_Ankles	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Snapped Ankles"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+<http://dbpedia.org/resource/Archie_Hamilton_(DJ)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Archie Hamilton (DJ)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Arrows_of_Love	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Arrows of Love"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+<http://dbpedia.org/resource/Art_of_Dying_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Art of Dying (band)"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:AC_Acoustics	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"AC Acoustics"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:A_Dead_Forest_Index	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"A Dead Forest Index"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:A_Great_Big_Pile_of_Leaves	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"A Great Big Pile of Leaves"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Abdoujaparov	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Abdoujaparov"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:Adopted_as_Holograph	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Adopted as Holograph"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Aereogramme	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Aereogramme"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Charlie_Barnes_(musician)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Charlie Barnes (musician)"@en ;
+	ns3:isFromCity	dbr:Leeds ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Charlie_Burchill	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Charlie Burchill"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Chocolate_Starfish	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Chocolate Starfish"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:Jesse_Wood	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Jesse Wood"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Jet_(Australian_band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Jet (Australian band)"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock ,
+		dbr:Indie_rock .
+<http://dbpedia.org/resource/Joe_Goddard_(musician)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Joe Goddard (musician)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+<http://dbpedia.org/resource/Joe_Lean_&_The_Jing_Jang_Jong>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Joe Lean & The Jing Jang Jong"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Joe_Russo_(musician)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Joe Russo (musician)"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/John_Kirkpatrick_(musician)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"John Kirkpatrick (musician)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+dbr:Justin_Currie	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Justin Currie"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Karkwa	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Karkwa"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Kassidy	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Kassidy"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock ,
+		dbr:Indie_rock .
+dbr:Kele_Okereke	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Kele Okereke"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music ,
+		dbr:Indie_rock .
+<http://dbpedia.org/resource/Kiki_Lesendri\u0107>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Kiki Lesendri\u0107"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock ,
+		dbr:Rock_music .
+dbr:Kind_of_Pluto	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Kind of Pluto"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+<http://dbpedia.org/resource/L\u0027objectif>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"L'objectif"@en ;
+	ns3:isFromCity	dbr:Leeds ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/L.A._Salami>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"L.A. Salami"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+dbr:Big_Audio_Dynamite	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Big Audio Dynamite"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:Big_Brother_and_the_Holding_Company	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Big Brother and the Holding Company"@en ;
+	ns3:isFromCity	dbr:San_Francisco ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+<http://dbpedia.org/resource/Big_Dipper_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Big Dipper (band)"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Indie_rock ,
+		dbr:Alternative_rock .
+<http://dbpedia.org/resource/Birdbrain_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Birdbrain (band)"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Black_Box_Recorder	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Black Box Recorder"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Black_Helicopter_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Black Helicopter (band)"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Black_Mountain_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Black Mountain (band)"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Blackchords	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Blackchords"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Blake_Babies	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Blake Babies"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Blood_on_the_Wall	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Blood on the Wall"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Bloody_Chicletts	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Bloody Chicletts"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Blossom_Toes	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Blossom Toes"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+dbr:Blu_Mar_Ten	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Blu Mar Ten"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Blueline_Medic	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Blueline Medic"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Indie_rock ,
+		dbr:Rock_music .
+dbr:Suncokret	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Suncokret"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:Sunflower_Bean	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Sunflower Bean"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Sunlightsquare	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Sunlightsquare"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Sunset_Rubdown	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Sunset Rubdown"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Superconductor_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Superconductor (band)"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Sydonia	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Sydonia"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:TV_Priest	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"TV Priest"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk ,
+		dbr:Indie_rock .
+dbr:Codeine_Velvet_Club	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Codeine Velvet Club"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Echo_Lake_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Echo Lake (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Econoline_Crush	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Econoline Crush"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Egg_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Egg (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+dbr:Heroji	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Heroji"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock ,
+		dbr:Rock_music .
+dbr:Hexstatic	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Hexstatic"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+<http://dbpedia.org/resource/Honey_Ryder_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Honey Ryder (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+dbr:Honeyblood	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Honeyblood"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Templar_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Templar (band)"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/The_Climbers_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Climbers (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+<http://dbpedia.org/resource/The_Dead_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Dead (band)"@en ;
+	ns3:isFromCity	dbr:San_Francisco ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+<http://dbpedia.org/resource/The_Great_Society_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Great Society (band)"@en ;
+	ns3:isFromCity	dbr:San_Francisco ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+<http://dbpedia.org/resource/The_Koreans_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Koreans (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/The_Thirst_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Thirst (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Thornhill_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Thornhill (band)"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Tiger_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Tiger (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Tops_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Tops (band)"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Tram_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Tram (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Travis_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Travis (band)"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Tribe_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Tribe (band)"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Tunel_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Tunel (band)"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:The_Woodentops	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Woodentops"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Yummy_Fur	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Yummy Fur"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_xx	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The xx"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Urusei_Yatsura_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Urusei Yatsura (band)"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock ,
+		dbr:Indie_rock .
+dbr:White_Rose_Movement	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"White Rose Movement"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+<http://dbpedia.org/resource/Woo_(music_group)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Woo (music group)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+<http://dbpedia.org/resource/Wookie_(musician)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Wookie (musician)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:World_Domination_Enterprises	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"World Domination Enterprises"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+<http://dbpedia.org/resource/Zana_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Zana (band)"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock .
+<http://dbpedia.org/resource/Zebra_(Yugoslav_band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Zebra (Yugoslav band)"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:The_Main_Drag	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Main Drag"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Theatre_of_Hate	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Theatre of Hate"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:Volcano_Suns	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Volcano Suns"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Regular_Fries	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Regular Fries"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Psychedelic_rock ,
+		dbr:Indie_rock .
+dbr:Sex_Gang_Children	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Sex Gang Children"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:Sam_Evian	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Sam Evian"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Special_Needs_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Special Needs (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Diagrams_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Diagrams (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock ,
+		dbr:Folk_music .
+dbr:Dimitri_from_Paris	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Dimitri from Paris"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Dino_Bardot	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Dino Bardot"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Dinosaur_Pile-Up	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Dinosaur Pile-Up"@en ;
+	ns3:isFromCity	dbr:Leeds ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Direct_Influence	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Direct Influence"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:Dirty_Vegas	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Dirty Vegas"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Disciplin_A_Kitschme	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Disciplin A Kitschme"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:Django_Django	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Django Django"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Assemble_Head_in_Sunburst_Sound	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Assemble Head in Sunburst Sound"@en ;
+	ns3:isFromCity	dbr:San_Francisco ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+<http://dbpedia.org/resource/Mantissa_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Mantissa (band)"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Mark_Moore	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Mark Moore"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Mark_Seymour	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Mark Seymour"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+<http://dbpedia.org/resource/Martyn_P._Casey>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Martyn P. Casey"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Borne_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Borne (band)"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:Buffalo_Tom	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Buffalo Tom"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Buke_and_Gase	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Buke and Gase"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/B\u00F4a>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"B\u00F4a"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Piano_Magic	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Piano Magic"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Piers_Faccini	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Piers Faccini"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+<http://dbpedia.org/resource/Pile_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Pile (band)"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Pink_Mountaintops	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Pink Mountaintops"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Pixies_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Pixies (band)"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Alternative_rock ,
+		dbr:Indie_rock .
+dbr:Plants_and_Animals	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Plants and Animals"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Plump_DJs	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Plump DJs"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+<http://dbpedia.org/resource/Pluto_(Canadian_band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Pluto (Canadian band)"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Post-punk	rdf:type	owl:NamedIndividual ,
+		ns3:Genre ;
+	ns3:genreName	"Post-punk"@en .
+<http://dbpedia.org/resource/Somebody\u0027s_Image>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Somebody's Image"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:Something_for_Kate	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Something for Kate"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Space_Cowboy_(musician)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Space Cowboy (musician)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+<http://dbpedia.org/resource/Spector_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Spector (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Splitting_Adam	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Splitting Adam"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Sr\u0111an_Marjanovi\u0107>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Sr\u0111an Marjanovi\u0107"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock .
+<http://dbpedia.org/resource/Civic_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Civic (band)"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:Clap_Your_Hands_Say_Yeah	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Clap Your Hands Say Yeah"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Fightmilk	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Fightmilk"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Films_of_Colour	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Films of Colour"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Fredo_Viola	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Fredo Viola"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+dbr:Greater_Than_One	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Greater Than One"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Ultimate_Painting	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Ultimate Painting"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Walter_TV	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Walter TV"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:I_Like_Trains	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"I Like Trains"@en ;
+	ns3:isFromCity	dbr:Leeds ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Iain_Cook	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Iain Cook"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/In_Medias_Res_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"In Medias Res (band)"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Indie_pop	rdf:type	owl:NamedIndividual ,
+		ns3:Genre ;
+	ns3:genreName	"Indie pop"@en .
+dbr:Inner_City_Unit	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Inner City Unit"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+dbr:Klaxons	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Klaxons"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Knifeworld	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Knifeworld"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+dbr:Korni_Grupa	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Korni Grupa"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock .
+<http://dbpedia.org/resource/Milan_Petrovi\u0107_(musician)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Milan Petrovi\u0107 (musician)"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock .
+dbr:Navet_Confit	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Navet Confit"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Neverne_Bebe	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Neverne Bebe"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Rock_music ,
+		dbr:Pop_rock .
+dbr:New_Waver	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"New Waver"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Octoberman	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Octoberman"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Odds_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Odds (band)"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Of_Arrowe_Hill	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Of Arrowe Hill"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music ,
+		dbr:Psychedelic_rock ,
+		dbr:Indie_rock .
+<http://dbpedia.org/resource/Oliver_Mandi\u0107>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Oliver Mandi\u0107"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock .
+<http://dbpedia.org/resource/Olympia_(musician)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Olympia (musician)"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music ,
+		dbr:Alternative_rock .
+<http://dbpedia.org/resource/Orphans_&_Vandals>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Orphans & Vandals"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Carter_the_Unstoppable_Sex_Machine	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Carter the Unstoppable Sex Machine"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Catapilla	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Catapilla"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+dbr:Random_Recipe	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Random Recipe"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Rat_Silo	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Rat Silo"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Red_Light_Company	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Red Light Company"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Ceres_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Ceres (band)"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Chapel_Club	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Chapel Club"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk ,
+		dbr:Indie_rock .
+<http://dbpedia.org/resource/Second_Person_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Second Person (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Secondcity	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Secondcity"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+<http://dbpedia.org/resource/Shawn_Lee_(musician)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Shawn Lee (musician)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music ,
+		dbr:Post-punk .
+<http://dbpedia.org/resource/With_You.>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"With You."@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Wolf_Parade	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Wolf Parade"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Woodes	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Woodes"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Yellowbirds	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Yellowbirds"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Kingswood_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Kingswood (band)"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Kinky_Machine	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Kinky Machine"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Kisschasy	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Kisschasy"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Klak_Tik	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Klak Tik"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+<http://dbpedia.org/resource/The_Beloved_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Beloved (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk ,
+		dbr:House_music .
+dbr:The_Bishops	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Bishops"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/The_Charlatans_(American_band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Charlatans (American band)"@en ;
+	ns3:isFromCity	dbr:San_Francisco ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+dbr:Lonsdale_Boys_Club	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Lonsdale Boys Club"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Lotus_Child	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Lotus Child"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/M&S_(production_team)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"M&S (production team)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:MJ_Cole	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"MJ Cole"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Madder_Lake	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Madder Lake"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:Rock_music	rdf:type	ns3:Genre ,
+		owl:NamedIndividual ;
+	ns3:genreName	"Rock music"@en .
+<http://dbpedia.org/resource/Roger_Miller_(rock_musician)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Roger Miller (rock musician)"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Root!>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Root!"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Rubella_Ballet	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Rubella Ballet"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+<http://dbpedia.org/resource/Ryan_Moore_(musician)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Ryan Moore (musician)"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/SARS_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"SARS (band)"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock .
+<http://dbpedia.org/resource/San_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"San (band)"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Rock_music .
+<http://dbpedia.org/resource/Sarandon_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Sarandon (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Simian_Mobile_Disco	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Simian Mobile Disco"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+<http://dbpedia.org/resource/Scanners_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Scanners (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Sea_Stories_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Sea Stories (band)"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Sebastopol_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Sebastopol (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+<http://dbpedia.org/resource/Shagrat_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Shagrat (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+<http://dbpedia.org/resource/Shut_Up_and_Dance_(duo)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Shut Up and Dance (duo)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+<http://dbpedia.org/resource/Sleeper_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Sleeper (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Slowly_Slowly_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Slowly Slowly (band)"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Sons_and_Daughters_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Sons and Daughters (band)"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Sons_of_Freedom_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Sons of Freedom (band)"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Spear_of_Destiny_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Spear of Destiny (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk ,
+		dbr:Indie_rock .
+dbr:The_New_Seekers	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The New Seekers"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+<http://dbpedia.org/resource/The_Servant_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Servant (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Unicorns	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Unicorns"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Vaselines	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Vaselines"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Indie_rock ,
+		dbr:Alternative_rock .
+<http://dbpedia.org/resource/The_Wake_(UK_band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Wake (UK band)"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Van_Gogh_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Van Gogh (band)"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:Vib_Gyor	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Vib Gyor"@en ;
+	ns3:isFromCity	dbr:Leeds ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Waiting_Room_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Waiting Room (band)"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Wasted_Youth_(British_band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Wasted Youth (British band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:We_Are_Wolves	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"We Are Wolves"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Neon_Jungle	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Neon Jungle"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:New_Love_Crowd	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"New Love Crowd"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Sparrow_and_the_Workshop	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Sparrow and the Workshop"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Family_Cat	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Family Cat"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Your_Vegas	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Your Vegas"@en ;
+	ns3:isFromCity	dbr:Leeds ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:VIS_Simboli	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"VIS Simboli"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Rock_music .
+<http://dbpedia.org/resource/Eugenius_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Eugenius (band)"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Indie_rock ,
+		dbr:Alternative_rock .
+<http://dbpedia.org/resource/Gun_(1960s_band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Gun (1960s band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+dbr:Guster	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Guster"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Alternative_rock ,
+		dbr:Indie_rock .
+dbr:Gyratory_System	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Gyratory System"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:I_Am_the_Avalanche	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"I Am the Avalanche"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:I_Concur	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"I Concur"@en ;
+	ns3:isFromCity	dbr:Leeds ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Ikara_Colt	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Ikara Colt"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/In_Camera_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"In Camera (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:The_KLF	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The KLF"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:The_KVB	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The KVB"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+<http://dbpedia.org/resource/Low_Water_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Low Water (band)"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Phil_Lesh_and_Friends	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Phil Lesh and Friends"@en ;
+	ns3:isFromCity	dbr:San_Francisco ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+dbr:The_Legendary_Pink_Dots	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Legendary Pink Dots"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:The_Lemonheads	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Lemonheads"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:The_Loved_Ones	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Loved Ones"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:Luke_Sital-Singh	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Luke Sital-Singh"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+dbr:Luke_Temple	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Luke Temple"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Samonikli	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Samonikli"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:Stellastarr	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Stellastarr"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:XX_Teens	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"XX Teens"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:Oktobar_1864	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Oktobar 1864"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Rock_music ,
+		dbr:Pop_rock .
+dbr:The_99_Call	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The 99 Call"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Sheila_Divine	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Sheila Divine"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Trial_Kennedy	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Trial Kennedy"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock ,
+		dbr:Indie_rock .
+dbr:PragVEC	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"PragVEC"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:Soul_Seekerz	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Soul Seekerz"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Rimtutituki	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Rimtutituki"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:Slomljena_Stakla	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Slomljena Stakla"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock .
+dbr:Plamenih_5	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Plamenih 5"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:Plans_and_Disguises	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Plans and Disguises"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Plejboj	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Plejboj"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock .
+dbr:Shriekback	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Shriekback"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:We_Have_Band	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"We Have Band"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Dibidus	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Dibidus"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock .
+dbr:Five_or_Six	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Five or Six"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:Fizzy_Blood	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Fizzy Blood"@en ;
+	ns3:isFromCity	dbr:Leeds ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Flesh_for_Lulu	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Flesh for Lulu"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+<http://dbpedia.org/resource/Male_Bonding_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Male Bonding (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Tree_Carr	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Tree Carr"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock ,
+		dbr:Folk_music .
+dbr:Zulu_Winter	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Zulu Winter"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Field_Mice	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Field Mice"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Bluetones	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Bluetones"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Sinking_Citizenship	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Sinking Citizenship"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Scott_&_Charlene\u0027s_Wedding>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Scott & Charlene's Wedding"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Rose_of_Avalanche	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Rose of Avalanche"@en ;
+	ns3:isFromCity	dbr:Leeds ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:The_DC3	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The DC3"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:The_Library_Is_on_Fire	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Library Is on Fire"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Motor_Ace	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Motor Ace"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Royworld	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Royworld"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Wedding_Present	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Wedding Present"@en ;
+	ns3:isFromCity	dbr:Leeds ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Monika_Fikerle	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Monika Fikerle"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Mother_and_the_Addicts	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Mother and the Addicts"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Dead_Leaves	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Dead Leaves"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Alternative_rock ,
+		dbr:Indie_rock .
+dbr:The_Reindeer_Section	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Reindeer Section"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Veronica_Falls	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Veronica Falls"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Piloti_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Piloti (band)"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock ,
+		dbr:Rock_music .
+dbr:Young_Aviators	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Young Aviators"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Indie_rock ,
+		dbr:Alternative_rock .
+dbr:The_Belle_Game	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Belle Game"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Senseless_Things	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Senseless Things"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Blow_Waves	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Blow Waves"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:The_Primary_5	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Primary 5"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:The_Vincent_Black_Shadow	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Vincent Black Shadow"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Vlada_i_Bajka	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Vlada i Bajka"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock .
+<http://dbpedia.org/resource/Zlatni_De\u010Daci>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Zlatni De\u010Daci"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:No_Joy	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"No Joy"@en ;
+	ns3:isFromCity	dbr:Montreal ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Noah_and_the_Whale	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Noah and the Whale"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music ,
+		dbr:Indie_rock .
+<http://dbpedia.org/resource/Slowburn_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Slowburn (band)"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:The_Gymslips	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Gymslips"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:The_Secret_Goldfish	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Secret Goldfish"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:The_Dunwells	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Dunwells"@en ;
+	ns3:isFromCity	dbr:Leeds ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:The_Sugargliders	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Sugargliders"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Phil_Drummond	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Phil Drummond"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+<http://dbpedia.org/resource/Scott_4_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Scott 4 (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:SubAudible_Hum	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"SubAudible Hum"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Ejected	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Ejected"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Courtneys	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Courtneys"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Dead_Trees	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Dead Trees"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:The_Domino_State	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Domino State"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/The_Wimmins\u0027_Institute>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Wimmins' Institute"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Siluete	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Siluete"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Rock_music .
+dbr:Tripsichord_Music_Box	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Tripsichord Music Box"@en ;
+	ns3:isFromCity	dbr:San_Francisco ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+dbr:Vampiri	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Vampiri"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Pop_rock ,
+		dbr:Rock_music .
+dbr:Singing_Adams	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Singing Adams"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Unwinding_Hours	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Unwinding Hours"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:Xan_Tyler	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Xan Tyler"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Folk_music .
+dbr:The_Wolfmen	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"The Wolfmen"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:Tuff_Jam	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Tuff Jam"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Sanjalice	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Sanjalice"@en ;
+	ns3:isFromCity	dbr:Belgrade ;
+	ns3:hasGenre	dbr:Rock_music .
+<http://dbpedia.org/resource/Volcano,_I\u0027m_Still_Excited!!>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Volcano, I'm Still Excited!!"@en ;
+	ns3:isFromCity	<http://dbpedia.org/resource/Brooklyn,_New_York> ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Stealing_O\u0027Neal>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Stealing O'Neal"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Rock_music .
+<http://dbpedia.org/resource/S\u0027Express>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"S'Express"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Teenage_Filmstars	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Teenage Filmstars"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Post-punk .
+dbr:The_Mohawk_Lodge	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Mohawk Lodge"@en ;
+	ns3:isFromCity	dbr:Vancouver ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Twerps_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Twerps (band)"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Vundabar	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Vundabar"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Rolling_Blackouts_Coastal_Fever	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Rolling Blackouts Coastal Fever"@en ;
+	ns3:isFromCity	dbr:Melbourne ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:Steve_Miller_Band	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Steve Miller Band"@en ;
+	ns3:isFromCity	dbr:San_Francisco ;
+	ns3:hasGenre	dbr:Psychedelic_rock .
+<http://dbpedia.org/resource/Stretch_&_Vern>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Stretch & Vern"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:House_music .
+dbr:Supermilk	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Supermilk"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Witching_Waves_(band)>	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"Witching Waves (band)"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+dbr:The_Del_Fuegos	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Del Fuegos"@en ;
+	ns3:isFromCity	dbr:Boston ;
+	ns3:hasGenre	dbr:Alternative_rock .
+dbr:The_Duke_Spirit	rdf:type	ns3:Artist ,
+		owl:NamedIndividual ;
+	ns3:artistName	"The Duke Spirit"@en ;
+	ns3:isFromCity	dbr:London ;
+	ns3:hasGenre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Spinning_Coin_(band)>	rdf:type	owl:NamedIndividual ,
+		ns3:Artist ;
+	ns3:artistName	"Spinning Coin (band)"@en ;
+	ns3:isFromCity	dbr:Glasgow ;
+	ns3:hasGenre	dbr:Indie_rock .
