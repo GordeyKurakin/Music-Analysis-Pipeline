@@ -114,7 +114,6 @@
 # -----------------------------------------------------------------
 
 :artistName rdf:type owl:DatatypeProperty ,
-                     owl:InverseFunctionalProperty ;  # <-- This merges individuals by name
     rdfs:label "artist name" ;
     rdfs:domain :Artist ;
     rdfs:range xsd:string .
