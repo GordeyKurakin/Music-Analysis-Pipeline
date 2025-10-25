@@ -20,14 +20,6 @@
         <http://dbpedia.org/resource/Trap_music> ;
     ns1:hometown <http://dbpedia.org/resource/Atlanta> .
 
-<http://dbpedia.org/resource/2Pac> a ns1:Band ;
-    rdfs:label "2Pac" .
-
-<http://dbpedia.org/resource/50_Cent> a ns1:Band,
-        ns1:MusicalArtist ;
-    rdfs:label "50 Cent" ;
-    ns1:birthPlace <http://dbpedia.org/resource/New_York_City> .
-
 <http://dbpedia.org/resource/5_Seconds_of_Summer> a ns1:Band ;
     rdfs:label "5 Seconds of Summer" ;
     ns1:genre <http://dbpedia.org/resource/New_wave_music>,
@@ -47,9 +39,6 @@
         <http://dbpedia.org/resource/Scream_rap>,
         <http://dbpedia.org/resource/SoundCloud_rap> .
 
-<http://dbpedia.org/resource/A$AP_Rocky> a ns1:Band ;
-    rdfs:label "A$AP Rocky" .
-
 <http://dbpedia.org/resource/ABBA> a ns1:Band ;
     rdfs:label "ABBA" ;
     ns1:genre <http://dbpedia.org/resource/Disco>,
@@ -66,11 +55,6 @@
         <http://dbpedia.org/resource/Rock_and_roll> ;
     ns1:hometown <http://dbpedia.org/resource/New_South_Wales>,
         <http://dbpedia.org/resource/Sydney> .
-
-<http://dbpedia.org/resource/Adele> a ns1:Band,
-        ns1:MusicalArtist ;
-    rdfs:label "Adele" ;
-    ns1:birthPlace <http://dbpedia.org/resource/London> .
 
 <http://dbpedia.org/resource/Aerosmith> a ns1:Band ;
     rdfs:label "Aerosmith" ;
@@ -104,11 +88,6 @@
     ns1:hometown <http://dbpedia.org/resource/Guadalajara>,
         <http://dbpedia.org/resource/Jalisco> .
 
-<http://dbpedia.org/resource/Alessia_Cara> a ns1:MusicalArtist ;
-    rdfs:label "Alessia Cara" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Mississauga>,
-        <http://dbpedia.org/resource/Ontario> .
-
 <http://dbpedia.org/resource/Alesso> a ns1:MusicalArtist ;
     rdfs:label "Alesso" ;
     ns1:birthPlace <http://dbpedia.org/resource/Stockholm> ;
@@ -116,24 +95,12 @@
         <http://dbpedia.org/resource/Pop_music>,
         <http://dbpedia.org/resource/Progressive_house> .
 
-<http://dbpedia.org/resource/Alicia_Keys> a ns1:MusicalArtist ;
-    rdfs:label "Alicia Keys" ;
-    ns1:birthPlace <http://dbpedia.org/resource/New_York_City> .
-
 <http://dbpedia.org/resource/Anne-Marie> a ns1:MusicalArtist ;
     rdfs:label "Anne-Marie" ;
     ns1:birthPlace <http://dbpedia.org/resource/East_Tilbury> ;
     ns1:genre <http://dbpedia.org/resource/Contemporary_R&B>,
         <http://dbpedia.org/resource/Grime_(music_genre)>,
         <http://dbpedia.org/resource/Pop_music> .
-
-<http://dbpedia.org/resource/Anuel_AA> a ns1:Band ;
-    rdfs:label "Anuel AA" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Carolina,_Puerto_Rico>,
-        <http://dbpedia.org/resource/Puerto_Rico> .
-
-<http://dbpedia.org/resource/Arcangel> a ns1:Band ;
-    rdfs:label "Arcangel" .
 
 <http://dbpedia.org/resource/Arctic_Monkeys> a ns1:Band ;
     rdfs:label "Arctic Monkeys" ;
@@ -145,27 +112,6 @@
         <http://dbpedia.org/resource/Psychedelic_rock> ;
     ns1:hometown <http://dbpedia.org/resource/Sheffield> .
 
-<http://dbpedia.org/resource/Ariana_Grande> a ns1:Band,
-        ns1:MusicalArtist ;
-    rdfs:label "Ariana Grande" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Boca_Raton,_Florida> .
-
-<http://dbpedia.org/resource/Arijit_Singh> a ns1:Band,
-        ns1:MusicalArtist ;
-    rdfs:label "Arijit Singh" ;
-    ns1:birthPlace <http://dbpedia.org/resource/India>,
-        <http://dbpedia.org/resource/Jiaganj_Azimganj>,
-        <http://dbpedia.org/resource/Murshidabad>,
-        <http://dbpedia.org/resource/West_Bengal> .
-
-<http://dbpedia.org/resource/Avicii> a ns1:MusicalArtist ;
-    rdfs:label "Avicii" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Stockholm> .
-
-<http://dbpedia.org/resource/Avril_Lavigne> a ns1:Band ;
-    rdfs:label "Avril Lavigne" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Belleville,_Ontario> .
-
 <http://dbpedia.org/resource/BTS> a ns1:Band ;
     rdfs:label "BTS" ;
     ns1:genre <http://dbpedia.org/resource/Contemporary_R&B>,
@@ -175,42 +121,12 @@
         <http://dbpedia.org/resource/Pop_music> ;
     ns1:hometown <http://dbpedia.org/resource/Seoul> .
 
-<http://dbpedia.org/resource/Bebe_Rexha> a ns1:MusicalArtist ;
-    rdfs:label "Bebe Rexha" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Brooklyn>,
-        <http://dbpedia.org/resource/New_York_City> .
-
-<http://dbpedia.org/resource/Becky_G> a ns1:MusicalArtist ;
-    rdfs:label "Becky G" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Inglewood,_California> .
-
-<http://dbpedia.org/resource/Beyoncé> a ns1:Band,
-        ns1:MusicalArtist ;
-    rdfs:label "Beyoncé" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Houston>,
-        <http://dbpedia.org/resource/Texas> .
-
 <http://dbpedia.org/resource/Big_Sean> a ns1:MusicalArtist ;
     rdfs:label "Big Sean" ;
     ns1:birthPlace <http://dbpedia.org/resource/Santa_Monica,_California> ;
     ns1:genre <http://dbpedia.org/resource/Hip_hop_music> ;
     ns1:hometown <http://dbpedia.org/resource/Detroit>,
         <http://dbpedia.org/resource/Michigan> .
-
-<http://dbpedia.org/resource/Bizarrap> a ns1:MusicalArtist ;
-    rdfs:label "Bizarrap" ;
-    ns1:genre <http://dbpedia.org/resource/Electronic_dance_music>,
-        <http://dbpedia.org/resource/Future_bass>,
-        <http://dbpedia.org/resource/Hip_hop_music>,
-        <http://dbpedia.org/resource/Latin_trap>,
-        <http://dbpedia.org/resource/Rap_(music)>,
-        <http://dbpedia.org/resource/Reggaeton> .
-
-<http://dbpedia.org/resource/Black_Eyed_Peas> a ns1:Band ;
-    rdfs:label "Black Eyed Peas" .
-
-<http://dbpedia.org/resource/Bob_Marley_&_The_Wailers> a ns1:Band ;
-    rdfs:label "Bob Marley & The Wailers" .
 
 <http://dbpedia.org/resource/Bon_Jovi> a ns1:Band ;
     rdfs:label "Bon Jovi" ;
@@ -220,22 +136,6 @@
         <http://dbpedia.org/resource/Pop_rock> ;
     ns1:hometown <http://dbpedia.org/resource/Sayreville,_New_Jersey> .
 
-<http://dbpedia.org/resource/Bring_Me_The_Horizon> a ns1:Band ;
-    rdfs:label "Bring Me The Horizon" .
-
-<http://dbpedia.org/resource/Britney_Spears> a ns1:Band,
-        ns1:MusicalArtist ;
-    rdfs:label "Britney Spears" ;
-    ns1:birthPlace <http://dbpedia.org/resource/McComb,_Mississippi> .
-
-<http://dbpedia.org/resource/Bruce_Springsteen> a ns1:MusicalArtist ;
-    rdfs:label "Bruce Springsteen" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Long_Branch,_New_Jersey> .
-
-<http://dbpedia.org/resource/Bruno_Mars> a ns1:MusicalArtist ;
-    rdfs:label "Bruno Mars" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Honolulu> .
-
 <http://dbpedia.org/resource/Bryson_Tiller> a ns1:Band,
         ns1:MusicalArtist ;
     rdfs:label "Bryson Tiller" ;
@@ -244,32 +144,11 @@
         <http://dbpedia.org/resource/Hip_hop_music>,
         <http://dbpedia.org/resource/Soul_music> .
 
-<http://dbpedia.org/resource/Calvin_Harris> a ns1:MusicalArtist ;
-    rdfs:label "Calvin Harris" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Dumfries> .
-
-<http://dbpedia.org/resource/Camila_Cabello> a ns1:MusicalArtist ;
-    rdfs:label "Camila Cabello" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Cojímar>,
-        <http://dbpedia.org/resource/Havana> .
-
-<http://dbpedia.org/resource/Chance_the_Rapper> a ns1:Band ;
-    rdfs:label "Chance the Rapper" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Chicago>,
-        <http://dbpedia.org/resource/Illinois> .
-
 <http://dbpedia.org/resource/Charlie_Puth> a ns1:MusicalArtist ;
     rdfs:label "Charlie Puth" ;
     ns1:birthPlace <http://dbpedia.org/resource/Rumson,_New_Jersey> ;
     ns1:genre <http://dbpedia.org/resource/Contemporary_R&B>,
         <http://dbpedia.org/resource/Pop_music> .
-
-<http://dbpedia.org/resource/Childish_Gambino> a ns1:Band ;
-    rdfs:label "Childish Gambino" .
-
-<http://dbpedia.org/resource/Chris_Brown> a ns1:MusicalArtist ;
-    rdfs:label "Chris Brown" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Tappahannock,_Virginia> .
 
 <http://dbpedia.org/resource/Christian_Nodal> a ns1:MusicalArtist ;
     rdfs:label "Christian Nodal" ;
@@ -283,9 +162,6 @@
         <http://dbpedia.org/resource/Regional_Mexican> ;
     ns1:hometown <http://dbpedia.org/resource/Caborca>,
         <http://dbpedia.org/resource/Sonora> .
-
-<http://dbpedia.org/resource/Christina_Aguilera> a ns1:Band ;
-    rdfs:label "Christina Aguilera" .
 
 <http://dbpedia.org/resource/Clean_Bandit> a ns1:Band ;
     rdfs:label "Clean Bandit" ;
@@ -303,12 +179,6 @@
         <http://dbpedia.org/resource/Post-Britpop> ;
     ns1:hometown <http://dbpedia.org/resource/London> .
 
-<http://dbpedia.org/resource/Creedence_Clearwater_Revival> a ns1:Band ;
-    rdfs:label "Creedence Clearwater Revival" .
-
-<http://dbpedia.org/resource/DJ_Khaled> a ns1:MusicalArtist ;
-    rdfs:label "DJ Khaled" .
-
 <http://dbpedia.org/resource/DJ_Snake> a ns1:MusicalArtist ;
     rdfs:label "DJ Snake" ;
     ns1:birthPlace <http://dbpedia.org/resource/Paris> ;
@@ -325,10 +195,6 @@
         <http://dbpedia.org/resource/Trap_music> ;
     ns1:hometown <http://dbpedia.org/resource/Charlotte,_North_Carolina> .
 
-<http://dbpedia.org/resource/Daddy_Yankee> a ns1:MusicalArtist ;
-    rdfs:label "Daddy Yankee" ;
-    ns1:birthPlace <http://dbpedia.org/resource/San_Juan,_Puerto_Rico> .
-
 <http://dbpedia.org/resource/Daft_Punk> a ns1:Band ;
     rdfs:label "Daft Punk" ;
     ns1:genre <http://dbpedia.org/resource/Dance_music>,
@@ -341,22 +207,6 @@
     rdfs:label "Dalex" ;
     ns1:birthPlace <http://dbpedia.org/resource/Philadelphia,_Pennsylvania> ;
     ns1:genre <http://dbpedia.org/resource/Urbano_music> .
-
-<http://dbpedia.org/resource/David_Bowie> a ns1:MusicalArtist ;
-    rdfs:label "David Bowie" ;
-    ns1:birthPlace <http://dbpedia.org/resource/London_Records> .
-
-<http://dbpedia.org/resource/David_Guetta> a ns1:MusicalArtist ;
-    rdfs:label "David Guetta" .
-
-<http://dbpedia.org/resource/Demi_Lovato> a ns1:Band,
-        ns1:MusicalArtist ;
-    rdfs:label "Demi Lovato" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Albuquerque,_New_Mexico> .
-
-<http://dbpedia.org/resource/Diplo> a ns1:MusicalArtist ;
-    rdfs:label "Diplo" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Tupelo,_Mississippi> .
 
 <http://dbpedia.org/resource/Doja_Cat> a ns1:MusicalArtist ;
     rdfs:label "Doja Cat" ;
@@ -371,31 +221,6 @@
     ns1:birthPlace <http://dbpedia.org/resource/Santurce,_San_Juan,_Puerto_Rico> ;
     ns1:genre <http://dbpedia.org/resource/Hip_hop_music>,
         <http://dbpedia.org/resource/Reggaeton> .
-
-<http://dbpedia.org/resource/Dua_Lipa> a ns1:MusicalArtist ;
-    rdfs:label "Dua Lipa" .
-
-<http://dbpedia.org/resource/Ed_Sheeran> a ns1:MusicalArtist ;
-    rdfs:label "Ed Sheeran" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Halifax,_West_Yorkshire> .
-
-<http://dbpedia.org/resource/Ellie_Goulding> a ns1:Band,
-        ns1:MusicalArtist ;
-    rdfs:label "Ellie Goulding" .
-
-<http://dbpedia.org/resource/Elton_John> a ns1:MusicalArtist ;
-    rdfs:label "Elton John" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Middlesex>,
-        <http://dbpedia.org/resource/Pinner> .
-
-<http://dbpedia.org/resource/Eminem> a ns1:MusicalArtist ;
-    rdfs:label "Eminem" ;
-    ns1:birthPlace <http://dbpedia.org/resource/St._Joseph,_Missouri> .
-
-<http://dbpedia.org/resource/Enrique_Iglesias> a ns1:MusicalArtist ;
-    rdfs:label "Enrique Iglesias" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Francoist_Spain>,
-        <http://dbpedia.org/resource/Madrid> .
 
 <http://dbpedia.org/resource/Fall_Out_Boy> a ns1:Band ;
     rdfs:label "Fall Out Boy" ;
@@ -458,9 +283,6 @@
         <http://dbpedia.org/resource/Pop_rap>,
         <http://dbpedia.org/resource/Southern_hip_hop> .
 
-<http://dbpedia.org/resource/Florence_+_The_Machine> a ns1:Band ;
-    rdfs:label "Florence + The Machine" .
-
 <http://dbpedia.org/resource/Florida_Georgia_Line> a ns1:Band ;
     rdfs:label "Florida Georgia Line" ;
     ns1:genre <http://dbpedia.org/resource/Bro-country>,
@@ -478,10 +300,6 @@
         <http://dbpedia.org/resource/Post-grunge> ;
     ns1:hometown <http://dbpedia.org/resource/Seattle>,
         <http://dbpedia.org/resource/Washington_(state)> .
-
-<http://dbpedia.org/resource/Frank_Ocean> a ns1:MusicalArtist ;
-    rdfs:label "Frank Ocean" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Long_Beach,_California> .
 
 <http://dbpedia.org/resource/French_Montana> a ns1:Band,
         ns1:MusicalArtist ;
@@ -516,29 +334,11 @@
         <http://dbpedia.org/resource/Psychedelic_pop> ;
     ns1:hometown <http://dbpedia.org/resource/Oxford> .
 
-<http://dbpedia.org/resource/Glee_Cast> a ns1:Band ;
-    rdfs:label "Glee Cast" .
-
-<http://dbpedia.org/resource/Green_Day> a ns1:Band ;
-    rdfs:label "Green Day" .
-
-<http://dbpedia.org/resource/Gucci_Mane> a ns1:Band,
-        ns1:MusicalArtist ;
-    rdfs:label "Gucci Mane" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Bessemer,_Alabama> .
-
 <http://dbpedia.org/resource/Guns_N'_Roses> a ns1:Band ;
     rdfs:label "Guns N' Roses" ;
     ns1:genre <http://dbpedia.org/resource/Hard_rock>,
         <http://dbpedia.org/resource/Heavy_metal_music> ;
     ns1:hometown <http://dbpedia.org/resource/Los_Angeles> .
-
-<http://dbpedia.org/resource/Gusttavo_Lima> a ns1:MusicalArtist ;
-    rdfs:label "Gusttavo Lima" .
-
-<http://dbpedia.org/resource/Harry_Styles> a ns1:MusicalArtist ;
-    rdfs:label "Harry Styles" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Redditch> .
 
 <http://dbpedia.org/resource/Imagine_Dragons> a ns1:Band ;
     rdfs:label "Imagine Dragons" ;
@@ -549,15 +349,6 @@
         <http://dbpedia.org/resource/Pop_music>,
         <http://dbpedia.org/resource/Pop_rock> ;
     ns1:hometown <http://dbpedia.org/resource/Las_Vegas> .
-
-<http://dbpedia.org/resource/J._Cole> a ns1:MusicalArtist ;
-    rdfs:label "J. Cole" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Frankfurt>,
-        <http://dbpedia.org/resource/West_Germany> .
-
-<http://dbpedia.org/resource/J_Balvin> a ns1:MusicalArtist ;
-    rdfs:label "J Balvin" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Medellín> .
 
 <http://dbpedia.org/resource/Jack_Harlow> a ns1:MusicalArtist ;
     rdfs:label "Jack Harlow" ;
@@ -573,23 +364,6 @@
         <http://dbpedia.org/resource/Pop_music>,
         <http://dbpedia.org/resource/Soul_music> .
 
-<http://dbpedia.org/resource/Jason_Derulo> a ns1:Band,
-        ns1:MusicalArtist ;
-    rdfs:label "Jason Derulo" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Miramar,_Florida> .
-
-<http://dbpedia.org/resource/Jason_Mraz> a ns1:MusicalArtist ;
-    rdfs:label "Jason Mraz" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Mechanicsville,_Virginia> .
-
-<http://dbpedia.org/resource/Jennifer_Lopez> a ns1:Band ;
-    rdfs:label "Jennifer Lopez" ;
-    ns1:birthPlace <http://dbpedia.org/resource/New_York_City> .
-
-<http://dbpedia.org/resource/Jess_Glynne> a ns1:MusicalArtist ;
-    rdfs:label "Jess Glynne" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Hampstead> .
-
 <http://dbpedia.org/resource/Jhay_Cortez> a ns1:MusicalArtist ;
     rdfs:label "Jhay Cortez" ;
     ns1:birthPlace <http://dbpedia.org/resource/Puerto_Rico>,
@@ -598,14 +372,6 @@
     ns1:genre <http://dbpedia.org/resource/Contemporary_R&B>,
         <http://dbpedia.org/resource/Latin_trap>,
         <http://dbpedia.org/resource/Reggaeton> .
-
-<http://dbpedia.org/resource/John_Mayer> a ns1:MusicalArtist ;
-    rdfs:label "John Mayer" .
-
-<http://dbpedia.org/resource/Johnny_Cash> a ns1:Band,
-        ns1:MusicalArtist ;
-    rdfs:label "Johnny Cash" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Kingsland,_Arkansas> .
 
 <http://dbpedia.org/resource/Jonas_Blue> a ns1:MusicalArtist ;
     rdfs:label "Jonas Blue" ;
@@ -632,20 +398,11 @@
         <http://dbpedia.org/resource/Pop_music> ;
     ns1:hometown <http://dbpedia.org/resource/Santa_Clarita,_California> .
 
-<http://dbpedia.org/resource/Justin_Bieber> a ns1:Band,
-        ns1:MusicalArtist ;
-    rdfs:label "Justin Bieber" ;
-    ns1:birthPlace <http://dbpedia.org/resource/London,_Ontario> .
-
 <http://dbpedia.org/resource/Justin_Quiles> a ns1:MusicalArtist ;
     rdfs:label "Justin Quiles" ;
     ns1:birthPlace <http://dbpedia.org/resource/Bridgeport,_Connecticut> ;
     ns1:genre <http://dbpedia.org/resource/Latin_music_(genre)>,
         <http://dbpedia.org/resource/Reggaeton> .
-
-<http://dbpedia.org/resource/Justin_Timberlake> a ns1:MusicalArtist ;
-    rdfs:label "Justin Timberlake" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Memphis,_Tennessee> .
 
 <http://dbpedia.org/resource/Kane_Brown> a ns1:MusicalArtist ;
     rdfs:label "Kane Brown" ;
@@ -655,14 +412,6 @@
         <http://dbpedia.org/resource/Country_pop> ;
     ns1:hometown <http://dbpedia.org/resource/Nashville,_Tennessee> .
 
-<http://dbpedia.org/resource/Kanye_West> a ns1:MusicalArtist ;
-    rdfs:label "Kanye West" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Atlanta,_Georgia> .
-
-<http://dbpedia.org/resource/Katy_Perry> a ns1:Band,
-        ns1:MusicalArtist ;
-    rdfs:label "Katy Perry" .
-
 <http://dbpedia.org/resource/Kehlani> a ns1:MusicalArtist ;
     rdfs:label "Kehlani" ;
     ns1:birthPlace <http://dbpedia.org/resource/Oakland,_California> ;
@@ -670,24 +419,6 @@
         <http://dbpedia.org/resource/Hip_hop_music>,
         <http://dbpedia.org/resource/Neo_soul>,
         <http://dbpedia.org/resource/Pop_music> .
-
-<http://dbpedia.org/resource/Kelly_Clarkson> a ns1:Band,
-        ns1:MusicalArtist ;
-    rdfs:label "Kelly Clarkson" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Fort_Worth,_Texas> .
-
-<http://dbpedia.org/resource/Kendrick_Lamar> a ns1:Band,
-        ns1:MusicalArtist ;
-    rdfs:label "Kendrick Lamar" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Compton,_California> .
-
-<http://dbpedia.org/resource/Kevin_Gates> a ns1:Band,
-        ns1:MusicalArtist ;
-    rdfs:label "Kevin Gates" .
-
-<http://dbpedia.org/resource/Kid_Cudi> a ns1:MusicalArtist ;
-    rdfs:label "Kid Cudi" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Cleveland> .
 
 <http://dbpedia.org/resource/Kings_of_Leon> a ns1:Band ;
     rdfs:label "Kings of Leon" ;
@@ -714,13 +445,6 @@
     ns1:hometown <http://dbpedia.org/resource/Bergen>,
         <http://dbpedia.org/resource/Norway> .
 
-<http://dbpedia.org/resource/Lady_Gaga> a ns1:Band,
-        ns1:MusicalArtist ;
-    rdfs:label "Lady Gaga" .
-
-<http://dbpedia.org/resource/Lana_Del_Rey> a ns1:MusicalArtist ;
-    rdfs:label "Lana Del Rey" .
-
 <http://dbpedia.org/resource/Lauv> a ns1:MusicalArtist ;
     rdfs:label "Lauv" ;
     ns1:birthPlace <http://dbpedia.org/resource/California>,
@@ -729,13 +453,6 @@
         <http://dbpedia.org/resource/Contemporary_R&B>,
         <http://dbpedia.org/resource/Electropop>,
         <http://dbpedia.org/resource/Pop_music> .
-
-<http://dbpedia.org/resource/Led_Zeppelin> a ns1:Band ;
-    rdfs:label "Led Zeppelin" ;
-    ns1:genre <http://dbpedia.org/resource/Blues_rock>,
-        <http://dbpedia.org/resource/Folk_rock>,
-        <http://dbpedia.org/resource/Hard_rock>,
-        <http://dbpedia.org/resource/Heavy_metal_music> .
 
 <http://dbpedia.org/resource/Lewis_Capaldi> a ns1:MusicalArtist ;
     rdfs:label "Lewis Capaldi" ;
@@ -765,16 +482,6 @@
         <http://dbpedia.org/resource/Hip_hop_music>,
         <http://dbpedia.org/resource/Trap_music> .
 
-<http://dbpedia.org/resource/Lil_Uzi_Vert> a ns1:MusicalArtist ;
-    rdfs:label "Lil Uzi Vert" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Philadelphia> .
-
-<http://dbpedia.org/resource/Lil_Wayne> a ns1:Band ;
-    rdfs:label "Lil Wayne" .
-
-<http://dbpedia.org/resource/Linkin_Park> a ns1:Band ;
-    rdfs:label "Linkin Park" .
-
 <http://dbpedia.org/resource/Little_Mix> a ns1:Band ;
     rdfs:label "Little Mix" ;
     ns1:genre <http://dbpedia.org/resource/Contemporary_R&B>,
@@ -782,31 +489,10 @@
         <http://dbpedia.org/resource/Pop_music> ;
     ns1:hometown <http://dbpedia.org/resource/London> .
 
-<http://dbpedia.org/resource/Lorde> a ns1:MusicalArtist ;
-    rdfs:label "Lorde" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Auckland>,
-        <http://dbpedia.org/resource/New_Zealand_nationality_law>,
-        <http://dbpedia.org/resource/Takapuna> .
-
-<http://dbpedia.org/resource/Luis_Fonsi> a ns1:MusicalArtist ;
-    rdfs:label "Luis Fonsi" ;
-    ns1:birthPlace <http://dbpedia.org/resource/San_Juan,_Puerto_Rico> .
-
-<http://dbpedia.org/resource/Luis_Miguel> a ns1:MusicalArtist ;
-    rdfs:label "Luis Miguel" ;
-    ns1:birthPlace <http://dbpedia.org/resource/San_Juan,_Puerto_Rico> .
-
-<http://dbpedia.org/resource/Luke_Bryan> a ns1:MusicalArtist ;
-    rdfs:label "Luke Bryan" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Leesburg,_Georgia> .
-
 <http://dbpedia.org/resource/Luke_Combs> a ns1:MusicalArtist ;
     rdfs:label "Luke Combs" ;
     ns1:birthPlace <http://dbpedia.org/resource/Charlotte,_North_Carolina> ;
     ns1:genre <http://dbpedia.org/resource/Country_music> .
-
-<http://dbpedia.org/resource/Mac_Miller> a ns1:MusicalArtist ;
-    rdfs:label "Mac Miller" .
 
 <http://dbpedia.org/resource/Macklemore_&_Ryan_Lewis> a ns1:Band ;
     rdfs:label "Macklemore & Ryan Lewis" ;
@@ -841,10 +527,6 @@
         <http://dbpedia.org/resource/Rock_en_español> ;
     ns1:hometown <http://dbpedia.org/resource/Guadalajara> .
 
-<http://dbpedia.org/resource/Mariah_Carey> a ns1:MusicalArtist ;
-    rdfs:label "Mariah Carey" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Huntington,_New_York> .
-
 <http://dbpedia.org/resource/Maroon_5> a ns1:Band ;
     rdfs:label "Maroon 5" ;
     ns1:genre <http://dbpedia.org/resource/Blue-eyed_soul>,
@@ -878,11 +560,6 @@
         <http://dbpedia.org/resource/Future_bass>,
         <http://dbpedia.org/resource/Progressive_house> .
 
-<http://dbpedia.org/resource/Meek_Mill> a ns1:MusicalArtist ;
-    rdfs:label "Meek Mill" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Pennsylvania>,
-        <http://dbpedia.org/resource/Philadelphia> .
-
 <http://dbpedia.org/resource/Metallica> a ns1:Band ;
     rdfs:label "Metallica" ;
     ns1:genre <http://dbpedia.org/resource/Hard_rock>,
@@ -901,27 +578,12 @@
         <http://dbpedia.org/resource/Trap_music> ;
     ns1:hometown <http://dbpedia.org/resource/Atlanta> .
 
-<http://dbpedia.org/resource/Michael_Bublé> a ns1:Band,
-        ns1:MusicalArtist ;
-    rdfs:label "Michael Bublé" ;
-    ns1:birthPlace <http://dbpedia.org/resource/British_Columbia>,
-        <http://dbpedia.org/resource/Burnaby> .
-
-<http://dbpedia.org/resource/Michael_Jackson> a ns1:MusicalArtist ;
-    rdfs:label "Michael Jackson" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Gary,_Indiana> .
-
 <http://dbpedia.org/resource/Migos> a ns1:Band,
         ns1:MusicalArtist ;
     rdfs:label "Migos" ;
     ns1:genre <http://dbpedia.org/resource/Hip_hop_music>,
         <http://dbpedia.org/resource/Trap_music> ;
     ns1:hometown <http://dbpedia.org/resource/Lawrenceville,_Georgia> .
-
-<http://dbpedia.org/resource/Miley_Cyrus> a ns1:Band,
-        ns1:MusicalArtist ;
-    rdfs:label "Miley Cyrus" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Franklin,_Tennessee> .
 
 <http://dbpedia.org/resource/Morgan_Wallen> a ns1:MusicalArtist ;
     rdfs:label "Morgan Wallen" ;
@@ -955,14 +617,6 @@
         <http://dbpedia.org/resource/Latin_trap>,
         <http://dbpedia.org/resource/Reggaeton> .
 
-<http://dbpedia.org/resource/Natti_Natasha> a ns1:MusicalArtist ;
-    rdfs:label "Natti Natasha" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Santiago_de_los_Caballeros> .
-
-<http://dbpedia.org/resource/Ne-Yo> a ns1:MusicalArtist ;
-    rdfs:label "Ne-Yo" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Camden,_Arkansas> .
-
 <http://dbpedia.org/resource/Niall_Horan> a ns1:MusicalArtist ;
     rdfs:label "Niall Horan" ;
     ns1:birthPlace <http://dbpedia.org/resource/County_Westmeath>,
@@ -982,13 +636,6 @@
     ns1:hometown <http://dbpedia.org/resource/Canada>,
         <http://dbpedia.org/resource/Hanna,_Alberta> .
 
-<http://dbpedia.org/resource/Nicki_Minaj> a ns1:Band,
-        ns1:MusicalArtist ;
-    rdfs:label "Nicki Minaj" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Port_of_Spain>,
-        <http://dbpedia.org/resource/Saint_James,_Trinidad_and_Tobago>,
-        <http://dbpedia.org/resource/Trinidad_and_Tobago> .
-
 <http://dbpedia.org/resource/Nicky_Jam> a ns1:MusicalArtist ;
     rdfs:label "Nicky Jam" ;
     ns1:birthPlace <http://dbpedia.org/resource/Lawrence,_Massachusetts> ;
@@ -1002,12 +649,6 @@
         <http://dbpedia.org/resource/Pop_rock> ;
     ns1:hometown <http://dbpedia.org/resource/Colorado_Springs,_Colorado> .
 
-<http://dbpedia.org/resource/One_Direction> a ns1:Band ;
-    rdfs:label "One Direction" .
-
-<http://dbpedia.org/resource/P!nk> a ns1:Band ;
-    rdfs:label "P!nk" .
-
 <http://dbpedia.org/resource/Paramore> a ns1:Band ;
     rdfs:label "Paramore" ;
     ns1:genre <http://dbpedia.org/resource/Alternative_rock>,
@@ -1018,23 +659,12 @@
         <http://dbpedia.org/resource/Power_pop> ;
     ns1:hometown <http://dbpedia.org/resource/Franklin,_Tennessee> .
 
-<http://dbpedia.org/resource/Pink_Floyd> a ns1:Band ;
-    rdfs:label "Pink Floyd" ;
-    ns1:genre <http://dbpedia.org/resource/Art_rock>,
-        <http://dbpedia.org/resource/Experimental_rock>,
-        <http://dbpedia.org/resource/Progressive_rock>,
-        <http://dbpedia.org/resource/Psychedelic_music>,
-        <http://dbpedia.org/resource/Space_rock> .
-
 <http://dbpedia.org/resource/Piso_21> a ns1:Band ;
     rdfs:label "Piso 21" ;
     ns1:genre <http://dbpedia.org/resource/Latin_pop>,
         <http://dbpedia.org/resource/Reggaeton> ;
     ns1:hometown <http://dbpedia.org/resource/Colombia>,
         <http://dbpedia.org/resource/Medellín> .
-
-<http://dbpedia.org/resource/Pitbull> a ns1:Band ;
-    rdfs:label "Pitbull" .
 
 <http://dbpedia.org/resource/Playboi_Carti> a ns1:MusicalArtist ;
     rdfs:label "Playboi Carti" ;
@@ -1055,10 +685,6 @@
         <http://dbpedia.org/resource/Drill_music>,
         <http://dbpedia.org/resource/Hip_hop_music>,
         <http://dbpedia.org/resource/Trap_music> .
-
-<http://dbpedia.org/resource/Post_Malone> a ns1:MusicalArtist ;
-    rdfs:label "Post Malone" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Syracuse,_New_York> .
 
 <http://dbpedia.org/resource/Rae_Sremmurd> a ns1:Band,
         ns1:MusicalArtist ;
@@ -1090,18 +716,6 @@
         <http://dbpedia.org/resource/Mexicali>,
         <http://dbpedia.org/resource/Mexico> .
 
-<http://dbpedia.org/resource/Rihanna> a ns1:Band,
-        ns1:MusicalArtist ;
-    rdfs:label "Rihanna" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Barbados>,
-        <http://dbpedia.org/resource/Saint_Michael,_Barbados> .
-
-<http://dbpedia.org/resource/Rita_Ora> a ns1:Band,
-        ns1:MusicalArtist ;
-    rdfs:label "Rita Ora" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Pristina>,
-        <http://dbpedia.org/resource/Socialist_Federal_Republic_of_Yugoslavia> .
-
 <http://dbpedia.org/resource/Robin_Schulz> a ns1:MusicalArtist ;
     rdfs:label "Robin Schulz" ;
     ns1:birthPlace <http://dbpedia.org/resource/Osnabrück>,
@@ -1117,25 +731,6 @@
         <http://dbpedia.org/resource/Contemporary_R&B>,
         <http://dbpedia.org/resource/Latin_pop> .
 
-<http://dbpedia.org/resource/Sean_Paul> a ns1:Band ;
-    rdfs:label "Sean Paul" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Jamaica>,
-        <http://dbpedia.org/resource/Kingston,_Jamaica> .
-
-<http://dbpedia.org/resource/Selena_Gomez> a ns1:MusicalArtist ;
-    rdfs:label "Selena Gomez" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Grand_Prairie,_Texas> .
-
-<http://dbpedia.org/resource/Shakira> a ns1:Band,
-        ns1:MusicalArtist ;
-    rdfs:label "Shakira" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Barranquilla>,
-        <http://dbpedia.org/resource/Colombia> .
-
-<http://dbpedia.org/resource/Shawn_Mendes> a ns1:Band ;
-    rdfs:label "Shawn Mendes" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Pickering,_Ontario> .
-
 <http://dbpedia.org/resource/Skrillex> a ns1:MusicalArtist ;
     rdfs:label "Skrillex" ;
     ns1:birthPlace <http://dbpedia.org/resource/Los_Angeles,_California> ;
@@ -1148,17 +743,6 @@
         <http://dbpedia.org/resource/Post-hardcore>,
         <http://dbpedia.org/resource/Trap_music_(EDM)> .
 
-<http://dbpedia.org/resource/Slipknot> a ns1:Band ;
-    rdfs:label "Slipknot" .
-
-<http://dbpedia.org/resource/Snoop_Dogg> a ns1:Band ;
-    rdfs:label "Snoop Dogg" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Long_Beach,_California> .
-
-<http://dbpedia.org/resource/Stevie_Wonder> a ns1:MusicalArtist ;
-    rdfs:label "Stevie Wonder" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Saginaw,_Michigan> .
-
 <http://dbpedia.org/resource/Swae_Lee> a ns1:MusicalArtist ;
     rdfs:label "Swae Lee" ;
     ns1:birthPlace <http://dbpedia.org/resource/Inglewood,_California> ;
@@ -1166,9 +750,6 @@
         <http://dbpedia.org/resource/Pop_rap>,
         <http://dbpedia.org/resource/Trap_music> ;
     ns1:hometown <http://dbpedia.org/resource/Tupelo,_Mississippi> .
-
-<http://dbpedia.org/resource/System_Of_A_Down> a ns1:Band ;
-    rdfs:label "System Of A Down" .
 
 <http://dbpedia.org/resource/Tame_Impala> a ns1:Band ;
     rdfs:label "Tame Impala" ;
@@ -1179,10 +760,6 @@
         <http://dbpedia.org/resource/Synth-pop> ;
     ns1:hometown <http://dbpedia.org/resource/Perth>,
         <http://dbpedia.org/resource/Western_Australia> .
-
-<http://dbpedia.org/resource/Taylor_Swift> a ns1:MusicalArtist ;
-    rdfs:label "Taylor Swift" ;
-    ns1:birthPlace <http://dbpedia.org/resource/West_Reading,_Pennsylvania> .
 
 <http://dbpedia.org/resource/The_1975> a ns1:Band,
         ns1:MusicalArtist ;
@@ -1212,9 +789,6 @@
         <http://dbpedia.org/resource/Pop_music> ;
     ns1:hometown <http://dbpedia.org/resource/New_York_City> .
 
-<http://dbpedia.org/resource/The_Killers> a ns1:Band ;
-    rdfs:label "The Killers" .
-
 <http://dbpedia.org/resource/The_Lumineers> a ns1:Band ;
     rdfs:label "The Lumineers" ;
     ns1:genre <http://dbpedia.org/resource/Americana_(music)>,
@@ -1232,11 +806,6 @@
         <http://dbpedia.org/resource/Pop_rock> ;
     ns1:hometown <http://dbpedia.org/resource/Newbury_Park,_California> .
 
-<http://dbpedia.org/resource/The_Notorious_B.I.G.> a ns1:Band,
-        ns1:MusicalArtist ;
-    rdfs:label "The Notorious B.I.G." ;
-    ns1:birthPlace <http://dbpedia.org/resource/New_York_City> .
-
 <http://dbpedia.org/resource/The_Rolling_Stones> a ns1:Band ;
     rdfs:label "The Rolling Stones" ;
     ns1:genre <http://dbpedia.org/resource/British_blues>,
@@ -1250,9 +819,6 @@
         <http://dbpedia.org/resource/Pop_rock>,
         <http://dbpedia.org/resource/Soft_rock> ;
     ns1:hometown <http://dbpedia.org/resource/Dublin> .
-
-<http://dbpedia.org/resource/The_Weeknd> a ns1:MusicalArtist ;
-    rdfs:label "The Weeknd" .
 
 <http://dbpedia.org/resource/Tiësto> a ns1:MusicalArtist ;
     rdfs:label "Tiësto" ;
@@ -1288,11 +854,6 @@
         <http://dbpedia.org/resource/Djursholm>,
         <http://dbpedia.org/resource/Sweden> .
 
-<http://dbpedia.org/resource/Travis_Scott> a ns1:MusicalArtist ;
-    rdfs:label "Travis Scott" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Houston>,
-        <http://dbpedia.org/resource/Texas> .
-
 <http://dbpedia.org/resource/Trippie_Redd> a ns1:MusicalArtist ;
     rdfs:label "Trippie Redd" ;
     ns1:birthPlace <http://dbpedia.org/resource/Canton,_Ohio> ;
@@ -1313,17 +874,6 @@
         <http://dbpedia.org/resource/Rap_rock> ;
     ns1:hometown <http://dbpedia.org/resource/Columbus,_Ohio> .
 
-<http://dbpedia.org/resource/Ty_Dolla_$ign> a ns1:Band ;
-    rdfs:label "Ty Dolla $ign" .
-
-<http://dbpedia.org/resource/Tyga> a ns1:Band,
-        ns1:MusicalArtist ;
-    rdfs:label "Tyga" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Compton,_California> .
-
-<http://dbpedia.org/resource/Tyler,_The_Creator> a ns1:MusicalArtist ;
-    rdfs:label "Tyler, The Creator" .
-
 <http://dbpedia.org/resource/U2> a ns1:Band ;
     rdfs:label "U2" ;
     ns1:genre <http://dbpedia.org/resource/Alternative_rock>,
@@ -1331,22 +881,6 @@
         <http://dbpedia.org/resource/Post-punk>,
         <http://dbpedia.org/resource/Rock_music> ;
     ns1:hometown <http://dbpedia.org/resource/Dublin> .
-
-<http://dbpedia.org/resource/Vance_Joy> a ns1:MusicalArtist ;
-    rdfs:label "Vance Joy" .
-
-<http://dbpedia.org/resource/Whitney_Houston> a ns1:Band,
-        ns1:MusicalArtist ;
-    rdfs:label "Whitney Houston" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Newark,_New_Jersey> .
-
-<http://dbpedia.org/resource/Wisin> a ns1:MusicalArtist ;
-    rdfs:label "Wisin" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Cayey,_Puerto_Rico> .
-
-<http://dbpedia.org/resource/Wiz_Khalifa> a ns1:MusicalArtist ;
-    rdfs:label "Wiz Khalifa" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Minot,_North_Dakota> .
 
 <http://dbpedia.org/resource/Young_Thug> a ns1:MusicalArtist ;
     rdfs:label "Young Thug" ;
@@ -1356,11 +890,6 @@
         <http://dbpedia.org/resource/Mumble_rap>,
         <http://dbpedia.org/resource/Progressive_hip_hop>,
         <http://dbpedia.org/resource/Trap_music> .
-
-<http://dbpedia.org/resource/Zara_Larsson> a ns1:MusicalArtist ;
-    rdfs:label "Zara Larsson" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Solna_Municipality>,
-        <http://dbpedia.org/resource/Stockholm> .
 
 <http://dbpedia.org/resource/Zedd> a ns1:MusicalArtist ;
     rdfs:label "Zedd" ;
@@ -1382,8 +911,6 @@
     ns1:genre <http://dbpedia.org/resource/Reggaeton> ;
     ns1:hometown <http://dbpedia.org/resource/Carolina,_Puerto_Rico> .
 
-<http://dbpedia.org/resource/Albuquerque,_New_Mexico> rdfs:label "Albuquerque, New Mexico" .
-
 <http://dbpedia.org/resource/Alt-pop> rdfs:label "Alt-pop" .
 
 <http://dbpedia.org/resource/Alternative_pop> rdfs:label "Alternative pop" .
@@ -1394,19 +921,13 @@
 
 <http://dbpedia.org/resource/Art_pop> rdfs:label "Art pop" .
 
-<http://dbpedia.org/resource/Art_rock> rdfs:label "Art rock" .
-
-<http://dbpedia.org/resource/Auckland> rdfs:label "Auckland" .
+<http://dbpedia.org/resource/Atlanta,_Georgia> rdfs:label "Atlanta, Georgia" .
 
 <http://dbpedia.org/resource/Australia> rdfs:label "Australia" .
 
 <http://dbpedia.org/resource/Bachata_(music)> rdfs:label "Bachata (music)" .
 
 <http://dbpedia.org/resource/Baja_California> rdfs:label "Baja California" .
-
-<http://dbpedia.org/resource/Barbados> rdfs:label "Barbados" .
-
-<http://dbpedia.org/resource/Barranquilla> rdfs:label "Barranquilla" .
 
 <http://dbpedia.org/resource/Bass_house_(music)> rdfs:label "Bass house (music)" .
 
@@ -1416,13 +937,7 @@
 
 <http://dbpedia.org/resource/Bejaia> rdfs:label "Bejaia" .
 
-<http://dbpedia.org/resource/Belleville,_Ontario> rdfs:label "Belleville, Ontario" .
-
 <http://dbpedia.org/resource/Berlin> rdfs:label "Berlin" .
-
-<http://dbpedia.org/resource/Bessemer,_Alabama> rdfs:label "Bessemer, Alabama" .
-
-<http://dbpedia.org/resource/Boca_Raton,_Florida> rdfs:label "Boca Raton, Florida" .
 
 <http://dbpedia.org/resource/Bolero> rdfs:label "Bolero" .
 
@@ -1434,39 +949,31 @@
 
 <http://dbpedia.org/resource/Bridgeport,_Connecticut> rdfs:label "Bridgeport, Connecticut" .
 
-<http://dbpedia.org/resource/British_Columbia> rdfs:label "British Columbia" .
-
-<http://dbpedia.org/resource/Brooklyn> rdfs:label "Brooklyn" .
-
 <http://dbpedia.org/resource/Brostep> rdfs:label "Brostep" .
 
-<http://dbpedia.org/resource/Burnaby> rdfs:label "Burnaby" .
-
 <http://dbpedia.org/resource/Cambridge> rdfs:label "Cambridge" .
-
-<http://dbpedia.org/resource/Camden,_Arkansas> rdfs:label "Camden, Arkansas" .
 
 <http://dbpedia.org/resource/Canada> rdfs:label "Canada" .
 
 <http://dbpedia.org/resource/Canton,_Ohio> rdfs:label "Canton, Ohio" .
 
-<http://dbpedia.org/resource/Casablanca> rdfs:label "Casablanca" .
+<http://dbpedia.org/resource/Carolina,_Puerto_Rico> rdfs:label "Carolina, Puerto Rico" .
 
-<http://dbpedia.org/resource/Cayey,_Puerto_Rico> rdfs:label "Cayey, Puerto Rico" .
+<http://dbpedia.org/resource/Casablanca> rdfs:label "Casablanca" .
 
 <http://dbpedia.org/resource/Chattanooga,_Tennessee> rdfs:label "Chattanooga, Tennessee" .
 
 <http://dbpedia.org/resource/Chelmsford> rdfs:label "Chelmsford" .
 
+<http://dbpedia.org/resource/Chicago> rdfs:label "Chicago" .
+
 <http://dbpedia.org/resource/Chicago,_Illinois> rdfs:label "Chicago, Illinois" .
 
 <http://dbpedia.org/resource/Classical_crossover> rdfs:label "Classical crossover" .
 
-<http://dbpedia.org/resource/Cleveland> rdfs:label "Cleveland" .
-
 <http://dbpedia.org/resource/Cleveland,_Ohio> rdfs:label "Cleveland, Ohio" .
 
-<http://dbpedia.org/resource/Cojímar> rdfs:label "Cojímar" .
+<http://dbpedia.org/resource/Colombia> rdfs:label "Colombia" .
 
 <http://dbpedia.org/resource/Colorado_Springs,_Colorado> rdfs:label "Colorado Springs, Colorado" .
 
@@ -1496,8 +1003,6 @@
 
 <http://dbpedia.org/resource/Djursholm> rdfs:label "Djursholm" .
 
-<http://dbpedia.org/resource/Dumfries> rdfs:label "Dumfries" .
-
 <http://dbpedia.org/resource/Dutch_house> rdfs:label "Dutch house" .
 
 <http://dbpedia.org/resource/East_Tilbury> rdfs:label "East Tilbury" .
@@ -1510,17 +1015,11 @@
 
 <http://dbpedia.org/resource/Essex> rdfs:label "Essex" .
 
-<http://dbpedia.org/resource/Experimental_rock> rdfs:label "Experimental rock" .
-
 <http://dbpedia.org/resource/Florida> rdfs:label "Florida" .
 
 <http://dbpedia.org/resource/Folk-pop> rdfs:label "Folk-pop" .
 
-<http://dbpedia.org/resource/Fort_Worth,_Texas> rdfs:label "Fort Worth, Texas" .
-
-<http://dbpedia.org/resource/Francoist_Spain> rdfs:label "Francoist Spain" .
-
-<http://dbpedia.org/resource/Frankfurt> rdfs:label "Frankfurt" .
+<http://dbpedia.org/resource/Franklin,_Tennessee> rdfs:label "Franklin, Tennessee" .
 
 <http://dbpedia.org/resource/French_house> rdfs:label "French house" .
 
@@ -1530,13 +1029,9 @@
 
 <http://dbpedia.org/resource/Gangsta_rap> rdfs:label "Gangsta rap" .
 
-<http://dbpedia.org/resource/Gary,_Indiana> rdfs:label "Gary, Indiana" .
-
 <http://dbpedia.org/resource/Germany> rdfs:label "Germany" .
 
 <http://dbpedia.org/resource/Glasgow> rdfs:label "Glasgow" .
-
-<http://dbpedia.org/resource/Grand_Prairie,_Texas> rdfs:label "Grand Prairie, Texas" .
 
 <http://dbpedia.org/resource/Grime_(music_genre)> rdfs:label "Grime (music genre)" .
 
@@ -1544,17 +1039,11 @@
 
 <http://dbpedia.org/resource/Grunge> rdfs:label "Grunge" .
 
-<http://dbpedia.org/resource/Halifax,_West_Yorkshire> rdfs:label "Halifax, West Yorkshire" .
-
 <http://dbpedia.org/resource/Hamburg> rdfs:label "Hamburg" .
-
-<http://dbpedia.org/resource/Hampstead> rdfs:label "Hampstead" .
 
 <http://dbpedia.org/resource/Hanna,_Alberta> rdfs:label "Hanna, Alberta" .
 
 <http://dbpedia.org/resource/Hardcore_hip_hop> rdfs:label "Hardcore hip hop" .
-
-<http://dbpedia.org/resource/Havana> rdfs:label "Havana" .
 
 <http://dbpedia.org/resource/Helsingborg> rdfs:label "Helsingborg" .
 
@@ -1562,27 +1051,17 @@
 
 <http://dbpedia.org/resource/Hip_house> rdfs:label "Hip house" .
 
-<http://dbpedia.org/resource/Honolulu> rdfs:label "Honolulu" .
-
 <http://dbpedia.org/resource/Horrorcore> rdfs:label "Horrorcore" .
 
-<http://dbpedia.org/resource/Huntington,_New_York> rdfs:label "Huntington, New York" .
-
-<http://dbpedia.org/resource/India> rdfs:label "India" .
+<http://dbpedia.org/resource/Illinois> rdfs:label "Illinois" .
 
 <http://dbpedia.org/resource/Industrial_metal> rdfs:label "Industrial metal" .
 
-<http://dbpedia.org/resource/Jamaica> rdfs:label "Jamaica" .
-
-<http://dbpedia.org/resource/Jiaganj_Azimganj> rdfs:label "Jiaganj Azimganj" .
+<http://dbpedia.org/resource/Inglewood,_California> rdfs:label "Inglewood, California" .
 
 <http://dbpedia.org/resource/K-pop> rdfs:label "K-pop" .
 
 <http://dbpedia.org/resource/Kaiserslautern> rdfs:label "Kaiserslautern" .
-
-<http://dbpedia.org/resource/Kingsland,_Arkansas> rdfs:label "Kingsland, Arkansas" .
-
-<http://dbpedia.org/resource/Kingston,_Jamaica> rdfs:label "Kingston, Jamaica" .
 
 <http://dbpedia.org/resource/Latin_music_(genre)> rdfs:label "Latin music (genre)" .
 
@@ -1590,27 +1069,17 @@
 
 <http://dbpedia.org/resource/Lawrenceville,_Georgia> rdfs:label "Lawrenceville, Georgia" .
 
-<http://dbpedia.org/resource/Leesburg,_Georgia> rdfs:label "Leesburg, Georgia" .
-
 <http://dbpedia.org/resource/Liverpool> rdfs:label "Liverpool" .
-
-<http://dbpedia.org/resource/London,_Ontario> rdfs:label "London, Ontario" .
 
 <http://dbpedia.org/resource/London_Borough_of_Newham> rdfs:label "London Borough of Newham" .
 
-<http://dbpedia.org/resource/Long_Branch,_New_Jersey> rdfs:label "Long Branch, New Jersey" .
+<http://dbpedia.org/resource/London_Records> rdfs:label "London Records" .
 
 <http://dbpedia.org/resource/Los_Angeles,_California> rdfs:label "Los Angeles, California" .
 
-<http://dbpedia.org/resource/Madrid> rdfs:label "Madrid" .
-
 <http://dbpedia.org/resource/Massachusetts> rdfs:label "Massachusetts" .
 
-<http://dbpedia.org/resource/McComb,_Mississippi> rdfs:label "McComb, Mississippi" .
-
-<http://dbpedia.org/resource/Mechanicsville,_Virginia> rdfs:label "Mechanicsville, Virginia" .
-
-<http://dbpedia.org/resource/Memphis,_Tennessee> rdfs:label "Memphis, Tennessee" .
+<http://dbpedia.org/resource/Medellín> rdfs:label "Medellín" .
 
 <http://dbpedia.org/resource/Mexicali> rdfs:label "Mexicali" .
 
@@ -1628,14 +1097,6 @@
 
 <http://dbpedia.org/resource/Middlesbrough> rdfs:label "Middlesbrough" .
 
-<http://dbpedia.org/resource/Middlesex> rdfs:label "Middlesex" .
-
-<http://dbpedia.org/resource/Minot,_North_Dakota> rdfs:label "Minot, North Dakota" .
-
-<http://dbpedia.org/resource/Miramar,_Florida> rdfs:label "Miramar, Florida" .
-
-<http://dbpedia.org/resource/Mississauga> rdfs:label "Mississauga" .
-
 <http://dbpedia.org/resource/Missouri> rdfs:label "Missouri" .
 
 <http://dbpedia.org/resource/Montería> rdfs:label "Montería" .
@@ -1646,8 +1107,6 @@
 
 <http://dbpedia.org/resource/Mullingar> rdfs:label "Mullingar" .
 
-<http://dbpedia.org/resource/Murshidabad> rdfs:label "Murshidabad" .
-
 <http://dbpedia.org/resource/México> rdfs:label "México" .
 
 <http://dbpedia.org/resource/Neo-psychedelia> rdfs:label "Neo-psychedelia" .
@@ -1656,7 +1115,7 @@
 
 <http://dbpedia.org/resource/Neue_Deutsche_Härte> rdfs:label "Neue Deutsche Härte" .
 
-<http://dbpedia.org/resource/New_Zealand_nationality_law> rdfs:label "New Zealand nationality law" .
+<http://dbpedia.org/resource/Newark,_New_Jersey> rdfs:label "Newark, New Jersey" .
 
 <http://dbpedia.org/resource/Newbury_Park,_California> rdfs:label "Newbury Park, California" .
 
@@ -1668,17 +1127,19 @@
 
 <http://dbpedia.org/resource/Old_Town,_Chicago> rdfs:label "Old Town, Chicago" .
 
+<http://dbpedia.org/resource/Ontario> rdfs:label "Ontario" .
+
 <http://dbpedia.org/resource/Osnabrück> rdfs:label "Osnabrück" .
 
 <http://dbpedia.org/resource/Oxford> rdfs:label "Oxford" .
 
+<http://dbpedia.org/resource/Pennsylvania> rdfs:label "Pennsylvania" .
+
 <http://dbpedia.org/resource/Perth> rdfs:label "Perth" .
 
+<http://dbpedia.org/resource/Philadelphia> rdfs:label "Philadelphia" .
+
 <http://dbpedia.org/resource/Philadelphia,_Pennsylvania> rdfs:label "Philadelphia, Pennsylvania" .
-
-<http://dbpedia.org/resource/Pickering,_Ontario> rdfs:label "Pickering, Ontario" .
-
-<http://dbpedia.org/resource/Pinner> rdfs:label "Pinner" .
 
 <http://dbpedia.org/resource/Plaistow,_Newham> rdfs:label "Plaistow, Newham" .
 
@@ -1686,21 +1147,19 @@
 
 <http://dbpedia.org/resource/Pompano_Beach,_Florida> rdfs:label "Pompano Beach, Florida" .
 
-<http://dbpedia.org/resource/Port_of_Spain> rdfs:label "Port of Spain" .
-
 <http://dbpedia.org/resource/Post-punk> rdfs:label "Post-punk" .
 
 <http://dbpedia.org/resource/Post-punk_revival> rdfs:label "Post-punk revival" .
-
-<http://dbpedia.org/resource/Pristina> rdfs:label "Pristina" .
 
 <http://dbpedia.org/resource/Progressive_hip_hop> rdfs:label "Progressive hip hop" .
 
 <http://dbpedia.org/resource/Progressive_rap> rdfs:label "Progressive rap" .
 
-<http://dbpedia.org/resource/Progressive_rock> rdfs:label "Progressive rock" .
-
 <http://dbpedia.org/resource/Progressive_trance> rdfs:label "Progressive trance" .
+
+<http://dbpedia.org/resource/Psychedelic_music> rdfs:label "Psychedelic music" .
+
+<http://dbpedia.org/resource/Puerto_Rico> rdfs:label "Puerto Rico" .
 
 <http://dbpedia.org/resource/Punk_rap> rdfs:label "Punk rap" .
 
@@ -1711,10 +1170,6 @@
 <http://dbpedia.org/resource/Ramsey,_New_Jersey> rdfs:label "Ramsey, New Jersey" .
 
 <http://dbpedia.org/resource/Ranchera> rdfs:label "Ranchera" .
-
-<http://dbpedia.org/resource/Rap_(music)> rdfs:label "Rap (music)" .
-
-<http://dbpedia.org/resource/Redditch> rdfs:label "Redditch" .
 
 <http://dbpedia.org/resource/Reggae_fusion> rdfs:label "Reggae fusion" .
 
@@ -1730,19 +1185,13 @@
 
 <http://dbpedia.org/resource/Russian_SFSR> rdfs:label "Russian SFSR" .
 
-<http://dbpedia.org/resource/Saginaw,_Michigan> rdfs:label "Saginaw, Michigan" .
-
-<http://dbpedia.org/resource/Saint_James,_Trinidad_and_Tobago> rdfs:label "Saint James, Trinidad and Tobago" .
-
-<http://dbpedia.org/resource/Saint_Michael,_Barbados> rdfs:label "Saint Michael, Barbados" .
-
 <http://dbpedia.org/resource/San_Francisco> rdfs:label "San Francisco" .
+
+<http://dbpedia.org/resource/San_Juan,_Puerto_Rico> rdfs:label "San Juan, Puerto Rico" .
 
 <http://dbpedia.org/resource/Santa_Clarita,_California> rdfs:label "Santa Clarita, California" .
 
 <http://dbpedia.org/resource/Santa_Monica,_California> rdfs:label "Santa Monica, California" .
-
-<http://dbpedia.org/resource/Santiago_de_los_Caballeros> rdfs:label "Santiago de los Caballeros" .
 
 <http://dbpedia.org/resource/Santurce,_San_Juan,_Puerto_Rico> rdfs:label "Santurce, San Juan, Puerto Rico" .
 
@@ -1764,17 +1213,11 @@
 
 <http://dbpedia.org/resource/Soca_music> rdfs:label "Soca music" .
 
-<http://dbpedia.org/resource/Socialist_Federal_Republic_of_Yugoslavia> rdfs:label "Socialist Federal Republic of Yugoslavia" .
-
-<http://dbpedia.org/resource/Solna_Municipality> rdfs:label "Solna Municipality" .
-
 <http://dbpedia.org/resource/Southern_hip_hop> rdfs:label "Southern hip hop" .
 
 <http://dbpedia.org/resource/Southern_rock> rdfs:label "Southern rock" .
 
 <http://dbpedia.org/resource/Soviet_Union> rdfs:label "Soviet Union" .
-
-<http://dbpedia.org/resource/Space_rock> rdfs:label "Space rock" .
 
 <http://dbpedia.org/resource/Spanish_dancehall> rdfs:label "Spanish dancehall" .
 
@@ -1782,23 +1225,13 @@
 
 <http://dbpedia.org/resource/Springfield_Gardens,_New_York> rdfs:label "Springfield Gardens, New York" .
 
-<http://dbpedia.org/resource/St._Joseph,_Missouri> rdfs:label "St. Joseph, Missouri" .
-
 <http://dbpedia.org/resource/St._Louis> rdfs:label "St. Louis" .
 
 <http://dbpedia.org/resource/Sweden_in_the_Eurovision_Song_Contest> rdfs:label "Sweden in the Eurovision Song Contest" .
 
-<http://dbpedia.org/resource/Syracuse,_New_York> rdfs:label "Syracuse, New York" .
-
-<http://dbpedia.org/resource/Takapuna> rdfs:label "Takapuna" .
-
-<http://dbpedia.org/resource/Tappahannock,_Virginia> rdfs:label "Tappahannock, Virginia" .
-
 <http://dbpedia.org/resource/Trance_music> rdfs:label "Trance music" .
 
 <http://dbpedia.org/resource/Trap_music_(hip_hop)> rdfs:label "Trap music (hip hop)" .
-
-<http://dbpedia.org/resource/Trinidad_and_Tobago> rdfs:label "Trinidad and Tobago" .
 
 <http://dbpedia.org/resource/United_States> rdfs:label "United States" .
 
@@ -1806,9 +1239,7 @@
 
 <http://dbpedia.org/resource/Washington_(state)> rdfs:label "Washington (state)" .
 
-<http://dbpedia.org/resource/West_Bengal> rdfs:label "West Bengal" .
-
-<http://dbpedia.org/resource/West_Reading,_Pennsylvania> rdfs:label "West Reading, Pennsylvania" .
+<http://dbpedia.org/resource/West_Germany> rdfs:label "West Germany" .
 
 <http://dbpedia.org/resource/Western_Australia> rdfs:label "Western Australia" .
 
@@ -1822,8 +1253,6 @@
 
 <http://dbpedia.org/resource/Atlanta> rdfs:label "Atlanta" .
 
-<http://dbpedia.org/resource/Atlanta,_Georgia> rdfs:label "Atlanta, Georgia" .
-
 <http://dbpedia.org/resource/Bergen> rdfs:label "Bergen" .
 
 <http://dbpedia.org/resource/Blue-eyed_soul> rdfs:label "Blue-eyed soul" .
@@ -1834,25 +1263,15 @@
 
 <http://dbpedia.org/resource/Caborca> rdfs:label "Caborca" .
 
-<http://dbpedia.org/resource/Carolina,_Puerto_Rico> rdfs:label "Carolina, Puerto Rico" .
-
 <http://dbpedia.org/resource/Charlotte,_North_Carolina> rdfs:label "Charlotte, North Carolina" .
 
-<http://dbpedia.org/resource/Chicago> rdfs:label "Chicago" .
-
 <http://dbpedia.org/resource/Cloud_rap> rdfs:label "Cloud rap" .
-
-<http://dbpedia.org/resource/Colombia> rdfs:label "Colombia" .
-
-<http://dbpedia.org/resource/Compton,_California> rdfs:label "Compton, California" .
 
 <http://dbpedia.org/resource/Disco> rdfs:label "Disco" .
 
 <http://dbpedia.org/resource/Dublin> rdfs:label "Dublin" .
 
 <http://dbpedia.org/resource/Dubstep> rdfs:label "Dubstep" .
-
-<http://dbpedia.org/resource/Franklin,_Tennessee> rdfs:label "Franklin, Tennessee" .
 
 <http://dbpedia.org/resource/Funk_rock> rdfs:label "Funk rock" .
 
@@ -1862,27 +1281,15 @@
 
 <http://dbpedia.org/resource/House_music> rdfs:label "House music" .
 
-<http://dbpedia.org/resource/Houston> rdfs:label "Houston" .
-
-<http://dbpedia.org/resource/Illinois> rdfs:label "Illinois" .
-
 <http://dbpedia.org/resource/Indie_folk> rdfs:label "Indie folk" .
-
-<http://dbpedia.org/resource/Inglewood,_California> rdfs:label "Inglewood, California" .
 
 <http://dbpedia.org/resource/Jalisco> rdfs:label "Jalisco" .
 
 <http://dbpedia.org/resource/Las_Vegas> rdfs:label "Las Vegas" .
 
-<http://dbpedia.org/resource/London_Records> rdfs:label "London Records" .
-
-<http://dbpedia.org/resource/Long_Beach,_California> rdfs:label "Long Beach, California" .
-
 <http://dbpedia.org/resource/Louisville,_Kentucky> rdfs:label "Louisville, Kentucky" .
 
 <http://dbpedia.org/resource/Mariachi> rdfs:label "Mariachi" .
-
-<http://dbpedia.org/resource/Medellín> rdfs:label "Medellín" .
 
 <http://dbpedia.org/resource/Mumble_rap> rdfs:label "Mumble rap" .
 
@@ -1894,15 +1301,9 @@
 
 <http://dbpedia.org/resource/New_wave_music> rdfs:label "New wave music" .
 
-<http://dbpedia.org/resource/Newark,_New_Jersey> rdfs:label "Newark, New Jersey" .
-
 <http://dbpedia.org/resource/Oakland,_California> rdfs:label "Oakland, California" .
 
-<http://dbpedia.org/resource/Ontario> rdfs:label "Ontario" .
-
 <http://dbpedia.org/resource/Paris> rdfs:label "Paris" .
-
-<http://dbpedia.org/resource/Pennsylvania> rdfs:label "Pennsylvania" .
 
 <http://dbpedia.org/resource/Post-Britpop> rdfs:label "Post-Britpop" .
 
@@ -1910,13 +1311,9 @@
 
 <http://dbpedia.org/resource/Post-hardcore> rdfs:label "Post-hardcore" .
 
-<http://dbpedia.org/resource/Psychedelic_music> rdfs:label "Psychedelic music" .
-
 <http://dbpedia.org/resource/Psychedelic_pop> rdfs:label "Psychedelic pop" .
 
 <http://dbpedia.org/resource/Psychedelic_rock> rdfs:label "Psychedelic rock" .
-
-<http://dbpedia.org/resource/Puerto_Rico> rdfs:label "Puerto Rico" .
 
 <http://dbpedia.org/resource/Rap_rock> rdfs:label "Rap rock" .
 
@@ -1938,13 +1335,13 @@
 
 <http://dbpedia.org/resource/Sydney> rdfs:label "Sydney" .
 
-<http://dbpedia.org/resource/Texas> rdfs:label "Texas" .
-
 <http://dbpedia.org/resource/Thrash_metal> rdfs:label "Thrash metal" .
 
-<http://dbpedia.org/resource/West_Germany> rdfs:label "West Germany" .
+<http://dbpedia.org/resource/Tupelo,_Mississippi> rdfs:label "Tupelo, Mississippi" .
 
 <http://dbpedia.org/resource/Arena_rock> rdfs:label "Arena rock" .
+
+<http://dbpedia.org/resource/Blues_rock> rdfs:label "Blues rock" .
 
 <http://dbpedia.org/resource/Country_pop> rdfs:label "Country pop" .
 
@@ -1954,39 +1351,39 @@
 
 <http://dbpedia.org/resource/Emo> rdfs:label "Emo" .
 
+<http://dbpedia.org/resource/Folk_rock> rdfs:label "Folk rock" .
+
 <http://dbpedia.org/resource/Guadalajara> rdfs:label "Guadalajara" .
 
 <http://dbpedia.org/resource/Moombahton> rdfs:label "Moombahton" .
 
-<http://dbpedia.org/resource/Philadelphia> rdfs:label "Philadelphia" .
-
 <http://dbpedia.org/resource/Power_pop> rdfs:label "Power pop" .
 
-<http://dbpedia.org/resource/Synth-pop> rdfs:label "Synth-pop" .
+<http://dbpedia.org/resource/Stockholm> rdfs:label "Stockholm" .
 
-<http://dbpedia.org/resource/Tupelo,_Mississippi> rdfs:label "Tupelo, Mississippi" .
+<http://dbpedia.org/resource/Synth-pop> rdfs:label "Synth-pop" .
 
 <http://dbpedia.org/resource/Alternative_hip_hop> rdfs:label "Alternative hip hop" .
 
 <http://dbpedia.org/resource/Big_room_house> rdfs:label "Big room house" .
 
-<http://dbpedia.org/resource/Blues_rock> rdfs:label "Blues rock" .
-
 <http://dbpedia.org/resource/Country_music> rdfs:label "Country music" .
 
-<http://dbpedia.org/resource/Folk_rock> rdfs:label "Folk rock" .
+<http://dbpedia.org/resource/Latin_trap> rdfs:label "Latin trap" .
 
 <http://dbpedia.org/resource/Pop_rap> rdfs:label "Pop rap" .
-
-<http://dbpedia.org/resource/San_Juan,_Puerto_Rico> rdfs:label "San Juan, Puerto Rico" .
 
 <http://dbpedia.org/resource/Soft_rock> rdfs:label "Soft rock" .
 
 <http://dbpedia.org/resource/California> rdfs:label "California" .
 
+<http://dbpedia.org/resource/Future_bass> rdfs:label "Future bass" .
+
 <http://dbpedia.org/resource/Future_house> rdfs:label "Future house" .
 
-<http://dbpedia.org/resource/Latin_trap> rdfs:label "Latin trap" .
+<http://dbpedia.org/resource/Heavy_metal_music> rdfs:label "Heavy metal music" .
+
+<http://dbpedia.org/resource/London> rdfs:label "London" .
 
 <http://dbpedia.org/resource/Los_Angeles> rdfs:label "Los Angeles" .
 
@@ -1994,17 +1391,11 @@
 
 <http://dbpedia.org/resource/Rock_music> rdfs:label "Rock music" .
 
-<http://dbpedia.org/resource/Stockholm> rdfs:label "Stockholm" .
-
 <http://dbpedia.org/resource/Trap_music_(EDM)> rdfs:label "Trap music (EDM)" .
 
 <http://dbpedia.org/resource/Tropical_house> rdfs:label "Tropical house" .
 
 <http://dbpedia.org/resource/Deep_house> rdfs:label "Deep house" .
-
-<http://dbpedia.org/resource/Future_bass> rdfs:label "Future bass" .
-
-<http://dbpedia.org/resource/Heavy_metal_music> rdfs:label "Heavy metal music" .
 
 <http://dbpedia.org/resource/Indie_pop> rdfs:label "Indie pop" .
 
@@ -2012,7 +1403,7 @@
 
 <http://dbpedia.org/resource/Latin_pop> rdfs:label "Latin pop" .
 
-<http://dbpedia.org/resource/London> rdfs:label "London" .
+<http://dbpedia.org/resource/New_York_City> rdfs:label "New York City" .
 
 <http://dbpedia.org/resource/Dance-pop> rdfs:label "Dance-pop" .
 
@@ -2020,15 +1411,13 @@
 
 <http://dbpedia.org/resource/Electro_house> rdfs:label "Electro house" .
 
-<http://dbpedia.org/resource/Electropop> rdfs:label "Electropop" .
-
 <http://dbpedia.org/resource/Electronic_dance_music> rdfs:label "Electronic dance music" .
+
+<http://dbpedia.org/resource/Electropop> rdfs:label "Electropop" .
 
 <http://dbpedia.org/resource/Hard_rock> rdfs:label "Hard rock" .
 
 <http://dbpedia.org/resource/Reggaeton> rdfs:label "Reggaeton" .
-
-<http://dbpedia.org/resource/New_York_City> rdfs:label "New York City" .
 
 <http://dbpedia.org/resource/Trap_music> rdfs:label "Trap music" .
 
@@ -2041,6 +1430,7 @@
 <http://dbpedia.org/resource/Pop_music> rdfs:label "Pop music" .
 
 <http://dbpedia.org/resource/Hip_hop_music> rdfs:label "Hip hop music" .
+
 
 
 # -----------------------------------------------------------------
