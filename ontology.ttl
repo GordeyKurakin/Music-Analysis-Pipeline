@@ -162,6 +162,9 @@
     rdfs:domain :Artist ;
     rdfs:range xsd:gYear .
 
+# --- Property Axioms ---
+rdfs:label rdfs:subPropertyOf :artistName .
+
 # -----------------------------------------------------------------
 # --- Restrictions (Constraints on Classes)
 # -----------------------------------------------------------------
