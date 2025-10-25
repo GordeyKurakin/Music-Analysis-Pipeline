@@ -18,23 +18,23 @@
 :Artist rdf:type owl:Class ;
     rdfs:label "Artist" ;
     rdfs:comment "A musician, band, or creator of music." ;
-    owl:sameAs dbo:MusicalArtist ;
+    owl:equivalentClass dbo:MusicalArtist ;
     owl:hasKey ( rdfs:label ) .
 
 :Genre rdf:type owl:Class ;
     rdfs:label "Genre" ;
     rdfs:comment "A category of music (e.g., Rock, Pop, Electronic)." ;
-    owl:sameAs dbo:MusicGenre .
+    owl:equivalentClass dbo:MusicGenre .
 
 :Album rdf:type owl:Class ;
     rdfs:label "Album" ;
     rdfs:comment "A collection of tracks released by an artist." ;
-    owl:sameAs dbo:Album .
+    owl:equivalentClass dbo:Album .
 
 :Track rdf:type owl:Class ;
     rdfs:label "Track" ;
     rdfs:comment "A single song or piece of music." ;
-    owl:sameAs dbo:Song .
+    owl:equivalentClass dbo:Song .
 
 :Playlist rdf:type owl:Class ;
     rdfs:label "Playlist" ;
@@ -43,17 +43,17 @@
 :Country rdf:type owl:Class ;
     rdfs:label "Country" ;
     rdfs:comment "A country, typically of origin for an artist." ;
-    owl:sameAs dbo:Country .
+    owl:equivalentClass dbo:Country .
 
 :City rdf:type owl:Class ;
     rdfs:label "City" ;
     rdfs:comment "A city, typically of origin for an artist or a music hub." ;
-    owl:sameAs dbo:City .
+    owl:equivalentClass dbo:City .
 
 :RecordLabel rdf:type owl:Class ;
     rdfs:label "Record Label" ;
     rdfs:comment "A company that manages music recording and publishing." ;
-    owl:sameAs dbo:RecordLabel .
+    owl:equivalentClass dbo:RecordLabel .
 
 # -----------------------------------------------------------------
 # --- Object Properties
