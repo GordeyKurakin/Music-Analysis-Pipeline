@@ -116,8 +116,7 @@
 
 :artistName rdf:type owl:DatatypeProperty ;
     rdfs:label "artist name" ;
-    rdfs:domain :Artist ;
-    rdfs:range xsd:string .
+    rdfs:domain :Artist .
 
 :genreName rdf:type owl:DatatypeProperty ;
     rdfs:label "genre name" ;
