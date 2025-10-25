@@ -166,14 +166,7 @@
         rdf:type owl:Class ;
         owl:unionOf ( :Artist :Album :Track )
     ] ;
-    rdfs:range [
-        rdf:type rdfs:Datatype ;
-        owl:onDatatype xsd:integer ;
-        owl:withRestrictions (
-            [ xsd:minInclusive "0"^^xsd:integer ]
-            [ xsd:maxInclusive "100"^^xsd:integer ]
-        )
-    ] .
+    rdfs:range xsd:integer .
 
 # -----------------------------------------------------------------
 # --- Restrictions (Constraints on Classes)
@@ -182,21 +175,21 @@
 :Artist rdfs:subClassOf [
     rdf:type owl:Restriction ;
     owl:onProperty :artistName ;
-    owl:cardinality "1"^^xsd:int ;
+    owl:cardinality "1"^^xsd:nonNegativeInteger ;
     rdfs:comment "An Artist must have exactly one name."
 ] .
 
 :Track rdfs:subClassOf [
     rdf:type owl:Restriction ;
     owl:onProperty :trackTitle ;
-    owl:cardinality "1"^^xsd:int ;
+    owl:cardinality "1"^^xsd:nonNegativeInteger ;
     rdfs:comment "A Track must have exactly one title."
 ] .
 
 :Track rdfs:subClassOf [
     rdf:type owl:Restriction ;
     owl:onProperty :durationInSeconds ;
-    owl:cardinality "1"^^xsd:int ;
+    owl:cardinality "1"^^xsd:nonNegativeInteger ;
     rdfs:comment "A Track must have exactly one duration."
 ] .
 
@@ -210,7 +203,7 @@
 :Track rdfs:subClassOf [
     rdf:type owl:Restriction ;
     owl:onProperty :releaseYear ;
-    owl:cardinality "1"^^xsd:int ;
+    owl:cardinality "1"^^xsd:nonNegativeInteger ;
     rdfs:comment "A Track must have exactly one release year."
 ] .
 
