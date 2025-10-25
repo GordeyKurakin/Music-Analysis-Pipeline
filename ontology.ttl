@@ -18,8 +18,7 @@
 :Artist rdf:type owl:Class ;
     rdfs:label "Artist" ;
     rdfs:comment "A musician, band, or creator of music." ;
-    owl:equivalentClass dbo:MusicalArtist ;
-    owl:hasKey ( :artistName ) .
+    owl:equivalentClass dbo:MusicalArtist .
 
 :Genre rdf:type owl:Class ;
     rdfs:label "Genre" ;
@@ -161,9 +160,6 @@
     rdfs:label "active end year" ;
     rdfs:domain :Artist ;
     rdfs:range xsd:gYear .
-
-# --- Property Axioms ---
-rdfs:label rdfs:subPropertyOf :artistName .
 
 # -----------------------------------------------------------------
 # --- Restrictions (Constraints on Classes)
