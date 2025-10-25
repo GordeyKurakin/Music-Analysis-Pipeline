@@ -19,7 +19,7 @@
     rdfs:label "Artist" ;
     rdfs:comment "A musician, band, or creator of music." ;
     owl:equivalentClass dbo:MusicalArtist ;
-    owl:hasKey ( rdfs:artistName ) .
+    owl:hasKey ( :artistName ) .
 
 :Genre rdf:type owl:Class ;
     rdfs:label "Genre" ;
