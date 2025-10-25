@@ -113,11 +113,12 @@
 # --- Data Properties
 # -----------------------------------------------------------------
 
-:artistName rdf:type owl:DatatypeProperty ;
+:artistName rdf:type owl:DatatypeProperty ,
+                     owl:InverseFunctionalProperty ;  # <-- This merges individuals by name
     rdfs:label "artist name" ;
     rdfs:domain :Artist ;
     rdfs:range xsd:string ;
-    owl:equivalentProperty ns3:artistName .
+    owl:equivalentProperty rdfs:label .
 
 :genreName rdf:type owl:DatatypeProperty ;
     rdfs:label "genre name" ;
@@ -134,10 +135,33 @@
     rdfs:domain :Track ;
     rdfs:range xsd:string .
 
+:releaseYear rdf:type owl:DatatypeProperty ;
+    rdfs:label "release year" ;
+    rdfs:domain [
+        rdf:type owl:Class ;
+        owl:unionOf ( :Album :Track )
+    ] ;
+    rdfs:range xsd:gYear .
 
+:durationInSeconds rdf:type owl:DatatypeProperty ;
+    rdfs:label "duration in seconds" ;
+    rdfs:domain :Track ;
+    rdfs:range xsd:positiveInteger .
 
+:population rdf:type owl:DatatypeProperty ;
+    rdfs:label "population" ;
+    rdfs:domain :Country ;
+    rdfs:range xsd:positiveInteger .
 
+:activeStartYear rdf:type owl:DatatypeProperty ;
+    rdfs:label "active start year" ;
+    rdfs:domain :Artist ;
+    rdfs:range xsd:gYear .
 
+:activeEndYear rdf:type owl:DatatypeProperty ;
+    rdfs:label "active end year" ;
+    rdfs:domain :Artist ;
+    rdfs:range xsd:gYear .
 
 # -----------------------------------------------------------------
 # --- Restrictions (Constraints on Classes)
@@ -146,15 +170,22 @@
 :Artist rdfs:subClassOf [
     rdf:type owl:Restriction ;
     owl:onProperty :artistName ;
-    owl:cardinality "1"^^xsd:nonNegativeInteger ;
+    owl:cardinality "1"^^non ;
     rdfs:comment "An Artist must have exactly one name."
 ] .
 
 :Track rdfs:subClassOf [
     rdf:type owl:Restriction ;
     owl:onProperty :trackTitle ;
-    owl:cardinality "1"^^xsd:nonNegativeInteger ;
+    owl:cardinality 1 ;
     rdfs:comment "A Track must have exactly one title."
+] .
+
+:Track rdfs:subClassOf [
+    rdf:type owl:Restriction ;
+    owl:onProperty :durationInSeconds ;
+    owl:cardinality 1 ;
+    rdfs:comment "A Track must have exactly one duration."
 ] .
 
 :Track rdfs:subClassOf [
@@ -164,6 +195,12 @@
     rdfs:comment "A Track must have at least one genre."
 ] .
 
+:Track rdfs:subClassOf [
+    rdf:type owl:Restriction ;
+    owl:onProperty :releaseYear ;
+    owl:cardinality 1 ;
+    rdfs:comment "A Track must have exactly one release year."
+] .
 
 :Album rdfs:subClassOf [
     rdf:type owl:Restriction ;
