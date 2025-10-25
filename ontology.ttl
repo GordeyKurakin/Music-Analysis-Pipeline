@@ -169,21 +169,21 @@
 :Artist rdfs:subClassOf [
     rdf:type owl:Restriction ;
     owl:onProperty :artistName ;
-    owl:cardinality "1"^^xsd:int ;
+    owl:cardinality 1 ;
     rdfs:comment "An Artist must have exactly one name."
 ] .
 
 :Track rdfs:subClassOf [
     rdf:type owl:Restriction ;
     owl:onProperty :trackTitle ;
-    owl:cardinality "1"^^xsd:int ;
+    owl:cardinality 1 ;
     rdfs:comment "A Track must have exactly one title."
 ] .
 
 :Track rdfs:subClassOf [
     rdf:type owl:Restriction ;
     owl:onProperty :durationInSeconds ;
-    owl:cardinality "1"^^xsd:int ;
+    owl:cardinality 1 ;
     rdfs:comment "A Track must have exactly one duration."
 ] .
 
@@ -197,7 +197,7 @@
 :Track rdfs:subClassOf [
     rdf:type owl:Restriction ;
     owl:onProperty :releaseYear ;
-    owl:cardinality "1"^^xsd:int ;
+    owl:cardinality 1 ;
     rdfs:comment "A Track must have exactly one release year."
 ] .
 
