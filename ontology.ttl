@@ -170,7 +170,7 @@
 :Artist rdfs:subClassOf [
     rdf:type owl:Restriction ;
     owl:onProperty :artistName ;
-    owl:cardinality "1"^^non ;
+    owl:cardinality 1 ;
     rdfs:comment "An Artist must have exactly one name."
 ] .
 
