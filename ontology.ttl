@@ -165,12 +165,6 @@
 # --- Restrictions (Constraints on Classes)
 # -----------------------------------------------------------------
 
-:Artist rdfs:subClassOf [
-    rdf:type owl:Restriction ;
-    owl:onProperty :artistName ;
-    owl:cardinality 1 ;
-    rdfs:comment "An Artist must have exactly one name."
-] .
 
 :Track rdfs:subClassOf [
     rdf:type owl:Restriction ;
