@@ -11,7 +11,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 <http://dbpedia.org/resource/21_Savage> a ns1:MusicalArtist ;
-    rdfs:label "21 Savage" ;
+    rdfs:label "21 Savage"^^xsd:string ;
     ns1:birthPlace <http://dbpedia.org/resource/London_Borough_of_Newham>,
         <http://dbpedia.org/resource/Plaistow,_Newham> ;
     ns1:genre <http://dbpedia.org/resource/Gangsta_rap>,
@@ -1971,7 +1971,7 @@
 
 :21_Savage rdf:type owl:NamedIndividual ,
                      :Artist ;
-            rdfs:label "21 Savage" ;
+            rdfs:label "21 Savage"^^xsd:string ;
             :totalStreams 15308972308 ;
             :numberOfTracks 162  .
 
