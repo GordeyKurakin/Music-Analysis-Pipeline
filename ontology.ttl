@@ -162,22 +162,6 @@
     rdfs:domain :Artist ;
     rdfs:range xsd:gYear .
 
-:popularityScore rdf:type owl:DatatypeProperty ;
-    rdfs:label "popularity score" ;
-    rdfs:comment "A score from 0 (not popular) to 100 (very popular)." ;
-    rdfs:domain [
-        rdf:type owl:Class ;
-        owl:unionOf ( :Artist :Album :Track )
-    ] ;
-    rdfs:range [
-        rdf:type rdfs:Datatype ;
-        owl:onDatatype xsd:integer ;
-        owl:withRestrictions (
-            [ xsd:minInclusive "0"^^xsd:integer ]
-            [ xsd:maxInclusive "100"^^xsd:integer ]
-        )
-    ] .
-
 # -----------------------------------------------------------------
 # --- Restrictions (Constraints on Classes)
 # -----------------------------------------------------------------
