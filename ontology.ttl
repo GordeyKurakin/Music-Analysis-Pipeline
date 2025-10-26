@@ -55,6 +55,98 @@
     owl:equivalentClass dbo:RecordLabel .
 
 # -----------------------------------------------------------------
+# --- Artist Subclasses
+# -----------------------------------------------------------------
+
+:SoloArtist rdf:type owl:Class ;
+    rdfs:label "Solo Artist" ;
+    rdfs:comment "A single individual musician or performer." ;
+    rdfs:subClassOf :Artist .
+
+:Band rdf:type owl:Class ;
+    rdfs:label "Band" ;
+    rdfs:comment "A group of musicians who perform together." ;
+    rdfs:subClassOf :Artist .
+
+:HipHopArtist rdf:type owl:Class ;
+    rdfs:label "Hip Hop Artist" ;
+    rdfs:comment "An artist who primarily performs hip hop music." ;
+    rdfs:subClassOf :Artist .
+
+:ElectronicArtist rdf:type owl:Class ;
+    rdfs:label "Electronic Artist" ;
+    rdfs:comment "An artist who primarily performs electronic music." ;
+    rdfs:subClassOf :Artist .
+
+:RockArtist rdf:type owl:Class ;
+    rdfs:label "Rock Artist" ;
+    rdfs:comment "An artist who primarily performs rock music." ;
+    rdfs:subClassOf :Artist .
+
+:LatinArtist rdf:type owl:Class ;
+    rdfs:label "Latin Artist" ;
+    rdfs:comment "An artist who primarily performs Latin music." ;
+    rdfs:subClassOf :Artist .
+
+:PopArtist rdf:type owl:Class ;
+    rdfs:label "Pop Artist" ;
+    rdfs:comment "An artist who primarily performs pop music." ;
+    rdfs:subClassOf :Artist .
+
+# -----------------------------------------------------------------
+# --- Genre Subclasses
+# -----------------------------------------------------------------
+
+:HipHopGenre rdf:type owl:Class ;
+    rdfs:label "Hip Hop Genre" ;
+    rdfs:comment "A genre of music that is part of hip hop culture." ;
+    rdfs:subClassOf :Genre .
+
+:ElectronicGenre rdf:type owl:Class ;
+    rdfs:label "Electronic Genre" ;
+    rdfs:comment "A genre of music that is primarily electronic." ;
+    rdfs:subClassOf :Genre .
+
+:RockGenre rdf:type owl:Class ;
+    rdfs:label "Rock Genre" ;
+    rdfs:comment "A genre of music that is part of rock music." ;
+    rdfs:subClassOf :Genre .
+
+:LatinGenre rdf:type owl:Class ;
+    rdfs:label "Latin Genre" ;
+    rdfs:comment "A genre of music that originates from Latin America." ;
+    rdfs:subClassOf :Genre .
+
+:PopGenre rdf:type owl:Class ;
+    rdfs:label "Pop Genre" ;
+    rdfs:comment "A genre of music that is popular and mainstream." ;
+    rdfs:subClassOf :Genre .
+
+# -----------------------------------------------------------------
+# --- Geographic Subclasses
+# -----------------------------------------------------------------
+
+:USCity rdf:type owl:Class ;
+    rdfs:label "US City" ;
+    rdfs:comment "A city located in the United States." ;
+    rdfs:subClassOf :City .
+
+:EuropeanCity rdf:type owl:Class ;
+    rdfs:label "European City" ;
+    rdfs:comment "A city located in Europe." ;
+    rdfs:subClassOf :City .
+
+:LatinAmericanCity rdf:type owl:Class ;
+    rdfs:label "Latin American City" ;
+    rdfs:comment "A city located in Latin America." ;
+    rdfs:subClassOf :City .
+
+:MusicHub rdf:type owl:Class ;
+    rdfs:label "Music Hub" ;
+    rdfs:comment "A city that is known as a major center for music production and industry." ;
+    rdfs:subClassOf :City .
+
+# -----------------------------------------------------------------
 # --- Object Properties
 # -----------------------------------------------------------------
 
@@ -212,4 +304,112 @@
     owl:onProperty :includesTrack ;
     owl:someValuesFrom :Track ;
     rdfs:comment "An Album must include at least one Track."
+] .
+
+# -----------------------------------------------------------------
+# --- Inference Rules (Automatic Classification)
+# -----------------------------------------------------------------
+
+# Artists who have hip hop genres are HipHopArtists
+:HipHopArtist owl:equivalentClass [
+    rdf:type owl:Class ;
+    owl:intersectionOf (
+        :Artist
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty :hasGenre ;
+            owl:someValuesFrom :HipHopGenre
+        ]
+    )
+] .
+
+# Artists who have electronic genres are ElectronicArtists
+:ElectronicArtist owl:equivalentClass [
+    rdf:type owl:Class ;
+    owl:intersectionOf (
+        :Artist
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty :hasGenre ;
+            owl:someValuesFrom :ElectronicGenre
+        ]
+    )
+] .
+
+# Artists who have rock genres are RockArtists
+:RockArtist owl:equivalentClass [
+    rdf:type owl:Class ;
+    owl:intersectionOf (
+        :Artist
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty :hasGenre ;
+            owl:someValuesFrom :RockGenre
+        ]
+    )
+] .
+
+# Artists who have Latin genres are LatinArtists
+:LatinArtist owl:equivalentClass [
+    rdf:type owl:Class ;
+    owl:intersectionOf (
+        :Artist
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty :hasGenre ;
+            owl:someValuesFrom :LatinGenre
+        ]
+    )
+] .
+
+# Artists who have pop genres are PopArtists
+:PopArtist owl:equivalentClass [
+    rdf:type owl:Class ;
+    owl:intersectionOf (
+        :Artist
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty :hasGenre ;
+            owl:someValuesFrom :PopGenre
+        ]
+    )
+] .
+
+# Cities in the US are USCities
+:USCity owl:equivalentClass [
+    rdf:type owl:Class ;
+    owl:intersectionOf (
+        :City
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty rdfs:label ;
+            owl:someValuesFrom [
+                rdf:type rdfs:Literal ;
+                owl:oneOf (
+                    "New York City" "Los Angeles" "Atlanta" "Miami" 
+                    "Chicago" "Seattle" "Boston" "Nashville" "Las Vegas"
+                    "Detroit" "Philadelphia" "San Francisco" "Austin"
+                )
+            ]
+        ]
+    )
+] .
+
+# Major music hubs
+:MusicHub owl:equivalentClass [
+    rdf:type owl:Class ;
+    owl:intersectionOf (
+        :City
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty rdfs:label ;
+            owl:someValuesFrom [
+                rdf:type rdfs:Literal ;
+                owl:oneOf (
+                    "New York City" "Los Angeles" "Nashville" "London" 
+                    "Stockholm" "Miami" "Atlanta" "Seattle" "Berlin"
+                )
+            ]
+        ]
+    )
 ] .

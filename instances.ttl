@@ -6,506 +6,609 @@
 @prefix rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dbr:	<http://dbpedia.org/resource/> .
 @prefix owl:	<http://www.w3.org/2002/07/owl#> .
-@prefix ns3:	<http://example.org/music#> .
 @prefix ns1: <http://dbpedia.org/ontology/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
-<http://dbpedia.org/resource/21_Savage> a ns1:MusicalArtist ,
+<http://example.org/music-instances> rdf:type owl:Ontology ;
+    rdfs:label "Music Domain Ontology - Instances" ;
+    rdfs:comment "Instances for the Music Domain Ontology" .
+
+# Property declarations (needed for Protege to recognize as object properties)
+:hasGenre rdf:type owl:ObjectProperty ;
+    rdfs:label "has genre" ;
+    rdfs:domain [
+        rdf:type owl:Class ;
+        owl:unionOf ( :Artist :Album :Track )
+    ] ;
+    rdfs:range :Genre .
+
+:isFromCity rdf:type owl:ObjectProperty ;
+    rdfs:label "is from city" ;
+    rdfs:domain :Artist ;
+    rdfs:range :City .
+
+:Artist rdf:type owl:Class ;
+    rdfs:label "Artist" ;
+    rdfs:comment "A musician, band, or creator of music." .
+
+:Genre rdf:type owl:Class ;
+    rdfs:label "Genre" ;
+    rdfs:comment "A category of music (e.g., Rock, Pop, Electronic)." .
+
+:City rdf:type owl:Class ;
+    rdfs:label "City" ;
+    rdfs:comment "A city, typically of origin for an artist or a music hub." .
+
+# -----------------------------------------------------------------
+# --- Genre Classifications (needed for inference)
+# -----------------------------------------------------------------
+
+# Hip Hop Genres
+<http://dbpedia.org/resource/Hip_hop_music> a :HipHopGenre .
+<http://dbpedia.org/resource/Gangsta_rap> a :HipHopGenre .
+<http://dbpedia.org/resource/Hardcore_hip_hop> a :HipHopGenre .
+<http://dbpedia.org/resource/Trap_music> a :HipHopGenre .
+<http://dbpedia.org/resource/SoundCloud_rap> a :HipHopGenre .
+<http://dbpedia.org/resource/Scream_rap> a :HipHopGenre .
+<http://dbpedia.org/resource/Horrorcore> a :HipHopGenre .
+<http://dbpedia.org/resource/Latin_trap> a :HipHopGenre .
+<http://dbpedia.org/resource/Pop_rap> a :HipHopGenre .
+
+# Electronic Genres
+<http://dbpedia.org/resource/Electronic_dance_music> a :ElectronicGenre .
+<http://dbpedia.org/resource/Electro_house> a :ElectronicGenre .
+<http://dbpedia.org/resource/Electropop> a :ElectronicGenre .
+<http://dbpedia.org/resource/Future_bass> a :ElectronicGenre .
+<http://dbpedia.org/resource/Future_house> a :ElectronicGenre .
+<http://dbpedia.org/resource/Deep_house> a :ElectronicGenre .
+<http://dbpedia.org/resource/Progressive_house> a :ElectronicGenre .
+<http://dbpedia.org/resource/Big_room_house> a :ElectronicGenre .
+<http://dbpedia.org/resource/Tropical_house> a :ElectronicGenre .
+<http://dbpedia.org/resource/Trap_music_(EDM)> a :ElectronicGenre .
+
+# Rock Genres
+<http://dbpedia.org/resource/Rock_music> a :RockGenre .
+<http://dbpedia.org/resource/Hard_rock> a :RockGenre .
+<http://dbpedia.org/resource/Heavy_metal_music> a :RockGenre .
+<http://dbpedia.org/resource/Alternative_rock> a :RockGenre .
+<http://dbpedia.org/resource/Alternative_metal> a :RockGenre .
+<http://dbpedia.org/resource/Groove_metal> a :RockGenre .
+<http://dbpedia.org/resource/Thrash_metal> a :RockGenre .
+<http://dbpedia.org/resource/Blues_rock> a :RockGenre .
+<http://dbpedia.org/resource/Pop_rock> a :RockGenre .
+<http://dbpedia.org/resource/Soft_rock> a :RockGenre .
+<http://dbpedia.org/resource/Indie_rock> a :RockGenre .
+<http://dbpedia.org/resource/Folk_rock> a :RockGenre .
+<http://dbpedia.org/resource/Arena_rock> a :RockGenre .
+<http://dbpedia.org/resource/Rock_and_roll> a :RockGenre .
+<http://dbpedia.org/resource/Glam_metal> a :RockGenre .
+
+# Latin Genres
+<http://dbpedia.org/resource/Latin_pop> a :LatinGenre .
+<http://dbpedia.org/resource/Reggaeton> a :LatinGenre .
+<http://dbpedia.org/resource/Dembow> a :LatinGenre .
+<http://dbpedia.org/resource/Spanish_dancehall> a :LatinGenre .
+<http://dbpedia.org/resource/Mariachi> a :LatinGenre .
+<http://dbpedia.org/resource/Mexican_pop_music> a :LatinGenre .
+<http://dbpedia.org/resource/Rock_en_español> a :LatinGenre .
+<http://dbpedia.org/resource/Bolero> a :LatinGenre .
+
+# Pop Genres
+<http://dbpedia.org/resource/Pop_music> a :PopGenre .
+<http://dbpedia.org/resource/Dance-pop> a :PopGenre .
+<http://dbpedia.org/resource/Pop_punk> a :PopGenre .
+<http://dbpedia.org/resource/Power_pop> a :PopGenre .
+<http://dbpedia.org/resource/Indie_pop> a :PopGenre .
+<http://dbpedia.org/resource/New_wave_music> a :PopGenre .
+<http://dbpedia.org/resource/Contemporary_R&B> a :PopGenre .
+<http://dbpedia.org/resource/Blue-eyed_soul> a :PopGenre .
+<http://dbpedia.org/resource/Neo_soul> a :PopGenre .
+
+# Other Genres
+<http://dbpedia.org/resource/Disco> a :PopGenre .
+<http://dbpedia.org/resource/Classical_crossover> a :PopGenre .
+<http://dbpedia.org/resource/Beat_music> a :PopGenre .
+<http://dbpedia.org/resource/Psychedelic_music> a :RockGenre .
+<http://dbpedia.org/resource/British_blues> a :RockGenre .
+<http://dbpedia.org/resource/Americana_(music)> a :RockGenre .
+<http://dbpedia.org/resource/Indie_folk> a :RockGenre .
+
+<http://dbpedia.org/resource/21_Savage> a :Artist ,
                                         :Artist ;
     rdfs:label "21 Savage" ;
-    ns1:birthPlace <http://dbpedia.org/resource/London_Borough_of_Newham>,
+    :isFromCity <http://dbpedia.org/resource/London_Borough_of_Newham>,
         <http://dbpedia.org/resource/Plaistow,_Newham> ;
-    ns1:genre <http://dbpedia.org/resource/Gangsta_rap>,
+    :hasGenre <http://dbpedia.org/resource/Gangsta_rap>,
         <http://dbpedia.org/resource/Hip_hop_music>,
         <http://dbpedia.org/resource/Horrorcore>,
         <http://dbpedia.org/resource/Trap_music> ;
-    ns1:hometown <http://dbpedia.org/resource/Atlanta> .
+    :isFromCity <http://dbpedia.org/resource/Atlanta> .
 
-<http://dbpedia.org/resource/5_Seconds_of_Summer> a ns1:Band ;
+<http://dbpedia.org/resource/5_Seconds_of_Summer> a :Artist ;
     rdfs:label "5 Seconds of Summer" ;
-    ns1:genre <http://dbpedia.org/resource/New_wave_music>,
+    :hasGenre <http://dbpedia.org/resource/New_wave_music>,
         <http://dbpedia.org/resource/Pop_music>,
         <http://dbpedia.org/resource/Pop_punk>,
         <http://dbpedia.org/resource/Pop_rock>,
         <http://dbpedia.org/resource/Power_pop> ;
-    ns1:hometown <http://dbpedia.org/resource/Australia>,
+    :isFromCity <http://dbpedia.org/resource/Australia>,
         <http://dbpedia.org/resource/New_South_Wales>,
         <http://dbpedia.org/resource/Sydney> .
 
-<http://dbpedia.org/resource/6ix9ine> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/6ix9ine> a :Artist ;
     rdfs:label "6ix9ine" ;
-    ns1:birthPlace <http://dbpedia.org/resource/New_York_City> ;
-    ns1:genre <http://dbpedia.org/resource/Hardcore_hip_hop>,
+    :isFromCity <http://dbpedia.org/resource/New_York_City> ;
+    :hasGenre <http://dbpedia.org/resource/Hardcore_hip_hop>,
         <http://dbpedia.org/resource/Hip_hop_music>,
         <http://dbpedia.org/resource/Scream_rap>,
         <http://dbpedia.org/resource/SoundCloud_rap> .
 
-<http://dbpedia.org/resource/ABBA> a ns1:Band ;
+<http://dbpedia.org/resource/ABBA> a :Artist ;
     rdfs:label "ABBA" ;
-    ns1:genre <http://dbpedia.org/resource/Disco>,
+    :hasGenre <http://dbpedia.org/resource/Disco>,
         <http://dbpedia.org/resource/Pop_music>,
         <http://dbpedia.org/resource/Pop_rock> ;
-    ns1:hometown <http://dbpedia.org/resource/Stockholm>,
+    :isFromCity <http://dbpedia.org/resource/Stockholm>,
         <http://dbpedia.org/resource/Sweden_in_the_Eurovision_Song_Contest> .
 
-<http://dbpedia.org/resource/AC/DC> a ns1:Band ;
+<http://dbpedia.org/resource/AC/DC> a :Artist ;
     rdfs:label "AC/DC" ;
-    ns1:genre <http://dbpedia.org/resource/Blues_rock>,
+    :hasGenre <http://dbpedia.org/resource/Blues_rock>,
         <http://dbpedia.org/resource/Hard_rock>,
         <http://dbpedia.org/resource/Heavy_metal_music>,
         <http://dbpedia.org/resource/Rock_and_roll> ;
-    ns1:hometown <http://dbpedia.org/resource/New_South_Wales>,
+    :isFromCity <http://dbpedia.org/resource/New_South_Wales>,
         <http://dbpedia.org/resource/Sydney> .
 
-<http://dbpedia.org/resource/Aerosmith> a ns1:Band ;
+<http://dbpedia.org/resource/Aerosmith> a :Artist ;
     rdfs:label "Aerosmith" ;
-    ns1:genre <http://dbpedia.org/resource/Blues_rock>,
+    :hasGenre <http://dbpedia.org/resource/Blues_rock>,
         <http://dbpedia.org/resource/Glam_metal>,
         <http://dbpedia.org/resource/Hard_rock>,
         <http://dbpedia.org/resource/Heavy_metal_music>,
         <http://dbpedia.org/resource/Rock_and_roll> ;
-    ns1:hometown <http://dbpedia.org/resource/Boston>,
+    :isFromCity <http://dbpedia.org/resource/Boston>,
         <http://dbpedia.org/resource/Massachusetts> .
 
-<http://dbpedia.org/resource/Alan_Walker> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Alan_Walker> a :Artist ;
     rdfs:label "Alan Walker" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Northampton> ;
-    ns1:genre <http://dbpedia.org/resource/Big_room_house>,
+    :isFromCity <http://dbpedia.org/resource/Northampton> ;
+    :hasGenre <http://dbpedia.org/resource/Big_room_house>,
         <http://dbpedia.org/resource/Electro_house>,
         <http://dbpedia.org/resource/Electropop>,
         <http://dbpedia.org/resource/Future_bass>,
         <http://dbpedia.org/resource/Future_house>,
         <http://dbpedia.org/resource/Trap_music_(EDM)> ;
-    ns1:hometown <http://dbpedia.org/resource/Bergen> .
+    :isFromCity <http://dbpedia.org/resource/Bergen> .
 
-<http://dbpedia.org/resource/Alejandro_Fernández> a ns1:Band,
-        ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Alejandro_Fernández> a :Artist,
+        :Artist ;
     rdfs:label "Alejandro Fernández" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Guadalajara>,
+    :isFromCity <http://dbpedia.org/resource/Guadalajara>,
         <http://dbpedia.org/resource/Jalisco> ;
-    ns1:genre <http://dbpedia.org/resource/Latin_pop>,
+    :hasGenre <http://dbpedia.org/resource/Latin_pop>,
         <http://dbpedia.org/resource/Mariachi>,
         <http://dbpedia.org/resource/Mexican_pop_music> ;
-    ns1:hometown <http://dbpedia.org/resource/Guadalajara>,
+    :isFromCity <http://dbpedia.org/resource/Guadalajara>,
         <http://dbpedia.org/resource/Jalisco> .
 
-<http://dbpedia.org/resource/Alesso> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Alesso> a :Artist ;
     rdfs:label "Alesso" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Stockholm> ;
-    ns1:genre <http://dbpedia.org/resource/Electro_house>,
+    :isFromCity <http://dbpedia.org/resource/Stockholm> ;
+    :hasGenre <http://dbpedia.org/resource/Electro_house>,
         <http://dbpedia.org/resource/Pop_music>,
         <http://dbpedia.org/resource/Progressive_house> .
 
-<http://dbpedia.org/resource/Anne-Marie> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Anne-Marie> a :Artist ;
     rdfs:label "Anne-Marie" ;
-    ns1:birthPlace <http://dbpedia.org/resource/East_Tilbury> ;
-    ns1:genre <http://dbpedia.org/resource/Contemporary_R&B>,
+    :isFromCity <http://dbpedia.org/resource/East_Tilbury> ;
+    :hasGenre <http://dbpedia.org/resource/Contemporary_R&B>,
         <http://dbpedia.org/resource/Grime_(music_genre)>,
         <http://dbpedia.org/resource/Pop_music> .
 
-<http://dbpedia.org/resource/Arctic_Monkeys> a ns1:Band ;
+<http://dbpedia.org/resource/Arctic_Monkeys> a :Artist ;
     rdfs:label "Arctic Monkeys" ;
-    ns1:genre <http://dbpedia.org/resource/Alternative_rock>,
+    :hasGenre <http://dbpedia.org/resource/Alternative_rock>,
         <http://dbpedia.org/resource/Garage_rock>,
         <http://dbpedia.org/resource/Indie_rock>,
         <http://dbpedia.org/resource/Post-Britpop>,
         <http://dbpedia.org/resource/Post-punk_revival>,
         <http://dbpedia.org/resource/Psychedelic_rock> ;
-    ns1:hometown <http://dbpedia.org/resource/Sheffield> .
+    :isFromCity <http://dbpedia.org/resource/Sheffield> .
 
-<http://dbpedia.org/resource/BTS> a ns1:Band ;
+<http://dbpedia.org/resource/BTS> a :Artist ;
     rdfs:label "BTS" ;
-    ns1:genre <http://dbpedia.org/resource/Contemporary_R&B>,
+    :hasGenre <http://dbpedia.org/resource/Contemporary_R&B>,
         <http://dbpedia.org/resource/Electronic_dance_music>,
         <http://dbpedia.org/resource/Hip_hop_music>,
         <http://dbpedia.org/resource/K-pop>,
         <http://dbpedia.org/resource/Pop_music> ;
-    ns1:hometown <http://dbpedia.org/resource/Seoul> .
+    :isFromCity <http://dbpedia.org/resource/Seoul> .
 
-<http://dbpedia.org/resource/Big_Sean> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Big_Sean> a :Artist ;
     rdfs:label "Big Sean" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Santa_Monica,_California> ;
-    ns1:genre <http://dbpedia.org/resource/Hip_hop_music> ;
-    ns1:hometown <http://dbpedia.org/resource/Detroit>,
+    :isFromCity <http://dbpedia.org/resource/Santa_Monica,_California> ;
+    :hasGenre <http://dbpedia.org/resource/Hip_hop_music> ;
+    :isFromCity <http://dbpedia.org/resource/Detroit>,
         <http://dbpedia.org/resource/Michigan> .
 
-<http://dbpedia.org/resource/Bon_Jovi> a ns1:Band ;
+<http://dbpedia.org/resource/Bon_Jovi> a :Artist ;
     rdfs:label "Bon Jovi" ;
-    ns1:genre <http://dbpedia.org/resource/Arena_rock>,
+    :hasGenre <http://dbpedia.org/resource/Arena_rock>,
         <http://dbpedia.org/resource/Glam_metal>,
         <http://dbpedia.org/resource/Hard_rock>,
         <http://dbpedia.org/resource/Pop_rock> ;
-    ns1:hometown <http://dbpedia.org/resource/Sayreville,_New_Jersey> .
+    :isFromCity <http://dbpedia.org/resource/Sayreville,_New_Jersey> .
 
-<http://dbpedia.org/resource/Bryson_Tiller> a ns1:Band,
-        ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Bryson_Tiller> a :Artist,
+        :Artist ;
     rdfs:label "Bryson Tiller" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Louisville,_Kentucky> ;
-    ns1:genre <http://dbpedia.org/resource/Contemporary_R&B>,
+    :isFromCity <http://dbpedia.org/resource/Louisville,_Kentucky> ;
+    :hasGenre <http://dbpedia.org/resource/Contemporary_R&B>,
         <http://dbpedia.org/resource/Hip_hop_music>,
         <http://dbpedia.org/resource/Soul_music> .
 
-<http://dbpedia.org/resource/Charlie_Puth> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Charlie_Puth> a :Artist ;
     rdfs:label "Charlie Puth" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Rumson,_New_Jersey> ;
-    ns1:genre <http://dbpedia.org/resource/Contemporary_R&B>,
+    :isFromCity <http://dbpedia.org/resource/Rumson,_New_Jersey> ;
+    :hasGenre <http://dbpedia.org/resource/Contemporary_R&B>,
         <http://dbpedia.org/resource/Pop_music> .
 
-<http://dbpedia.org/resource/Christian_Nodal> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Christian_Nodal> a :Artist ;
     rdfs:label "Christian Nodal" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Caborca>,
+    :isFromCity <http://dbpedia.org/resource/Caborca>,
         <http://dbpedia.org/resource/México>,
         <http://dbpedia.org/resource/Sonora> ;
-    ns1:genre <http://dbpedia.org/resource/Bolero>,
+    :hasGenre <http://dbpedia.org/resource/Bolero>,
         <http://dbpedia.org/resource/Latin_pop>,
         <http://dbpedia.org/resource/Mariachi>,
         <http://dbpedia.org/resource/Ranchera>,
         <http://dbpedia.org/resource/Regional_Mexican> ;
-    ns1:hometown <http://dbpedia.org/resource/Caborca>,
+    :isFromCity <http://dbpedia.org/resource/Caborca>,
         <http://dbpedia.org/resource/Sonora> .
 
-<http://dbpedia.org/resource/Clean_Bandit> a ns1:Band ;
+<http://dbpedia.org/resource/Clean_Bandit> a :Artist ;
     rdfs:label "Clean Bandit" ;
-    ns1:genre <http://dbpedia.org/resource/Classical_crossover>,
+    :hasGenre <http://dbpedia.org/resource/Classical_crossover>,
         <http://dbpedia.org/resource/Dance-pop>,
         <http://dbpedia.org/resource/Electronic_music>,
         <http://dbpedia.org/resource/Electropop> ;
-    ns1:hometown <http://dbpedia.org/resource/Cambridge> .
+    :isFromCity <http://dbpedia.org/resource/Cambridge> .
 
-<http://dbpedia.org/resource/Coldplay> a ns1:Band ;
+<http://dbpedia.org/resource/Coldplay> a :Artist ;
     rdfs:label "Coldplay" ;
-    ns1:genre <http://dbpedia.org/resource/Alternative_rock>,
+    :hasGenre <http://dbpedia.org/resource/Alternative_rock>,
         <http://dbpedia.org/resource/Pop_music>,
         <http://dbpedia.org/resource/Pop_rock>,
         <http://dbpedia.org/resource/Post-Britpop> ;
-    ns1:hometown <http://dbpedia.org/resource/London> .
+    :isFromCity <http://dbpedia.org/resource/London> .
 
-<http://dbpedia.org/resource/DJ_Snake> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/DJ_Snake> a :Artist ;
     rdfs:label "DJ Snake" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Paris> ;
-    ns1:genre <http://dbpedia.org/resource/Dubstep>,
+    :isFromCity <http://dbpedia.org/resource/Paris> ;
+    :hasGenre <http://dbpedia.org/resource/Dubstep>,
         <http://dbpedia.org/resource/Electronic_dance_music>,
         <http://dbpedia.org/resource/Moombahton>,
         <http://dbpedia.org/resource/Trap_music_(EDM)> ;
-    ns1:hometown <http://dbpedia.org/resource/Bejaia> .
+    :isFromCity <http://dbpedia.org/resource/Bejaia> .
 
-<http://dbpedia.org/resource/DaBaby> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/DaBaby> a :Artist ;
     rdfs:label "DaBaby" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Cleveland,_Ohio> ;
-    ns1:genre <http://dbpedia.org/resource/Hip_hop_music>,
+    :isFromCity <http://dbpedia.org/resource/Cleveland,_Ohio> ;
+    :hasGenre <http://dbpedia.org/resource/Hip_hop_music>,
         <http://dbpedia.org/resource/Trap_music> ;
-    ns1:hometown <http://dbpedia.org/resource/Charlotte,_North_Carolina> .
+    :isFromCity <http://dbpedia.org/resource/Charlotte,_North_Carolina> .
 
-<http://dbpedia.org/resource/Daft_Punk> a ns1:Band ;
+<http://dbpedia.org/resource/Daft_Punk> a :Artist ;
     rdfs:label "Daft Punk" ;
-    ns1:genre <http://dbpedia.org/resource/Dance_music>,
+    :hasGenre <http://dbpedia.org/resource/Dance_music>,
         <http://dbpedia.org/resource/Disco>,
         <http://dbpedia.org/resource/Electronic_music>,
         <http://dbpedia.org/resource/French_house> ;
-    ns1:hometown <http://dbpedia.org/resource/Paris> .
+    :isFromCity <http://dbpedia.org/resource/Paris> .
 
-<http://dbpedia.org/resource/Dalex> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Dalex> a :Artist ;
     rdfs:label "Dalex" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Philadelphia,_Pennsylvania> ;
-    ns1:genre <http://dbpedia.org/resource/Urbano_music> .
+    :isFromCity <http://dbpedia.org/resource/Philadelphia,_Pennsylvania> ;
+    :hasGenre <http://dbpedia.org/resource/Urbano_music> .
 
-<http://dbpedia.org/resource/Doja_Cat> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Doja_Cat> a :Artist ;
     rdfs:label "Doja Cat" ;
-    ns1:birthPlace <http://dbpedia.org/resource/California>,
+    :isFromCity <http://dbpedia.org/resource/California>,
         <http://dbpedia.org/resource/Los_Angeles> ;
-    ns1:genre <http://dbpedia.org/resource/Contemporary_R&B>,
+    :hasGenre <http://dbpedia.org/resource/Contemporary_R&B>,
         <http://dbpedia.org/resource/Hip_hop_music>,
         <http://dbpedia.org/resource/Pop_music> .
 
-<http://dbpedia.org/resource/Don_Omar> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Don_Omar> a :Artist ;
     rdfs:label "Don Omar" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Santurce,_San_Juan,_Puerto_Rico> ;
-    ns1:genre <http://dbpedia.org/resource/Hip_hop_music>,
+    :isFromCity <http://dbpedia.org/resource/Santurce,_San_Juan,_Puerto_Rico> ;
+    :hasGenre <http://dbpedia.org/resource/Hip_hop_music>,
         <http://dbpedia.org/resource/Reggaeton> .
 
-<http://dbpedia.org/resource/Fall_Out_Boy> a ns1:Band ;
+<http://dbpedia.org/resource/Fall_Out_Boy> a :Artist ;
     rdfs:label "Fall Out Boy" ;
-    ns1:genre <http://dbpedia.org/resource/Alternative_rock>,
+    :hasGenre <http://dbpedia.org/resource/Alternative_rock>,
         <http://dbpedia.org/resource/Emo>,
         <http://dbpedia.org/resource/Emo_pop>,
         <http://dbpedia.org/resource/Pop_music>,
         <http://dbpedia.org/resource/Pop_punk>,
         <http://dbpedia.org/resource/Pop_rock> ;
-    ns1:hometown <http://dbpedia.org/resource/Wilmette,_Illinois> .
+    :isFromCity <http://dbpedia.org/resource/Wilmette,_Illinois> .
 
-<http://dbpedia.org/resource/Farruko> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Farruko> a :Artist ;
     rdfs:label "Farruko" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Bayamón,_Puerto_Rico> ;
-    ns1:genre <http://dbpedia.org/resource/Dembow>,
+    :isFromCity <http://dbpedia.org/resource/Bayamón,_Puerto_Rico> ;
+    :hasGenre <http://dbpedia.org/resource/Dembow>,
         <http://dbpedia.org/resource/Latin_trap>,
         <http://dbpedia.org/resource/Reggae>,
         <http://dbpedia.org/resource/Reggaeton>,
         <http://dbpedia.org/resource/Spanish_dancehall> .
 
-<http://dbpedia.org/resource/Felix_Jaehn> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Felix_Jaehn> a :Artist ;
     rdfs:label "Felix Jaehn" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Hamburg> ;
-    ns1:genre <http://dbpedia.org/resource/Deep_house>,
+    :isFromCity <http://dbpedia.org/resource/Hamburg> ;
+    :hasGenre <http://dbpedia.org/resource/Deep_house>,
         <http://dbpedia.org/resource/Electronic_dance_music>,
         <http://dbpedia.org/resource/Future_house>,
         <http://dbpedia.org/resource/Tropical_house> .
 
-<http://dbpedia.org/resource/Fifth_Harmony> a ns1:Band ;
+<http://dbpedia.org/resource/Fifth_Harmony> a :Artist ;
     rdfs:label "Fifth Harmony" ;
-    ns1:genre <http://dbpedia.org/resource/Contemporary_R&B>,
+    :hasGenre <http://dbpedia.org/resource/Contemporary_R&B>,
         <http://dbpedia.org/resource/Pop_music> ;
-    ns1:hometown <http://dbpedia.org/resource/Florida>,
+    :isFromCity <http://dbpedia.org/resource/Florida>,
         <http://dbpedia.org/resource/Miami> .
 
-<http://dbpedia.org/resource/Five_Finger_Death_Punch> a ns1:Band ;
+<http://dbpedia.org/resource/Five_Finger_Death_Punch> a :Artist ;
     rdfs:label "Five Finger Death Punch" ;
-    ns1:genre <http://dbpedia.org/resource/Alternative_metal>,
+    :hasGenre <http://dbpedia.org/resource/Alternative_metal>,
         <http://dbpedia.org/resource/Groove_metal>,
         <http://dbpedia.org/resource/Hard_rock>,
         <http://dbpedia.org/resource/Heavy_metal_music>,
         <http://dbpedia.org/resource/Thrash_metal> ;
-    ns1:hometown <http://dbpedia.org/resource/Las_Vegas> .
+    :isFromCity <http://dbpedia.org/resource/Las_Vegas> .
 
-<http://dbpedia.org/resource/Fleetwood_Mac> a ns1:Band ;
+<http://dbpedia.org/resource/Fleetwood_Mac> a :Artist ;
     rdfs:label "Fleetwood Mac" ;
-    ns1:genre <http://dbpedia.org/resource/Art_pop>,
+    :hasGenre <http://dbpedia.org/resource/Art_pop>,
         <http://dbpedia.org/resource/Blues_rock>,
         <http://dbpedia.org/resource/British_blues>,
         <http://dbpedia.org/resource/Folk_rock>,
         <http://dbpedia.org/resource/Pop_rock>,
         <http://dbpedia.org/resource/Rock_music>,
         <http://dbpedia.org/resource/Soft_rock> ;
-    ns1:hometown <http://dbpedia.org/resource/London> .
+    :isFromCity <http://dbpedia.org/resource/London> .
 
-<http://dbpedia.org/resource/Flo_Rida> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Flo_Rida> a :Artist ;
     rdfs:label "Flo Rida" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Miami_Gardens,_Florida> ;
-    ns1:genre <http://dbpedia.org/resource/Hip_house>,
+    :isFromCity <http://dbpedia.org/resource/Miami_Gardens,_Florida> ;
+    :hasGenre <http://dbpedia.org/resource/Hip_house>,
         <http://dbpedia.org/resource/Pop_rap>,
         <http://dbpedia.org/resource/Southern_hip_hop> .
 
-<http://dbpedia.org/resource/Florida_Georgia_Line> a ns1:Band ;
+<http://dbpedia.org/resource/Florida_Georgia_Line> a :Artist ;
     rdfs:label "Florida Georgia Line" ;
-    ns1:genre <http://dbpedia.org/resource/Bro-country>,
+    :hasGenre <http://dbpedia.org/resource/Bro-country>,
         <http://dbpedia.org/resource/Country_music>,
         <http://dbpedia.org/resource/Country_pop>,
         <http://dbpedia.org/resource/Country_rock> ;
-    ns1:hometown <http://dbpedia.org/resource/Nashville,_Tennessee> .
+    :isFromCity <http://dbpedia.org/resource/Nashville,_Tennessee> .
 
-<http://dbpedia.org/resource/Foo_Fighters> a ns1:Band ;
+<http://dbpedia.org/resource/Foo_Fighters> a :Artist ;
     rdfs:label "Foo Fighters" ;
-    ns1:genre <http://dbpedia.org/resource/Alternative_rock>,
+    :hasGenre <http://dbpedia.org/resource/Alternative_rock>,
         <http://dbpedia.org/resource/Grunge>,
         <http://dbpedia.org/resource/Hard_rock>,
         <http://dbpedia.org/resource/Pop_rock>,
         <http://dbpedia.org/resource/Post-grunge> ;
-    ns1:hometown <http://dbpedia.org/resource/Seattle>,
+    :isFromCity <http://dbpedia.org/resource/Seattle>,
         <http://dbpedia.org/resource/Washington_(state)> .
 
-<http://dbpedia.org/resource/French_Montana> a ns1:Band,
-        ns1:MusicalArtist ;
+<http://dbpedia.org/resource/French_Montana> a :Artist,
+        :Artist ;
     rdfs:label "French Montana" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Casablanca>,
+    :isFromCity <http://dbpedia.org/resource/Casablanca>,
         <http://dbpedia.org/resource/Morocco> ;
-    ns1:genre <http://dbpedia.org/resource/Hip_hop_music> ;
-    ns1:hometown <http://dbpedia.org/resource/New_York_City>,
+    :hasGenre <http://dbpedia.org/resource/Hip_hop_music> ;
+    :isFromCity <http://dbpedia.org/resource/New_York_City>,
         <http://dbpedia.org/resource/United_States> .
 
-<http://dbpedia.org/resource/G-Eazy> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/G-Eazy> a :Artist ;
     rdfs:label "G-Eazy" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Oakland,_California> ;
-    ns1:genre <http://dbpedia.org/resource/Hip_hop_music> .
+    :isFromCity <http://dbpedia.org/resource/Oakland,_California> ;
+    :hasGenre <http://dbpedia.org/resource/Hip_hop_music> .
 
-<http://dbpedia.org/resource/Galantis> a ns1:Band ;
+<http://dbpedia.org/resource/Galantis> a :Artist ;
     rdfs:label "Galantis" ;
-    ns1:genre <http://dbpedia.org/resource/Big_room_house>,
+    :hasGenre <http://dbpedia.org/resource/Big_room_house>,
         <http://dbpedia.org/resource/Deep_house>,
         <http://dbpedia.org/resource/Electro_house>,
         <http://dbpedia.org/resource/Electropop>,
         <http://dbpedia.org/resource/Future_house>,
         <http://dbpedia.org/resource/Progressive_house> ;
-    ns1:hometown <http://dbpedia.org/resource/Stockholm> .
+    :isFromCity <http://dbpedia.org/resource/Stockholm> .
 
-<http://dbpedia.org/resource/Glass_Animals> a ns1:Band ;
+<http://dbpedia.org/resource/Glass_Animals> a :Artist ;
     rdfs:label "Glass Animals" ;
-    ns1:genre <http://dbpedia.org/resource/Alternative_pop>,
+    :hasGenre <http://dbpedia.org/resource/Alternative_pop>,
         <http://dbpedia.org/resource/Electronic_rock>,
         <http://dbpedia.org/resource/Indie_pop>,
         <http://dbpedia.org/resource/Indie_rock>,
         <http://dbpedia.org/resource/Psychedelic_pop> ;
-    ns1:hometown <http://dbpedia.org/resource/Oxford> .
+    :isFromCity <http://dbpedia.org/resource/Oxford> .
 
-<http://dbpedia.org/resource/Guns_N'_Roses> a ns1:Band ;
+<http://dbpedia.org/resource/Guns_N'_Roses> a :Artist ;
     rdfs:label "Guns N' Roses" ;
-    ns1:genre <http://dbpedia.org/resource/Hard_rock>,
+    :hasGenre <http://dbpedia.org/resource/Hard_rock>,
         <http://dbpedia.org/resource/Heavy_metal_music> ;
-    ns1:hometown <http://dbpedia.org/resource/Los_Angeles> .
+    :isFromCity <http://dbpedia.org/resource/Los_Angeles> .
 
-<http://dbpedia.org/resource/Imagine_Dragons> a ns1:Band ;
+<http://dbpedia.org/resource/Imagine_Dragons> a :Artist ;
     rdfs:label "Imagine Dragons" ;
-    ns1:genre <http://dbpedia.org/resource/Alternative_rock>,
+    :hasGenre <http://dbpedia.org/resource/Alternative_rock>,
         <http://dbpedia.org/resource/Arena_rock>,
         <http://dbpedia.org/resource/Electropop>,
         <http://dbpedia.org/resource/Indie_pop>,
         <http://dbpedia.org/resource/Pop_music>,
         <http://dbpedia.org/resource/Pop_rock> ;
-    ns1:hometown <http://dbpedia.org/resource/Las_Vegas> .
+    :isFromCity <http://dbpedia.org/resource/Las_Vegas> .
 
-<http://dbpedia.org/resource/Jack_Harlow> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Jack_Harlow> a :Artist ;
     rdfs:label "Jack Harlow" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Louisville,_Kentucky> ;
-    ns1:genre <http://dbpedia.org/resource/Hip_hop_music>,
+    :isFromCity <http://dbpedia.org/resource/Louisville,_Kentucky> ;
+    :hasGenre <http://dbpedia.org/resource/Hip_hop_music>,
         <http://dbpedia.org/resource/Pop_rap> .
 
-<http://dbpedia.org/resource/James_Arthur> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/James_Arthur> a :Artist ;
     rdfs:label "James Arthur" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Middlesbrough>,
+    :isFromCity <http://dbpedia.org/resource/Middlesbrough>,
         <http://dbpedia.org/resource/North_Yorkshire> ;
-    ns1:genre <http://dbpedia.org/resource/Contemporary_R&B>,
+    :hasGenre <http://dbpedia.org/resource/Contemporary_R&B>,
         <http://dbpedia.org/resource/Pop_music>,
         <http://dbpedia.org/resource/Soul_music> .
 
-<http://dbpedia.org/resource/Jhay_Cortez> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Jhay_Cortez> a :Artist ;
     rdfs:label "Jhay Cortez" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Puerto_Rico>,
+    :isFromCity <http://dbpedia.org/resource/Puerto_Rico>,
         <http://dbpedia.org/resource/Río_Piedras,_Puerto_Rico>,
         <http://dbpedia.org/resource/San_Juan,_Puerto_Rico> ;
-    ns1:genre <http://dbpedia.org/resource/Contemporary_R&B>,
+    :hasGenre <http://dbpedia.org/resource/Contemporary_R&B>,
         <http://dbpedia.org/resource/Latin_trap>,
         <http://dbpedia.org/resource/Reggaeton> .
 
-<http://dbpedia.org/resource/Jonas_Blue> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Jonas_Blue> a :Artist ;
     rdfs:label "Jonas Blue" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Chelmsford>,
+    :isFromCity <http://dbpedia.org/resource/Chelmsford>,
         <http://dbpedia.org/resource/Essex> ;
-    ns1:genre <http://dbpedia.org/resource/Dance-pop>,
+    :hasGenre <http://dbpedia.org/resource/Dance-pop>,
         <http://dbpedia.org/resource/Electronic_dance_music>,
         <http://dbpedia.org/resource/Tropical_house> ;
-    ns1:hometown <http://dbpedia.org/resource/London> .
+    :isFromCity <http://dbpedia.org/resource/London> .
 
-<http://dbpedia.org/resource/Jonas_Brothers> a ns1:Band ;
+<http://dbpedia.org/resource/Jonas_Brothers> a :Artist ;
     rdfs:label "Jonas Brothers" ;
-    ns1:genre <http://dbpedia.org/resource/Pop_punk>,
+    :hasGenre <http://dbpedia.org/resource/Pop_punk>,
         <http://dbpedia.org/resource/Pop_rock>,
         <http://dbpedia.org/resource/Power_pop>,
         <http://dbpedia.org/resource/Rock_music> ;
-    ns1:hometown <http://dbpedia.org/resource/Wyckoff,_New_Jersey> .
+    :isFromCity <http://dbpedia.org/resource/Wyckoff,_New_Jersey> .
 
-<http://dbpedia.org/resource/Julia_Michaels> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Julia_Michaels> a :Artist ;
     rdfs:label "Julia Michaels" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Davenport,_Iowa> ;
-    ns1:genre <http://dbpedia.org/resource/Contemporary_R&B>,
+    :isFromCity <http://dbpedia.org/resource/Davenport,_Iowa> ;
+    :hasGenre <http://dbpedia.org/resource/Contemporary_R&B>,
         <http://dbpedia.org/resource/Electronic_dance_music>,
         <http://dbpedia.org/resource/Pop_music> ;
-    ns1:hometown <http://dbpedia.org/resource/Santa_Clarita,_California> .
+    :isFromCity <http://dbpedia.org/resource/Santa_Clarita,_California> .
 
-<http://dbpedia.org/resource/Justin_Quiles> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Justin_Quiles> a :Artist ;
     rdfs:label "Justin Quiles" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Bridgeport,_Connecticut> ;
-    ns1:genre <http://dbpedia.org/resource/Latin_music_(genre)>,
+    :isFromCity <http://dbpedia.org/resource/Bridgeport,_Connecticut> ;
+    :hasGenre <http://dbpedia.org/resource/Latin_music_(genre)>,
         <http://dbpedia.org/resource/Reggaeton> .
 
-<http://dbpedia.org/resource/Kane_Brown> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Kane_Brown> a :Artist ;
     rdfs:label "Kane Brown" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Chattanooga,_Tennessee> ;
-    ns1:genre <http://dbpedia.org/resource/Contemporary_R&B>,
+    :isFromCity <http://dbpedia.org/resource/Chattanooga,_Tennessee> ;
+    :hasGenre <http://dbpedia.org/resource/Contemporary_R&B>,
         <http://dbpedia.org/resource/Country_music>,
         <http://dbpedia.org/resource/Country_pop> ;
-    ns1:hometown <http://dbpedia.org/resource/Nashville,_Tennessee> .
+    :isFromCity <http://dbpedia.org/resource/Nashville,_Tennessee> .
 
-<http://dbpedia.org/resource/Kehlani> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Kehlani> a :Artist ;
     rdfs:label "Kehlani" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Oakland,_California> ;
-    ns1:genre <http://dbpedia.org/resource/Contemporary_R&B>,
+    :isFromCity <http://dbpedia.org/resource/Oakland,_California> ;
+    :hasGenre <http://dbpedia.org/resource/Contemporary_R&B>,
         <http://dbpedia.org/resource/Hip_hop_music>,
         <http://dbpedia.org/resource/Neo_soul>,
         <http://dbpedia.org/resource/Pop_music> .
 
-<http://dbpedia.org/resource/Kings_of_Leon> a ns1:Band ;
+<http://dbpedia.org/resource/Kings_of_Leon> a :Artist ;
     rdfs:label "Kings of Leon" ;
-    ns1:genre <http://dbpedia.org/resource/Alternative_rock>,
+    :hasGenre <http://dbpedia.org/resource/Alternative_rock>,
         <http://dbpedia.org/resource/Arena_rock>,
         <http://dbpedia.org/resource/Garage_rock>,
         <http://dbpedia.org/resource/Southern_rock> ;
-    ns1:hometown <http://dbpedia.org/resource/Mt._Juliet,_Tennessee> .
+    :isFromCity <http://dbpedia.org/resource/Mt._Juliet,_Tennessee> .
 
-<http://dbpedia.org/resource/Kodak_Black> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Kodak_Black> a :Artist ;
     rdfs:label "Kodak Black" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Pompano_Beach,_Florida> ;
-    ns1:genre <http://dbpedia.org/resource/Hip_hop_music>,
+    :isFromCity <http://dbpedia.org/resource/Pompano_Beach,_Florida> ;
+    :hasGenre <http://dbpedia.org/resource/Hip_hop_music>,
         <http://dbpedia.org/resource/Mumble_rap>,
         <http://dbpedia.org/resource/Trap_music> .
 
-<http://dbpedia.org/resource/Kygo> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Kygo> a :Artist ;
     rdfs:label "Kygo" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Singapore> ;
-    ns1:genre <http://dbpedia.org/resource/Dance-pop>,
+    :isFromCity <http://dbpedia.org/resource/Singapore> ;
+    :hasGenre <http://dbpedia.org/resource/Dance-pop>,
         <http://dbpedia.org/resource/Deep_house>,
         <http://dbpedia.org/resource/Progressive_house>,
         <http://dbpedia.org/resource/Tropical_house> ;
-    ns1:hometown <http://dbpedia.org/resource/Bergen>,
+    :isFromCity <http://dbpedia.org/resource/Bergen>,
         <http://dbpedia.org/resource/Norway> .
 
-<http://dbpedia.org/resource/Lauv> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Lauv> a :Artist ;
     rdfs:label "Lauv" ;
-    ns1:birthPlace <http://dbpedia.org/resource/California>,
+    :isFromCity <http://dbpedia.org/resource/California>,
         <http://dbpedia.org/resource/San_Francisco> ;
-    ns1:genre <http://dbpedia.org/resource/Alt-pop>,
+    :hasGenre <http://dbpedia.org/resource/Alt-pop>,
         <http://dbpedia.org/resource/Contemporary_R&B>,
         <http://dbpedia.org/resource/Electropop>,
         <http://dbpedia.org/resource/Pop_music> .
 
-<http://dbpedia.org/resource/Lewis_Capaldi> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Lewis_Capaldi> a :Artist ;
     rdfs:label "Lewis Capaldi" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Glasgow> ;
-    ns1:genre <http://dbpedia.org/resource/Blue-eyed_soul>,
+    :isFromCity <http://dbpedia.org/resource/Glasgow> ;
+    :hasGenre <http://dbpedia.org/resource/Blue-eyed_soul>,
         <http://dbpedia.org/resource/Pop_music> .
 
-<http://dbpedia.org/resource/Lil_Durk> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Lil_Durk> a :Artist ;
     rdfs:label "Lil Durk" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Chicago,_Illinois> ;
-    ns1:genre <http://dbpedia.org/resource/Drill_music>,
+    :isFromCity <http://dbpedia.org/resource/Chicago,_Illinois> ;
+    :hasGenre <http://dbpedia.org/resource/Drill_music>,
         <http://dbpedia.org/resource/Hip_Hop_Music>,
         <http://dbpedia.org/resource/Trap_music> .
 
-<http://dbpedia.org/resource/Lil_Tecca> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Lil_Tecca> a :Artist ;
     rdfs:label "Lil Tecca" ;
-    ns1:birthPlace <http://dbpedia.org/resource/New_York_City>,
+    :isFromCity <http://dbpedia.org/resource/New_York_City>,
         <http://dbpedia.org/resource/Queens> ;
-    ns1:genre <http://dbpedia.org/resource/Hip_hop_music> ;
-    ns1:hometown <http://dbpedia.org/resource/Springfield_Gardens,_New_York> .
+    :hasGenre <http://dbpedia.org/resource/Hip_hop_music> ;
+    :isFromCity <http://dbpedia.org/resource/Springfield_Gardens,_New_York> .
 
-<http://dbpedia.org/resource/Lil_Tjay> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Lil_Tjay> a :Artist ;
     rdfs:label "Lil Tjay" ;
-    ns1:birthPlace <http://dbpedia.org/resource/New_York_City> ;
-    ns1:genre <http://dbpedia.org/resource/Contemporary_R&B>,
+    :isFromCity <http://dbpedia.org/resource/New_York_City> ;
+    :hasGenre <http://dbpedia.org/resource/Contemporary_R&B>,
         <http://dbpedia.org/resource/Drill_music>,
         <http://dbpedia.org/resource/Hip_hop_music>,
         <http://dbpedia.org/resource/Trap_music> .
 
-<http://dbpedia.org/resource/Little_Mix> a ns1:Band ;
+<http://dbpedia.org/resource/Little_Mix> a :Artist ;
     rdfs:label "Little Mix" ;
-    ns1:genre <http://dbpedia.org/resource/Contemporary_R&B>,
+    :hasGenre <http://dbpedia.org/resource/Contemporary_R&B>,
         <http://dbpedia.org/resource/Dance-pop>,
         <http://dbpedia.org/resource/Pop_music> ;
-    ns1:hometown <http://dbpedia.org/resource/London> .
+    :isFromCity <http://dbpedia.org/resource/London> .
 
-<http://dbpedia.org/resource/Luke_Combs> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Luke_Combs> a :Artist ;
     rdfs:label "Luke Combs" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Charlotte,_North_Carolina> ;
-    ns1:genre <http://dbpedia.org/resource/Country_music> .
+    :isFromCity <http://dbpedia.org/resource/Charlotte,_North_Carolina> ;
+    :hasGenre <http://dbpedia.org/resource/Country_music> .
 
-<http://dbpedia.org/resource/Macklemore_&_Ryan_Lewis> a ns1:Band ;
+<http://dbpedia.org/resource/Macklemore_&_Ryan_Lewis> a :Artist ;
     rdfs:label "Macklemore & Ryan Lewis" ;
-    ns1:genre <http://dbpedia.org/resource/Alternative_hip_hop>,
+    :hasGenre <http://dbpedia.org/resource/Alternative_hip_hop>,
         <http://dbpedia.org/resource/Hip_hop_music>,
         <http://dbpedia.org/resource/Pop_rap>,
         <http://dbpedia.org/resource/Progressive_rap> ;
-    ns1:hometown <http://dbpedia.org/resource/Seattle> .
+    :isFromCity <http://dbpedia.org/resource/Seattle> .
 
-<http://dbpedia.org/resource/Major_Lazer> a ns1:Band ;
+<http://dbpedia.org/resource/Major_Lazer> a :Artist ;
     rdfs:label "Major Lazer" ;
-    ns1:genre <http://dbpedia.org/resource/Dancehall>,
+    :hasGenre <http://dbpedia.org/resource/Dancehall>,
         <http://dbpedia.org/resource/Electro_house>,
         <http://dbpedia.org/resource/Electronic_dance_music>,
         <http://dbpedia.org/resource/Hip_hop_music>,
@@ -515,227 +618,227 @@
         <http://dbpedia.org/resource/Rocksteady>,
         <http://dbpedia.org/resource/Soca_music>,
         <http://dbpedia.org/resource/Trap_music_(EDM)> ;
-    ns1:hometown <http://dbpedia.org/resource/Miami,_Florida> .
+    :isFromCity <http://dbpedia.org/resource/Miami,_Florida> .
 
-<http://dbpedia.org/resource/Manuel_Turizo> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Manuel_Turizo> a :Artist ;
     rdfs:label "Manuel Turizo" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Montería> ;
-    ns1:genre <http://dbpedia.org/resource/Reggaeton> .
+    :isFromCity <http://dbpedia.org/resource/Montería> ;
+    :hasGenre <http://dbpedia.org/resource/Reggaeton> .
 
-<http://dbpedia.org/resource/Maná> a ns1:Band ;
+<http://dbpedia.org/resource/Maná> a :Artist ;
     rdfs:label "Maná" ;
-    ns1:genre <http://dbpedia.org/resource/Latin_pop>,
+    :hasGenre <http://dbpedia.org/resource/Latin_pop>,
         <http://dbpedia.org/resource/Rock_en_español> ;
-    ns1:hometown <http://dbpedia.org/resource/Guadalajara> .
+    :isFromCity <http://dbpedia.org/resource/Guadalajara> .
 
-<http://dbpedia.org/resource/Maroon_5> a ns1:Band ;
+<http://dbpedia.org/resource/Maroon_5> a :Artist ;
     rdfs:label "Maroon 5" ;
-    ns1:genre <http://dbpedia.org/resource/Blue-eyed_soul>,
+    :hasGenre <http://dbpedia.org/resource/Blue-eyed_soul>,
         <http://dbpedia.org/resource/Dance-pop>,
         <http://dbpedia.org/resource/Funk_rock>,
         <http://dbpedia.org/resource/Neo_soul>,
         <http://dbpedia.org/resource/Pop_music>,
         <http://dbpedia.org/resource/Pop_rock>,
         <http://dbpedia.org/resource/Soft_rock> ;
-    ns1:hometown <http://dbpedia.org/resource/California>,
+    :isFromCity <http://dbpedia.org/resource/California>,
         <http://dbpedia.org/resource/Los_Angeles> .
 
-<http://dbpedia.org/resource/Marshmello> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Marshmello> a :Artist ;
     rdfs:label "Marshmello" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Pennsylvania>,
+    :isFromCity <http://dbpedia.org/resource/Pennsylvania>,
         <http://dbpedia.org/resource/Philadelphia> ;
-    ns1:genre <http://dbpedia.org/resource/Electronic_music>,
+    :hasGenre <http://dbpedia.org/resource/Electronic_music>,
         <http://dbpedia.org/resource/Future_bass>,
         <http://dbpedia.org/resource/Progressive_house>,
         <http://dbpedia.org/resource/Trap_music_(EDM)> .
 
-<http://dbpedia.org/resource/Martin_Garrix> a ns1:Band,
-        ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Martin_Garrix> a :Artist,
+        :Artist ;
     rdfs:label "Martin Garrix" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Amstelveen>,
+    :isFromCity <http://dbpedia.org/resource/Amstelveen>,
         <http://dbpedia.org/resource/Netherlands> ;
-    ns1:genre <http://dbpedia.org/resource/Big_room_house>,
+    :hasGenre <http://dbpedia.org/resource/Big_room_house>,
         <http://dbpedia.org/resource/Deep_house>,
         <http://dbpedia.org/resource/Dutch_house>,
         <http://dbpedia.org/resource/Electro_house>,
         <http://dbpedia.org/resource/Future_bass>,
         <http://dbpedia.org/resource/Progressive_house> .
 
-<http://dbpedia.org/resource/Metallica> a ns1:Band ;
+<http://dbpedia.org/resource/Metallica> a :Artist ;
     rdfs:label "Metallica" ;
-    ns1:genre <http://dbpedia.org/resource/Hard_rock>,
+    :hasGenre <http://dbpedia.org/resource/Hard_rock>,
         <http://dbpedia.org/resource/Heavy_metal_music>,
         <http://dbpedia.org/resource/Speed_metal>,
         <http://dbpedia.org/resource/Thrash_metal> ;
-    ns1:hometown <http://dbpedia.org/resource/California>,
+    :isFromCity <http://dbpedia.org/resource/California>,
         <http://dbpedia.org/resource/Los_Angeles> .
 
-<http://dbpedia.org/resource/Metro_Boomin> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Metro_Boomin> a :Artist ;
     rdfs:label "Metro Boomin" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Missouri>,
+    :isFromCity <http://dbpedia.org/resource/Missouri>,
         <http://dbpedia.org/resource/St._Louis> ;
-    ns1:genre <http://dbpedia.org/resource/Contemporary_R&B>,
+    :hasGenre <http://dbpedia.org/resource/Contemporary_R&B>,
         <http://dbpedia.org/resource/Hip_hop_music>,
         <http://dbpedia.org/resource/Trap_music> ;
-    ns1:hometown <http://dbpedia.org/resource/Atlanta> .
+    :isFromCity <http://dbpedia.org/resource/Atlanta> .
 
-<http://dbpedia.org/resource/Migos> a ns1:Band,
-        ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Migos> a :Artist,
+        :Artist ;
     rdfs:label "Migos" ;
-    ns1:genre <http://dbpedia.org/resource/Hip_hop_music>,
+    :hasGenre <http://dbpedia.org/resource/Hip_hop_music>,
         <http://dbpedia.org/resource/Trap_music> ;
-    ns1:hometown <http://dbpedia.org/resource/Lawrenceville,_Georgia> .
+    :isFromCity <http://dbpedia.org/resource/Lawrenceville,_Georgia> .
 
-<http://dbpedia.org/resource/Morgan_Wallen> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Morgan_Wallen> a :Artist ;
     rdfs:label "Morgan Wallen" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Sneedville,_Tennessee> ;
-    ns1:genre <http://dbpedia.org/resource/Bro-country>,
+    :isFromCity <http://dbpedia.org/resource/Sneedville,_Tennessee> ;
+    :hasGenre <http://dbpedia.org/resource/Bro-country>,
         <http://dbpedia.org/resource/Country_music>,
         <http://dbpedia.org/resource/Country_pop> ;
-    ns1:hometown <http://dbpedia.org/resource/Corryton,_Tennessee> .
+    :isFromCity <http://dbpedia.org/resource/Corryton,_Tennessee> .
 
-<http://dbpedia.org/resource/Mumford_&_Sons> a ns1:Band ;
+<http://dbpedia.org/resource/Mumford_&_Sons> a :Artist ;
     rdfs:label "Mumford & Sons" ;
-    ns1:genre <http://dbpedia.org/resource/Alternative_rock>,
+    :hasGenre <http://dbpedia.org/resource/Alternative_rock>,
         <http://dbpedia.org/resource/Folk_rock>,
         <http://dbpedia.org/resource/Indie_folk> ;
-    ns1:hometown <http://dbpedia.org/resource/London> .
+    :isFromCity <http://dbpedia.org/resource/London> .
 
-<http://dbpedia.org/resource/My_Chemical_Romance> a ns1:Band ;
+<http://dbpedia.org/resource/My_Chemical_Romance> a :Artist ;
     rdfs:label "My Chemical Romance" ;
-    ns1:genre <http://dbpedia.org/resource/Alternative_rock>,
+    :hasGenre <http://dbpedia.org/resource/Alternative_rock>,
         <http://dbpedia.org/resource/Emo>,
         <http://dbpedia.org/resource/Hard_rock>,
         <http://dbpedia.org/resource/Pop_punk>,
         <http://dbpedia.org/resource/Post-hardcore>,
         <http://dbpedia.org/resource/Punk_rock> ;
-    ns1:hometown <http://dbpedia.org/resource/Newark,_New_Jersey> .
+    :isFromCity <http://dbpedia.org/resource/Newark,_New_Jersey> .
 
-<http://dbpedia.org/resource/Myke_Towers> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Myke_Towers> a :Artist ;
     rdfs:label "Myke Towers" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Río_Piedras,_Puerto_Rico> ;
-    ns1:genre <http://dbpedia.org/resource/Hip_hop_music>,
+    :isFromCity <http://dbpedia.org/resource/Río_Piedras,_Puerto_Rico> ;
+    :hasGenre <http://dbpedia.org/resource/Hip_hop_music>,
         <http://dbpedia.org/resource/Latin_trap>,
         <http://dbpedia.org/resource/Reggaeton> .
 
-<http://dbpedia.org/resource/Niall_Horan> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Niall_Horan> a :Artist ;
     rdfs:label "Niall Horan" ;
-    ns1:birthPlace <http://dbpedia.org/resource/County_Westmeath>,
+    :isFromCity <http://dbpedia.org/resource/County_Westmeath>,
         <http://dbpedia.org/resource/Mullingar> ;
-    ns1:genre <http://dbpedia.org/resource/Folk-pop>,
+    :hasGenre <http://dbpedia.org/resource/Folk-pop>,
         <http://dbpedia.org/resource/Pop_music>,
         <http://dbpedia.org/resource/Pop_rock>,
         <http://dbpedia.org/resource/Soft_rock> .
 
-<http://dbpedia.org/resource/Nickelback> a ns1:Band ;
+<http://dbpedia.org/resource/Nickelback> a :Artist ;
     rdfs:label "Nickelback" ;
-    ns1:genre <http://dbpedia.org/resource/Alternative_metal>,
+    :hasGenre <http://dbpedia.org/resource/Alternative_metal>,
         <http://dbpedia.org/resource/Alternative_rock>,
         <http://dbpedia.org/resource/Hard_rock>,
         <http://dbpedia.org/resource/Pop_rock>,
         <http://dbpedia.org/resource/Post-grunge> ;
-    ns1:hometown <http://dbpedia.org/resource/Canada>,
+    :isFromCity <http://dbpedia.org/resource/Canada>,
         <http://dbpedia.org/resource/Hanna,_Alberta> .
 
-<http://dbpedia.org/resource/Nicky_Jam> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Nicky_Jam> a :Artist ;
     rdfs:label "Nicky Jam" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Lawrence,_Massachusetts> ;
-    ns1:genre <http://dbpedia.org/resource/Latin_trap>,
+    :isFromCity <http://dbpedia.org/resource/Lawrence,_Massachusetts> ;
+    :hasGenre <http://dbpedia.org/resource/Latin_trap>,
         <http://dbpedia.org/resource/Reggaeton> .
 
-<http://dbpedia.org/resource/OneRepublic> a ns1:Band ;
+<http://dbpedia.org/resource/OneRepublic> a :Artist ;
     rdfs:label "OneRepublic" ;
-    ns1:genre <http://dbpedia.org/resource/Alternative_rock>,
+    :hasGenre <http://dbpedia.org/resource/Alternative_rock>,
         <http://dbpedia.org/resource/Pop_music>,
         <http://dbpedia.org/resource/Pop_rock> ;
-    ns1:hometown <http://dbpedia.org/resource/Colorado_Springs,_Colorado> .
+    :isFromCity <http://dbpedia.org/resource/Colorado_Springs,_Colorado> .
 
-<http://dbpedia.org/resource/Paramore> a ns1:Band ;
+<http://dbpedia.org/resource/Paramore> a :Artist ;
     rdfs:label "Paramore" ;
-    ns1:genre <http://dbpedia.org/resource/Alternative_rock>,
+    :hasGenre <http://dbpedia.org/resource/Alternative_rock>,
         <http://dbpedia.org/resource/Emo>,
         <http://dbpedia.org/resource/New_wave_music>,
         <http://dbpedia.org/resource/Pop_punk>,
         <http://dbpedia.org/resource/Pop_rock>,
         <http://dbpedia.org/resource/Power_pop> ;
-    ns1:hometown <http://dbpedia.org/resource/Franklin,_Tennessee> .
+    :isFromCity <http://dbpedia.org/resource/Franklin,_Tennessee> .
 
-<http://dbpedia.org/resource/Piso_21> a ns1:Band ;
+<http://dbpedia.org/resource/Piso_21> a :Artist ;
     rdfs:label "Piso 21" ;
-    ns1:genre <http://dbpedia.org/resource/Latin_pop>,
+    :hasGenre <http://dbpedia.org/resource/Latin_pop>,
         <http://dbpedia.org/resource/Reggaeton> ;
-    ns1:hometown <http://dbpedia.org/resource/Colombia>,
+    :isFromCity <http://dbpedia.org/resource/Colombia>,
         <http://dbpedia.org/resource/Medellín> .
 
-<http://dbpedia.org/resource/Playboi_Carti> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Playboi_Carti> a :Artist ;
     rdfs:label "Playboi Carti" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Riverdale,_Georgia> ;
-    ns1:genre <http://dbpedia.org/resource/Alternative_hip_hop>,
+    :isFromCity <http://dbpedia.org/resource/Riverdale,_Georgia> ;
+    :hasGenre <http://dbpedia.org/resource/Alternative_hip_hop>,
         <http://dbpedia.org/resource/Cloud_rap>,
         <http://dbpedia.org/resource/Hip_hop_music>,
         <http://dbpedia.org/resource/Plugg_music>,
         <http://dbpedia.org/resource/Punk_rap>,
         <http://dbpedia.org/resource/Trap_music> .
 
-<http://dbpedia.org/resource/Polo_G> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Polo_G> a :Artist ;
     rdfs:label "Polo G" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Chicago>,
+    :isFromCity <http://dbpedia.org/resource/Chicago>,
         <http://dbpedia.org/resource/Illinois>,
         <http://dbpedia.org/resource/Old_Town,_Chicago> ;
-    ns1:genre <http://dbpedia.org/resource/Conscious_hip_hop>,
+    :hasGenre <http://dbpedia.org/resource/Conscious_hip_hop>,
         <http://dbpedia.org/resource/Drill_music>,
         <http://dbpedia.org/resource/Hip_hop_music>,
         <http://dbpedia.org/resource/Trap_music> .
 
-<http://dbpedia.org/resource/Rae_Sremmurd> a ns1:Band,
-        ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Rae_Sremmurd> a :Artist,
+        :Artist ;
     rdfs:label "Rae Sremmurd" ;
-    ns1:genre <http://dbpedia.org/resource/Hip_hop_music>,
+    :hasGenre <http://dbpedia.org/resource/Hip_hop_music>,
         <http://dbpedia.org/resource/Trap_music_(hip_hop)> ;
-    ns1:hometown <http://dbpedia.org/resource/Tupelo,_Mississippi> .
+    :isFromCity <http://dbpedia.org/resource/Tupelo,_Mississippi> .
 
-<http://dbpedia.org/resource/Rammstein> a ns1:Band ;
+<http://dbpedia.org/resource/Rammstein> a :Artist ;
     rdfs:label "Rammstein" ;
-    ns1:genre <http://dbpedia.org/resource/Industrial_metal>,
+    :hasGenre <http://dbpedia.org/resource/Industrial_metal>,
         <http://dbpedia.org/resource/Neue_Deutsche_Härte> ;
-    ns1:hometown <http://dbpedia.org/resource/Berlin> .
+    :isFromCity <http://dbpedia.org/resource/Berlin> .
 
-<http://dbpedia.org/resource/Red_Hot_Chili_Peppers> a ns1:Band ;
+<http://dbpedia.org/resource/Red_Hot_Chili_Peppers> a :Artist ;
     rdfs:label "Red Hot Chili Peppers" ;
-    ns1:genre <http://dbpedia.org/resource/Alternative_rock>,
+    :hasGenre <http://dbpedia.org/resource/Alternative_rock>,
         <http://dbpedia.org/resource/Funk_metal>,
         <http://dbpedia.org/resource/Funk_rock>,
         <http://dbpedia.org/resource/Rap_rock> ;
-    ns1:hometown <http://dbpedia.org/resource/California>,
+    :isFromCity <http://dbpedia.org/resource/California>,
         <http://dbpedia.org/resource/Los_Angeles> .
 
-<http://dbpedia.org/resource/Reik> a ns1:Band ;
+<http://dbpedia.org/resource/Reik> a :Artist ;
     rdfs:label "Reik" ;
-    ns1:genre <http://dbpedia.org/resource/Latin_pop>,
+    :hasGenre <http://dbpedia.org/resource/Latin_pop>,
         <http://dbpedia.org/resource/Pop_rock> ;
-    ns1:hometown <http://dbpedia.org/resource/Baja_California>,
+    :isFromCity <http://dbpedia.org/resource/Baja_California>,
         <http://dbpedia.org/resource/Mexicali>,
         <http://dbpedia.org/resource/Mexico> .
 
-<http://dbpedia.org/resource/Robin_Schulz> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Robin_Schulz> a :Artist ;
     rdfs:label "Robin Schulz" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Osnabrück>,
+    :isFromCity <http://dbpedia.org/resource/Osnabrück>,
         <http://dbpedia.org/resource/West_Germany> ;
-    ns1:genre <http://dbpedia.org/resource/Deep_house>,
+    :hasGenre <http://dbpedia.org/resource/Deep_house>,
         <http://dbpedia.org/resource/Future_house>,
         <http://dbpedia.org/resource/Tropical_house> .
 
-<http://dbpedia.org/resource/Romeo_Santos> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Romeo_Santos> a :Artist ;
     rdfs:label "Romeo Santos" ;
-    ns1:birthPlace <http://dbpedia.org/resource/New_York_City> ;
-    ns1:genre <http://dbpedia.org/resource/Bachata_(music)>,
+    :isFromCity <http://dbpedia.org/resource/New_York_City> ;
+    :hasGenre <http://dbpedia.org/resource/Bachata_(music)>,
         <http://dbpedia.org/resource/Contemporary_R&B>,
         <http://dbpedia.org/resource/Latin_pop> .
 
-<http://dbpedia.org/resource/Skrillex> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Skrillex> a :Artist ;
     rdfs:label "Skrillex" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Los_Angeles,_California> ;
-    ns1:genre <http://dbpedia.org/resource/Brostep>,
+    :isFromCity <http://dbpedia.org/resource/Los_Angeles,_California> ;
+    :hasGenre <http://dbpedia.org/resource/Brostep>,
         <http://dbpedia.org/resource/Dubstep>,
         <http://dbpedia.org/resource/Electro_house>,
         <http://dbpedia.org/resource/Electronic_dance_music>,
@@ -744,87 +847,87 @@
         <http://dbpedia.org/resource/Post-hardcore>,
         <http://dbpedia.org/resource/Trap_music_(EDM)> .
 
-<http://dbpedia.org/resource/Swae_Lee> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Swae_Lee> a :Artist ;
     rdfs:label "Swae Lee" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Inglewood,_California> ;
-    ns1:genre <http://dbpedia.org/resource/Hip_hop_music>,
+    :isFromCity <http://dbpedia.org/resource/Inglewood,_California> ;
+    :hasGenre <http://dbpedia.org/resource/Hip_hop_music>,
         <http://dbpedia.org/resource/Pop_rap>,
         <http://dbpedia.org/resource/Trap_music> ;
-    ns1:hometown <http://dbpedia.org/resource/Tupelo,_Mississippi> .
+    :isFromCity <http://dbpedia.org/resource/Tupelo,_Mississippi> .
 
-<http://dbpedia.org/resource/Tame_Impala> a ns1:Band ;
+<http://dbpedia.org/resource/Tame_Impala> a :Artist ;
     rdfs:label "Tame Impala" ;
-    ns1:genre <http://dbpedia.org/resource/Indie_rock>,
+    :hasGenre <http://dbpedia.org/resource/Indie_rock>,
         <http://dbpedia.org/resource/Neo-psychedelia>,
         <http://dbpedia.org/resource/Psychedelic_pop>,
         <http://dbpedia.org/resource/Psychedelic_rock>,
         <http://dbpedia.org/resource/Synth-pop> ;
-    ns1:hometown <http://dbpedia.org/resource/Perth>,
+    :isFromCity <http://dbpedia.org/resource/Perth>,
         <http://dbpedia.org/resource/Western_Australia> .
 
-<http://dbpedia.org/resource/The_1975> a ns1:Band,
-        ns1:MusicalArtist ;
+<http://dbpedia.org/resource/The_1975> a :Artist,
+        :Artist ;
     rdfs:label "The 1975" ;
-    ns1:genre <http://dbpedia.org/resource/Alternative_rock>,
+    :hasGenre <http://dbpedia.org/resource/Alternative_rock>,
         <http://dbpedia.org/resource/Electropop>,
         <http://dbpedia.org/resource/Indie_pop>,
         <http://dbpedia.org/resource/Indie_rock>,
         <http://dbpedia.org/resource/Pop_rock>,
         <http://dbpedia.org/resource/Synth-pop> ;
-    ns1:hometown <http://dbpedia.org/resource/Wilmslow> .
+    :isFromCity <http://dbpedia.org/resource/Wilmslow> .
 
-<http://dbpedia.org/resource/The_Beatles> a ns1:Band ;
+<http://dbpedia.org/resource/The_Beatles> a :Artist ;
     rdfs:label "The Beatles" ;
-    ns1:genre <http://dbpedia.org/resource/Beat_music>,
+    :hasGenre <http://dbpedia.org/resource/Beat_music>,
         <http://dbpedia.org/resource/Pop_music>,
         <http://dbpedia.org/resource/Psychedelic_music>,
         <http://dbpedia.org/resource/Rock_music> ;
-    ns1:hometown <http://dbpedia.org/resource/Liverpool> .
+    :isFromCity <http://dbpedia.org/resource/Liverpool> .
 
-<http://dbpedia.org/resource/The_Chainsmokers> a ns1:Band,
-        ns1:MusicalArtist ;
+<http://dbpedia.org/resource/The_Chainsmokers> a :Artist,
+        :Artist ;
     rdfs:label "The Chainsmokers" ;
-    ns1:genre <http://dbpedia.org/resource/Electronic_dance_music>,
+    :hasGenre <http://dbpedia.org/resource/Electronic_dance_music>,
         <http://dbpedia.org/resource/Electropop>,
         <http://dbpedia.org/resource/Future_bass>,
         <http://dbpedia.org/resource/Pop_music> ;
-    ns1:hometown <http://dbpedia.org/resource/New_York_City> .
+    :isFromCity <http://dbpedia.org/resource/New_York_City> .
 
-<http://dbpedia.org/resource/The_Lumineers> a ns1:Band ;
+<http://dbpedia.org/resource/The_Lumineers> a :Artist ;
     rdfs:label "The Lumineers" ;
-    ns1:genre <http://dbpedia.org/resource/Americana_(music)>,
+    :hasGenre <http://dbpedia.org/resource/Americana_(music)>,
         <http://dbpedia.org/resource/Folk_rock>,
         <http://dbpedia.org/resource/Indie_folk> ;
-    ns1:hometown <http://dbpedia.org/resource/Denver,_Colorado>,
+    :isFromCity <http://dbpedia.org/resource/Denver,_Colorado>,
         <http://dbpedia.org/resource/Ramsey,_New_Jersey> .
 
-<http://dbpedia.org/resource/The_Neighbourhood> a ns1:Band ;
+<http://dbpedia.org/resource/The_Neighbourhood> a :Artist ;
     rdfs:label "The Neighbourhood" ;
-    ns1:genre <http://dbpedia.org/resource/Alternative_rock>,
+    :hasGenre <http://dbpedia.org/resource/Alternative_rock>,
         <http://dbpedia.org/resource/Contemporary_R&B>,
         <http://dbpedia.org/resource/Indie_pop>,
         <http://dbpedia.org/resource/Indie_rock>,
         <http://dbpedia.org/resource/Pop_rock> ;
-    ns1:hometown <http://dbpedia.org/resource/Newbury_Park,_California> .
+    :isFromCity <http://dbpedia.org/resource/Newbury_Park,_California> .
 
-<http://dbpedia.org/resource/The_Rolling_Stones> a ns1:Band ;
+<http://dbpedia.org/resource/The_Rolling_Stones> a :Artist ;
     rdfs:label "The Rolling Stones" ;
-    ns1:genre <http://dbpedia.org/resource/British_blues>,
+    :hasGenre <http://dbpedia.org/resource/British_blues>,
         <http://dbpedia.org/resource/Pop_music>,
         <http://dbpedia.org/resource/Rock_music> ;
-    ns1:hometown <http://dbpedia.org/resource/London_Records> .
+    :isFromCity <http://dbpedia.org/resource/London_Records> .
 
-<http://dbpedia.org/resource/The_Script> a ns1:Band ;
+<http://dbpedia.org/resource/The_Script> a :Artist ;
     rdfs:label "The Script" ;
-    ns1:genre <http://dbpedia.org/resource/Indie_rock>,
+    :hasGenre <http://dbpedia.org/resource/Indie_rock>,
         <http://dbpedia.org/resource/Pop_rock>,
         <http://dbpedia.org/resource/Soft_rock> ;
-    ns1:hometown <http://dbpedia.org/resource/Dublin> .
+    :isFromCity <http://dbpedia.org/resource/Dublin> .
 
-<http://dbpedia.org/resource/Tiësto> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Tiësto> a :Artist ;
     rdfs:label "Tiësto" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Breda> ;
-    ns1:genre <http://dbpedia.org/resource/Bass_house_(music)>,
+    :isFromCity <http://dbpedia.org/resource/Breda> ;
+    :hasGenre <http://dbpedia.org/resource/Bass_house_(music)>,
         <http://dbpedia.org/resource/Big_room_house>,
         <http://dbpedia.org/resource/Deep_house>,
         <http://dbpedia.org/resource/Electro_house>,
@@ -836,81 +939,81 @@
         <http://dbpedia.org/resource/Trance_music>,
         <http://dbpedia.org/resource/Tropical_house> .
 
-<http://dbpedia.org/resource/Tory_Lanez> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Tory_Lanez> a :Artist ;
     rdfs:label "Tory Lanez" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Brampton>,
+    :isFromCity <http://dbpedia.org/resource/Brampton>,
         <http://dbpedia.org/resource/Ontario> ;
-    ns1:genre <http://dbpedia.org/resource/Contemporary_R&B>,
+    :hasGenre <http://dbpedia.org/resource/Contemporary_R&B>,
         <http://dbpedia.org/resource/Hip_hop_music> .
 
-<http://dbpedia.org/resource/Tove_Lo> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Tove_Lo> a :Artist ;
     rdfs:label "Tove Lo" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Helsingborg>,
+    :isFromCity <http://dbpedia.org/resource/Helsingborg>,
         <http://dbpedia.org/resource/Sweden> ;
-    ns1:genre <http://dbpedia.org/resource/Dance-pop>,
+    :hasGenre <http://dbpedia.org/resource/Dance-pop>,
         <http://dbpedia.org/resource/Electropop>,
         <http://dbpedia.org/resource/Indie_pop>,
         <http://dbpedia.org/resource/Synth-pop> ;
-    ns1:hometown <http://dbpedia.org/resource/Danderyd>,
+    :isFromCity <http://dbpedia.org/resource/Danderyd>,
         <http://dbpedia.org/resource/Djursholm>,
         <http://dbpedia.org/resource/Sweden> .
 
-<http://dbpedia.org/resource/Trippie_Redd> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Trippie_Redd> a :Artist ;
     rdfs:label "Trippie Redd" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Canton,_Ohio> ;
-    ns1:genre <http://dbpedia.org/resource/Alternative_rock>,
+    :isFromCity <http://dbpedia.org/resource/Canton,_Ohio> ;
+    :hasGenre <http://dbpedia.org/resource/Alternative_rock>,
         <http://dbpedia.org/resource/Cloud_rap>,
         <http://dbpedia.org/resource/Contemporary_R&B>,
         <http://dbpedia.org/resource/Emo_rap>,
         <http://dbpedia.org/resource/Hip_hop_music>,
         <http://dbpedia.org/resource/SoundCloud_rap> .
 
-<http://dbpedia.org/resource/Twenty_One_Pilots> a ns1:Band ;
+<http://dbpedia.org/resource/Twenty_One_Pilots> a :Artist ;
     rdfs:label "Twenty One Pilots" ;
-    ns1:genre <http://dbpedia.org/resource/Alternative_hip_hop>,
+    :hasGenre <http://dbpedia.org/resource/Alternative_hip_hop>,
         <http://dbpedia.org/resource/Alternative_rock>,
         <http://dbpedia.org/resource/Electropop>,
         <http://dbpedia.org/resource/Indie_pop>,
         <http://dbpedia.org/resource/Pop_rock>,
         <http://dbpedia.org/resource/Rap_rock> ;
-    ns1:hometown <http://dbpedia.org/resource/Columbus,_Ohio> .
+    :isFromCity <http://dbpedia.org/resource/Columbus,_Ohio> .
 
-<http://dbpedia.org/resource/U2> a ns1:Band ;
+<http://dbpedia.org/resource/U2> a :Artist ;
     rdfs:label "U2" ;
-    ns1:genre <http://dbpedia.org/resource/Alternative_rock>,
+    :hasGenre <http://dbpedia.org/resource/Alternative_rock>,
         <http://dbpedia.org/resource/Pop_rock>,
         <http://dbpedia.org/resource/Post-punk>,
         <http://dbpedia.org/resource/Rock_music> ;
-    ns1:hometown <http://dbpedia.org/resource/Dublin> .
+    :isFromCity <http://dbpedia.org/resource/Dublin> .
 
-<http://dbpedia.org/resource/Young_Thug> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Young_Thug> a :Artist ;
     rdfs:label "Young Thug" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Atlanta,_Georgia> ;
-    ns1:genre <http://dbpedia.org/resource/Alternative_hip_hop>,
+    :isFromCity <http://dbpedia.org/resource/Atlanta,_Georgia> ;
+    :hasGenre <http://dbpedia.org/resource/Alternative_hip_hop>,
         <http://dbpedia.org/resource/Hip_hop_music>,
         <http://dbpedia.org/resource/Mumble_rap>,
         <http://dbpedia.org/resource/Progressive_hip_hop>,
         <http://dbpedia.org/resource/Trap_music> .
 
-<http://dbpedia.org/resource/Zedd> a ns1:MusicalArtist ;
+<http://dbpedia.org/resource/Zedd> a :Artist ;
     rdfs:label "Zedd" ;
-    ns1:birthPlace <http://dbpedia.org/resource/Russian_SFSR>,
+    :isFromCity <http://dbpedia.org/resource/Russian_SFSR>,
         <http://dbpedia.org/resource/Saratov>,
         <http://dbpedia.org/resource/Soviet_Union> ;
-    ns1:genre <http://dbpedia.org/resource/Dance-pop>,
+    :hasGenre <http://dbpedia.org/resource/Dance-pop>,
         <http://dbpedia.org/resource/Electro_house>,
         <http://dbpedia.org/resource/Electronic_dance_music>,
         <http://dbpedia.org/resource/Future_bass>,
         <http://dbpedia.org/resource/House_music>,
         <http://dbpedia.org/resource/Pop_music>,
         <http://dbpedia.org/resource/Progressive_house> ;
-    ns1:hometown <http://dbpedia.org/resource/Germany>,
+    :isFromCity <http://dbpedia.org/resource/Germany>,
         <http://dbpedia.org/resource/Kaiserslautern> .
 
-<http://dbpedia.org/resource/Zion_&_Lennox> a ns1:Band ;
+<http://dbpedia.org/resource/Zion_&_Lennox> a :Artist ;
     rdfs:label "Zion & Lennox" ;
-    ns1:genre <http://dbpedia.org/resource/Reggaeton> ;
-    ns1:hometown <http://dbpedia.org/resource/Carolina,_Puerto_Rico> .
+    :hasGenre <http://dbpedia.org/resource/Reggaeton> ;
+    :isFromCity <http://dbpedia.org/resource/Carolina,_Puerto_Rico> .
 
 <http://dbpedia.org/resource/Alt-pop> rdfs:label "Alt-pop" .
 
