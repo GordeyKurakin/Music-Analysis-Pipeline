@@ -6,7 +6,6 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dbr: <http://dbpedia.org/resource/> .
 
-# Music Domain Ontology Instances
 <music-instances> a owl:Ontology;
     rdfs:label "Music Domain Ontology - Instances";
     rdfs:comment "Instance data for the Music Domain Ontology" .
