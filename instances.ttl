@@ -37,7 +37,6 @@
     rdfs:label "Sweden";
     :population "10400000"^^xsd:integer .
 
-# Example Track and Song instances
 
 :DancingQueen a :Song ;
   rdfs:label "Dancing Queen" ;
@@ -60,7 +59,6 @@
   :trackOfGenre :PopRock ;
   :releaseYear "1980"^^xsd:gYear .
 
-# More tracks for existing artists
 
 :Fernando a :Song ;
   rdfs:label "Fernando" ;
