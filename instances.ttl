@@ -38,6 +38,87 @@
     rdfs:label "Sweden";
     :population "10400000"^^xsd:integer .
 
+# Example Track and Song instances
+
+:DancingQueen a :Song ;
+  rdfs:label "Dancing Queen" ;
+  :trackTitle "Dancing Queen" ;
+  :performedBy :ABBA ;
+  :trackOfGenre :PopMusic ;
+  :releaseYear "1976"^^xsd:gYear .
+
+:Waterloo a :Song ;
+  rdfs:label "Waterloo" ;
+  :trackTitle "Waterloo" ;
+  :performedBy :ABBA ;
+  :trackOfGenre :PopMusic ;
+  :releaseYear "1974"^^xsd:gYear .
+
+:StockholmAnthem a :Track ;
+  rdfs:label "Stockholm Anthem" ;
+  :trackTitle "Stockholm Anthem" ;
+  :performedBy :ABBA ;
+  :trackOfGenre :PopRock ;
+  :releaseYear "1980"^^xsd:gYear .
+
+# More tracks for existing artists
+
+:Fernando a :Song ;
+  rdfs:label "Fernando" ;
+  :trackTitle "Fernando" ;
+  :performedBy :ABBA ;
+  :trackOfGenre :PopMusic ;
+  :releaseYear "1976"^^xsd:gYear .
+
+:SOS a :Song ;
+  rdfs:label "SOS" ;
+  :trackTitle "SOS" ;
+  :performedBy :ABBA ;
+  :trackOfGenre :PopMusic ;
+  :releaseYear "1975"^^xsd:gYear .
+
+:DreamOn a :Song ;
+  rdfs:label "Dream On" ;
+  :trackTitle "Dream On" ;
+  :performedBy dbr:Aerosmith ;
+  :trackOfGenre dbr:Hard_rock ;
+  :releaseYear "1973"^^xsd:gYear .
+
+:I_Don_t_Wanna_Miss_a_Thing a :Song ;
+  rdfs:label "I Don't Wanna Miss a Thing" ;
+  :trackTitle "I Don't Wanna Miss a Thing" ;
+  :performedBy dbr:Aerosmith ;
+  :trackOfGenre dbr:Hard_rock ;
+  :releaseYear "1998"^^xsd:gYear .
+
+:Faded a :Song ;
+  rdfs:label "Faded" ;
+  :trackTitle "Faded" ;
+  :performedBy dbr:Alan_Walker ;
+  :trackOfGenre dbr:Electropop ;
+  :releaseYear "2015"^^xsd:gYear .
+
+:On_My_Way a :Song ;
+  rdfs:label "On My Way" ;
+  :trackTitle "On My Way" ;
+  :performedBy dbr:Alan_Walker ;
+  :trackOfGenre dbr:Electropop ;
+  :releaseYear "2019"^^xsd:gYear .
+
+:Me_Dedique_a_Perderte a :Song ;
+  rdfs:label "Me Dedique a Perderte" ;
+  :trackTitle "Me Dedique a Perderte" ;
+  :performedBy dbr:Alejandro_Fernández ;
+  :trackOfGenre dbr:Mariachi ;
+  :releaseYear "2004"^^xsd:gYear .
+
+:Como_Quién_Pierde_Una_Estrella a :Song ;
+  rdfs:label "Como Quién Pierde Una Estrella" ;
+  :trackTitle "Como Quién Pierde Una Estrella" ;
+  :performedBy dbr:Alejandro_Fernández ;
+  :trackOfGenre dbr:Mariachi ;
+  :releaseYear "1995"^^xsd:gYear .
+
 <music-instances> a owl:Ontology;
   rdfs:comment "Instances for the Music Domain Ontology";
   rdfs:label "Music Domain Ontology - Instances" .
@@ -56,6 +137,27 @@
     rdfs:label "total streams" ;
     rdfs:domain :Artist ;
     rdfs:range xsd:long .
+
+# Explicit property declarations for Track/Song
+:performedBy a owl:ObjectProperty ;
+  rdfs:label "performed by" ;
+  rdfs:domain :Track ;
+  rdfs:range :Artist .
+
+:trackOfGenre a owl:ObjectProperty ;
+  rdfs:label "track of genre" ;
+  rdfs:domain :Track ;
+  rdfs:range :Genre .
+
+:trackTitle a owl:DatatypeProperty ;
+  rdfs:label "track title" ;
+  rdfs:domain :Track ;
+  rdfs:range xsd:string .
+
+:releaseYear a owl:DatatypeProperty ;
+  rdfs:label "release year" ;
+  rdfs:domain :Track ;
+  rdfs:range xsd:gYear .
 
 :hasGenre a owl:ObjectProperty;
   rdfs:range :Genre;

@@ -29,6 +29,19 @@ xsd:gYear rdf:type rdfs:Datatype .
           rdfs:label "has genre" .
 
 
+###  http://example.org/music#performedBy
+:performedBy rdf:type owl:ObjectProperty ;
+             rdfs:domain :Track ;
+             rdfs:range :Artist ;
+             rdfs:label "performed by" .
+
+###  http://example.org/music#trackOfGenre
+:trackOfGenre rdf:type owl:ObjectProperty ;
+              rdfs:domain :Track ;
+              rdfs:range :Genre ;
+              rdfs:label "track of genre" .
+
+
 ###  http://example.org/music#isFromCity
 :isFromCity rdf:type owl:ObjectProperty ;
             rdfs:domain :Artist ;
@@ -52,6 +65,18 @@ xsd:gYear rdf:type rdfs:Datatype .
             rdfs:domain :Artist ;
             rdfs:range xsd:string ;
             rdfs:label "artist name" .
+
+###  http://example.org/music#trackTitle
+:trackTitle rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Track ;
+            rdfs:range xsd:string ;
+            rdfs:label "track title" .
+
+###  http://example.org/music#releaseYear
+:releaseYear rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Track ;
+             rdfs:range xsd:gYear ;
+             rdfs:label "release year" .
 
 
 ###  http://example.org/music#genreName
@@ -77,6 +102,48 @@ xsd:gYear rdf:type rdfs:Datatype .
                         ] ;
         rdfs:comment "A musician, band, or creator of music." ;
         rdfs:label "Artist" .
+
+
+# Inferred classes from new instances
+
+###  http://example.org/music#BalladSong
+:BalladSong rdf:type owl:Class ;
+    owl:equivalentClass [ owl:intersectionOf ( :Song
+        [ rdf:type owl:Restriction ;
+          owl:onProperty :trackOfGenre ;
+          owl:someValuesFrom :PopMusic
+        ]
+      ) ; rdf:type owl:Class ] ;
+    rdfs:subClassOf :Song ;
+    rdfs:comment "A song that is of the Pop Music genre (e.g., ABBA's ballads)." ;
+    rdfs:label "Ballad Song" .
+
+###  http://example.org/music#RecentTrack
+:RecentTrack rdf:type owl:Class ;
+    owl:equivalentClass [ owl:intersectionOf ( :Track
+        [ rdf:type owl:Restriction ;
+          owl:onProperty :releaseYear ;
+          owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+            owl:onDatatype xsd:gYear ;
+            owl:withRestrictions ( [ xsd:minInclusive "2010"^^xsd:gYear ] )
+          ]
+        ]
+      ) ; rdf:type owl:Class ] ;
+    rdfs:subClassOf :Track ;
+    rdfs:comment "A track released in or after 2010." ;
+    rdfs:label "Recent Track" .
+
+
+###  http://example.org/music#Track
+:Track rdf:type owl:Class ;
+   rdfs:comment "A musical track or song, performed by an artist." ;
+   rdfs:label "Track" .
+
+###  http://example.org/music#Song
+:Song rdf:type owl:Class ;
+  rdfs:subClassOf :Track ;
+  rdfs:comment "A song, which is a type of musical track." ;
+  rdfs:label "Song" .
 
 
 ###  http://example.org/music#City
