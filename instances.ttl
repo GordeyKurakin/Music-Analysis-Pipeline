@@ -2774,16 +2774,6 @@ dbr:6ix9ine a owl:NamedIndividual, :Artist;
   :isFromCity <http://dbpedia.org/resource/Carolina,_Puerto_Rico>;
   rdfs:label "Zion & Lennox" .
 
-:AAP_Ferg a owl:NamedIndividual, :Artist;
-  :artistName "A$AP Ferg";
-  :numberOfTracks 96;
-  :totalStreams 2903470782 .
-
-:AAP_Rocky a owl:NamedIndividual, :Artist;
-  :artistName "A$AP Rocky";
-  :numberOfTracks 99;
-  :totalStreams 12945122506 .
-
 :ABBA a owl:NamedIndividual, :Artist;
   :artistName "ABBA";
   :numberOfTracks 160;
@@ -2794,387 +2784,42 @@ dbr:6ix9ine a owl:NamedIndividual, :Artist;
   :numberOfTracks 313;
   :totalStreams 8283420177 .
 
-:AJR a owl:NamedIndividual, :Artist;
-  :artistName "AJR";
-  :numberOfTracks 86;
-  :totalStreams 2813143811 .
-
-:AJ_Tracey a owl:NamedIndividual, :Artist;
-  :artistName "AJ Tracey";
-  :numberOfTracks 98;
-  :totalStreams 2017756389 .
-
-:ANAVITÓRIA a owl:NamedIndividual, :Artist;
-  :artistName "ANAVITÓRIA";
-  :numberOfTracks 79;
-  :totalStreams 2083953961 .
-
-:AURORA a owl:NamedIndividual, :Artist;
-  :artistName "AURORA";
-  :numberOfTracks 105;
-  :totalStreams 2012993907 .
-
-:A_Boogie_Wit_da_Hoodie a owl:NamedIndividual, :Artist;
-  :artistName "A Boogie Wit da Hoodie";
-  :numberOfTracks 138;
-  :totalStreams 10884164901 .
-
-:A_Day_To_Remember a owl:NamedIndividual, :Artist;
-  :artistName "A Day To Remember";
-  :numberOfTracks 135;
-  :totalStreams 2357711163 .
-
-:Adele a owl:NamedIndividual, :Artist;
-  :artistName "Adele";
-  :numberOfTracks 71;
-  :totalStreams 15635326850 .
-
 :Aerosmith a owl:NamedIndividual, :Artist;
   :artistName "Aerosmith";
   :numberOfTracks 318;
   :totalStreams 4219398737 .
-
-:Aitana a owl:NamedIndividual, :Artist;
-  :artistName "Aitana";
-  :numberOfTracks 74;
-  :totalStreams 2448704260 .
-
-:Akon a owl:NamedIndividual, :Artist;
-  :artistName "Akon";
-  :numberOfTracks 207;
-  :totalStreams 4689373122 .
-
-:Alan_Jackson a owl:NamedIndividual, :Artist;
-  :artistName "Alan Jackson";
-  :numberOfTracks 269;
-  :totalStreams 2258390914 .
 
 :Alan_Walker a owl:NamedIndividual, :Artist;
   :artistName "Alan Walker";
   :numberOfTracks 170;
   :totalStreams 10580423755 .
 
-:Alanis_Morissette a owl:NamedIndividual, :Artist;
-  :artistName "Alanis Morissette";
-  :numberOfTracks 300;
-  :totalStreams 1427331520 .
-
-:Alec_Benjamin a owl:NamedIndividual, :Artist;
-  :artistName "Alec Benjamin";
-  :numberOfTracks 46;
-  :totalStreams 5634675504 .
-
 :Alejandro_Fernández a owl:NamedIndividual, :Artist;
   :artistName "Alejandro Fernández";
   :numberOfTracks 313;
   :totalStreams 4553517355 .
-
-:Alejandro_Sanz a owl:NamedIndividual, :Artist;
-  :artistName "Alejandro Sanz";
-  :numberOfTracks 380;
-  :totalStreams 3592290895 .
-
-:Aleman a owl:NamedIndividual, :Artist;
-  :artistName "Aleman";
-  :numberOfTracks 151;
-  :totalStreams 1951365049 .
-
-:Alessia_Cara a owl:NamedIndividual, :Artist;
-  :artistName "Alessia Cara";
-  :numberOfTracks 138;
-  :totalStreams 8516351578 .
 
 :Alesso a owl:NamedIndividual, :Artist;
   :artistName "Alesso";
   :numberOfTracks 129;
   :totalStreams 4735136159 .
 
-:Alex_Rose a owl:NamedIndividual, :Artist;
-  :artistName "Alex Rose";
-  :numberOfTracks 82;
-  :totalStreams 2486956260 .
-
-:Alfredo_Olivas a owl:NamedIndividual, :Artist;
-  :artistName "Alfredo Olivas";
-  :numberOfTracks 103;
-  :totalStreams 1780522522 .
-
-:Ali_Gatie a owl:NamedIndividual, :Artist;
-  :artistName "Ali Gatie";
-  :numberOfTracks 54;
-  :totalStreams 2239039875 .
-
-:Alice_In_Chains a owl:NamedIndividual, :Artist;
-  :artistName "Alice In Chains";
-  :numberOfTracks 162;
-  :totalStreams 1902297374 .
-
-:Alicia_Keys a owl:NamedIndividual, :Artist;
-  :artistName "Alicia Keys";
-  :numberOfTracks 253;
-  :totalStreams 6205592801 .
-
-:Alina_Baraz a owl:NamedIndividual, :Artist;
-  :artistName "Alina Baraz";
-  :numberOfTracks 76;
-  :totalStreams 1535603770 .
-
-:All_Time_Low a owl:NamedIndividual, :Artist;
-  :artistName "All Time Low";
-  :numberOfTracks 212;
-  :totalStreams 2460982338 .
-
-:Aloe_Blacc a owl:NamedIndividual, :Artist;
-  :artistName "Aloe Blacc";
-  :numberOfTracks 217;
-  :totalStreams 2182586480 .
-
-:Alok a owl:NamedIndividual, :Artist;
-  :artistName "Alok";
-  :numberOfTracks 212;
-  :totalStreams 4969506901 .
-
-:Alvaro_Soler a owl:NamedIndividual, :Artist;
-  :artistName "Alvaro Soler";
-  :numberOfTracks 101;
-  :totalStreams 1605250776 .
-
-:Aminé a owl:NamedIndividual, :Artist;
-  :artistName "Aminé";
-  :numberOfTracks 72;
-  :totalStreams 2962646327 .
-
-:Amy_Winehouse a owl:NamedIndividual, :Artist;
-  :artistName "Amy Winehouse";
-  :numberOfTracks 157;
-  :totalStreams 5680325647 .
-
-:Anderson_Paak a owl:NamedIndividual, :Artist;
-  :artistName "Anderson .Paak";
-  :numberOfTracks 152;
-  :totalStreams 4300857749 .
-
-:Andrea_Bocelli a owl:NamedIndividual, :Artist;
-  :artistName "Andrea Bocelli";
-  :numberOfTracks 592;
-  :totalStreams 1581918606 .
-
-:Andrés_Calamaro a owl:NamedIndividual, :Artist;
-  :artistName "Andrés Calamaro";
-  :numberOfTracks 521;
-  :totalStreams 1632874194 .
-
-:Andy_Grammer a owl:NamedIndividual, :Artist;
-  :artistName "Andy Grammer";
-  :numberOfTracks 79;
-  :totalStreams 2436592032 .
-
-:Angus_Julia_Stone a owl:NamedIndividual, :Artist;
-  :artistName "Angus & Julia Stone";
-  :numberOfTracks 128;
-  :totalStreams 1683334903 .
-
-:Anitta a owl:NamedIndividual, :Artist;
-  :artistName "Anitta";
-  :numberOfTracks 175;
-  :totalStreams 8209095149 .
-
 :Anne_Marie a owl:NamedIndividual, :Artist;
   :artistName "Anne-Marie";
   :numberOfTracks 136;
   :totalStreams 7792985255 .
-
-:Annie_Lennox a owl:NamedIndividual, :Artist;
-  :artistName "Annie Lennox";
-  :numberOfTracks 306;
-  :totalStreams 2072094599 .
-
-:Anuel_AA a owl:NamedIndividual, :Artist;
-  :artistName "Anuel AA";
-  :numberOfTracks 160;
-  :totalStreams 18957292303 .
-
-:Apache_207 a owl:NamedIndividual, :Artist;
-  :artistName "Apache 207";
-  :numberOfTracks 46;
-  :totalStreams 2103687594 .
-
-:Arcade_Fire a owl:NamedIndividual, :Artist;
-  :artistName "Arcade Fire";
-  :numberOfTracks 113;
-  :totalStreams 1731328594 .
-
-:Arcangel a owl:NamedIndividual, :Artist;
-  :artistName "Arcangel";
-  :numberOfTracks 244;
-  :totalStreams 9557094402 .
 
 :Arctic_Monkeys a owl:NamedIndividual, :Artist;
   :artistName "Arctic Monkeys";
   :numberOfTracks 134;
   :totalStreams 11249748739 .
 
-:Aretha_Franklin a owl:NamedIndividual, :Artist;
-  :artistName "Aretha Franklin";
-  :numberOfTracks 900;
-  :totalStreams 2268334162 .
-
-:Ariana_Grande a owl:NamedIndividual, :Artist;
-  :artistName "Ariana Grande";
-  :numberOfTracks 181;
-  :totalStreams 34339979868 .
-
-:Arijit_Singh a owl:NamedIndividual, :Artist;
-  :artistName "Arijit Singh";
-  :numberOfTracks 572;
-  :totalStreams 5513065594 .
-
-:Arizona_Zervas a owl:NamedIndividual, :Artist;
-  :artistName "Arizona Zervas";
-  :numberOfTracks 37;
-  :totalStreams 2075388409 .
-
-:Armin_van_Buuren a owl:NamedIndividual, :Artist;
-  :artistName "Armin van Buuren";
-  :numberOfTracks 2051;
-  :totalStreams 4014264387 .
-
 :Artist a owl:NamedIndividual, :Artist .
-
-:Astrid_S a owl:NamedIndividual, :Artist;
-  :artistName "Astrid S";
-  :numberOfTracks 107;
-  :totalStreams 2276077335 .
-
-:Audioslave a owl:NamedIndividual, :Artist;
-  :artistName "Audioslave";
-  :numberOfTracks 72;
-  :totalStreams 1568164155 .
-
-:Ava_Max a owl:NamedIndividual, :Artist;
-  :artistName "Ava Max";
-  :numberOfTracks 105;
-  :totalStreams 6405500645 .
-
-:Avenged_Sevenfold a owl:NamedIndividual, :Artist;
-  :artistName "Avenged Sevenfold";
-  :numberOfTracks 163;
-  :totalStreams 5443279137 .
-
-:Aventura a owl:NamedIndividual, :Artist;
-  :artistName "Aventura";
-  :numberOfTracks 123;
-  :totalStreams 8849722301 .
-
-:Avicii a owl:NamedIndividual, :Artist;
-  :artistName "Avicii";
-  :numberOfTracks 248;
-  :totalStreams 12941862774 .
-
-:Avril_Lavigne a owl:NamedIndividual, :Artist;
-  :artistName "Avril Lavigne";
-  :numberOfTracks 154;
-  :totalStreams 4444555167 .
-
-:Axwell_Ingrosso a owl:NamedIndividual, :Artist;
-  :artistName "Axwell /\\ Ingrosso";
-  :numberOfTracks 47;
-  :totalStreams 2295622491 .
-
-:Aya_Nakamura a owl:NamedIndividual, :Artist;
-  :artistName "Aya Nakamura";
-  :numberOfTracks 68;
-  :totalStreams 2537726484 .
-
-:BLACKPINK a owl:NamedIndividual, :Artist;
-  :artistName "BLACKPINK";
-  :numberOfTracks 103;
-  :totalStreams 7732707186 .
-
-:BONES a owl:NamedIndividual, :Artist;
-  :artistName "BONES";
-  :numberOfTracks 653;
-  :totalStreams 1703730174 .
-
-:BROCKHAMPTON a owl:NamedIndividual, :Artist;
-  :artistName "BROCKHAMPTON";
-  :numberOfTracks 113;
-  :totalStreams 3002168774 .
 
 :BTS a owl:NamedIndividual, :Artist;
   :artistName "BTS";
   :numberOfTracks 262;
   :totalStreams 28856663416 .
-
-:Baby_Keem a owl:NamedIndividual, :Artist;
-  :artistName "Baby Keem";
-  :numberOfTracks 51;
-  :totalStreams 1812595155 .
-
-:Backstreet_Boys a owl:NamedIndividual, :Artist;
-  :artistName "Backstreet Boys";
-  :numberOfTracks 145;
-  :totalStreams 3955868317 .
-
-:Bad_Bunny a owl:NamedIndividual, :Artist;
-  :artistName "Bad Bunny";
-  :numberOfTracks 163;
-  :totalStreams 49761023115 .
-
-:Banda_El_Recodo a owl:NamedIndividual, :Artist;
-  :artistName "Banda El Recodo";
-  :numberOfTracks 601;
-  :totalStreams 2129249396 .
-
-:Banda_Los_Recoditos a owl:NamedIndividual, :Artist;
-  :artistName "Banda Los Recoditos";
-  :numberOfTracks 252;
-  :totalStreams 1583667774 .
-
-:Banda_MS_de_Sergio_Lizárraga a owl:NamedIndividual, :Artist;
-  :artistName "Banda MS de Sergio Lizárraga";
-  :numberOfTracks 216;
-  :totalStreams 5930376917 .
-
-:Bastille a owl:NamedIndividual, :Artist;
-  :artistName "Bastille";
-  :numberOfTracks 205;
-  :totalStreams 6315268598 .
-
-:Bazzi a owl:NamedIndividual, :Artist;
-  :artistName "Bazzi";
-  :numberOfTracks 39;
-  :totalStreams 5003726415 .
-
-:Bea_Miller a owl:NamedIndividual, :Artist;
-  :artistName "Bea Miller";
-  :numberOfTracks 42;
-  :totalStreams 2839222310 .
-
-:Beach_House a owl:NamedIndividual, :Artist;
-  :artistName "Beach House";
-  :numberOfTracks 107;
-  :totalStreams 1539938362 .
-
-:Beastie_Boys a owl:NamedIndividual, :Artist;
-  :artistName "Beastie Boys";
-  :numberOfTracks 307;
-  :totalStreams 1632170387 .
-
-:Bebe_Rexha a owl:NamedIndividual, :Artist;
-  :artistName "Bebe Rexha";
-  :numberOfTracks 113;
-  :totalStreams 10790658506 .
-
-:Beck a owl:NamedIndividual, :Artist;
-  :artistName "Beck";
-  :numberOfTracks 300;
-  :totalStreams 1504468483 .
-
-:Becky_G a owl:NamedIndividual, :Artist;
-  :artistName "Becky G";
-  :numberOfTracks 110;
-  :totalStreams 7736592378 .
 
 :Becky_Hill a owl:NamedIndividual .
 # 
@@ -3583,590 +3228,50 @@ dbr:6ix9ine a owl:NamedIndividual, :Artist;
   :numberOfTracks 195;
   :totalStreams 3591232622 .
 
-:Bee_Gees a owl:NamedIndividual, :Artist;
-  :artistName "Bee Gees";
-  :numberOfTracks 470;
-  :totalStreams 3412924778 .
-
-:BenBen a owl:NamedIndividual, :Artist;
-  :artistName "Ben&Ben";
-  :numberOfTracks 57;
-  :totalStreams 1455315642 .
-
-:Ben_Howard a owl:NamedIndividual, :Artist;
-  :artistName "Ben Howard";
-  :numberOfTracks 60;
-  :totalStreams 1791743097 .
-
-:Benjamin_Blümchen a owl:NamedIndividual, :Artist;
-  :artistName "Benjamin Blümchen";
-  :numberOfTracks 6109;
-  :totalStreams 1632183811 .
-
-:Beret a owl:NamedIndividual, :Artist;
-  :artistName "Beret";
-  :numberOfTracks 50;
-  :totalStreams 1942366892 .
-
-:Bethel_Music a owl:NamedIndividual, :Artist;
-  :artistName "Bethel Music";
-  :numberOfTracks 312;
-  :totalStreams 2092086801 .
-
-:Beyoncé a owl:NamedIndividual, :Artist;
-  :artistName "Beyoncé";
-  :numberOfTracks 366;
-  :totalStreams 17543015060 .
-
-:Bibi_Blocksberg a owl:NamedIndividual, :Artist;
-  :artistName "Bibi Blocksberg";
-  :numberOfTracks 5203;
-  :totalStreams 3250874248 .
-
-:Bibi_und_Tina a owl:NamedIndividual, :Artist;
-  :artistName "Bibi und Tina";
-  :numberOfTracks 3509;
-  :totalStreams 2680606898 .
-
 :Big_Sean a owl:NamedIndividual, :Artist;
   :artistName "Big Sean";
   :numberOfTracks 153;
   :totalStreams 11980634690 .
-
-:Bill_Withers a owl:NamedIndividual, :Artist;
-  :artistName "Bill Withers";
-  :numberOfTracks 120;
-  :totalStreams 2039824670 .
-
-:Billie_Eilish a owl:NamedIndividual, :Artist;
-  :artistName "Billie Eilish";
-  :numberOfTracks 65;
-  :totalStreams 23684986780 .
-
-:Billy_Joel a owl:NamedIndividual, :Artist;
-  :artistName "Billy Joel";
-  :numberOfTracks 383;
-  :totalStreams 3904234502 .
-
-:Bing_Crosby a owl:NamedIndividual, :Artist;
-  :artistName "Bing Crosby";
-  :numberOfTracks 1345;
-  :totalStreams 2052387224 .
-
-:Birdy a owl:NamedIndividual, :Artist;
-  :artistName "Birdy";
-  :numberOfTracks 111;
-  :totalStreams 2878776511 .
-
-:Bizarrap a owl:NamedIndividual, :Artist;
-  :artistName "Bizarrap";
-  :numberOfTracks 87;
-  :totalStreams 4830611029 .
-
-:Black_Eyed_Peas a owl:NamedIndividual, :Artist;
-  :artistName "Black Eyed Peas";
-  :numberOfTracks 213;
-  :totalStreams 7143831644 .
-
-:Black_Sabbath a owl:NamedIndividual, :Artist;
-  :artistName "Black Sabbath";
-  :numberOfTracks 286;
-  :totalStreams 2473580472 .
-
-:Blake_Shelton a owl:NamedIndividual, :Artist;
-  :artistName "Blake Shelton";
-  :numberOfTracks 203;
-  :totalStreams 3063121456 .
-
-:Blueface a owl:NamedIndividual, :Artist;
-  :artistName "Blueface";
-  :numberOfTracks 98;
-  :totalStreams 2473222303 .
-
-:Blur a owl:NamedIndividual, :Artist;
-  :artistName "Blur";
-  :numberOfTracks 356;
-  :totalStreams 1551712952 .
-
-:BoB a owl:NamedIndividual, :Artist;
-  :artistName "B.o.B";
-  :numberOfTracks 431;
-  :totalStreams 3799616415 .
-
-:Bo_Burnham a owl:NamedIndividual, :Artist;
-  :artistName "Bo Burnham";
-  :numberOfTracks 103;
-  :totalStreams 1527486627 .
-
-:Bob_Dylan a owl:NamedIndividual, :Artist;
-  :artistName "Bob Dylan";
-  :numberOfTracks 1308;
-  :totalStreams 3851164167 .
-
-:Bob_Marley_The_Wailers a owl:NamedIndividual, :Artist;
-  :artistName "Bob Marley & The Wailers";
-  :numberOfTracks 618;
-  :totalStreams 7263101398 .
-
-:Bon_Iver a owl:NamedIndividual, :Artist;
-  :artistName "Bon Iver";
-  :numberOfTracks 50;
-  :totalStreams 2928247210 .
 
 :Bon_Jovi a owl:NamedIndividual, :Artist;
   :artistName "Bon Jovi";
   :numberOfTracks 329;
   :totalStreams 5102673388 .
 
-:Bonez_MC a owl:NamedIndividual, :Artist;
-  :artistName "Bonez MC";
-  :numberOfTracks 166;
-  :totalStreams 2999423158 .
-
-:Booba a owl:NamedIndividual, :Artist;
-  :artistName "Booba";
-  :numberOfTracks 247;
-  :totalStreams 2558466889 .
-
-:Boyce_Avenue a owl:NamedIndividual, :Artist;
-  :artistName "Boyce Avenue";
-  :numberOfTracks 450;
-  :totalStreams 9480368786 .
-
-:Brad_Paisley a owl:NamedIndividual, :Artist;
-  :artistName "Brad Paisley";
-  :numberOfTracks 233;
-  :totalStreams 1674871641 .
-
-:Bradley_Cooper a owl:NamedIndividual, :Artist;
-  :artistName "Bradley Cooper";
-  :numberOfTracks 12;
-  :totalStreams 2832555130 .
-
-:Brantley_Gilbert a owl:NamedIndividual, :Artist;
-  :artistName "Brantley Gilbert";
-  :numberOfTracks 117;
-  :totalStreams 1604340210 .
-
-:Breaking_Benjamin a owl:NamedIndividual, :Artist;
-  :artistName "Breaking Benjamin";
-  :numberOfTracks 102;
-  :totalStreams 2662996575 .
-
-:Brent_Faiyaz a owl:NamedIndividual, :Artist;
-  :artistName "Brent Faiyaz";
-  :numberOfTracks 63;
-  :totalStreams 3013092720 .
-
-:Brett_Young a owl:NamedIndividual, :Artist;
-  :artistName "Brett Young";
-  :numberOfTracks 70;
-  :totalStreams 1592956742 .
-
-:Bring_Me_The_Horizon a owl:NamedIndividual, :Artist;
-  :artistName "Bring Me The Horizon";
-  :numberOfTracks 141;
-  :totalStreams 4458624027 .
-
-:Britney_Spears a owl:NamedIndividual, :Artist;
-  :artistName "Britney Spears";
-  :numberOfTracks 292;
-  :totalStreams 7360967115 .
-
-:Bruce_Springsteen a owl:NamedIndividual, :Artist;
-  :artistName "Bruce Springsteen";
-  :numberOfTracks 821;
-  :totalStreams 4527778623 .
-
-:Bruno_Marrone a owl:NamedIndividual, :Artist;
-  :artistName "Bruno & Marrone";
-  :numberOfTracks 428;
-  :totalStreams 2190513420 .
-
-:Bruno_Mars a owl:NamedIndividual, :Artist;
-  :artistName "Bruno Mars";
-  :numberOfTracks 81;
-  :totalStreams 22075847596 .
-
-:Bruno_Martini a owl:NamedIndividual, :Artist;
-  :artistName "Bruno Martini";
-  :numberOfTracks 105;
-  :totalStreams 1510674586 .
-
-:Bryan_Adams a owl:NamedIndividual, :Artist;
-  :artistName "Bryan Adams";
-  :numberOfTracks 394;
-  :totalStreams 4105174443 .
-
-:Bryant_Myers a owl:NamedIndividual, :Artist;
-  :artistName "Bryant Myers";
-  :numberOfTracks 102;
-  :totalStreams 4508780904 .
-
-:Bryce_Vine a owl:NamedIndividual, :Artist;
-  :artistName "Bryce Vine";
-  :numberOfTracks 81;
-  :totalStreams 1449538792 .
-
 :Bryson_Tiller a owl:NamedIndividual, :Artist;
   :artistName "Bryson Tiller";
   :numberOfTracks 70;
   :totalStreams 5626455814 .
-
-:Brytiago a owl:NamedIndividual, :Artist;
-  :artistName "Brytiago";
-  :numberOfTracks 85;
-  :totalStreams 4372625389 .
-
-:Bullet_For_My_Valentine a owl:NamedIndividual, :Artist;
-  :artistName "Bullet For My Valentine";
-  :numberOfTracks 177;
-  :totalStreams 1694836270 .
-
-:Burna_Boy a owl:NamedIndividual, :Artist;
-  :artistName "Burna Boy";
-  :numberOfTracks 174;
-  :totalStreams 3492524128 .
-
-:BØRNS a owl:NamedIndividual, :Artist;
-  :artistName "BØRNS";
-  :numberOfTracks 44;
-  :totalStreams 1590900534 .
-
-:CHVRCHES a owl:NamedIndividual, :Artist;
-  :artistName "CHVRCHES";
-  :numberOfTracks 118;
-  :totalStreams 1771781297 .
-
-:CNCO a owl:NamedIndividual, :Artist;
-  :artistName "CNCO";
-  :numberOfTracks 89;
-  :totalStreams 3501723224 .
-
-:CRO a owl:NamedIndividual, :Artist;
-  :artistName "CRO";
-  :numberOfTracks 163;
-  :totalStreams 2024313961 .
-
-:C_Tangana a owl:NamedIndividual, :Artist;
-  :artistName "C. Tangana";
-  :numberOfTracks 81;
-  :totalStreams 2907300773 .
-
-:Cage_The_Elephant a owl:NamedIndividual, :Artist;
-  :artistName "Cage The Elephant";
-  :numberOfTracks 109;
-  :totalStreams 3521152497 .
-
-:Cali_Y_El_Dandee a owl:NamedIndividual, :Artist;
-  :artistName "Cali Y El Dandee";
-  :numberOfTracks 74;
-  :totalStreams 2704605953 .
-
-:Calibre_50 a owl:NamedIndividual, :Artist;
-  :artistName "Calibre 50";
-  :numberOfTracks 226;
-  :totalStreams 4977050050 .
-
-:Calle_13 a owl:NamedIndividual, :Artist;
-  :artistName "Calle 13";
-  :numberOfTracks 81;
-  :totalStreams 2015465304 .
-
-:Calum_Scott a owl:NamedIndividual, :Artist;
-  :artistName "Calum Scott";
-  :numberOfTracks 84;
-  :totalStreams 3392200109 .
-
-:Calvin_Harris a owl:NamedIndividual, :Artist;
-  :artistName "Calvin Harris";
-  :numberOfTracks 238;
-  :totalStreams 18239650296 .
-
-:Camila a owl:NamedIndividual, :Artist;
-  :artistName "Camila";
-  :numberOfTracks 100;
-  :totalStreams 1733729167 .
-
-:Camila_Cabello a owl:NamedIndividual, :Artist;
-  :artistName "Camila Cabello";
-  :numberOfTracks 61;
-  :totalStreams 14010553359 .
-
-:Camilo a owl:NamedIndividual, :Artist;
-  :artistName "Camilo";
-  :numberOfTracks 49;
-  :totalStreams 7407663829 .
-
-:Canserbero a owl:NamedIndividual, :Artist;
-  :artistName "Canserbero";
-  :numberOfTracks 88;
-  :totalStreams 1472338966 .
-
-:Capital_Bra a owl:NamedIndividual, :Artist;
-  :artistName "Capital Bra";
-  :numberOfTracks 276;
-  :totalStreams 4991054685 .
-
-:Capo_Plaza a owl:NamedIndividual, :Artist;
-  :artistName "Capo Plaza";
-  :numberOfTracks 78;
-  :totalStreams 2293382319 .
-
-:Cardi_B a owl:NamedIndividual, :Artist;
-  :artistName "Cardi B";
-  :numberOfTracks 70;
-  :totalStreams 15230361822 .
-
-:Carlos_Rivera a owl:NamedIndividual, :Artist;
-  :artistName "Carlos Rivera";
-  :numberOfTracks 210;
-  :totalStreams 2798795721 .
-
-:Carlos_Vives a owl:NamedIndividual, :Artist;
-  :artistName "Carlos Vives";
-  :numberOfTracks 276;
-  :totalStreams 5139734074 .
-
-:Carly_Rae_Jepsen a owl:NamedIndividual, :Artist;
-  :artistName "Carly Rae Jepsen";
-  :numberOfTracks 141;
-  :totalStreams 2921086654 .
-
-:Carrie_Underwood a owl:NamedIndividual, :Artist;
-  :artistName "Carrie Underwood";
-  :numberOfTracks 170;
-  :totalStreams 2678474807 .
-
-:Cartel_De_Santa a owl:NamedIndividual, :Artist;
-  :artistName "Cartel De Santa";
-  :numberOfTracks 136;
-  :totalStreams 3679833743 .
-
-:Cash_Cash a owl:NamedIndividual, :Artist;
-  :artistName "Cash Cash";
-  :numberOfTracks 163;
-  :totalStreams 1638306742 .
-
-:Casper_Magico a owl:NamedIndividual, :Artist;
-  :artistName "Casper Magico";
-  :numberOfTracks 95;
-  :totalStreams 2519074155 .
-
-:Central_Cee a owl:NamedIndividual, :Artist;
-  :artistName "Central Cee";
-  :numberOfTracks 49;
-  :totalStreams 1437367599 .
-
-:Chance_the_Rapper a owl:NamedIndividual, :Artist;
-  :artistName "Chance the Rapper";
-  :numberOfTracks 105;
-  :totalStreams 7636145445 .
-
-:Charli_XCX a owl:NamedIndividual, :Artist;
-  :artistName "Charli XCX";
-  :numberOfTracks 219;
-  :totalStreams 3464311470 .
-
-:Charlie_Brown_Jr a owl:NamedIndividual, :Artist;
-  :artistName "Charlie Brown Jr.";
-  :numberOfTracks 278;
-  :totalStreams 2034605273 .
 
 :Charlie_Puth a owl:NamedIndividual, :Artist;
   :artistName "Charlie Puth";
   :numberOfTracks 109;
   :totalStreams 9802024528 .
 
-:Chase_Atlantic a owl:NamedIndividual, :Artist;
-  :artistName "Chase Atlantic";
-  :numberOfTracks 75;
-  :totalStreams 2117138609 .
-
-:Chayanne a owl:NamedIndividual, :Artist;
-  :artistName "Chayanne";
-  :numberOfTracks 236;
-  :totalStreams 1961995151 .
-
-:Cheat_Codes a owl:NamedIndividual, :Artist;
-  :artistName "Cheat Codes";
-  :numberOfTracks 151;
-  :totalStreams 4943207630 .
-
-:Chelsea_Cutler a owl:NamedIndividual, :Artist;
-  :artistName "Chelsea Cutler";
-  :numberOfTracks 95;
-  :totalStreams 2403081554 .
-
-:Chencho_Corleone a owl:NamedIndividual, :Artist;
-  :artistName "Chencho Corleone";
-  :numberOfTracks 21;
-  :totalStreams 4158388477 .
-
-:Cher a owl:NamedIndividual, :Artist;
-  :artistName "Cher";
-  :numberOfTracks 399;
-  :totalStreams 1564364341 .
-
-:Chief_Keef a owl:NamedIndividual, :Artist;
-  :artistName "Chief Keef";
-  :numberOfTracks 575;
-  :totalStreams 2689369566 .
-
-:Childish_Gambino a owl:NamedIndividual, :Artist;
-  :artistName "Childish Gambino";
-  :numberOfTracks 86;
-  :totalStreams 6852150551 .
-
-:Chris_Brown a owl:NamedIndividual, :Artist;
-  :artistName "Chris Brown";
-  :numberOfTracks 427;
-  :totalStreams 23227774777 .
-
-:Chris_Stapleton a owl:NamedIndividual, :Artist;
-  :artistName "Chris Stapleton";
-  :numberOfTracks 60;
-  :totalStreams 4142117979 .
-
-:Chris_Young a owl:NamedIndividual, :Artist;
-  :artistName "Chris Young";
-  :numberOfTracks 112;
-  :totalStreams 1842878720 .
-
 :Christian_Nodal a owl:NamedIndividual, :Artist;
   :artistName "Christian Nodal";
   :numberOfTracks 69;
   :totalStreams 6245077280 .
-
-:Christina_Aguilera a owl:NamedIndividual, :Artist;
-  :artistName "Christina Aguilera";
-  :numberOfTracks 281;
-  :totalStreams 6494586303 .
-
-:Christina_Perri a owl:NamedIndividual, :Artist;
-  :artistName "Christina Perri";
-  :numberOfTracks 103;
-  :totalStreams 2710331028 .
-
-:Ciara a owl:NamedIndividual, :Artist;
-  :artistName "Ciara";
-  :numberOfTracks 158;
-  :totalStreams 2381318585 .
-
-:Cigarettes_After_Sex a owl:NamedIndividual, :Artist;
-  :artistName "Cigarettes After Sex";
-  :numberOfTracks 30;
-  :totalStreams 2297049191 .
-
-:Clairo a owl:NamedIndividual, :Artist;
-  :artistName "Clairo";
-  :numberOfTracks 25;
-  :totalStreams 3092213137 .
 
 :Clean_Bandit a owl:NamedIndividual, :Artist;
   :artistName "Clean Bandit";
   :numberOfTracks 176;
   :totalStreams 6981042005 .
 
-:Colbie_Caillat a owl:NamedIndividual, :Artist;
-  :artistName "Colbie Caillat";
-  :numberOfTracks 105;
-  :totalStreams 2260400261 .
-
 :Coldplay a owl:NamedIndividual, :Artist;
   :artistName "Coldplay";
   :numberOfTracks 299;
   :totalStreams 22214835214 .
-
-:Conan_Gray a owl:NamedIndividual, :Artist;
-  :artistName "Conan Gray";
-  :numberOfTracks 35;
-  :totalStreams 5112082797 .
-
-:Conor_Maynard a owl:NamedIndividual, :Artist;
-  :artistName "Conor Maynard";
-  :numberOfTracks 137;
-  :totalStreams 2238781340 .
-
-:Cosculluela a owl:NamedIndividual, :Artist;
-  :artistName "Cosculluela";
-  :numberOfTracks 159;
-  :totalStreams 3041589785 .
-
-:Counting_Crows a owl:NamedIndividual, :Artist;
-  :artistName "Counting Crows";
-  :numberOfTracks 192;
-  :totalStreams 1478128022 .
-
-:Creedence_Clearwater_Revival a owl:NamedIndividual, :Artist;
-  :artistName "Creedence Clearwater Revival";
-  :numberOfTracks 145;
-  :totalStreams 4623595600 .
-
-:Cristian_Castro a owl:NamedIndividual, :Artist;
-  :artistName "Cristian Castro";
-  :numberOfTracks 236;
-  :totalStreams 1620915085 .
-
-:Cyndi_Lauper a owl:NamedIndividual, :Artist;
-  :artistName "Cyndi Lauper";
-  :numberOfTracks 219;
-  :totalStreams 1675265698 .
-
-:Céline_Dion a owl:NamedIndividual, :Artist;
-  :artistName "Céline Dion";
-  :numberOfTracks 492;
-  :totalStreams 4579772248 .
-
-:DENNIS a owl:NamedIndividual, :Artist;
-  :artistName "DENNIS";
-  :numberOfTracks 298;
-  :totalStreams 1831983736 .
-
-:DJ_Khaled a owl:NamedIndividual, :Artist;
-  :artistName "DJ Khaled";
-  :numberOfTracks 186;
-  :totalStreams 7458335535 .
-
-:DJ_Luian a owl:NamedIndividual, :Artist;
-  :artistName "DJ Luian";
-  :numberOfTracks 52;
-  :totalStreams 4486557401 .
 
 :DJ_Snake a owl:NamedIndividual, :Artist;
   :artistName "DJ Snake";
   :numberOfTracks 142;
   :totalStreams 9836682893 .
 
-:DMX a owl:NamedIndividual, :Artist;
-  :artistName "DMX";
-  :numberOfTracks 304;
-  :totalStreams 2224376802 .
-
-:DNCE a owl:NamedIndividual, :Artist;
-  :artistName "DNCE";
-  :numberOfTracks 36;
-  :totalStreams 2513599703 .
-
-:D_Block_Europe a owl:NamedIndividual, :Artist;
-  :artistName "D-Block Europe";
-  :numberOfTracks 150;
-  :totalStreams 1543636127 .
-
 :DaBaby a owl:NamedIndividual, :Artist;
   :artistName "DaBaby";
   :numberOfTracks 157;
   :totalStreams 14083661290 .
-
-:Daddy_Yankee a owl:NamedIndividual, :Artist;
-  :artistName "Daddy Yankee";
-  :numberOfTracks 360;
-  :totalStreams 23731999748 .
-
-:Dadju a owl:NamedIndividual, :Artist;
-  :artistName "Dadju";
-  :numberOfTracks 112;
-  :totalStreams 2019863138 .
 
 :Daft_Punk a owl:NamedIndividual, :Artist;
   :artistName "Daft Punk";
@@ -4178,405 +3283,30 @@ dbr:6ix9ine a owl:NamedIndividual, :Artist;
   :numberOfTracks 129;
   :totalStreams 5908261139 .
 
-:Damso a owl:NamedIndividual, :Artist;
-  :artistName "Damso";
-  :numberOfTracks 95;
-  :totalStreams 3210170366 .
-
-:Dan_Shay a owl:NamedIndividual, :Artist;
-  :artistName "Dan + Shay";
-  :numberOfTracks 73;
-  :totalStreams 3912141769 .
-
-:Daniel_Caesar a owl:NamedIndividual, :Artist;
-  :artistName "Daniel Caesar";
-  :numberOfTracks 37;
-  :totalStreams 6396572173 .
-
-:Danna_Paola a owl:NamedIndividual, :Artist;
-  :artistName "Danna Paola";
-  :numberOfTracks 103;
-  :totalStreams 2284867814 .
-
-:Danny_Ocean a owl:NamedIndividual, :Artist;
-  :artistName "Danny Ocean";
-  :numberOfTracks 61;
-  :totalStreams 4481085010 .
-
-:Darell a owl:NamedIndividual, :Artist;
-  :artistName "Darell";
-  :numberOfTracks 133;
-  :totalStreams 6548772064 .
-
-:Daryl_Hall_John_Oates a owl:NamedIndividual, :Artist;
-  :artistName "Daryl Hall & John Oates";
-  :numberOfTracks 555;
-  :totalStreams 2405832670 .
-
-:Dave a owl:NamedIndividual, :Artist;
-  :artistName "Dave";
-  :numberOfTracks 62;
-  :totalStreams 4778459577 .
-
-:David_Bisbal a owl:NamedIndividual, :Artist;
-  :artistName "David Bisbal";
-  :numberOfTracks 248;
-  :totalStreams 2511792651 .
-
-:David_Bowie a owl:NamedIndividual, :Artist;
-  :artistName "David Bowie";
-  :numberOfTracks 1315;
-  :totalStreams 5996063120 .
-
-:David_Guetta a owl:NamedIndividual, :Artist;
-  :artistName "David Guetta";
-  :numberOfTracks 705;
-  :totalStreams 20236500999 .
-
-:Daya a owl:NamedIndividual, :Artist;
-  :artistName "Daya";
-  :numberOfTracks 45;
-  :totalStreams 3867208127 .
-
-:De_La_Ghetto a owl:NamedIndividual, :Artist;
-  :artistName "De La Ghetto";
-  :numberOfTracks 158;
-  :totalStreams 2998229238 .
-
-:Dean_Lewis a owl:NamedIndividual, :Artist;
-  :artistName "Dean Lewis";
-  :numberOfTracks 48;
-  :totalStreams 3276313413 .
-
-:Dean_Martin a owl:NamedIndividual, :Artist;
-  :artistName "Dean Martin";
-  :numberOfTracks 696;
-  :totalStreams 1851924085 .
-
-:Deftones a owl:NamedIndividual, :Artist;
-  :artistName "Deftones";
-  :numberOfTracks 139;
-  :totalStreams 1750364231 .
-
-:Demi_Lovato a owl:NamedIndividual, :Artist;
-  :artistName "Demi Lovato";
-  :numberOfTracks 251;
-  :totalStreams 12093712345 .
-
-:Dennis_Lloyd a owl:NamedIndividual, :Artist;
-  :artistName "Dennis Lloyd";
-  :numberOfTracks 48;
-  :totalStreams 1715531867 .
-
-:Denzel_Curry a owl:NamedIndividual, :Artist;
-  :artistName "Denzel Curry";
-  :numberOfTracks 137;
-  :totalStreams 2481394314 .
-
-:Depeche_Mode a owl:NamedIndividual, :Artist;
-  :artistName "Depeche Mode";
-  :numberOfTracks 709;
-  :totalStreams 2784128682 .
-
-:Dermot_Kennedy a owl:NamedIndividual, :Artist;
-  :artistName "Dermot Kennedy";
-  :numberOfTracks 78;
-  :totalStreams 2581422010 .
-
-:Desiigner a owl:NamedIndividual, :Artist;
-  :artistName "Desiigner";
-  :numberOfTracks 55;
-  :totalStreams 2504310366 .
-
-:Destinys_Child a owl:NamedIndividual, :Artist;
-  :artistName "Destiny's Child";
-  :numberOfTracks 183;
-  :totalStreams 2860917709 .
-
-:Dido a owl:NamedIndividual, :Artist;
-  :artistName "Dido";
-  :numberOfTracks 195;
-  :totalStreams 1723881886 .
-
-:Die_drei_ a owl:NamedIndividual, :Artist;
-  :artistName "Die drei !!!";
-  :numberOfTracks 3275;
-  :totalStreams 2317017983 .
-
-:Diego_Victor_Hugo a owl:NamedIndividual, :Artist;
-  :artistName "Diego & Victor Hugo";
-  :numberOfTracks 139;
-  :totalStreams 1580423136 .
-
-:Dierks_Bentley a owl:NamedIndividual, :Artist;
-  :artistName "Dierks Bentley";
-  :numberOfTracks 153;
-  :totalStreams 2097094631 .
-
-:Dilsinho a owl:NamedIndividual, :Artist;
-  :artistName "Dilsinho";
-  :numberOfTracks 195;
-  :totalStreams 2408221185 .
-
-:Dimitri_Vegas_Like_Mike a owl:NamedIndividual, :Artist;
-  :artistName "Dimitri Vegas & Like Mike";
-  :numberOfTracks 267;
-  :totalStreams 2675178109 .
-
-:Diplo a owl:NamedIndividual, :Artist;
-  :artistName "Diplo";
-  :numberOfTracks 397;
-  :totalStreams 10253098862 .
-
-:Dire_Straits a owl:NamedIndividual, :Artist;
-  :artistName "Dire Straits";
-  :numberOfTracks 107;
-  :totalStreams 3476157623 .
-
-:Disclosure a owl:NamedIndividual, :Artist;
-  :artistName "Disclosure";
-  :numberOfTracks 186;
-  :totalStreams 4714395817 .
-
-:Disney a owl:NamedIndividual, :Artist;
-  :artistName "Disney";
-  :numberOfTracks 529;
-  :totalStreams 7300276140 .
-
-:Disturbed a owl:NamedIndividual, :Artist;
-  :artistName "Disturbed";
-  :numberOfTracks 173;
-  :totalStreams 4556158550 .
-
 :Doja_Cat a owl:NamedIndividual, :Artist;
   :artistName "Doja Cat";
   :numberOfTracks 85;
   :totalStreams 13642391493 .
-
-:Dolly_Parton a owl:NamedIndividual, :Artist;
-  :artistName "Dolly Parton";
-  :numberOfTracks 978;
-  :totalStreams 2296130101 .
-
-:Dominic_Fike a owl:NamedIndividual, :Artist;
-  :artistName "Dominic Fike";
-  :numberOfTracks 30;
-  :totalStreams 1799005512 .
-
-:Don_Diablo a owl:NamedIndividual, :Artist;
-  :artistName "Don Diablo";
-  :numberOfTracks 248;
-  :totalStreams 2306213381 .
 
 :Don_Omar a owl:NamedIndividual, :Artist;
   :artistName "Don Omar";
   :numberOfTracks 237;
   :totalStreams 7331868024 .
 
-:Don_Toliver a owl:NamedIndividual, :Artist;
-  :artistName "Don Toliver";
-  :numberOfTracks 66;
-  :totalStreams 3689913475 .
-
-:Dr_Dre a owl:NamedIndividual, :Artist;
-  :artistName "Dr. Dre";
-  :numberOfTracks 75;
-  :totalStreams 4640673284 .
-
-:Drake a owl:NamedIndividual, :Artist;
-  :artistName "Drake";
-  :numberOfTracks 262;
-  :totalStreams 69408806474 .
-
-:Dread_Mar_I a owl:NamedIndividual, :Artist;
-  :artistName "Dread Mar I";
-  :numberOfTracks 160;
-  :totalStreams 1540787720 .
-
-:Dua_Lipa a owl:NamedIndividual, :Artist;
-  :artistName "Dua Lipa";
-  :numberOfTracks 198;
-  :totalStreams 22536040701 .
-
-:Duke_Dumont a owl:NamedIndividual, :Artist;
-  :artistName "Duke Dumont";
-  :numberOfTracks 121;
-  :totalStreams 1446718297 .
-
-:Duki a owl:NamedIndividual, :Artist;
-  :artistName "Duki";
-  :numberOfTracks 147;
-  :totalStreams 5807294571 .
-
-:Duran_Duran a owl:NamedIndividual, :Artist;
-  :artistName "Duran Duran";
-  :numberOfTracks 483;
-  :totalStreams 2052957469 .
-
-:Dustin_Lynch a owl:NamedIndividual, :Artist;
-  :artistName "Dustin Lynch";
-  :numberOfTracks 83;
-  :totalStreams 1437202563 .
-
-:Dynoro a owl:NamedIndividual, :Artist;
-  :artistName "Dynoro";
-  :numberOfTracks 18;
-  :totalStreams 1804869482 .
-
-:EXO a owl:NamedIndividual, :Artist;
-  :artistName "EXO";
-  :numberOfTracks 309;
-  :totalStreams 4021823878 .
-
-:Eagles a owl:NamedIndividual, :Artist;
-  :artistName "Eagles";
-  :numberOfTracks 189;
-  :totalStreams 4220970884 .
-
-:Earth_Wind_Fire a owl:NamedIndividual, :Artist;
-  :artistName "Earth, Wind & Fire";
-  :numberOfTracks 385;
-  :totalStreams 2700884266 .
-
-:Ed_Sheeran a owl:NamedIndividual, :Artist;
-  :artistName "Ed Sheeran";
-  :numberOfTracks 240;
-  :totalStreams 40944960562 .
-
-:El_Alfa a owl:NamedIndividual, :Artist;
-  :artistName "El Alfa";
-  :numberOfTracks 193;
-  :totalStreams 2969849570 .
-
-:El_Fantasma a owl:NamedIndividual, :Artist;
-  :artistName "El Fantasma";
-  :numberOfTracks 210;
-  :totalStreams 2523168701 .
-
-:Eladio_Carrion a owl:NamedIndividual, :Artist;
-  :artistName "Eladio Carrion";
-  :numberOfTracks 147;
-  :totalStreams 2743060415 .
-
-:Electric_Light_Orchestra a owl:NamedIndividual, :Artist;
-  :artistName "Electric Light Orchestra";
-  :numberOfTracks 305;
-  :totalStreams 2113568861 .
-
-:Elevation_Worship a owl:NamedIndividual, :Artist;
-  :artistName "Elevation Worship";
-  :numberOfTracks 255;
-  :totalStreams 2041639070 .
-
-:Ella_Fitzgerald a owl:NamedIndividual, :Artist;
-  :artistName "Ella Fitzgerald";
-  :numberOfTracks 2120;
-  :totalStreams 1877723741 .
-
-:Ella_Henderson a owl:NamedIndividual, :Artist;
-  :artistName "Ella Henderson";
-  :numberOfTracks 115;
-  :totalStreams 1922538483 .
-
-:Ella_Mai a owl:NamedIndividual, :Artist;
-  :artistName "Ella Mai";
-  :numberOfTracks 52;
-  :totalStreams 2496350251 .
-
-:Ellie_Goulding a owl:NamedIndividual, :Artist;
-  :artistName "Ellie Goulding";
-  :numberOfTracks 167;
-  :totalStreams 9466250573 .
-
-:Elton_John a owl:NamedIndividual, :Artist;
-  :artistName "Elton John";
-  :numberOfTracks 936;
-  :totalStreams 8755765876 .
-
-:Elvis_Presley a owl:NamedIndividual, :Artist;
-  :artistName "Elvis Presley";
-  :numberOfTracks 1855;
-  :totalStreams 5448512136 .
-
-:Eminem a owl:NamedIndividual, :Artist;
-  :artistName "Eminem";
-  :numberOfTracks 301;
-  :totalStreams 34596892931 .
-
-:Empire_of_the_Sun a owl:NamedIndividual, :Artist;
-  :artistName "Empire of the Sun";
-  :numberOfTracks 108;
-  :totalStreams 1659159521 .
-
-:Enrique_Iglesias a owl:NamedIndividual, :Artist;
-  :artistName "Enrique Iglesias";
-  :numberOfTracks 282;
-  :totalStreams 7104903256 .
-
-:Enya a owl:NamedIndividual, :Artist;
-  :artistName "Enya";
-  :numberOfTracks 145;
-  :totalStreams 2624221968 .
-
-:Eric_Church a owl:NamedIndividual, :Artist;
-  :artistName "Eric Church";
-  :numberOfTracks 286;
-  :totalStreams 2789109055 .
-
-:Eric_Clapton a owl:NamedIndividual, :Artist;
-  :artistName "Eric Clapton";
-  :numberOfTracks 698;
-  :totalStreams 3486597437 .
-
-:Eslabon_Armado a owl:NamedIndividual, :Artist;
-  :artistName "Eslabon Armado";
-  :numberOfTracks 90;
-  :totalStreams 1712839048 .
-
-:Evaluna_Montaner a owl:NamedIndividual, :Artist;
-  :artistName "Evaluna Montaner";
-  :numberOfTracks 46;
-  :totalStreams 1628886159 .
-
-:Evanescence a owl:NamedIndividual, :Artist;
-  :artistName "Evanescence";
-  :numberOfTracks 110;
-  :totalStreams 2320082358 .
-
-:Ezhel a owl:NamedIndividual, :Artist;
-  :artistName "Ezhel";
-  :numberOfTracks 64;
-  :totalStreams 2164171863 .
-
 :Fall_Out_Boy a owl:NamedIndividual, :Artist;
   :artistName "Fall Out Boy";
   :numberOfTracks 199;
   :totalStreams 8490188420 .
-
-:Falling_In_Reverse a owl:NamedIndividual, :Artist;
-  :artistName "Falling In Reverse";
-  :numberOfTracks 65;
-  :totalStreams 1544740243 .
 
 :Farruko a owl:NamedIndividual, :Artist;
   :artistName "Farruko";
   :numberOfTracks 343;
   :totalStreams 18515816516 .
 
-:Feid a owl:NamedIndividual, :Artist;
-  :artistName "Feid";
-  :numberOfTracks 146;
-  :totalStreams 3445675722 .
-
 :Felix_Jaehn a owl:NamedIndividual, :Artist;
   :artistName "Felix Jaehn";
   :numberOfTracks 172;
   :totalStreams 5095910704 .
-
-:Fergie a owl:NamedIndividual, :Artist;
-  :artistName "Fergie";
-  :numberOfTracks 82;
-  :totalStreams 2019239414 .
 
 :Ferrugem a owl:NamedIndividual .
 # 
@@ -4985,11 +3715,6 @@ dbr:6ix9ine a owl:NamedIndividual, :Artist;
   :numberOfTracks 171;
   :totalStreams 1947713912 .
 
-:Fetty_Wap a owl:NamedIndividual, :Artist;
-  :artistName "Fetty Wap";
-  :numberOfTracks 138;
-  :totalStreams 4314641773 .
-
 :Fifth_Harmony a owl:NamedIndividual, :Artist;
   :artistName "Fifth Harmony";
   :numberOfTracks 75;
@@ -5010,70 +3735,20 @@ dbr:6ix9ine a owl:NamedIndividual, :Artist;
   :numberOfTracks 229;
   :totalStreams 8341510768 .
 
-:Florence_The_Machine a owl:NamedIndividual, :Artist;
-  :artistName "Florence + The Machine";
-  :numberOfTracks 160;
-  :totalStreams 4615138741 .
-
 :Florida_Georgia_Line a owl:NamedIndividual, :Artist;
   :artistName "Florida Georgia Line";
   :numberOfTracks 124;
   :totalStreams 7087783632 .
-
-:Flume a owl:NamedIndividual, :Artist;
-  :artistName "Flume";
-  :numberOfTracks 145;
-  :totalStreams 3981717816 .
 
 :Foo_Fighters a owl:NamedIndividual, :Artist;
   :artistName "Foo Fighters";
   :numberOfTracks 237;
   :totalStreams 5761240710 .
 
-:Foreigner a owl:NamedIndividual, :Artist;
-  :artistName "Foreigner";
-  :numberOfTracks 284;
-  :totalStreams 1469326747 .
-
-:Foster_The_People a owl:NamedIndividual, :Artist;
-  :artistName "Foster The People";
-  :numberOfTracks 96;
-  :totalStreams 3418957249 .
-
-:Frank_Ocean a owl:NamedIndividual, :Artist;
-  :artistName "Frank Ocean";
-  :numberOfTracks 45;
-  :totalStreams 10184261128 .
-
-:Frank_Sinatra a owl:NamedIndividual, :Artist;
-  :artistName "Frank Sinatra";
-  :numberOfTracks 2171;
-  :totalStreams 5459134162 .
-
 :French_Montana a owl:NamedIndividual, :Artist;
   :artistName "French Montana";
   :numberOfTracks 672;
   :totalStreams 9095001895 .
-
-:Frédéric_Chopin a owl:NamedIndividual, :Artist;
-  :artistName "Frédéric Chopin";
-  :numberOfTracks 9790;
-  :totalStreams 1582150938 .
-
-:Future a owl:NamedIndividual, :Artist;
-  :artistName "Future";
-  :numberOfTracks 504;
-  :totalStreams 24808795841 .
-
-:GIMS a owl:NamedIndividual, :Artist;
-  :artistName "GIMS";
-  :numberOfTracks 179;
-  :totalStreams 2605643000 .
-
-:GI_DLE a owl:NamedIndividual, :Artist;
-  :artistName "(G)I-DLE";
-  :numberOfTracks 68;
-  :totalStreams 1553953656 .
 
 :G_Eazy a owl:NamedIndividual, :Artist;
   :artistName "G-Eazy";
@@ -5085,525 +3760,35 @@ dbr:6ix9ine a owl:NamedIndividual, :Artist;
   :numberOfTracks 243;
   :totalStreams 4529760116 .
 
-:Gavin_James a owl:NamedIndividual, :Artist;
-  :artistName "Gavin James";
-  :numberOfTracks 119;
-  :totalStreams 1656902147 .
-
-:Gemitaiz a owl:NamedIndividual, :Artist;
-  :artistName "Gemitaiz";
-  :numberOfTracks 174;
-  :totalStreams 2134221491 .
-
-:Gente_De_Zona a owl:NamedIndividual, :Artist;
-  :artistName "Gente De Zona";
-  :numberOfTracks 126;
-  :totalStreams 3160036494 .
-
-:George_Ezra a owl:NamedIndividual, :Artist;
-  :artistName "George Ezra";
-  :numberOfTracks 76;
-  :totalStreams 7599977179 .
-
-:George_Michael a owl:NamedIndividual, :Artist;
-  :artistName "George Michael";
-  :numberOfTracks 185;
-  :totalStreams 8895958340 .
-
-:George_Strait a owl:NamedIndividual, :Artist;
-  :artistName "George Strait";
-  :numberOfTracks 444;
-  :totalStreams 2329467431 .
-
-:Gera_MX a owl:NamedIndividual, :Artist;
-  :artistName "Gera MX";
-  :numberOfTracks 184;
-  :totalStreams 2598557602 .
-
-:Gerardo_Ortiz a owl:NamedIndividual, :Artist;
-  :artistName "Gerardo Ortiz";
-  :numberOfTracks 257;
-  :totalStreams 2926528082 .
-
-:Ghostemane a owl:NamedIndividual, :Artist;
-  :artistName "Ghostemane";
-  :numberOfTracks 140;
-  :totalStreams 1966111292 .
-
-:Gigi_DAgostino a owl:NamedIndividual, :Artist;
-  :artistName "Gigi D'Agostino";
-  :numberOfTracks 423;
-  :totalStreams 1962167082 .
-
-:Giveon a owl:NamedIndividual, :Artist;
-  :artistName "Giveon";
-  :numberOfTracks 32;
-  :totalStreams 2490387671 .
-
 :Glass_Animals a owl:NamedIndividual, :Artist;
   :artistName "Glass Animals";
   :numberOfTracks 109;
   :totalStreams 4558582553 .
-
-:Glee_Cast a owl:NamedIndividual, :Artist;
-  :artistName "Glee Cast";
-  :numberOfTracks 723;
-  :totalStreams 4375931294 .
-
-:Gloria_Trevi a owl:NamedIndividual, :Artist;
-  :artistName "Gloria Trevi";
-  :numberOfTracks 278;
-  :totalStreams 1672873632 .
-
-:Goodboys a owl:NamedIndividual, :Artist;
-  :artistName "Goodboys";
-  :numberOfTracks 44;
-  :totalStreams 2230204861 .
-
-:Gorillaz a owl:NamedIndividual, :Artist;
-  :artistName "Gorillaz";
-  :numberOfTracks 283;
-  :totalStreams 6244746636 .
-
-:Gotye a owl:NamedIndividual, :Artist;
-  :artistName "Gotye";
-  :numberOfTracks 46;
-  :totalStreams 1435167996 .
-
-:Granular a owl:NamedIndividual, :Artist;
-  :artistName "Granular";
-  :numberOfTracks 574;
-  :totalStreams 1919564121 .
-
-:Greeicy a owl:NamedIndividual, :Artist;
-  :artistName "Greeicy";
-  :numberOfTracks 60;
-  :totalStreams 1770595011 .
-
-:Green_Day a owl:NamedIndividual, :Artist;
-  :artistName "Green Day";
-  :numberOfTracks 374;
-  :totalStreams 7404270867 .
-
-:Grupo_Firme a owl:NamedIndividual, :Artist;
-  :artistName "Grupo Firme";
-  :numberOfTracks 205;
-  :totalStreams 3852402912 .
-
-:Gryffin a owl:NamedIndividual, :Artist;
-  :artistName "Gryffin";
-  :numberOfTracks 146;
-  :totalStreams 2676379337 .
-
-:Guaynaa a owl:NamedIndividual, :Artist;
-  :artistName "Guaynaa";
-  :numberOfTracks 64;
-  :totalStreams 1929827006 .
-
-:Gucci_Mane a owl:NamedIndividual, :Artist;
-  :artistName "Gucci Mane";
-  :numberOfTracks 2117;
-  :totalStreams 10085288075 .
-
-:Gunna a owl:NamedIndividual, :Artist;
-  :artistName "Gunna";
-  :numberOfTracks 178;
-  :totalStreams 12805680323 .
 
 :Guns_N_Roses a owl:NamedIndividual, :Artist;
   :artistName "Guns N' Roses";
   :numberOfTracks 139;
   :totalStreams 6615466362 .
 
-:Gustavo_Cerati a owl:NamedIndividual, :Artist;
-  :artistName "Gustavo Cerati";
-  :numberOfTracks 163;
-  :totalStreams 1714019842 .
-
-:Gustavo_Mioto a owl:NamedIndividual, :Artist;
-  :artistName "Gustavo Mioto";
-  :numberOfTracks 119;
-  :totalStreams 1517276413 .
-
-:Gusttavo_Lima a owl:NamedIndividual, :Artist;
-  :artistName "Gusttavo Lima";
-  :numberOfTracks 287;
-  :totalStreams 5814496752 .
-
-:Gwen_Stefani a owl:NamedIndividual, :Artist;
-  :artistName "Gwen Stefani";
-  :numberOfTracks 99;
-  :totalStreams 3062841351 .
-
-:Gym_Class_Heroes a owl:NamedIndividual, :Artist;
-  :artistName "Gym Class Heroes";
-  :numberOfTracks 75;
-  :totalStreams 1493450694 .
-
-:HER a owl:NamedIndividual, :Artist;
-  :artistName "H.E.R.";
-  :numberOfTracks 102;
-  :totalStreams 6595236588 .
-
-:HaAsh a owl:NamedIndividual, :Artist;
-  :artistName "Ha*Ash";
-  :numberOfTracks 131;
-  :totalStreams 2480448122 .
-
-:Hailee_Steinfeld a owl:NamedIndividual, :Artist;
-  :artistName "Hailee Steinfeld";
-  :numberOfTracks 31;
-  :totalStreams 5422557798 .
-
-:Halsey a owl:NamedIndividual, :Artist;
-  :artistName "Halsey";
-  :numberOfTracks 180;
-  :totalStreams 16611557516 .
-
-:Hans_Zimmer a owl:NamedIndividual, :Artist;
-  :artistName "Hans Zimmer";
-  :numberOfTracks 1545;
-  :totalStreams 4212192011 .
-
-:Hardwell a owl:NamedIndividual, :Artist;
-  :artistName "Hardwell";
-  :numberOfTracks 462;
-  :totalStreams 2470862264 .
-
-:Harry_Styles a owl:NamedIndividual, :Artist;
-  :artistName "Harry Styles";
-  :numberOfTracks 39;
-  :totalStreams 13347420670 .
-
-:Henrique_Juliano a owl:NamedIndividual, :Artist;
-  :artistName "Henrique & Juliano";
-  :numberOfTracks 177;
-  :totalStreams 6279712233 .
-
-:Hillsong_UNITED a owl:NamedIndividual, :Artist;
-  :artistName "Hillsong UNITED";
-  :numberOfTracks 366;
-  :totalStreams 2741226577 .
-
-:Hillsong_Worship a owl:NamedIndividual, :Artist;
-  :artistName "Hillsong Worship";
-  :numberOfTracks 847;
-  :totalStreams 3761961013 .
-
-:Hollywood_Undead a owl:NamedIndividual, :Artist;
-  :artistName "Hollywood Undead";
-  :numberOfTracks 143;
-  :totalStreams 2394617062 .
-
-:Hombres_G a owl:NamedIndividual, :Artist;
-  :artistName "Hombres G";
-  :numberOfTracks 275;
-  :totalStreams 1527092463 .
-
-:Hozier a owl:NamedIndividual, :Artist;
-  :artistName "Hozier";
-  :numberOfTracks 69;
-  :totalStreams 5967126876 .
-
-:Hungria_Hip_Hop a owl:NamedIndividual, :Artist;
-  :artistName "Hungria Hip Hop";
-  :numberOfTracks 68;
-  :totalStreams 1551829874 .
-
-:ILLENIUM a owl:NamedIndividual, :Artist;
-  :artistName "ILLENIUM";
-  :numberOfTracks 218;
-  :totalStreams 7982319226 .
-
-:ITZY a owl:NamedIndividual, :Artist;
-  :artistName "ITZY";
-  :numberOfTracks 70;
-  :totalStreams 1531845087 .
-
-:IU a owl:NamedIndividual, :Artist;
-  :artistName "IU";
-  :numberOfTracks 165;
-  :totalStreams 1848046374 .
-
-:Ice_Cube a owl:NamedIndividual, :Artist;
-  :artistName "Ice Cube";
-  :numberOfTracks 292;
-  :totalStreams 2632303107 .
-
-:Icona_Pop a owl:NamedIndividual, :Artist;
-  :artistName "Icona Pop";
-  :numberOfTracks 121;
-  :totalStreams 1649477545 .
-
-:Iggy_Azalea a owl:NamedIndividual, :Artist;
-  :artistName "Iggy Azalea";
-  :numberOfTracks 108;
-  :totalStreams 4588133752 .
-
 :Imagine_Dragons a owl:NamedIndividual, :Artist;
   :artistName "Imagine Dragons";
   :numberOfTracks 189;
   :totalStreams 21877619174 .
-
-:Imanbek a owl:NamedIndividual, :Artist;
-  :artistName "Imanbek";
-  :numberOfTracks 65;
-  :totalStreams 3096001302 .
-
-:Incubus a owl:NamedIndividual, :Artist;
-  :artistName "Incubus";
-  :numberOfTracks 229;
-  :totalStreams 1874605484 .
-
-:Internet_Money a owl:NamedIndividual, :Artist;
-  :artistName "Internet Money";
-  :numberOfTracks 43;
-  :totalStreams 2391266322 .
-
-:Intocable a owl:NamedIndividual, :Artist;
-  :artistName "Intocable";
-  :numberOfTracks 317;
-  :totalStreams 1762540158 .
-
-:Iron_Maiden a owl:NamedIndividual, :Artist;
-  :artistName "Iron Maiden";
-  :numberOfTracks 426;
-  :totalStreams 3108821362 .
-
-:JAY_Z a owl:NamedIndividual, :Artist;
-  :artistName "JAY-Z";
-  :numberOfTracks 306;
-  :totalStreams 12883058793 .
-
-:JID a owl:NamedIndividual, :Artist;
-  :artistName "JID";
-  :numberOfTracks 70;
-  :totalStreams 2887557587 .
-
-:JP_Cooper a owl:NamedIndividual, :Artist;
-  :artistName "JP Cooper";
-  :numberOfTracks 144;
-  :totalStreams 3834789670 .
-
-:J_Balvin a owl:NamedIndividual, :Artist;
-  :artistName "J Balvin";
-  :numberOfTracks 242;
-  :totalStreams 35842538246 .
-
-:J_Cole a owl:NamedIndividual, :Artist;
-  :artistName "J. Cole";
-  :numberOfTracks 137;
-  :totalStreams 18158943696 .
 
 :Jack_Harlow a owl:NamedIndividual, :Artist;
   :artistName "Jack Harlow";
   :numberOfTracks 96;
   :totalStreams 5921959141 .
 
-:Jack_Jack a owl:NamedIndividual, :Artist;
-  :artistName "Jack & Jack";
-  :numberOfTracks 43;
-  :totalStreams 1484511618 .
-
-:Jack_Johnson a owl:NamedIndividual, :Artist;
-  :artistName "Jack Johnson";
-  :numberOfTracks 190;
-  :totalStreams 5216515089 .
-
-:Jack_Ü a owl:NamedIndividual, :Artist;
-  :artistName "Jack Ü";
-  :numberOfTracks 37;
-  :totalStreams 1686355053 .
-
-:Jacquees a owl:NamedIndividual, :Artist;
-  :artistName "Jacquees";
-  :numberOfTracks 120;
-  :totalStreams 1730582973 .
-
-:Jaden a owl:NamedIndividual, :Artist;
-  :artistName "Jaden";
-  :numberOfTracks 110;
-  :totalStreams 3511262614 .
-
 :James_Arthur a owl:NamedIndividual, :Artist;
   :artistName "James Arthur";
   :numberOfTracks 147;
   :totalStreams 8172007056 .
 
-:James_Bay a owl:NamedIndividual, :Artist;
-  :artistName "James Bay";
-  :numberOfTracks 90;
-  :totalStreams 6009212221 .
-
-:James_Blunt a owl:NamedIndividual, :Artist;
-  :artistName "James Blunt";
-  :numberOfTracks 172;
-  :totalStreams 3458054837 .
-
-:James_TW a owl:NamedIndividual, :Artist;
-  :artistName "James TW";
-  :numberOfTracks 44;
-  :totalStreams 1900798934 .
-
-:Jasmine_Thompson a owl:NamedIndividual, :Artist;
-  :artistName "Jasmine Thompson";
-  :numberOfTracks 116;
-  :totalStreams 2610982197 .
-
-:Jason_Aldean a owl:NamedIndividual, :Artist;
-  :artistName "Jason Aldean";
-  :numberOfTracks 166;
-  :totalStreams 3797817377 .
-
-:Jason_Derulo a owl:NamedIndividual, :Artist;
-  :artistName "Jason Derulo";
-  :numberOfTracks 197;
-  :totalStreams 12004838712 .
-
-:Jason_Mraz a owl:NamedIndividual, :Artist;
-  :artistName "Jason Mraz";
-  :numberOfTracks 238;
-  :totalStreams 4537952823 .
-
-:Jax_Jones a owl:NamedIndividual, :Artist;
-  :artistName "Jax Jones";
-  :numberOfTracks 89;
-  :totalStreams 3087102580 .
-
-:Jay_Chou a owl:NamedIndividual, :Artist;
-  :artistName "Jay Chou";
-  :numberOfTracks 327;
-  :totalStreams 1979158176 .
-
-:Jay_Wheeler a owl:NamedIndividual, :Artist;
-  :artistName "Jay Wheeler";
-  :numberOfTracks 146;
-  :totalStreams 2705709339 .
-
-:Jeezy a owl:NamedIndividual, :Artist;
-  :artistName "Jeezy";
-  :numberOfTracks 552;
-  :totalStreams 2922141418 .
-
-:Jennifer_Lopez a owl:NamedIndividual, :Artist;
-  :artistName "Jennifer Lopez";
-  :numberOfTracks 240;
-  :totalStreams 5284075986 .
-
-:Jeremih a owl:NamedIndividual, :Artist;
-  :artistName "Jeremih";
-  :numberOfTracks 140;
-  :totalStreams 4218069021 .
-
-:Jeremy_Zucker a owl:NamedIndividual, :Artist;
-  :artistName "Jeremy Zucker";
-  :numberOfTracks 96;
-  :totalStreams 3379248595 .
-
-:Jess_Glynne a owl:NamedIndividual, :Artist;
-  :artistName "Jess Glynne";
-  :numberOfTracks 82;
-  :totalStreams 5255651380 .
-
-:Jesse_Joy a owl:NamedIndividual, :Artist;
-  :artistName "Jesse & Joy";
-  :numberOfTracks 124;
-  :totalStreams 2856285668 .
-
-:Jessie_J a owl:NamedIndividual, :Artist;
-  :artistName "Jessie J";
-  :numberOfTracks 117;
-  :totalStreams 3563453628 .
-
-:Jessie_Reyez a owl:NamedIndividual, :Artist;
-  :artistName "Jessie Reyez";
-  :numberOfTracks 73;
-  :totalStreams 2494885057 .
-
 :Jhay_Cortez a owl:NamedIndividual, :Artist;
   :artistName "Jhay Cortez";
   :numberOfTracks 82;
   :totalStreams 7419572248 .
-
-:Jhené_Aiko a owl:NamedIndividual, :Artist;
-  :artistName "Jhené Aiko";
-  :numberOfTracks 114;
-  :totalStreams 3699946929 .
-
-:Jimi_Hendrix a owl:NamedIndividual, :Artist;
-  :artistName "Jimi Hendrix";
-  :numberOfTracks 506;
-  :totalStreams 2586077783 .
-
-:Joan_Sebastian a owl:NamedIndividual, :Artist;
-  :artistName "Joan Sebastian";
-  :numberOfTracks 506;
-  :totalStreams 3103310481 .
-
-:Joaquín_Sabina a owl:NamedIndividual, :Artist;
-  :artistName "Joaquín Sabina";
-  :numberOfTracks 348;
-  :totalStreams 1684969613 .
-
-:Joel_Corry a owl:NamedIndividual, :Artist;
-  :artistName "Joel Corry";
-  :numberOfTracks 153;
-  :totalStreams 2479017859 .
-
-:Joey_Bada a owl:NamedIndividual, :Artist;
-  :artistName "Joey Bada$$";
-  :numberOfTracks 119;
-  :totalStreams 2917059536 .
-
-:John_Denver a owl:NamedIndividual, :Artist;
-  :artistName "John Denver";
-  :numberOfTracks 594;
-  :totalStreams 1521234624 .
-
-:John_Legend a owl:NamedIndividual, :Artist;
-  :artistName "John Legend";
-  :numberOfTracks 249;
-  :totalStreams 7787575229 .
-
-:John_Lennon a owl:NamedIndividual, :Artist;
-  :artistName "John Lennon";
-  :numberOfTracks 498;
-  :totalStreams 1906612794 .
-
-:John_Mayer a owl:NamedIndividual, :Artist;
-  :artistName "John Mayer";
-  :numberOfTracks 208;
-  :totalStreams 8758336664 .
-
-:John_Newman a owl:NamedIndividual, :Artist;
-  :artistName "John Newman";
-  :numberOfTracks 95;
-  :totalStreams 2225486804 .
-
-:John_Williams a owl:NamedIndividual, :Artist;
-  :artistName "John Williams";
-  :numberOfTracks 2410;
-  :totalStreams 3458709452 .
-
-:Johnny_Cash a owl:NamedIndividual, :Artist;
-  :artistName "Johnny Cash";
-  :numberOfTracks 1679;
-  :totalStreams 4338130909 .
-
-:Joji a owl:NamedIndividual, :Artist;
-  :artistName "Joji";
-  :numberOfTracks 52;
-  :totalStreams 6874208285 .
-
-:Jon_Bellion a owl:NamedIndividual, :Artist;
-  :artistName "Jon Bellion";
-  :numberOfTracks 84;
-  :totalStreams 2887637262 .
-
-:Jon_Pardi a owl:NamedIndividual, :Artist;
-  :artistName "Jon Pardi";
-  :numberOfTracks 78;
-  :totalStreams 1954792268 .
 
 :Jonas_Blue a owl:NamedIndividual, :Artist;
   :artistName "Jonas Blue";
@@ -5615,235 +3800,25 @@ dbr:6ix9ine a owl:NamedIndividual, :Artist;
   :numberOfTracks 95;
   :totalStreams 4828092101 .
 
-:Jorge_Mateus a owl:NamedIndividual, :Artist;
-  :artistName "Jorge & Mateus";
-  :numberOfTracks 280;
-  :totalStreams 6594638223 .
-
-:Jorja_Smith a owl:NamedIndividual, :Artist;
-  :artistName "Jorja Smith";
-  :numberOfTracks 81;
-  :totalStreams 2660761959 .
-
-:José_José a owl:NamedIndividual, :Artist;
-  :artistName "José José";
-  :numberOfTracks 525;
-  :totalStreams 2472574617 .
-
-:Journey a owl:NamedIndividual, :Artist;
-  :artistName "Journey";
-  :numberOfTracks 278;
-  :totalStreams 6862391542 .
-
-:Jowell_Randy a owl:NamedIndividual, :Artist;
-  :artistName "Jowell & Randy";
-  :numberOfTracks 173;
-  :totalStreams 2481769217 .
-
-:Joyner_Lucas a owl:NamedIndividual, :Artist;
-  :artistName "Joyner Lucas";
-  :numberOfTracks 87;
-  :totalStreams 2396757519 .
-
-:Juan_Gabriel a owl:NamedIndividual, :Artist;
-  :artistName "Juan Gabriel";
-  :numberOfTracks 482;
-  :totalStreams 3039487664 .
-
-:Juan_Luis_Guerra_440 a owl:NamedIndividual, :Artist;
-  :artistName "Juan Luis Guerra 4.40";
-  :numberOfTracks 208;
-  :totalStreams 2506780298 .
-
-:Juan_Magán a owl:NamedIndividual, :Artist;
-  :artistName "Juan Magán";
-  :numberOfTracks 208;
-  :totalStreams 3299263109 .
-
-:Juanes a owl:NamedIndividual, :Artist;
-  :artistName "Juanes";
-  :numberOfTracks 201;
-  :totalStreams 3046714537 .
-
-:Juice_WRLD a owl:NamedIndividual, :Artist;
-  :artistName "Juice WRLD";
-  :numberOfTracks 116;
-  :totalStreams 26866007328 .
-
-:Juicy_J a owl:NamedIndividual, :Artist;
-  :artistName "Juicy J";
-  :numberOfTracks 450;
-  :totalStreams 5426385240 .
-
-:Jul a owl:NamedIndividual, :Artist;
-  :artistName "Jul";
-  :numberOfTracks 572;
-  :totalStreams 3932787734 .
-
 :Julia_Michaels a owl:NamedIndividual, :Artist;
   :artistName "Julia Michaels";
   :numberOfTracks 65;
   :totalStreams 6502411648 .
-
-:Julieta_Venegas a owl:NamedIndividual, :Artist;
-  :artistName "Julieta Venegas";
-  :numberOfTracks 152;
-  :totalStreams 2462697560 .
-
-:Junior_H a owl:NamedIndividual, :Artist;
-  :artistName "Junior H";
-  :numberOfTracks 104;
-  :totalStreams 2491199040 .
-
-:Justin_Bieber a owl:NamedIndividual, :Artist;
-  :artistName "Justin Bieber";
-  :numberOfTracks 225;
-  :totalStreams 43282200960 .
 
 :Justin_Quiles a owl:NamedIndividual, :Artist;
   :artistName "Justin Quiles";
   :numberOfTracks 163;
   :totalStreams 9189465563 .
 
-:Justin_Timberlake a owl:NamedIndividual, :Artist;
-  :artistName "Justin Timberlake";
-  :numberOfTracks 172;
-  :totalStreams 9392500063 .
-
-:KALEO a owl:NamedIndividual, :Artist;
-  :artistName "KALEO";
-  :numberOfTracks 29;
-  :totalStreams 1609214165 .
-
-:KAROL_G a owl:NamedIndividual, :Artist;
-  :artistName "KAROL G";
-  :numberOfTracks 85;
-  :totalStreams 11731109599 .
-
-:KHEA a owl:NamedIndividual, :Artist;
-  :artistName "KHEA";
-  :numberOfTracks 81;
-  :totalStreams 3260180624 .
-
-:KISS a owl:NamedIndividual, :Artist;
-  :artistName "KISS";
-  :numberOfTracks 510;
-  :totalStreams 2222550482 .
-
-:KSI a owl:NamedIndividual, :Artist;
-  :artistName "KSI";
-  :numberOfTracks 116;
-  :totalStreams 1723197204 .
-
-:KYLE a owl:NamedIndividual, :Artist;
-  :artistName "KYLE";
-  :numberOfTracks 112;
-  :totalStreams 2586950044 .
-
-:Kacey_Musgraves a owl:NamedIndividual, :Artist;
-  :artistName "Kacey Musgraves";
-  :numberOfTracks 126;
-  :totalStreams 2221051383 .
-
-:Kali_Uchis a owl:NamedIndividual, :Artist;
-  :artistName "Kali Uchis";
-  :numberOfTracks 67;
-  :totalStreams 3929179197 .
-
 :Kane_Brown a owl:NamedIndividual, :Artist;
   :artistName "Kane Brown";
   :numberOfTracks 98;
   :totalStreams 4394285412 .
 
-:Kanye_West a owl:NamedIndividual, :Artist;
-  :artistName "Kanye West";
-  :numberOfTracks 239;
-  :totalStreams 31302272311 .
-
-:Katy_Perry a owl:NamedIndividual, :Artist;
-  :artistName "Katy Perry";
-  :numberOfTracks 180;
-  :totalStreams 13849192062 .
-
-:Keane a owl:NamedIndividual, :Artist;
-  :artistName "Keane";
-  :numberOfTracks 197;
-  :totalStreams 1971666761 .
-
 :Kehlani a owl:NamedIndividual, :Artist;
   :artistName "Kehlani";
   :numberOfTracks 124;
   :totalStreams 6390596190 .
-
-:Keith_Urban a owl:NamedIndividual, :Artist;
-  :artistName "Keith Urban";
-  :numberOfTracks 205;
-  :totalStreams 2796924525 .
-
-:Kelly_Clarkson a owl:NamedIndividual, :Artist;
-  :artistName "Kelly Clarkson";
-  :numberOfTracks 329;
-  :totalStreams 4437268780 .
-
-:Kelly_Rowland a owl:NamedIndividual, :Artist;
-  :artistName "Kelly Rowland";
-  :numberOfTracks 126;
-  :totalStreams 2054124327 .
-
-:Kendrick_Lamar a owl:NamedIndividual, :Artist;
-  :artistName "Kendrick Lamar";
-  :numberOfTracks 121;
-  :totalStreams 26298489121 .
-
-:Kenny_Chesney a owl:NamedIndividual, :Artist;
-  :artistName "Kenny Chesney";
-  :numberOfTracks 277;
-  :totalStreams 5017971754 .
-
-:Kesha a owl:NamedIndividual, :Artist;
-  :artistName "Kesha";
-  :numberOfTracks 139;
-  :totalStreams 3994834175 .
-
-:Kevin_Gates a owl:NamedIndividual, :Artist;
-  :artistName "Kevin Gates";
-  :numberOfTracks 314;
-  :totalStreams 5098308956 .
-
-:Kevin_Roldan a owl:NamedIndividual, :Artist;
-  :artistName "Kevin Roldan";
-  :numberOfTracks 147;
-  :totalStreams 2340194571 .
-
-:Khalid a owl:NamedIndividual, :Artist;
-  :artistName "Khalid";
-  :numberOfTracks 119;
-  :totalStreams 23897154542 .
-
-:Kid_Cudi a owl:NamedIndividual, :Artist;
-  :artistName "Kid Cudi";
-  :numberOfTracks 160;
-  :totalStreams 7994605825 .
-
-:Kid_Ink a owl:NamedIndividual, :Artist;
-  :artistName "Kid Ink";
-  :numberOfTracks 198;
-  :totalStreams 5305410904 .
-
-:Kiiara a owl:NamedIndividual, :Artist;
-  :artistName "Kiiara";
-  :numberOfTracks 73;
-  :totalStreams 1850170055 .
-
-:Kina a owl:NamedIndividual, :Artist;
-  :artistName "Kina";
-  :numberOfTracks 39;
-  :totalStreams 1727440440 .
-
-:King_Von a owl:NamedIndividual, :Artist;
-  :artistName "King Von";
-  :numberOfTracks 78;
-  :totalStreams 1716516079 .
 
 :Kings_of_Leon a owl:NamedIndividual, :Artist;
   :artistName "Kings of Leon";
@@ -5855,130 +3830,15 @@ dbr:6ix9ine a owl:NamedIndividual, :Artist;
   :numberOfTracks 243;
   :totalStreams 9823826189 .
 
-:Kodaline a owl:NamedIndividual, :Artist;
-  :artistName "Kodaline";
-  :numberOfTracks 125;
-  :totalStreams 2669679675 .
-
-:Kollegah a owl:NamedIndividual, :Artist;
-  :artistName "Kollegah";
-  :numberOfTracks 569;
-  :totalStreams 1786509571 .
-
-:Kontra_K a owl:NamedIndividual, :Artist;
-  :artistName "Kontra K";
-  :numberOfTracks 301;
-  :totalStreams 2323242704 .
-
-:Korn a owl:NamedIndividual, :Artist;
-  :artistName "Korn";
-  :numberOfTracks 293;
-  :totalStreams 4659712090 .
-
-:Kris_Kross_Amsterdam a owl:NamedIndividual, :Artist;
-  :artistName "Kris Kross Amsterdam";
-  :numberOfTracks 45;
-  :totalStreams 1552090975 .
-
-:Kungs a owl:NamedIndividual, :Artist;
-  :artistName "Kungs";
-  :numberOfTracks 65;
-  :totalStreams 1687619753 .
-
 :Kygo a owl:NamedIndividual, :Artist;
   :artistName "Kygo";
   :numberOfTracks 107;
   :totalStreams 13652361243 .
 
-:Kylie_Minogue a owl:NamedIndividual, :Artist;
-  :artistName "Kylie Minogue";
-  :numberOfTracks 906;
-  :totalStreams 1882666070 .
-
-:LANY a owl:NamedIndividual, :Artist;
-  :artistName "LANY";
-  :numberOfTracks 86;
-  :totalStreams 5411658775 .
-
-:LIT_killah a owl:NamedIndividual, :Artist;
-  :artistName "LIT killah";
-  :numberOfTracks 45;
-  :totalStreams 1699237917 .
-
-:LUDMILLA a owl:NamedIndividual, :Artist;
-  :artistName "LUDMILLA";
-  :numberOfTracks 178;
-  :totalStreams 2265853109 .
-
-:La_Adictiva_Banda_San_José_de_Mesillas a owl:NamedIndividual, :Artist;
-  :artistName "La Adictiva Banda San José de Mesillas";
-  :numberOfTracks 128;
-  :totalStreams 1740019854 .
-
-:La_Arrolladora_Banda_El_Limón_De_Rene_Camacho a owl:NamedIndividual, :Artist;
-  :artistName "La Arrolladora Banda El Limón De Rene Camacho";
-  :numberOfTracks 332;
-  :totalStreams 3236920653 .
-
-:La_Oreja_de_Van_Gogh a owl:NamedIndividual, :Artist;
-  :artistName "La Oreja de Van Gogh";
-  :numberOfTracks 183;
-  :totalStreams 1978425696 .
-
-:Labrinth a owl:NamedIndividual, :Artist;
-  :artistName "Labrinth";
-  :numberOfTracks 149;
-  :totalStreams 5804972805 .
-
-:Lady_A a owl:NamedIndividual, :Artist;
-  :artistName "Lady A";
-  :numberOfTracks 229;
-  :totalStreams 1989333039 .
-
-:Lady_Gaga a owl:NamedIndividual, :Artist;
-  :artistName "Lady Gaga";
-  :numberOfTracks 314;
-  :totalStreams 14992401846 .
-
-:Lalo_Ebratt a owl:NamedIndividual, :Artist;
-  :artistName "Lalo Ebratt";
-  :numberOfTracks 60;
-  :totalStreams 1857824819 .
-
-:Lana_Del_Rey a owl:NamedIndividual, :Artist;
-  :artistName "Lana Del Rey";
-  :numberOfTracks 166;
-  :totalStreams 13259290977 .
-
-:Laura_Pausini a owl:NamedIndividual, :Artist;
-  :artistName "Laura Pausini";
-  :numberOfTracks 434;
-  :totalStreams 1714914047 .
-
-:Lauren_Daigle a owl:NamedIndividual, :Artist;
-  :artistName "Lauren Daigle";
-  :numberOfTracks 67;
-  :totalStreams 1652496054 .
-
 :Lauv a owl:NamedIndividual, :Artist;
   :artistName "Lauv";
   :numberOfTracks 108;
   :totalStreams 8007535969 .
-
-:League_of_Legends a owl:NamedIndividual, :Artist;
-  :artistName "League of Legends";
-  :numberOfTracks 495;
-  :totalStreams 4274836521 .
-
-:Led_Zeppelin a owl:NamedIndividual, :Artist;
-  :artistName "Led Zeppelin";
-  :numberOfTracks 241;
-  :totalStreams 5554540202 .
-
-:Lee_Brice a owl:NamedIndividual, :Artist;
-  :artistName "Lee Brice";
-  :numberOfTracks 97;
-  :totalStreams 1908115037 .
 
 :Lenny_Kravitz a owl:NamedIndividual .
 # 
@@ -6387,75 +4247,15 @@ dbr:6ix9ine a owl:NamedIndividual, :Artist;
   :numberOfTracks 269;
   :totalStreams 1645465557 .
 
-:Lenny_Tavárez a owl:NamedIndividual, :Artist;
-  :artistName "Lenny Tavárez";
-  :numberOfTracks 94;
-  :totalStreams 8373447134 .
-
-:Leon_Bridges a owl:NamedIndividual, :Artist;
-  :artistName "Leon Bridges";
-  :numberOfTracks 78;
-  :totalStreams 2874736928 .
-
-:Leona_Lewis a owl:NamedIndividual, :Artist;
-  :artistName "Leona Lewis";
-  :numberOfTracks 116;
-  :totalStreams 1864835979 .
-
 :Lewis_Capaldi a owl:NamedIndividual, :Artist;
   :artistName "Lewis Capaldi";
   :numberOfTracks 48;
   :totalStreams 6958007662 .
 
-:Liam_Payne a owl:NamedIndividual, :Artist;
-  :artistName "Liam Payne";
-  :numberOfTracks 51;
-  :totalStreams 3928358126 .
-
-:Lil_Baby a owl:NamedIndividual, :Artist;
-  :artistName "Lil Baby";
-  :numberOfTracks 181;
-  :totalStreams 18406805476 .
-
-:Lil_Dicky a owl:NamedIndividual, :Artist;
-  :artistName "Lil Dicky";
-  :numberOfTracks 23;
-  :totalStreams 1869505851 .
-
 :Lil_Durk a owl:NamedIndividual, :Artist;
   :artistName "Lil Durk";
   :numberOfTracks 359;
   :totalStreams 7376970256 .
-
-:Lil_Kleine a owl:NamedIndividual, :Artist;
-  :artistName "Lil Kleine";
-  :numberOfTracks 120;
-  :totalStreams 1897011436 .
-
-:Lil_Mosey a owl:NamedIndividual, :Artist;
-  :artistName "Lil Mosey";
-  :numberOfTracks 50;
-  :totalStreams 3980899202 .
-
-:Lil_Nas_X a owl:NamedIndividual, :Artist;
-  :artistName "Lil Nas X";
-  :numberOfTracks 34;
-  :totalStreams 8778149366 .
-
-:Lil_Peep a owl:NamedIndividual, :Artist;
-  :artistName "Lil Peep";
-  :numberOfTracks 104;
-  :totalStreams 9026999185 .
-
-:Lil_Pump a owl:NamedIndividual, :Artist;
-  :artistName "Lil Pump";
-  :numberOfTracks 74;
-  :totalStreams 6457796884 .
-
-:Lil_Skies a owl:NamedIndividual, :Artist;
-  :artistName "Lil Skies";
-  :numberOfTracks 75;
-  :totalStreams 4512409787 .
 
 :Lil_Tecca a owl:NamedIndividual, :Artist;
   :artistName "Lil Tecca";
@@ -6467,300 +4267,25 @@ dbr:6ix9ine a owl:NamedIndividual, :Artist;
   :numberOfTracks 65;
   :totalStreams 6197269302 .
 
-:Lil_Uzi_Vert a owl:NamedIndividual, :Artist;
-  :artistName "Lil Uzi Vert";
-  :numberOfTracks 140;
-  :totalStreams 21220845521 .
-
-:Lil_Wayne a owl:NamedIndividual, :Artist;
-  :artistName "Lil Wayne";
-  :numberOfTracks 476;
-  :totalStreams 23130373255 .
-
-:Lil_Yachty a owl:NamedIndividual, :Artist;
-  :artistName "Lil Yachty";
-  :numberOfTracks 190;
-  :totalStreams 3023049234 .
-
-:Lily_Allen a owl:NamedIndividual, :Artist;
-  :artistName "Lily Allen";
-  :numberOfTracks 115;
-  :totalStreams 1991871977 .
-
-:Limp_Bizkit a owl:NamedIndividual, :Artist;
-  :artistName "Limp Bizkit";
-  :numberOfTracks 134;
-  :totalStreams 2469637111 .
-
-:Lin_Manuel_Miranda a owl:NamedIndividual, :Artist;
-  :artistName "Lin-Manuel Miranda";
-  :numberOfTracks 95;
-  :totalStreams 3592514692 .
-
-:Linkin_Park a owl:NamedIndividual, :Artist;
-  :artistName "Linkin Park";
-  :numberOfTracks 350;
-  :totalStreams 13018611374 .
-
-:Lionel_Richie a owl:NamedIndividual, :Artist;
-  :artistName "Lionel Richie";
-  :numberOfTracks 297;
-  :totalStreams 1796908138 .
-
 :Little_Mix a owl:NamedIndividual, :Artist;
   :artistName "Little Mix";
   :numberOfTracks 205;
   :totalStreams 8038098405 .
-
-:Lizzo a owl:NamedIndividual, :Artist;
-  :artistName "Lizzo";
-  :numberOfTracks 79;
-  :totalStreams 3911061177 .
-
-:Lofi_Fruits_Music a owl:NamedIndividual, :Artist;
-  :artistName "Lofi Fruits Music";
-  :numberOfTracks 1010;
-  :totalStreams 2436066189 .
-
-:Logic a owl:NamedIndividual, :Artist;
-  :artistName "Logic";
-  :numberOfTracks 193;
-  :totalStreams 10161528696 .
-
-:Lord_Huron a owl:NamedIndividual, :Artist;
-  :artistName "Lord Huron";
-  :numberOfTracks 76;
-  :totalStreams 2147142104 .
-
-:Lorde a owl:NamedIndividual, :Artist;
-  :artistName "Lorde";
-  :numberOfTracks 57;
-  :totalStreams 6293458873 .
-
-:Los_Bukis a owl:NamedIndividual, :Artist;
-  :artistName "Los Bukis";
-  :numberOfTracks 252;
-  :totalStreams 1672661796 .
-
-:Los_Enanitos_Verdes a owl:NamedIndividual, :Artist;
-  :artistName "Los Enanitos Verdes";
-  :numberOfTracks 190;
-  :totalStreams 1598765128 .
-
-:Los_Temerarios a owl:NamedIndividual, :Artist;
-  :artistName "Los Temerarios";
-  :numberOfTracks 322;
-  :totalStreams 1899425245 .
-
-:Los_Tigres_Del_Norte a owl:NamedIndividual, :Artist;
-  :artistName "Los Tigres Del Norte";
-  :numberOfTracks 639;
-  :totalStreams 2377462580 .
-
-:Los_Tucanes_De_Tijuana a owl:NamedIndividual, :Artist;
-  :artistName "Los Tucanes De Tijuana";
-  :numberOfTracks 737;
-  :totalStreams 1809266864 .
-
-:Los_Ángeles_Azules a owl:NamedIndividual, :Artist;
-  :artistName "Los Ángeles Azules";
-  :numberOfTracks 303;
-  :totalStreams 3897312543 .
-
-:Lost_Frequencies a owl:NamedIndividual, :Artist;
-  :artistName "Lost Frequencies";
-  :numberOfTracks 421;
-  :totalStreams 3694042173 .
-
-:Loud_Luxury a owl:NamedIndividual, :Artist;
-  :artistName "Loud Luxury";
-  :numberOfTracks 135;
-  :totalStreams 1988662123 .
-
-:Louis_Armstrong a owl:NamedIndividual, :Artist;
-  :artistName "Louis Armstrong";
-  :numberOfTracks 2311;
-  :totalStreams 1905215992 .
-
-:Louis_Tomlinson a owl:NamedIndividual, :Artist;
-  :artistName "Louis Tomlinson";
-  :numberOfTracks 43;
-  :totalStreams 2086972274 .
-
-:Luan_Santana a owl:NamedIndividual, :Artist;
-  :artistName "Luan Santana";
-  :numberOfTracks 214;
-  :totalStreams 2677964978 .
-
-:Luciano a owl:NamedIndividual, :Artist;
-  :artistName "Luciano";
-  :numberOfTracks 157;
-  :totalStreams 2966633051 .
-
-:Ludovico_Einaudi a owl:NamedIndividual, :Artist;
-  :artistName "Ludovico Einaudi";
-  :numberOfTracks 565;
-  :totalStreams 2816934718 .
-
-:Luis_Fonsi a owl:NamedIndividual, :Artist;
-  :artistName "Luis Fonsi";
-  :numberOfTracks 187;
-  :totalStreams 6832734242 .
-
-:Luis_Miguel a owl:NamedIndividual, :Artist;
-  :artistName "Luis Miguel";
-  :numberOfTracks 312;
-  :totalStreams 7270062701 .
-
-:Lukas_Graham a owl:NamedIndividual, :Artist;
-  :artistName "Lukas Graham";
-  :numberOfTracks 66;
-  :totalStreams 7335076142 .
-
-:Luke_Bryan a owl:NamedIndividual, :Artist;
-  :artistName "Luke Bryan";
-  :numberOfTracks 149;
-  :totalStreams 4807998989 .
 
 :Luke_Combs a owl:NamedIndividual, :Artist;
   :artistName "Luke Combs";
   :numberOfTracks 68;
   :totalStreams 6040584020 .
 
-:Lunay a owl:NamedIndividual, :Artist;
-  :artistName "Lunay";
-  :numberOfTracks 59;
-  :totalStreams 3239064709 .
-
-:Lupe_Fiasco a owl:NamedIndividual, :Artist;
-  :artistName "Lupe Fiasco";
-  :numberOfTracks 182;
-  :totalStreams 1743095917 .
-
-:Luísa_Sonza a owl:NamedIndividual, :Artist;
-  :artistName "Luísa Sonza";
-  :numberOfTracks 66;
-  :totalStreams 2077751491 .
-
-:Lykke_Li a owl:NamedIndividual, :Artist;
-  :artistName "Lykke Li";
-  :numberOfTracks 105;
-  :totalStreams 1650371267 .
-
-:Lynyrd_Skynyrd a owl:NamedIndividual, :Artist;
-  :artistName "Lynyrd Skynyrd";
-  :numberOfTracks 362;
-  :totalStreams 2519769644 .
-
-:M83 a owl:NamedIndividual, :Artist;
-  :artistName "M83";
-  :numberOfTracks 237;
-  :totalStreams 2031431771 .
-
-:MAGIC a owl:NamedIndividual, :Artist;
-  :artistName "MAGIC!";
-  :numberOfTracks 53;
-  :totalStreams 1868013980 .
-
-:MARINA a owl:NamedIndividual, :Artist;
-  :artistName "MARINA";
-  :numberOfTracks 121;
-  :totalStreams 2923119476 .
-
-:MAX a owl:NamedIndividual, :Artist;
-  :artistName "MAX";
-  :numberOfTracks 144;
-  :totalStreams 2072960497 .
-
-:MC_Kevinho a owl:NamedIndividual, :Artist;
-  :artistName "MC Kevinho";
-  :numberOfTracks 74;
-  :totalStreams 2378898758 .
-
-:MEDUZA a owl:NamedIndividual, :Artist;
-  :artistName "MEDUZA";
-  :numberOfTracks 55;
-  :totalStreams 2908627916 .
-
-:MF_DOOM a owl:NamedIndividual, :Artist;
-  :artistName "MF DOOM";
-  :numberOfTracks 424;
-  :totalStreams 1596778132 .
-
-:MGMT a owl:NamedIndividual, :Artist;
-  :artistName "MGMT";
-  :numberOfTracks 86;
-  :totalStreams 3435083451 .
-
-:MKTO a owl:NamedIndividual, :Artist;
-  :artistName "MKTO";
-  :numberOfTracks 29;
-  :totalStreams 1761393080 .
-
-:Mabel a owl:NamedIndividual, :Artist;
-  :artistName "Mabel";
-  :numberOfTracks 145;
-  :totalStreams 3337464109 .
-
-:Mac_DeMarco a owl:NamedIndividual, :Artist;
-  :artistName "Mac DeMarco";
-  :numberOfTracks 150;
-  :totalStreams 2442557513 .
-
-:Mac_Miller a owl:NamedIndividual, :Artist;
-  :artistName "Mac Miller";
-  :numberOfTracks 221;
-  :totalStreams 9886993780 .
-
-:Machine_Gun_Kelly a owl:NamedIndividual, :Artist;
-  :artistName "Machine Gun Kelly";
-  :numberOfTracks 141;
-  :totalStreams 8193499962 .
-
-:Macklemore a owl:NamedIndividual, :Artist;
-  :artistName "Macklemore";
-  :numberOfTracks 103;
-  :totalStreams 8017858510 .
-
 :Macklemore_Ryan_Lewis a owl:NamedIndividual, :Artist;
   :artistName "Macklemore & Ryan Lewis";
   :numberOfTracks 48;
   :totalStreams 4294795420 .
 
-:Madison_Beer a owl:NamedIndividual, :Artist;
-  :artistName "Madison Beer";
-  :numberOfTracks 54;
-  :totalStreams 3189685291 .
-
-:Madonna a owl:NamedIndividual, :Artist;
-  :artistName "Madonna";
-  :numberOfTracks 762;
-  :totalStreams 4857558282 .
-
-:Maggie_Lindemann a owl:NamedIndividual, :Artist;
-  :artistName "Maggie Lindemann";
-  :numberOfTracks 40;
-  :totalStreams 1496042897 .
-
-:Maiara_Maraisa a owl:NamedIndividual, :Artist;
-  :artistName "Maiara & Maraisa";
-  :numberOfTracks 156;
-  :totalStreams 3536399498 .
-
 :Major_Lazer a owl:NamedIndividual, :Artist;
   :artistName "Major Lazer";
   :numberOfTracks 269;
   :totalStreams 9372823626 .
-
-:Maluma a owl:NamedIndividual, :Artist;
-  :artistName "Maluma";
-  :numberOfTracks 195;
-  :totalStreams 20966045972 .
-
-:Mambo_Kingz a owl:NamedIndividual, :Artist;
-  :artistName "Mambo Kingz";
-  :numberOfTracks 37;
-  :totalStreams 4244678260 .
 
 :Manuel_Turizo a owl:NamedIndividual, :Artist;
   :artistName "Manuel Turizo";
@@ -6772,50 +4297,10 @@ dbr:6ix9ine a owl:NamedIndividual, :Artist;
   :numberOfTracks 220;
   :totalStreams 4183722300 .
 
-:Marc_Anthony a owl:NamedIndividual, :Artist;
-  :artistName "Marc Anthony";
-  :numberOfTracks 197;
-  :totalStreams 3519042687 .
-
-:Marco_Antonio_Solís a owl:NamedIndividual, :Artist;
-  :artistName "Marco Antonio Solís";
-  :numberOfTracks 201;
-  :totalStreams 2853606094 .
-
-:Maren_Morris a owl:NamedIndividual, :Artist;
-  :artistName "Maren Morris";
-  :numberOfTracks 68;
-  :totalStreams 2965101472 .
-
-:Maria_Becerra a owl:NamedIndividual, :Artist;
-  :artistName "Maria Becerra";
-  :numberOfTracks 43;
-  :totalStreams 4281551086 .
-
-:Mariah_Carey a owl:NamedIndividual, :Artist;
-  :artistName "Mariah Carey";
-  :numberOfTracks 660;
-  :totalStreams 6289468091 .
-
-:Marilyn_Manson a owl:NamedIndividual, :Artist;
-  :artistName "Marilyn Manson";
-  :numberOfTracks 227;
-  :totalStreams 2213680726 .
-
-:Mark_Ronson a owl:NamedIndividual, :Artist;
-  :artistName "Mark Ronson";
-  :numberOfTracks 151;
-  :totalStreams 3499389789 .
-
 :Maroon_5 a owl:NamedIndividual, :Artist;
   :artistName "Maroon 5";
   :numberOfTracks 240;
   :totalStreams 19952585225 .
-
-:Marracash a owl:NamedIndividual, :Artist;
-  :artistName "Marracash";
-  :numberOfTracks 196;
-  :totalStreams 2007610679 .
 
 :Marshmello a owl:NamedIndividual, :Artist;
   :artistName "Marshmello";
@@ -6827,96 +4312,6 @@ dbr:6ix9ine a owl:NamedIndividual, :Artist;
   :numberOfTracks 199;
   :totalStreams 9477928376 .
 
-:Martin_Jensen a owl:NamedIndividual, :Artist;
-  :artistName "Martin Jensen";
-  :numberOfTracks 79;
-  :totalStreams 2367921639 .
-
-:Martin_Solveig a owl:NamedIndividual, :Artist;
-  :artistName "Martin Solveig";
-  :numberOfTracks 246;
-  :totalStreams 1780675158 .
-
-:Marvin_Gaye a owl:NamedIndividual, :Artist;
-  :artistName "Marvin Gaye";
-  :numberOfTracks 750;
-  :totalStreams 3853257805 .
-
-:Mary_J_Blige a owl:NamedIndividual, :Artist;
-  :artistName "Mary J. Blige";
-  :numberOfTracks 395;
-  :totalStreams 3676473115 .
-
-:Marília_Mendonça a owl:NamedIndividual, :Artist;
-  :artistName "Marília Mendonça";
-  :numberOfTracks 122;
-  :totalStreams 8458218607 .
-
-:Matheus_Kauan a owl:NamedIndividual, :Artist;
-  :artistName "Matheus & Kauan";
-  :numberOfTracks 179;
-  :totalStreams 3894102532 .
-
-:Matoma a owl:NamedIndividual, :Artist;
-  :artistName "Matoma";
-  :numberOfTracks 126;
-  :totalStreams 2855783128 .
-
-:Matuê a owl:NamedIndividual, :Artist;
-  :artistName "Matuê";
-  :numberOfTracks 33;
-  :totalStreams 2049104779 .
-
-:Mau_y_Ricky a owl:NamedIndividual, :Artist;
-  :artistName "Mau y Ricky";
-  :numberOfTracks 66;
-  :totalStreams 4745522715 .
-
-:Max_Richter a owl:NamedIndividual, :Artist;
-  :artistName "Max Richter";
-  :numberOfTracks 992;
-  :totalStreams 1666099827 .
-
-:Mc_Don_Juan a owl:NamedIndividual, :Artist;
-  :artistName "Mc Don Juan";
-  :numberOfTracks 155;
-  :totalStreams 2068125011 .
-
-:Meek_Mill a owl:NamedIndividual, :Artist;
-  :artistName "Meek Mill";
-  :numberOfTracks 440;
-  :totalStreams 7510088347 .
-
-:Megadeth a owl:NamedIndividual, :Artist;
-  :artistName "Megadeth";
-  :numberOfTracks 419;
-  :totalStreams 1449787572 .
-
-:Megan_Thee_Stallion a owl:NamedIndividual, :Artist;
-  :artistName "Megan Thee Stallion";
-  :numberOfTracks 131;
-  :totalStreams 6930785943 .
-
-:Meghan_Trainor a owl:NamedIndividual, :Artist;
-  :artistName "Meghan Trainor";
-  :numberOfTracks 141;
-  :totalStreams 6444754180 .
-
-:Melanie_Martinez a owl:NamedIndividual, :Artist;
-  :artistName "Melanie Martinez";
-  :numberOfTracks 58;
-  :totalStreams 5199431678 .
-
-:Melendi a owl:NamedIndividual, :Artist;
-  :artistName "Melendi";
-  :numberOfTracks 184;
-  :totalStreams 1940108268 .
-
-:Melim a owl:NamedIndividual, :Artist;
-  :artistName "Melim";
-  :numberOfTracks 85;
-  :totalStreams 1525767573 .
-
 :Metallica a owl:NamedIndividual, :Artist;
   :artistName "Metallica";
   :numberOfTracks 814;
@@ -6927,130 +4322,20 @@ dbr:6ix9ine a owl:NamedIndividual, :Artist;
   :numberOfTracks 118;
   :totalStreams 7471988552 .
 
-:Michael_Bublé a owl:NamedIndividual, :Artist;
-  :artistName "Michael Bublé";
-  :numberOfTracks 239;
-  :totalStreams 6981435353 .
-
-:Michael_Jackson a owl:NamedIndividual, :Artist;
-  :artistName "Michael Jackson";
-  :numberOfTracks 327;
-  :totalStreams 10301877193 .
-
-:Michael_Silverman a owl:NamedIndividual, :Artist;
-  :artistName "Michael Silverman";
-  :numberOfTracks 972;
-  :totalStreams 1827256859 .
-
 :Migos a owl:NamedIndividual, :Artist;
   :artistName "Migos";
   :numberOfTracks 283;
   :totalStreams 11626473764 .
-
-:Miguel a owl:NamedIndividual, :Artist;
-  :artistName "Miguel";
-  :numberOfTracks 145;
-  :totalStreams 4807144912 .
-
-:Mike_Perry a owl:NamedIndividual, :Artist;
-  :artistName "Mike Perry";
-  :numberOfTracks 54;
-  :totalStreams 1811579039 .
-
-:Mike_Posner a owl:NamedIndividual, :Artist;
-  :artistName "Mike Posner";
-  :numberOfTracks 183;
-  :totalStreams 8679682454 .
-
-:Mike_WiLL_Made_It a owl:NamedIndividual, :Artist;
-  :artistName "Mike WiLL Made-It";
-  :numberOfTracks 144;
-  :totalStreams 2366900202 .
-
-:Miley_Cyrus a owl:NamedIndividual, :Artist;
-  :artistName "Miley Cyrus";
-  :numberOfTracks 197;
-  :totalStreams 10871590273 .
-
-:Milky_Chance a owl:NamedIndividual, :Artist;
-  :artistName "Milky Chance";
-  :numberOfTracks 88;
-  :totalStreams 2589110066 .
-
-:Miracle_Tones a owl:NamedIndividual, :Artist;
-  :artistName "Miracle Tones";
-  :numberOfTracks 126;
-  :totalStreams 2031004961 .
-
-:Miranda_Lambert a owl:NamedIndividual, :Artist;
-  :artistName "Miranda Lambert";
-  :numberOfTracks 208;
-  :totalStreams 2151162264 .
-
-:Mitski a owl:NamedIndividual, :Artist;
-  :artistName "Mitski";
-  :numberOfTracks 73;
-  :totalStreams 2570396522 .
-
-:Moby a owl:NamedIndividual, :Artist;
-  :artistName "Moby";
-  :numberOfTracks 836;
-  :totalStreams 1814330639 .
-
-:Mon_Laferte a owl:NamedIndividual, :Artist;
-  :artistName "Mon Laferte";
-  :numberOfTracks 143;
-  :totalStreams 2195742937 .
-
-:Moneybagg_Yo a owl:NamedIndividual, :Artist;
-  :artistName "Moneybagg Yo";
-  :numberOfTracks 266;
-  :totalStreams 3430518486 .
-
-:Mora a owl:NamedIndividual, :Artist;
-  :artistName "Mora";
-  :numberOfTracks 76;
-  :totalStreams 2153662835 .
-
-:Morat a owl:NamedIndividual, :Artist;
-  :artistName "Morat";
-  :numberOfTracks 74;
-  :totalStreams 5355818976 .
 
 :Morgan_Wallen a owl:NamedIndividual, :Artist;
   :artistName "Morgan Wallen";
   :numberOfTracks 60;
   :totalStreams 5866730692 .
 
-:Mother_Mother a owl:NamedIndividual, :Artist;
-  :artistName "Mother Mother";
-  :numberOfTracks 142;
-  :totalStreams 1726610138 .
-
-:Mr_Probz a owl:NamedIndividual, :Artist;
-  :artistName "Mr. Probz";
-  :numberOfTracks 36;
-  :totalStreams 1797842923 .
-
-:Ms_Lauryn_Hill a owl:NamedIndividual, :Artist;
-  :artistName "Ms. Lauryn Hill";
-  :numberOfTracks 89;
-  :totalStreams 2394175827 .
-
 :Mumford_Sons a owl:NamedIndividual, :Artist;
   :artistName "Mumford & Sons";
   :numberOfTracks 121;
   :totalStreams 5106872733 .
-
-:Muse a owl:NamedIndividual, :Artist;
-  :artistName "Muse";
-  :numberOfTracks 253;
-  :totalStreams 5187552219 .
-
-:Mustard a owl:NamedIndividual, :Artist;
-  :artistName "Mustard";
-  :numberOfTracks 74;
-  :totalStreams 4221068213 .
 
 :My_Chemical_Romance a owl:NamedIndividual, :Artist;
   :artistName "My Chemical Romance";
@@ -7062,325 +4347,25 @@ dbr:6ix9ine a owl:NamedIndividual, :Artist;
   :numberOfTracks 168;
   :totalStreams 13813322171 .
 
-:MØ a owl:NamedIndividual, :Artist;
-  :artistName "MØ";
-  :numberOfTracks 124;
-  :totalStreams 5256773101 .
-
-:Måneskin a owl:NamedIndividual, :Artist;
-  :artistName "Måneskin";
-  :numberOfTracks 33;
-  :totalStreams 4964253521 .
-
-:Mötley_Crüe a owl:NamedIndividual, :Artist;
-  :artistName "Mötley Crüe";
-  :numberOfTracks 238;
-  :totalStreams 1986516487 .
-
-:NAV a owl:NamedIndividual, :Artist;
-  :artistName "NAV";
-  :numberOfTracks 117;
-  :totalStreams 4485087022 .
-
-:NCT_127 a owl:NamedIndividual, :Artist;
-  :artistName "NCT 127";
-  :numberOfTracks 138;
-  :totalStreams 1680183032 .
-
-:NEFFEX a owl:NamedIndividual, :Artist;
-  :artistName "NEFFEX";
-  :numberOfTracks 213;
-  :totalStreams 2057407439 .
-
-:NF a owl:NamedIndividual, :Artist;
-  :artistName "NF";
-  :numberOfTracks 81;
-  :totalStreams 7851320973 .
-
-:NIKI a owl:NamedIndividual, :Artist;
-  :artistName "NIKI";
-  :numberOfTracks 55;
-  :totalStreams 1654326283 .
-
-:NLE_Choppa a owl:NamedIndividual, :Artist;
-  :artistName "NLE Choppa";
-  :numberOfTracks 125;
-  :totalStreams 3018675405 .
-
-:NOT a owl:NamedIndividual, :Artist;
-  :artistName "$NOT";
-  :numberOfTracks 58;
-  :totalStreams 1566918104 .
-
-:NSYNC a owl:NamedIndividual, :Artist;
-  :artistName "*NSYNC";
-  :numberOfTracks 89;
-  :totalStreams 1682313659 .
-
-:Nacho a owl:NamedIndividual, :Artist;
-  :artistName "Nacho";
-  :numberOfTracks 151;
-  :totalStreams 3233009994 .
-
-:Nas a owl:NamedIndividual, :Artist;
-  :artistName "Nas";
-  :numberOfTracks 339;
-  :totalStreams 3145387545 .
-
-:Nat_King_Cole a owl:NamedIndividual, :Artist;
-  :artistName "Nat King Cole";
-  :numberOfTracks 1129;
-  :totalStreams 1862393562 .
-
-:Natalia_Lafourcade a owl:NamedIndividual, :Artist;
-  :artistName "Natalia Lafourcade";
-  :numberOfTracks 183;
-  :totalStreams 2741506382 .
-
-:Natanael_Cano a owl:NamedIndividual, :Artist;
-  :artistName "Natanael Cano";
-  :numberOfTracks 135;
-  :totalStreams 2700578079 .
-
-:Natiruts a owl:NamedIndividual, :Artist;
-  :artistName "Natiruts";
-  :numberOfTracks 216;
-  :totalStreams 1532511527 .
-
-:Natti_Natasha a owl:NamedIndividual, :Artist;
-  :artistName "Natti Natasha";
-  :numberOfTracks 93;
-  :totalStreams 6394522937 .
-
-:Ne_Yo a owl:NamedIndividual, :Artist;
-  :artistName "Ne-Yo";
-  :numberOfTracks 204;
-  :totalStreams 6613773534 .
-
-:Nekfeu a owl:NamedIndividual, :Artist;
-  :artistName "Nekfeu";
-  :numberOfTracks 98;
-  :totalStreams 2496112887 .
-
-:Nelly a owl:NamedIndividual, :Artist;
-  :artistName "Nelly";
-  :numberOfTracks 211;
-  :totalStreams 3527800847 .
-
-:Nelly_Furtado a owl:NamedIndividual, :Artist;
-  :artistName "Nelly Furtado";
-  :numberOfTracks 211;
-  :totalStreams 2821599642 .
-
 :Niall_Horan a owl:NamedIndividual, :Artist;
   :artistName "Niall Horan";
   :numberOfTracks 69;
   :totalStreams 4855862093 .
-
-:Nick_Jonas a owl:NamedIndividual, :Artist;
-  :artistName "Nick Jonas";
-  :numberOfTracks 95;
-  :totalStreams 2645047674 .
 
 :Nickelback a owl:NamedIndividual, :Artist;
   :artistName "Nickelback";
   :numberOfTracks 150;
   :totalStreams 4469299972 .
 
-:Nicki_Minaj a owl:NamedIndividual, :Artist;
-  :artistName "Nicki Minaj";
-  :numberOfTracks 171;
-  :totalStreams 25302602315 .
-
-:Nicki_Nicole a owl:NamedIndividual, :Artist;
-  :artistName "Nicki Nicole";
-  :numberOfTracks 49;
-  :totalStreams 2237813314 .
-
 :Nicky_Jam a owl:NamedIndividual, :Artist;
   :artistName "Nicky Jam";
   :numberOfTracks 220;
   :totalStreams 18913673216 .
 
-:Nina_Simone a owl:NamedIndividual, :Artist;
-  :artistName "Nina Simone";
-  :numberOfTracks 551;
-  :totalStreams 1707153189 .
-
-:Ninho a owl:NamedIndividual, :Artist;
-  :artistName "Ninho";
-  :numberOfTracks 146;
-  :totalStreams 3928560376 .
-
-:Nio_Garcia a owl:NamedIndividual, :Artist;
-  :artistName "Nio Garcia";
-  :numberOfTracks 124;
-  :totalStreams 4134529176 .
-
-:Nipsey_Hussle a owl:NamedIndividual, :Artist;
-  :artistName "Nipsey Hussle";
-  :numberOfTracks 277;
-  :totalStreams 1939669698 .
-
-:Nirvana a owl:NamedIndividual, :Artist;
-  :artistName "Nirvana";
-  :numberOfTracks 347;
-  :totalStreams 7296269753 .
-
-:Niska a owl:NamedIndividual, :Artist;
-  :artistName "Niska";
-  :numberOfTracks 105;
-  :totalStreams 2496470372 .
-
-:Noah_Cyrus a owl:NamedIndividual, :Artist;
-  :artistName "Noah Cyrus";
-  :numberOfTracks 74;
-  :totalStreams 6737625851 .
-
-:Norah_Jones a owl:NamedIndividual, :Artist;
-  :artistName "Norah Jones";
-  :numberOfTracks 297;
-  :totalStreams 3388589446 .
-
-:Noriel a owl:NamedIndividual, :Artist;
-  :artistName "Noriel";
-  :numberOfTracks 94;
-  :totalStreams 3553170871 .
-
-:Normani a owl:NamedIndividual, :Artist;
-  :artistName "Normani";
-  :numberOfTracks 17;
-  :totalStreams 3755749331 .
-
-:ODESZA a owl:NamedIndividual, :Artist;
-  :artistName "ODESZA";
-  :numberOfTracks 170;
-  :totalStreams 2379315958 .
-
-:OMI a owl:NamedIndividual, :Artist;
-  :artistName "OMI";
-  :numberOfTracks 45;
-  :totalStreams 2039253321 .
-
-:ONE_OK_ROCK a owl:NamedIndividual, :Artist;
-  :artistName "ONE OK ROCK";
-  :numberOfTracks 129;
-  :totalStreams 1438878146 .
-
-:Oasis a owl:NamedIndividual, :Artist;
-  :artistName "Oasis";
-  :numberOfTracks 237;
-  :totalStreams 4924852716 .
-
-:Of_Monsters_and_Men a owl:NamedIndividual, :Artist;
-  :artistName "Of Monsters and Men";
-  :numberOfTracks 63;
-  :totalStreams 2383598740 .
-
-:Ofenbach a owl:NamedIndividual, :Artist;
-  :artistName "Ofenbach";
-  :numberOfTracks 83;
-  :totalStreams 1655852627 .
-
-:Official_HIGE_DANdism a owl:NamedIndividual, :Artist;
-  :artistName "Official HIGE DANdism";
-  :numberOfTracks 144;
-  :totalStreams 1506088256 .
-
-:Offset a owl:NamedIndividual, :Artist;
-  :artistName "Offset";
-  :numberOfTracks 53;
-  :totalStreams 3297623800 .
-
-:Oh_Wonder a owl:NamedIndividual, :Artist;
-  :artistName "Oh Wonder";
-  :numberOfTracks 71;
-  :totalStreams 2223772380 .
-
-:Old_Dominion a owl:NamedIndividual, :Artist;
-  :artistName "Old Dominion";
-  :numberOfTracks 85;
-  :totalStreams 1852153027 .
-
-:Oliver_Heldens a owl:NamedIndividual, :Artist;
-  :artistName "Oliver Heldens";
-  :numberOfTracks 145;
-  :totalStreams 2026761325 .
-
-:Oliver_Tree a owl:NamedIndividual, :Artist;
-  :artistName "Oliver Tree";
-  :numberOfTracks 63;
-  :totalStreams 1887789014 .
-
-:Olivia_OBrien a owl:NamedIndividual, :Artist;
-  :artistName "Olivia O'Brien";
-  :numberOfTracks 55;
-  :totalStreams 3030632018 .
-
-:Olivia_Rodrigo a owl:NamedIndividual, :Artist;
-  :artistName "Olivia Rodrigo";
-  :numberOfTracks 37;
-  :totalStreams 8956323126 .
-
-:Olly_Murs a owl:NamedIndividual, :Artist;
-  :artistName "Olly Murs";
-  :numberOfTracks 179;
-  :totalStreams 1994297488 .
-
 :OneRepublic a owl:NamedIndividual, :Artist;
   :artistName "OneRepublic";
   :numberOfTracks 167;
   :totalStreams 10145854508 .
-
-:One_Direction a owl:NamedIndividual, :Artist;
-  :artistName "One Direction";
-  :numberOfTracks 124;
-  :totalStreams 15499795436 .
-
-:Os_Barões_Da_Pisadinha a owl:NamedIndividual, :Artist;
-  :artistName "Os Barões Da Pisadinha";
-  :numberOfTracks 160;
-  :totalStreams 2897935002 .
-
-:Otis_Redding a owl:NamedIndividual, :Artist;
-  :artistName "Otis Redding";
-  :numberOfTracks 337;
-  :totalStreams 1814518990 .
-
-:Outkast a owl:NamedIndividual, :Artist;
-  :artistName "Outkast";
-  :numberOfTracks 222;
-  :totalStreams 3315876172 .
-
-:Owl_City a owl:NamedIndividual, :Artist;
-  :artistName "Owl City";
-  :numberOfTracks 111;
-  :totalStreams 2073779887 .
-
-:Ozuna a owl:NamedIndividual, :Artist;
-  :artistName "Ozuna";
-  :numberOfTracks 215;
-  :totalStreams 28633928186 .
-
-:Ozzy_Osbourne a owl:NamedIndividual, :Artist;
-  :artistName "Ozzy Osbourne";
-  :numberOfTracks 231;
-  :totalStreams 2325394780 .
-
-:PARTYNEXTDOOR a owl:NamedIndividual, :Artist;
-  :artistName "PARTYNEXTDOOR";
-  :numberOfTracks 80;
-  :totalStreams 3243038851 .
-
-:PNAU a owl:NamedIndividual, :Artist;
-  :artistName "PNAU";
-  :numberOfTracks 113;
-  :totalStreams 1841938567 .
-
-:PNL a owl:NamedIndividual, :Artist;
-  :artistName "PNL";
-  :numberOfTracks 72;
-  :totalStreams 2894084075 .
 
 :Pabllo_Vittar a owl:NamedIndividual .
 # 
@@ -7789,1000 +4774,105 @@ dbr:6ix9ine a owl:NamedIndividual, :Artist;
   :numberOfTracks 125;
   :totalStreams 1748744537 .
 
-:Pablo_Alborán a owl:NamedIndividual, :Artist;
-  :artistName "Pablo Alborán";
-  :numberOfTracks 173;
-  :totalStreams 3485123778 .
-
-:Panic_At_The_Disco a owl:NamedIndividual, :Artist;
-  :artistName "Panic! At The Disco";
-  :numberOfTracks 146;
-  :totalStreams 9777052931 .
-
-:Papa_Roach a owl:NamedIndividual, :Artist;
-  :artistName "Papa Roach";
-  :numberOfTracks 236;
-  :totalStreams 5980218540 .
-
 :Paramore a owl:NamedIndividual, :Artist;
   :artistName "Paramore";
   :numberOfTracks 114;
   :totalStreams 5095348178 .
-
-:Passenger a owl:NamedIndividual, :Artist;
-  :artistName "Passenger";
-  :numberOfTracks 233;
-  :totalStreams 3599315435 .
-
-:Paul_McCartney a owl:NamedIndividual, :Artist;
-  :artistName "Paul McCartney";
-  :numberOfTracks 918;
-  :totalStreams 5776591969 .
-
-:Paul_Simon a owl:NamedIndividual, :Artist;
-  :artistName "Paul Simon";
-  :numberOfTracks 370;
-  :totalStreams 1791769752 .
-
-:Paulo_Londra a owl:NamedIndividual, :Artist;
-  :artistName "Paulo Londra";
-  :numberOfTracks 37;
-  :totalStreams 5528571277 .
-
-:Pearl_Jam a owl:NamedIndividual, :Artist;
-  :artistName "Pearl Jam";
-  :numberOfTracks 2127;
-  :totalStreams 4129274536 .
-
-:Pedro_Capó a owl:NamedIndividual, :Artist;
-  :artistName "Pedro Capó";
-  :numberOfTracks 71;
-  :totalStreams 2458599952 .
-
-:Pentatonix a owl:NamedIndividual, :Artist;
-  :artistName "Pentatonix";
-  :numberOfTracks 201;
-  :totalStreams 3290007442 .
-
-:Petit_Biscuit a owl:NamedIndividual, :Artist;
-  :artistName "Petit Biscuit";
-  :numberOfTracks 86;
-  :totalStreams 1516684519 .
-
-:Pharrell_Williams a owl:NamedIndividual, :Artist;
-  :artistName "Pharrell Williams";
-  :numberOfTracks 110;
-  :totalStreams 8614635629 .
-
-:Phil_Collins a owl:NamedIndividual, :Artist;
-  :artistName "Phil Collins";
-  :numberOfTracks 339;
-  :totalStreams 3836785174 .
-
-:Pineapple_StormTv a owl:NamedIndividual, :Artist;
-  :artistName "Pineapple StormTv";
-  :numberOfTracks 215;
-  :totalStreams 1862101486 .
-
-:Pink_Floyd a owl:NamedIndividual, :Artist;
-  :artistName "Pink Floyd";
-  :numberOfTracks 436;
-  :totalStreams 6714780376 .
-
-:Pink_Sweat a owl:NamedIndividual, :Artist;
-  :artistName "Pink Sweat$";
-  :numberOfTracks 57;
-  :totalStreams 1616826727 .
 
 :Piso_21 a owl:NamedIndividual, :Artist;
   :artistName "Piso 21";
   :numberOfTracks 86;
   :totalStreams 4574130429 .
 
-:Pitbull a owl:NamedIndividual, :Artist;
-  :artistName "Pitbull";
-  :numberOfTracks 394;
-  :totalStreams 12488826791 .
-
-:Pixies a owl:NamedIndividual, :Artist;
-  :artistName "Pixies";
-  :numberOfTracks 856;
-  :totalStreams 1505325659 .
-
-:Plan_B a owl:NamedIndividual, :Artist;
-  :artistName "Plan B";
-  :numberOfTracks 95;
-  :totalStreams 2962068035 .
-
 :Playboi_Carti a owl:NamedIndividual, :Artist;
   :artistName "Playboi Carti";
   :numberOfTracks 82;
   :totalStreams 7435726003 .
-
-:PnB_Rock a owl:NamedIndividual, :Artist;
-  :artistName "PnB Rock";
-  :numberOfTracks 116;
-  :totalStreams 4088990884 .
-
-:Pnk a owl:NamedIndividual, :Artist;
-  :artistName "P!nk";
-  :numberOfTracks 227;
-  :totalStreams 8907602700 .
 
 :Polo_G a owl:NamedIndividual, :Artist;
   :artistName "Polo G";
   :numberOfTracks 75;
   :totalStreams 8231237505 .
 
-:Pop_Smoke a owl:NamedIndividual, :Artist;
-  :artistName "Pop Smoke";
-  :numberOfTracks 99;
-  :totalStreams 10027626780 .
-
-:Portugal_The_Man a owl:NamedIndividual, :Artist;
-  :artistName "Portugal. The Man";
-  :numberOfTracks 195;
-  :totalStreams 2053938311 .
-
-:Post_Malone a owl:NamedIndividual, :Artist;
-  :artistName "Post Malone";
-  :numberOfTracks 98;
-  :totalStreams 32560295397 .
-
-:Powfu a owl:NamedIndividual, :Artist;
-  :artistName "Powfu";
-  :numberOfTracks 73;
-  :totalStreams 2278898608 .
-
-:Prince a owl:NamedIndividual, :Artist;
-  :artistName "Prince";
-  :numberOfTracks 835;
-  :totalStreams 2331246295 .
-
-:Prince_Royce a owl:NamedIndividual, :Artist;
-  :artistName "Prince Royce";
-  :numberOfTracks 127;
-  :totalStreams 3724376964 .
-
-:Pusha_T a owl:NamedIndividual, :Artist;
-  :artistName "Pusha T";
-  :numberOfTracks 123;
-  :totalStreams 3199825428 .
-
-:Quavo a owl:NamedIndividual, :Artist;
-  :artistName "Quavo";
-  :numberOfTracks 85;
-  :totalStreams 3084673684 .
-
-:Queen a owl:NamedIndividual, :Artist;
-  :artistName "Queen";
-  :numberOfTracks 557;
-  :totalStreams 16592330065 .
-
-:Queens_of_the_Stone_Age a owl:NamedIndividual, :Artist;
-  :artistName "Queens of the Stone Age";
-  :numberOfTracks 140;
-  :totalStreams 1973861331 .
-
-:Quinn_XCII a owl:NamedIndividual, :Artist;
-  :artistName "Quinn XCII";
-  :numberOfTracks 85;
-  :totalStreams 2505779383 .
-
-:R3HAB a owl:NamedIndividual, :Artist;
-  :artistName "R3HAB";
-  :numberOfTracks 336;
-  :totalStreams 3815685514 .
-
-:RAF_Camora a owl:NamedIndividual, :Artist;
-  :artistName "RAF Camora";
-  :numberOfTracks 369;
-  :totalStreams 3879471598 .
-
-:RAYE a owl:NamedIndividual, :Artist;
-  :artistName "RAYE";
-  :numberOfTracks 95;
-  :totalStreams 2768259490 .
-
-:REM a owl:NamedIndividual, :Artist;
-  :artistName "R.E.M.";
-  :numberOfTracks 590;
-  :totalStreams 3017878302 .
-
-:ROSALÍA a owl:NamedIndividual, :Artist;
-  :artistName "ROSALÍA";
-  :numberOfTracks 61;
-  :totalStreams 3871252957 .
-
-:R_Kelly a owl:NamedIndividual, :Artist;
-  :artistName "R. Kelly";
-  :numberOfTracks 363;
-  :totalStreams 2411392821 .
-
-:Radiohead a owl:NamedIndividual, :Artist;
-  :artistName "Radiohead";
-  :numberOfTracks 233;
-  :totalStreams 5533530383 .
-
 :Rae_Sremmurd a owl:NamedIndividual, :Artist;
   :artistName "Rae Sremmurd";
   :numberOfTracks 62;
   :totalStreams 5771021929 .
-
-:Rage_Against_The_Machine a owl:NamedIndividual, :Artist;
-  :artistName "Rage Against The Machine";
-  :numberOfTracks 119;
-  :totalStreams 2430839934 .
-
-:RagnBone_Man a owl:NamedIndividual, :Artist;
-  :artistName "Rag'n'Bone Man";
-  :numberOfTracks 138;
-  :totalStreams 2461046740 .
-
-:Ramin_Djawadi a owl:NamedIndividual, :Artist;
-  :artistName "Ramin Djawadi";
-  :numberOfTracks 1024;
-  :totalStreams 1576626970 .
 
 :Rammstein a owl:NamedIndividual, :Artist;
   :artistName "Rammstein";
   :numberOfTracks 245;
   :totalStreams 4785472658 .
 
-:Rascal_Flatts a owl:NamedIndividual, :Artist;
-  :artistName "Rascal Flatts";
-  :numberOfTracks 248;
-  :totalStreams 2177842545 .
-
-:Rauw_Alejandro a owl:NamedIndividual, :Artist;
-  :artistName "Rauw Alejandro";
-  :numberOfTracks 182;
-  :totalStreams 14838579605 .
-
 :Red_Hot_Chili_Peppers a owl:NamedIndividual, :Artist;
   :artistName "Red Hot Chili Peppers";
   :numberOfTracks 266;
   :totalStreams 11005993478 .
-
-:Red_Velvet a owl:NamedIndividual, :Artist;
-  :artistName "Red Velvet";
-  :numberOfTracks 131;
-  :totalStreams 2308989206 .
-
-:Regard a owl:NamedIndividual, :Artist;
-  :artistName "Regard";
-  :numberOfTracks 42;
-  :totalStreams 2029133220 .
 
 :Reik a owl:NamedIndividual, :Artist;
   :artistName "Reik";
   :numberOfTracks 172;
   :totalStreams 6657980780 .
 
-:Rels_B a owl:NamedIndividual, :Artist;
-  :artistName "Rels B";
-  :numberOfTracks 107;
-  :totalStreams 5211958754 .
-
-:Rex_Orange_County a owl:NamedIndividual, :Artist;
-  :artistName "Rex Orange County";
-  :numberOfTracks 58;
-  :totalStreams 3817656814 .
-
-:Ricardo_Arjona a owl:NamedIndividual, :Artist;
-  :artistName "Ricardo Arjona";
-  :numberOfTracks 341;
-  :totalStreams 3629270035 .
-
-:Rich_Brian a owl:NamedIndividual, :Artist;
-  :artistName "Rich Brian";
-  :numberOfTracks 57;
-  :totalStreams 2351795956 .
-
-:Rich_The_Kid a owl:NamedIndividual, :Artist;
-  :artistName "Rich The Kid";
-  :numberOfTracks 166;
-  :totalStreams 4448013767 .
-
-:Rick_Ross a owl:NamedIndividual, :Artist;
-  :artistName "Rick Ross";
-  :numberOfTracks 340;
-  :totalStreams 7461418731 .
-
-:Ricky_Martin a owl:NamedIndividual, :Artist;
-  :artistName "Ricky Martin";
-  :numberOfTracks 278;
-  :totalStreams 6046938891 .
-
-:Rihanna a owl:NamedIndividual, :Artist;
-  :artistName "Rihanna";
-  :numberOfTracks 278;
-  :totalStreams 27438323768 .
-
-:Rise_Against a owl:NamedIndividual, :Artist;
-  :artistName "Rise Against";
-  :numberOfTracks 185;
-  :totalStreams 3498410884 .
-
-:Rita_Ora a owl:NamedIndividual, :Artist;
-  :artistName "Rita Ora";
-  :numberOfTracks 133;
-  :totalStreams 5966588859 .
-
-:Robbie_Williams a owl:NamedIndividual, :Artist;
-  :artistName "Robbie Williams";
-  :numberOfTracks 429;
-  :totalStreams 2579598098 .
-
 :Robin_Schulz a owl:NamedIndividual, :Artist;
   :artistName "Robin Schulz";
   :numberOfTracks 224;
   :totalStreams 7785471374 .
-
-:Rod_Stewart a owl:NamedIndividual, :Artist;
-  :artistName "Rod Stewart";
-  :numberOfTracks 731;
-  :totalStreams 2881639755 .
-
-:Rod_Wave a owl:NamedIndividual, :Artist;
-  :artistName "Rod Wave";
-  :numberOfTracks 136;
-  :totalStreams 2670323844 .
-
-:Roddy_Ricch a owl:NamedIndividual, :Artist;
-  :artistName "Roddy Ricch";
-  :numberOfTracks 61;
-  :totalStreams 8936332778 .
 
 :Romeo_Santos a owl:NamedIndividual, :Artist;
   :artistName "Romeo Santos";
   :numberOfTracks 146;
   :totalStreams 8610554758 .
 
-:Roxette a owl:NamedIndividual, :Artist;
-  :artistName "Roxette";
-  :numberOfTracks 465;
-  :totalStreams 1810560412 .
-
-:Rudimental a owl:NamedIndividual, :Artist;
-  :artistName "Rudimental";
-  :numberOfTracks 208;
-  :totalStreams 3161480230 .
-
-:Russ a owl:NamedIndividual, :Artist;
-  :artistName "Russ";
-  :numberOfTracks 368;
-  :totalStreams 6529883896 .
-
-:Ruth_B a owl:NamedIndividual, :Artist;
-  :artistName "Ruth B.";
-  :numberOfTracks 48;
-  :totalStreams 2057984888 .
-
-:Ryan_Lewis a owl:NamedIndividual, :Artist;
-  :artistName "Ryan Lewis";
-  :numberOfTracks 33;
-  :totalStreams 4153726804 .
-
-:RÜFÜS_DU_SOL a owl:NamedIndividual, :Artist;
-  :artistName "RÜFÜS DU SOL";
-  :numberOfTracks 148;
-  :totalStreams 1442369999 .
-
-:Río_Roma a owl:NamedIndividual, :Artist;
-  :artistName "Río Roma";
-  :numberOfTracks 105;
-  :totalStreams 1658457869 .
-
-:SAINt_JHN a owl:NamedIndividual, :Artist;
-  :artistName "SAINt JHN";
-  :numberOfTracks 55;
-  :totalStreams 7923488230 .
-
-:SCH a owl:NamedIndividual, :Artist;
-  :artistName "SCH";
-  :numberOfTracks 114;
-  :totalStreams 2080322702 .
-
-:SEVENTEEN a owl:NamedIndividual, :Artist;
-  :artistName "SEVENTEEN";
-  :numberOfTracks 150;
-  :totalStreams 2580817471 .
-
-:SZA a owl:NamedIndividual, :Artist;
-  :artistName "SZA";
-  :numberOfTracks 49;
-  :totalStreams 9417167939 .
-
-:Sabaton a owl:NamedIndividual, :Artist;
-  :artistName "Sabaton";
-  :numberOfTracks 313;
-  :totalStreams 2399679054 .
-
-:Sabrina_Carpenter a owl:NamedIndividual, :Artist;
-  :artistName "Sabrina Carpenter";
-  :numberOfTracks 99;
-  :totalStreams 2718443735 .
-
-:Sade a owl:NamedIndividual, :Artist;
-  :artistName "Sade";
-  :numberOfTracks 113;
-  :totalStreams 1702569074 .
-
-:Salmo a owl:NamedIndividual, :Artist;
-  :artistName "Salmo";
-  :numberOfTracks 162;
-  :totalStreams 2184721244 .
-
-:Sam_Feldt a owl:NamedIndividual, :Artist;
-  :artistName "Sam Feldt";
-  :numberOfTracks 173;
-  :totalStreams 3281798338 .
-
-:Sam_Hunt a owl:NamedIndividual, :Artist;
-  :artistName "Sam Hunt";
-  :numberOfTracks 61;
-  :totalStreams 5593058148 .
-
-:Sam_Smith a owl:NamedIndividual, :Artist;
-  :artistName "Sam Smith";
-  :numberOfTracks 145;
-  :totalStreams 17161212966 .
-
-:Samra a owl:NamedIndividual, :Artist;
-  :artistName "Samra";
-  :numberOfTracks 120;
-  :totalStreams 2864881230 .
-
-:Santa_Fe_Klan a owl:NamedIndividual, :Artist;
-  :artistName "Santa Fe Klan";
-  :numberOfTracks 217;
-  :totalStreams 2580631321 .
-
-:Santana a owl:NamedIndividual, :Artist;
-  :artistName "Santana";
-  :numberOfTracks 714;
-  :totalStreams 2209996566 .
-
-:Sara_Bareilles a owl:NamedIndividual, :Artist;
-  :artistName "Sara Bareilles";
-  :numberOfTracks 194;
-  :totalStreams 1911756436 .
-
-:Sasha_Alex_Sloan a owl:NamedIndividual, :Artist;
-  :artistName "Sasha Alex Sloan";
-  :numberOfTracks 55;
-  :totalStreams 1993201147 .
-
-:Saweetie a owl:NamedIndividual, :Artist;
-  :artistName "Saweetie";
-  :numberOfTracks 73;
-  :totalStreams 2595842076 .
-
-:ScHoolboy_Q a owl:NamedIndividual, :Artist;
-  :artistName "ScHoolboy Q";
-  :numberOfTracks 89;
-  :totalStreams 4803645862 .
-
-:Scorpions a owl:NamedIndividual, :Artist;
-  :artistName "Scorpions";
-  :numberOfTracks 345;
-  :totalStreams 2257465297 .
-
-:Sean_Kingston a owl:NamedIndividual, :Artist;
-  :artistName "Sean Kingston";
-  :numberOfTracks 142;
-  :totalStreams 1949306317 .
-
-:Sean_Paul a owl:NamedIndividual, :Artist;
-  :artistName "Sean Paul";
-  :numberOfTracks 400;
-  :totalStreams 8764936265 .
-
-:Sebastian_Yatra a owl:NamedIndividual, :Artist;
-  :artistName "Sebastian Yatra";
-  :numberOfTracks 126;
-  :totalStreams 10215604571 .
-
-:Sech a owl:NamedIndividual, :Artist;
-  :artistName "Sech";
-  :numberOfTracks 123;
-  :totalStreams 11911757594 .
-
-:Seeb a owl:NamedIndividual, :Artist;
-  :artistName "Seeb";
-  :numberOfTracks 112;
-  :totalStreams 3717193546 .
-
-:Seether a owl:NamedIndividual, :Artist;
-  :artistName "Seether";
-  :numberOfTracks 156;
-  :totalStreams 1748931621 .
-
-:Selena a owl:NamedIndividual, :Artist;
-  :artistName "Selena";
-  :numberOfTracks 149;
-  :totalStreams 1696046053 .
-
-:Selena_Gomez a owl:NamedIndividual, :Artist;
-  :artistName "Selena Gomez";
-  :numberOfTracks 140;
-  :totalStreams 15980713489 .
-
-:Sfera_Ebbasta a owl:NamedIndividual, :Artist;
-  :artistName "Sfera Ebbasta";
-  :numberOfTracks 89;
-  :totalStreams 3772121184 .
-
-:Shaggy a owl:NamedIndividual, :Artist;
-  :artistName "Shaggy";
-  :numberOfTracks 433;
-  :totalStreams 2859703892 .
-
-:Shakira a owl:NamedIndividual, :Artist;
-  :artistName "Shakira";
-  :numberOfTracks 232;
-  :totalStreams 12038222394 .
-
-:Shania_Twain a owl:NamedIndividual, :Artist;
-  :artistName "Shania Twain";
-  :numberOfTracks 187;
-  :totalStreams 2067823449 .
-
-:Shawn_Mendes a owl:NamedIndividual, :Artist;
-  :artistName "Shawn Mendes";
-  :numberOfTracks 126;
-  :totalStreams 19011586338 .
-
-:Shinedown a owl:NamedIndividual, :Artist;
-  :artistName "Shinedown";
-  :numberOfTracks 197;
-  :totalStreams 2493254295 .
-
-:Showtek a owl:NamedIndividual, :Artist;
-  :artistName "Showtek";
-  :numberOfTracks 267;
-  :totalStreams 1511932114 .
-
-:Sia a owl:NamedIndividual, :Artist;
-  :artistName "Sia";
-  :numberOfTracks 323;
-  :totalStreams 16655587450 .
-
-:Sido a owl:NamedIndividual, :Artist;
-  :artistName "Sido";
-  :numberOfTracks 368;
-  :totalStreams 2663508984 .
-
-:Sigala a owl:NamedIndividual, :Artist;
-  :artistName "Sigala";
-  :numberOfTracks 118;
-  :totalStreams 3259973784 .
-
-:Silk_Sonic a owl:NamedIndividual, :Artist;
-  :artistName "Silk Sonic";
-  :numberOfTracks 11;
-  :totalStreams 1635262002 .
-
-:Simon_Garfunkel a owl:NamedIndividual, :Artist;
-  :artistName "Simon & Garfunkel";
-  :numberOfTracks 172;
-  :totalStreams 3216382732 .
-
-:Simone_Simaria a owl:NamedIndividual, :Artist;
-  :artistName "Simone & Simaria";
-  :numberOfTracks 122;
-  :totalStreams 1664298914 .
-
-:Simple_Plan a owl:NamedIndividual, :Artist;
-  :artistName "Simple Plan";
-  :numberOfTracks 128;
-  :totalStreams 1721773907 .
-
-:Sin_Bandera a owl:NamedIndividual, :Artist;
-  :artistName "Sin Bandera";
-  :numberOfTracks 124;
-  :totalStreams 1863546941 .
-
-:Skepta a owl:NamedIndividual, :Artist;
-  :artistName "Skepta";
-  :numberOfTracks 146;
-  :totalStreams 3089431922 .
-
-:Ski_Mask_The_Slump_God a owl:NamedIndividual, :Artist;
-  :artistName "Ski Mask The Slump God";
-  :numberOfTracks 73;
-  :totalStreams 3578876993 .
-
-:Skillet a owl:NamedIndividual, :Artist;
-  :artistName "Skillet";
-  :numberOfTracks 195;
-  :totalStreams 3052331848 .
-
 :Skrillex a owl:NamedIndividual, :Artist;
   :artistName "Skrillex";
   :numberOfTracks 149;
   :totalStreams 7522622037 .
-
-:Sleeping_At_Last a owl:NamedIndividual, :Artist;
-  :artistName "Sleeping At Last";
-  :numberOfTracks 298;
-  :totalStreams 2147148094 .
-
-:Sleepy_Hallow a owl:NamedIndividual, :Artist;
-  :artistName "Sleepy Hallow";
-  :numberOfTracks 64;
-  :totalStreams 1857871645 .
-
-:Slipknot a owl:NamedIndividual, :Artist;
-  :artistName "Slipknot";
-  :numberOfTracks 208;
-  :totalStreams 4980473881 .
-
-:Snakehips a owl:NamedIndividual, :Artist;
-  :artistName "Snakehips";
-  :numberOfTracks 80;
-  :totalStreams 1651683376 .
-
-:Snoop_Dogg a owl:NamedIndividual, :Artist;
-  :artistName "Snoop Dogg";
-  :numberOfTracks 726;
-  :totalStreams 10493061972 .
-
-:Snow_Patrol a owl:NamedIndividual, :Artist;
-  :artistName "Snow Patrol";
-  :numberOfTracks 191;
-  :totalStreams 1897170969 .
-
-:Soda_Stereo a owl:NamedIndividual, :Artist;
-  :artistName "Soda Stereo";
-  :numberOfTracks 198;
-  :totalStreams 7310719654 .
-
-:Sofía_Reyes a owl:NamedIndividual, :Artist;
-  :artistName "Sofía Reyes";
-  :numberOfTracks 61;
-  :totalStreams 1945462241 .
-
-:Spice_Girls a owl:NamedIndividual, :Artist;
-  :artistName "Spice Girls";
-  :numberOfTracks 106;
-  :totalStreams 1531472128 .
-
-:Stefflon_Don a owl:NamedIndividual, :Artist;
-  :artistName "Stefflon Don";
-  :numberOfTracks 86;
-  :totalStreams 2260440433 .
-
-:Steve_Aoki a owl:NamedIndividual, :Artist;
-  :artistName "Steve Aoki";
-  :numberOfTracks 437;
-  :totalStreams 3528736635 .
-
-:Steve_Lacy a owl:NamedIndividual, :Artist;
-  :artistName "Steve Lacy";
-  :numberOfTracks 46;
-  :totalStreams 2427065463 .
-
-:Stevie_Wonder a owl:NamedIndividual, :Artist;
-  :artistName "Stevie Wonder";
-  :numberOfTracks 657;
-  :totalStreams 4498081998 .
-
-:Sting a owl:NamedIndividual, :Artist;
-  :artistName "Sting";
-  :numberOfTracks 495;
-  :totalStreams 2159378664 .
-
-:Stormzy a owl:NamedIndividual, :Artist;
-  :artistName "Stormzy";
-  :numberOfTracks 69;
-  :totalStreams 3498074585 .
-
-:Stray_Kids a owl:NamedIndividual, :Artist;
-  :artistName "Stray Kids";
-  :numberOfTracks 169;
-  :totalStreams 3664292897 .
-
-:Stromae a owl:NamedIndividual, :Artist;
-  :artistName "Stromae";
-  :numberOfTracks 57;
-  :totalStreams 2122949275 .
-
-:Sublime a owl:NamedIndividual, :Artist;
-  :artistName "Sublime";
-  :numberOfTracks 219;
-  :totalStreams 2317831260 .
-
-:Sufjan_Stevens a owl:NamedIndividual, :Artist;
-  :artistName "Sufjan Stevens";
-  :numberOfTracks 439;
-  :totalStreams 1607859524 .
-
-:Sum_41 a owl:NamedIndividual, :Artist;
-  :artistName "Sum 41";
-  :numberOfTracks 128;
-  :totalStreams 2179514293 .
-
-:Summer_Cem a owl:NamedIndividual, :Artist;
-  :artistName "Summer Cem";
-  :numberOfTracks 200;
-  :totalStreams 2044434269 .
-
-:Summer_Walker a owl:NamedIndividual, :Artist;
-  :artistName "Summer Walker";
-  :numberOfTracks 91;
-  :totalStreams 3880328820 .
-
-:Supertramp a owl:NamedIndividual, :Artist;
-  :artistName "Supertramp";
-  :numberOfTracks 119;
-  :totalStreams 1480547238 .
-
-:Surfaces a owl:NamedIndividual, :Artist;
-  :artistName "Surfaces";
-  :numberOfTracks 70;
-  :totalStreams 1819802511 .
 
 :Swae_Lee a owl:NamedIndividual, :Artist;
   :artistName "Swae Lee";
   :numberOfTracks 59;
   :totalStreams 10529595499 .
 
-:Swedish_House_Mafia a owl:NamedIndividual, :Artist;
-  :artistName "Swedish House Mafia";
-  :numberOfTracks 58;
-  :totalStreams 2353547988 .
-
-:System_Of_A_Down a owl:NamedIndividual, :Artist;
-  :artistName "System Of A Down";
-  :numberOfTracks 83;
-  :totalStreams 5307744886 .
-
-:TI a owl:NamedIndividual, :Artist;
-  :artistName "T.I.";
-  :numberOfTracks 440;
-  :totalStreams 2895411866 .
-
-:TINI a owl:NamedIndividual, :Artist;
-  :artistName "TINI";
-  :numberOfTracks 71;
-  :totalStreams 3221269848 .
-
-:TKKG a owl:NamedIndividual, :Artist;
-  :artistName "TKKG";
-  :numberOfTracks 4398;
-  :totalStreams 2141387313 .
-
-:TLC a owl:NamedIndividual, :Artist;
-  :artistName "TLC";
-  :numberOfTracks 173;
-  :totalStreams 1746167238 .
-
-:TOMORROW_X_TOGETHER a owl:NamedIndividual, :Artist;
-  :artistName "TOMORROW X TOGETHER";
-  :numberOfTracks 69;
-  :totalStreams 2136382863 .
-
-:TOTO a owl:NamedIndividual, :Artist;
-  :artistName "TOTO";
-  :numberOfTracks 391;
-  :totalStreams 2578901953 .
-
-:TWICE a owl:NamedIndividual, :Artist;
-  :artistName "TWICE";
-  :numberOfTracks 220;
-  :totalStreams 5221083005 .
-
-:T_Pain a owl:NamedIndividual, :Artist;
-  :artistName "T-Pain";
-  :numberOfTracks 215;
-  :totalStreams 5618619024 .
-
-:Tainy a owl:NamedIndividual, :Artist;
-  :artistName "Tainy";
-  :numberOfTracks 44;
-  :totalStreams 8615920146 .
-
-:Taio_Cruz a owl:NamedIndividual, :Artist;
-  :artistName "Taio Cruz";
-  :numberOfTracks 94;
-  :totalStreams 1876142661 .
-
-:Talking_Heads a owl:NamedIndividual, :Artist;
-  :artistName "Talking Heads";
-  :numberOfTracks 215;
-  :totalStreams 1484242370 .
-
 :Tame_Impala a owl:NamedIndividual, :Artist;
   :artistName "Tame Impala";
   :numberOfTracks 101;
   :totalStreams 5388141081 .
-
-:Tate_McRae a owl:NamedIndividual, :Artist;
-  :artistName "Tate McRae";
-  :numberOfTracks 53;
-  :totalStreams 5400585548 .
-
-:Taylor_Swift a owl:NamedIndividual, :Artist;
-  :artistName "Taylor Swift";
-  :numberOfTracks 323;
-  :totalStreams 33020781405 .
-
-:Tears_For_Fears a owl:NamedIndividual, :Artist;
-  :artistName "Tears For Fears";
-  :numberOfTracks 219;
-  :totalStreams 1787751203 .
-
-:Tech_N9ne a owl:NamedIndividual, :Artist;
-  :artistName "Tech N9ne";
-  :numberOfTracks 451;
-  :totalStreams 2397829400 .
-
-:Tee_Grizzley a owl:NamedIndividual, :Artist;
-  :artistName "Tee Grizzley";
-  :numberOfTracks 145;
-  :totalStreams 2166916730 .
-
-:Thalia a owl:NamedIndividual, :Artist;
-  :artistName "Thalia";
-  :numberOfTracks 320;
-  :totalStreams 2206296305 .
 
 :The_1975 a owl:NamedIndividual, :Artist;
   :artistName "The 1975";
   :numberOfTracks 136;
   :totalStreams 5388486087 .
 
-:The_All_American_Rejects a owl:NamedIndividual, :Artist;
-  :artistName "The All-American Rejects";
-  :numberOfTracks 86;
-  :totalStreams 1439069693 .
-
-:The_Beach_Boys a owl:NamedIndividual, :Artist;
-  :artistName "The Beach Boys";
-  :numberOfTracks 1528;
-  :totalStreams 8047936954 .
-
 :The_Beatles a owl:NamedIndividual, :Artist;
   :artistName "The Beatles";
   :numberOfTracks 792;
   :totalStreams 14001404418 .
-
-:The_Black_Keys a owl:NamedIndividual, :Artist;
-  :artistName "The Black Keys";
-  :numberOfTracks 199;
-  :totalStreams 4032115359 .
 
 :The_Chainsmokers a owl:NamedIndividual, :Artist;
   :artistName "The Chainsmokers";
   :numberOfTracks 197;
   :totalStreams 15885597835 .
 
-:The_Clash a owl:NamedIndividual, :Artist;
-  :artistName "The Clash";
-  :numberOfTracks 223;
-  :totalStreams 2085949767 .
-
-:The_Cranberries a owl:NamedIndividual, :Artist;
-  :artistName "The Cranberries";
-  :numberOfTracks 264;
-  :totalStreams 2463593995 .
-
-:The_Cure a owl:NamedIndividual, :Artist;
-  :artistName "The Cure";
-  :numberOfTracks 545;
-  :totalStreams 2884174292 .
-
-:The_Doors a owl:NamedIndividual, :Artist;
-  :artistName "The Doors";
-  :numberOfTracks 724;
-  :totalStreams 5840699768 .
-
-:The_Fray a owl:NamedIndividual, :Artist;
-  :artistName "The Fray";
-  :numberOfTracks 98;
-  :totalStreams 2467922963 .
-
-:The_Game a owl:NamedIndividual, :Artist;
-  :artistName "The Game";
-  :numberOfTracks 770;
-  :totalStreams 2686873055 .
-
-:The_Goo_Goo_Dolls a owl:NamedIndividual, :Artist;
-  :artistName "The Goo Goo Dolls";
-  :numberOfTracks 279;
-  :totalStreams 1933714930 .
-
-:The_Head_And_The_Heart a owl:NamedIndividual, :Artist;
-  :artistName "The Head And The Heart";
-  :numberOfTracks 95;
-  :totalStreams 1436917213 .
-
-:The_Jackson_5 a owl:NamedIndividual, :Artist;
-  :artistName "The Jackson 5";
-  :numberOfTracks 347;
-  :totalStreams 1816616549 .
-
-:The_Kid_LAROI a owl:NamedIndividual, :Artist;
-  :artistName "The Kid LAROI";
-  :numberOfTracks 49;
-  :totalStreams 7495606063 .
-
-:The_Killers a owl:NamedIndividual, :Artist;
-  :artistName "The Killers";
-  :numberOfTracks 213;
-  :totalStreams 5774909782 .
-
-:The_Kooks a owl:NamedIndividual, :Artist;
-  :artistName "The Kooks";
-  :numberOfTracks 249;
-  :totalStreams 2024254904 .
-
 :The_Lumineers a owl:NamedIndividual, :Artist;
   :artistName "The Lumineers";
   :numberOfTracks 86;
   :totalStreams 4894719810 .
-
-:The_National a owl:NamedIndividual, :Artist;
-  :artistName "The National";
-  :numberOfTracks 209;
-  :totalStreams 1713840534 .
 
 :The_Neighbourhood a owl:NamedIndividual, :Artist;
   :artistName "The Neighbourhood";
   :numberOfTracks 90;
   :totalStreams 6719871869 .
 
-:The_Notorious_BIG a owl:NamedIndividual, :Artist;
-  :artistName "The Notorious B.I.G.";
-  :numberOfTracks 185;
-  :totalStreams 5871552810 .
-
-:The_Offspring a owl:NamedIndividual, :Artist;
-  :artistName "The Offspring";
-  :numberOfTracks 159;
-  :totalStreams 8023708300 .
-
-:The_Police a owl:NamedIndividual, :Artist;
-  :artistName "The Police";
-  :numberOfTracks 122;
-  :totalStreams 3575222025 .
-
-:The_Pussycat_Dolls a owl:NamedIndividual, :Artist;
-  :artistName "The Pussycat Dolls";
-  :numberOfTracks 56;
-  :totalStreams 1839169613 .
-
 :The_Rolling_Stones a owl:NamedIndividual, :Artist;
   :artistName "The Rolling Stones";
   :numberOfTracks 1073;
   :totalStreams 6734211372 .
 
-:The_Score a owl:NamedIndividual, :Artist;
-  :artistName "The Score";
-  :numberOfTracks 66;
-  :totalStreams 1592522294 .
-
 :The_Script a owl:NamedIndividual, :Artist;
   :artistName "The Script";
   :numberOfTracks 99;
   :totalStreams 4554396013 .
-
-:The_Smashing_Pumpkins a owl:NamedIndividual, :Artist;
-  :artistName "The Smashing Pumpkins";
-  :numberOfTracks 418;
-  :totalStreams 2172954938 .
-
-:The_Smiths a owl:NamedIndividual, :Artist;
-  :artistName "The Smiths";
-  :numberOfTracks 143;
-  :totalStreams 2582782853 .
-
-:The_Strokes a owl:NamedIndividual, :Artist;
-  :artistName "The Strokes";
-  :numberOfTracks 82;
-  :totalStreams 5379433015 .
 
 :The_Temptations a owl:NamedIndividual .
 # 
@@ -9041,115 +5131,10 @@ dbr:6ix9ine a owl:NamedIndividual, :Artist;
   :numberOfTracks 732;
   :totalStreams 1490724355 .
 
-:The_Vamps a owl:NamedIndividual, :Artist;
-  :artistName "The Vamps";
-  :numberOfTracks 148;
-  :totalStreams 3200675921 .
-
-:The_Weeknd a owl:NamedIndividual, :Artist;
-  :artistName "The Weeknd";
-  :numberOfTracks 186;
-  :totalStreams 39056683398 .
-
-:The_White_Stripes a owl:NamedIndividual, :Artist;
-  :artistName "The White Stripes";
-  :numberOfTracks 172;
-  :totalStreams 2377686382 .
-
-:The_Who a owl:NamedIndividual, :Artist;
-  :artistName "The Who";
-  :numberOfTracks 881;
-  :totalStreams 1923165495 .
-
-:The_xx a owl:NamedIndividual, :Artist;
-  :artistName "The xx";
-  :numberOfTracks 77;
-  :totalStreams 2553246359 .
-
-:Thiaguinho a owl:NamedIndividual, :Artist;
-  :artistName "Thiaguinho";
-  :numberOfTracks 249;
-  :totalStreams 1724229654 .
-
-:Thirty_Seconds_To_Mars a owl:NamedIndividual, :Artist;
-  :artistName "Thirty Seconds To Mars";
-  :numberOfTracks 84;
-  :totalStreams 2002429539 .
-
-:Thomas_Rhett a owl:NamedIndividual, :Artist;
-  :artistName "Thomas Rhett";
-  :numberOfTracks 120;
-  :totalStreams 4360407066 .
-
-:Three_Days_Grace a owl:NamedIndividual, :Artist;
-  :artistName "Three Days Grace";
-  :numberOfTracks 96;
-  :totalStreams 4636422421 .
-
-:Tiago_PZK a owl:NamedIndividual, :Artist;
-  :artistName "Tiago PZK";
-  :numberOfTracks 58;
-  :totalStreams 2042683395 .
-
-:Tim_McGraw a owl:NamedIndividual, :Artist;
-  :artistName "Tim McGraw";
-  :numberOfTracks 318;
-  :totalStreams 4392880631 .
-
-:Timbaland a owl:NamedIndividual, :Artist;
-  :artistName "Timbaland";
-  :numberOfTracks 156;
-  :totalStreams 3711558221 .
-
-:Timmy_Trumpet a owl:NamedIndividual, :Artist;
-  :artistName "Timmy Trumpet";
-  :numberOfTracks 183;
-  :totalStreams 2059174616 .
-
-:Tina_Turner a owl:NamedIndividual, :Artist;
-  :artistName "Tina Turner";
-  :numberOfTracks 253;
-  :totalStreams 1673915155 .
-
 :Tiësto a owl:NamedIndividual, :Artist;
   :artistName "Tiësto";
   :numberOfTracks 653;
   :totalStreams 8473831295 .
-
-:Toby_Keith a owl:NamedIndividual, :Artist;
-  :artistName "Toby Keith";
-  :numberOfTracks 302;
-  :totalStreams 1561296403 .
-
-:Tom_Odell a owl:NamedIndividual, :Artist;
-  :artistName "Tom Odell";
-  :numberOfTracks 131;
-  :totalStreams 2357254277 .
-
-:Tom_Petty_and_the_Heartbreakers a owl:NamedIndividual, :Artist;
-  :artistName "Tom Petty and the Heartbreakers";
-  :numberOfTracks 248;
-  :totalStreams 1466711675 .
-
-:Tom_Walker a owl:NamedIndividual, :Artist;
-  :artistName "Tom Walker";
-  :numberOfTracks 95;
-  :totalStreams 1726167779 .
-
-:Tones_And_I a owl:NamedIndividual, :Artist;
-  :artistName "Tones And I";
-  :numberOfTracks 33;
-  :totalStreams 3963032936 .
-
-:Topic a owl:NamedIndividual, :Artist;
-  :artistName "Topic";
-  :numberOfTracks 70;
-  :totalStreams 2510058239 .
-
-:Tori_Kelly a owl:NamedIndividual, :Artist;
-  :artistName "Tori Kelly";
-  :numberOfTracks 98;
-  :totalStreams 2038033130 .
 
 :Tory_Lanez a owl:NamedIndividual, :Artist;
   :artistName "Tory Lanez";
@@ -9161,475 +5146,45 @@ dbr:6ix9ine a owl:NamedIndividual, :Artist;
   :numberOfTracks 144;
   :totalStreams 5989538400 .
 
-:Tracy_Chapman a owl:NamedIndividual, :Artist;
-  :artistName "Tracy Chapman";
-  :numberOfTracks 102;
-  :totalStreams 1690285534 .
-
-:Train a owl:NamedIndividual, :Artist;
-  :artistName "Train";
-  :numberOfTracks 185;
-  :totalStreams 3423789545 .
-
-:Travis_Scott a owl:NamedIndividual, :Artist;
-  :artistName "Travis Scott";
-  :numberOfTracks 113;
-  :totalStreams 30228534186 .
-
-:Trevor_Daniel a owl:NamedIndividual, :Artist;
-  :artistName "Trevor Daniel";
-  :numberOfTracks 50;
-  :totalStreams 2100990271 .
-
-:Trey_Songz a owl:NamedIndividual, :Artist;
-  :artistName "Trey Songz";
-  :numberOfTracks 268;
-  :totalStreams 4652859741 .
-
 :Trippie_Redd a owl:NamedIndividual, :Artist;
   :artistName "Trippie Redd";
   :numberOfTracks 197;
   :totalStreams 11406965082 .
-
-:Troye_Sivan a owl:NamedIndividual, :Artist;
-  :artistName "Troye Sivan";
-  :numberOfTracks 105;
-  :totalStreams 5977362171 .
-
-:Trueno a owl:NamedIndividual, :Artist;
-  :artistName "Trueno";
-  :numberOfTracks 55;
-  :totalStreams 1714996318 .
-
-:Tungevaag a owl:NamedIndividual, :Artist;
-  :artistName "Tungevaag";
-  :numberOfTracks 82;
-  :totalStreams 1590198269 .
 
 :Twenty_One_Pilots a owl:NamedIndividual, :Artist;
   :artistName "Twenty One Pilots";
   :numberOfTracks 90;
   :totalStreams 12949146668 .
 
-:Two_Door_Cinema_Club a owl:NamedIndividual, :Artist;
-  :artistName "Two Door Cinema Club";
-  :numberOfTracks 142;
-  :totalStreams 2114287998 .
-
-:Two_Feet a owl:NamedIndividual, :Artist;
-  :artistName "Two Feet";
-  :numberOfTracks 67;
-  :totalStreams 1893575959 .
-
-:Ty_Dolla_ign a owl:NamedIndividual, :Artist;
-  :artistName "Ty Dolla $ign";
-  :numberOfTracks 191;
-  :totalStreams 17151496921 .
-
-:Tyga a owl:NamedIndividual, :Artist;
-  :artistName "Tyga";
-  :numberOfTracks 303;
-  :totalStreams 12280158626 .
-
-:Tyler_Childers a owl:NamedIndividual, :Artist;
-  :artistName "Tyler Childers";
-  :numberOfTracks 62;
-  :totalStreams 1607755667 .
-
-:Tyler_The_Creator a owl:NamedIndividual, :Artist;
-  :artistName "Tyler, The Creator";
-  :numberOfTracks 154;
-  :totalStreams 9444630212 .
-
 :U2 a owl:NamedIndividual, :Artist;
   :artistName "U2";
   :numberOfTracks 522;
   :totalStreams 5925600574 .
-
-:UB40 a owl:NamedIndividual, :Artist;
-  :artistName "UB40";
-  :numberOfTracks 436;
-  :totalStreams 1522323511 .
-
-:Ufo361 a owl:NamedIndividual, :Artist;
-  :artistName "Ufo361";
-  :numberOfTracks 236;
-  :totalStreams 2907745109 .
-
-:Upchurch a owl:NamedIndividual, :Artist;
-  :artistName "Upchurch";
-  :numberOfTracks 245;
-  :totalStreams 1611895679 .
-
-:Usher a owl:NamedIndividual, :Artist;
-  :artistName "Usher";
-  :numberOfTracks 257;
-  :totalStreams 9222592924 .
-
-:Vampire_Weekend a owl:NamedIndividual, :Artist;
-  :artistName "Vampire Weekend";
-  :numberOfTracks 74;
-  :totalStreams 1945573015 .
-
-:Van_Halen a owl:NamedIndividual, :Artist;
-  :artistName "Van Halen";
-  :numberOfTracks 207;
-  :totalStreams 2467020129 .
-
-:Van_Morrison a owl:NamedIndividual, :Artist;
-  :artistName "Van Morrison";
-  :numberOfTracks 864;
-  :totalStreams 2637764348 .
-
-:Vance_Joy a owl:NamedIndividual, :Artist;
-  :artistName "Vance Joy";
-  :numberOfTracks 87;
-  :totalStreams 4216274820 .
-
-:Vicente_Fernández a owl:NamedIndividual, :Artist;
-  :artistName "Vicente Fernández";
-  :numberOfTracks 865;
-  :totalStreams 5389317569 .
-
-:Vince_Staples a owl:NamedIndividual, :Artist;
-  :artistName "Vince Staples";
-  :numberOfTracks 97;
-  :totalStreams 2061630958 .
-
-:Vintage_Culture a owl:NamedIndividual, :Artist;
-  :artistName "Vintage Culture";
-  :numberOfTracks 205;
-  :totalStreams 1898765354 .
-
-:Volbeat a owl:NamedIndividual, :Artist;
-  :artistName "Volbeat";
-  :numberOfTracks 205;
-  :totalStreams 2579498906 .
-
-:WALK_THE_MOON a owl:NamedIndividual, :Artist;
-  :artistName "WALK THE MOON";
-  :numberOfTracks 98;
-  :totalStreams 2317104252 .
-
-:WILLOW a owl:NamedIndividual, :Artist;
-  :artistName "WILLOW";
-  :numberOfTracks 76;
-  :totalStreams 2567438994 .
-
-:Wale a owl:NamedIndividual, :Artist;
-  :artistName "Wale";
-  :numberOfTracks 353;
-  :totalStreams 3637635332 .
-
-:Wallows a owl:NamedIndividual, :Artist;
-  :artistName "Wallows";
-  :numberOfTracks 50;
-  :totalStreams 1617420796 .
-
-:Weezer a owl:NamedIndividual, :Artist;
-  :artistName "Weezer";
-  :numberOfTracks 271;
-  :totalStreams 3577674792 .
-
-:Wesley_Safadão a owl:NamedIndividual, :Artist;
-  :artistName "Wesley Safadão";
-  :numberOfTracks 283;
-  :totalStreams 9390980795 .
-
-:Westlife a owl:NamedIndividual, :Artist;
-  :artistName "Westlife";
-  :numberOfTracks 231;
-  :totalStreams 2026097856 .
-
-:Wham a owl:NamedIndividual, :Artist;
-  :artistName "Wham!";
-  :numberOfTracks 36;
-  :totalStreams 1931647119 .
-
-:Whitney_Houston a owl:NamedIndividual, :Artist;
-  :artistName "Whitney Houston";
-  :numberOfTracks 282;
-  :totalStreams 4533784434 .
-
-:Why_Dont_We a owl:NamedIndividual, :Artist;
-  :artistName "Why Don't We";
-  :numberOfTracks 99;
-  :totalStreams 2918017541 .
-
-:Will_Smith a owl:NamedIndividual, :Artist;
-  :artistName "Will Smith";
-  :numberOfTracks 90;
-  :totalStreams 1565171093 .
-
-:Willie_Nelson a owl:NamedIndividual, :Artist;
-  :artistName "Willie Nelson";
-  :numberOfTracks 1571;
-  :totalStreams 1962506635 .
-
-:Willy_William a owl:NamedIndividual, :Artist;
-  :artistName "Willy William";
-  :numberOfTracks 82;
-  :totalStreams 2285722171 .
-
-:Wisin a owl:NamedIndividual, :Artist;
-  :artistName "Wisin";
-  :numberOfTracks 131;
-  :totalStreams 9586820389 .
-
-:Wisin_Yandel a owl:NamedIndividual, :Artist;
-  :artistName "Wisin & Yandel";
-  :numberOfTracks 293;
-  :totalStreams 4713952951 .
-
-:Wiz_Khalifa a owl:NamedIndividual, :Artist;
-  :artistName "Wiz Khalifa";
-  :numberOfTracks 461;
-  :totalStreams 15735437535 .
-
-:Wolfgang_Amadeus_Mozart a owl:NamedIndividual, :Artist;
-  :artistName "Wolfgang Amadeus Mozart";
-  :numberOfTracks 11475;
-  :totalStreams 1717883009 .
-
-:Wu_Tang_Clan a owl:NamedIndividual, :Artist;
-  :artistName "Wu-Tang Clan";
-  :numberOfTracks 351;
-  :totalStreams 1494667949 .
-
-:XXXTENTACION a owl:NamedIndividual, :Artist;
-  :artistName "XXXTENTACION";
-  :numberOfTracks 144;
-  :totalStreams 24391462393 .
-
-:X_Ambassadors a owl:NamedIndividual, :Artist;
-  :artistName "X Ambassadors";
-  :numberOfTracks 119;
-  :totalStreams 2869259557 .
-
-:YG a owl:NamedIndividual, :Artist;
-  :artistName "YG";
-  :numberOfTracks 198;
-  :totalStreams 4035203817 .
-
-:YNW_Melly a owl:NamedIndividual, :Artist;
-  :artistName "YNW Melly";
-  :numberOfTracks 83;
-  :totalStreams 4148051569 .
-
-:YOASOBI a owl:NamedIndividual, :Artist;
-  :artistName "YOASOBI";
-  :numberOfTracks 28;
-  :totalStreams 1533599947 .
-
-:YUNGBLUD a owl:NamedIndividual, :Artist;
-  :artistName "YUNGBLUD";
-  :numberOfTracks 92;
-  :totalStreams 2167221457 .
-
-:Yandel a owl:NamedIndividual, :Artist;
-  :artistName "Yandel";
-  :numberOfTracks 175;
-  :totalStreams 3926260028 .
-
-:Years_Years a owl:NamedIndividual, :Artist;
-  :artistName "Years & Years";
-  :numberOfTracks 112;
-  :totalStreams 2641353874 .
-
-:Yellow_Claw a owl:NamedIndividual, :Artist;
-  :artistName "Yellow Claw";
-  :numberOfTracks 263;
-  :totalStreams 1734413728 .
-
-:Yo_Gotti a owl:NamedIndividual, :Artist;
-  :artistName "Yo Gotti";
-  :numberOfTracks 494;
-  :totalStreams 3164138102 .
-
-:YoungBoy_Never_Broke_Again a owl:NamedIndividual, :Artist;
-  :artistName "YoungBoy Never Broke Again";
-  :numberOfTracks 416;
-  :totalStreams 9117786831 .
 
 :Young_Thug a owl:NamedIndividual, :Artist;
   :artistName "Young Thug";
   :numberOfTracks 366;
   :totalStreams 18532788341 .
 
-:Young_the_Giant a owl:NamedIndividual, :Artist;
-  :artistName "Young the Giant";
-  :numberOfTracks 78;
-  :totalStreams 1429779508 .
-
-:Yung_Gravy a owl:NamedIndividual, :Artist;
-  :artistName "Yung Gravy";
-  :numberOfTracks 78;
-  :totalStreams 1969100092 .
-
-:Yusuf_Cat_Stevens a owl:NamedIndividual, :Artist;
-  :artistName "Yusuf / Cat Stevens";
-  :numberOfTracks 332;
-  :totalStreams 1745630998 .
-
-:ZAYN a owl:NamedIndividual, :Artist;
-  :artistName "ZAYN";
-  :numberOfTracks 85;
-  :totalStreams 8165396368 .
-
-:ZHU a owl:NamedIndividual, :Artist;
-  :artistName "ZHU";
-  :numberOfTracks 120;
-  :totalStreams 1504298066 .
-
-:ZZ_Top a owl:NamedIndividual, :Artist;
-  :artistName "ZZ Top";
-  :numberOfTracks 279;
-  :totalStreams 1609973792 .
-
-:Zac_Brown_Band a owl:NamedIndividual, :Artist;
-  :artistName "Zac Brown Band";
-  :numberOfTracks 141;
-  :totalStreams 3140092840 .
-
-:Zara_Larsson a owl:NamedIndividual, :Artist;
-  :artistName "Zara Larsson";
-  :numberOfTracks 85;
-  :totalStreams 7389147650 .
-
 :Zedd a owl:NamedIndividual, :Artist;
   :artistName "Zedd";
   :numberOfTracks 139;
   :totalStreams 8593844771 .
-
-:Zendaya a owl:NamedIndividual, :Artist;
-  :artistName "Zendaya";
-  :numberOfTracks 42;
-  :totalStreams 2257088181 .
 
 :Zion_Lennox a owl:NamedIndividual, :Artist;
   :artistName "Zion & Lennox";
   :numberOfTracks 159;
   :totalStreams 7598013127 .
 
-:Zoé a owl:NamedIndividual, :Artist;
-  :artistName "Zoé";
-  :numberOfTracks 193;
-  :totalStreams 2239284929 .
-
-:Zé_Neto_Cristiano a owl:NamedIndividual, :Artist;
-  :artistName "Zé Neto & Cristiano";
-  :numberOfTracks 169;
-  :totalStreams 5003922793 .
-
-:a_ha a owl:NamedIndividual, :Artist;
-  :artistName "a-ha";
-  :numberOfTracks 401;
-  :totalStreams 1815741220 .
-
-:alt_J a owl:NamedIndividual, :Artist;
-  :artistName "alt-J";
-  :numberOfTracks 145;
-  :totalStreams 3025292063 .
-
-:bbno a owl:NamedIndividual, :Artist;
-  :artistName "bbno$";
-  :numberOfTracks 149;
-  :totalStreams 4832712856 .
-
-:beabadoobee a owl:NamedIndividual, :Artist;
-  :artistName "beabadoobee";
-  :numberOfTracks 76;
-  :totalStreams 1905694016 .
-
-:benny_blanco a owl:NamedIndividual, :Artist;
-  :artistName "benny blanco";
-  :numberOfTracks 23;
-  :totalStreams 6548575934 .
-
-:blackbear a owl:NamedIndividual, :Artist;
-  :artistName "blackbear";
-  :numberOfTracks 162;
-  :totalStreams 8851234914 .
-
-:blink_182 a owl:NamedIndividual, :Artist;
-  :artistName "blink-182";
-  :numberOfTracks 185;
-  :totalStreams 5634695641 .
-
-:deadmau5 a owl:NamedIndividual, :Artist;
-  :artistName "deadmau5";
-  :numberOfTracks 456;
-  :totalStreams 1718997257 .
-
-:fun a owl:NamedIndividual, :Artist;
-  :artistName "fun.";
-  :numberOfTracks 26;
-  :totalStreams 1792922424 .
-
-:girl_in_red a owl:NamedIndividual, :Artist;
-  :artistName "girl in red";
-  :numberOfTracks 29;
-  :totalStreams 2270508258 .
-
-:gnash a owl:NamedIndividual, :Artist;
-  :artistName "gnash";
-  :numberOfTracks 84;
-  :totalStreams 2386722728 .
-
-:iann_dior a owl:NamedIndividual, :Artist;
-  :artistName "iann dior";
-  :numberOfTracks 55;
-  :totalStreams 4394291732 .
-
-:uicideboy a owl:NamedIndividual, :Artist;
-  :artistName "$uicideboy$";
-  :numberOfTracks 313;
-  :totalStreams 7647641679 .
-
-:william a owl:NamedIndividual, :Artist;
-  :artistName "will.i.am";
-  :numberOfTracks 103;
-  :totalStreams 3801255651 .
-
-:2Pac a owl:NamedIndividual, :Artist;
-  :artistName "2Pac";
-  :numberOfTracks 316;
-  :totalStreams 6673240200 .
-
-:2_Chainz a owl:NamedIndividual, :Artist;
-  :artistName "2 Chainz";
-  :numberOfTracks 409;
-  :totalStreams 8511545529 .
-
 :21_Savage a owl:NamedIndividual, :Artist;
   :artistName "21 Savage";
   :numberOfTracks 162;
   :totalStreams 15308972308 .
 
-:24kGoldn a owl:NamedIndividual, :Artist;
-  :artistName "24kGoldn";
-  :numberOfTracks 62;
-  :totalStreams 4742037912 .
-
-:3_Doors_Down a owl:NamedIndividual, :Artist;
-  :artistName "3 Doors Down";
-  :numberOfTracks 144;
-  :totalStreams 2122989533 .
-
 :5_Seconds_of_Summer a owl:NamedIndividual, :Artist;
   :artistName "5 Seconds of Summer";
   :numberOfTracks 165;
   :totalStreams 8195606480 .
-
-:50_Cent a owl:NamedIndividual, :Artist;
-  :artistName "50 Cent";
-  :numberOfTracks 185;
-  :totalStreams 9007419514 .
-
-:6LACK a owl:NamedIndividual, :Artist;
-  :artistName "6LACK";
-  :numberOfTracks 79;
-  :totalStreams 5603151173 .
 
 :6ix9ine a owl:NamedIndividual, :Artist;
   :artistName "6ix9ine";

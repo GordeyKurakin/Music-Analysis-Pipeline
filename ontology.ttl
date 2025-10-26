@@ -391,7 +391,7 @@ _:genid21 a owl:Restriction;
     owl:intersectionOf (
         :Artist
         [
-            rdf:type owl:Restriction ;
+    rdf:type owl:Restriction ;
             owl:onProperty :totalStreams ;
             owl:someValuesFrom [
                 rdf:type rdfs:Datatype ;
