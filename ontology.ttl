@@ -23,31 +23,10 @@ xsd:gYear rdf:type rdfs:Datatype .
 #    Object Properties
 #################################################################
 
-###  http://example.org/music#collaboratedWith
-:collaboratedWith rdf:type owl:ObjectProperty ,
-                           owl:SymmetricProperty ;
-                  rdfs:domain :Artist ;
-                  rdfs:range :Artist ;
-                  rdfs:label "collaborated with" .
-
-
 ###  http://example.org/music#hasGenre
 :hasGenre rdf:type owl:ObjectProperty ;
           rdfs:range :Genre ;
           rdfs:label "has genre" .
-
-
-###  http://example.org/music#includesTrack
-:includesTrack rdf:type owl:ObjectProperty ;
-               rdfs:label "includes track" .
-
-
-###  http://example.org/music#influenced
-:influenced rdf:type owl:ObjectProperty ;
-            rdfs:domain :Artist ;
-            rdfs:range :Artist ;
-            rdfs:comment "Indicates that one artist influenced another." ;
-            rdfs:label "influenced" .
 
 
 ###  http://example.org/music#isFromCity
@@ -64,53 +43,15 @@ xsd:gYear rdf:type rdfs:Datatype .
                rdfs:label "is from country" .
 
 
-###  http://example.org/music#producedBy
-:producedBy rdf:type owl:ObjectProperty ;
-            rdfs:range :Artist ;
-            rdfs:label "produced by" .
-
-
-###  http://example.org/music#signedTo
-:signedTo rdf:type owl:ObjectProperty ;
-          rdfs:domain :Artist ;
-          rdfs:label "signed to" .
-
-
 #################################################################
 #    Data properties
 #################################################################
-
-###  http://example.org/music#activeEndYear
-:activeEndYear rdf:type owl:DatatypeProperty ;
-               rdfs:domain :Artist ;
-               rdfs:range xsd:gYear ;
-               rdfs:label "active end year" .
-
-
-###  http://example.org/music#activeStartYear
-:activeStartYear rdf:type owl:DatatypeProperty ;
-                 rdfs:domain :Artist ;
-                 rdfs:range xsd:gYear ;
-                 rdfs:label "active start year" .
-
-
-###  http://example.org/music#albumTitle
-:albumTitle rdf:type owl:DatatypeProperty ;
-            rdfs:range xsd:string ;
-            rdfs:label "album title" .
-
 
 ###  http://example.org/music#artistName
 :artistName rdf:type owl:DatatypeProperty ;
             rdfs:domain :Artist ;
             rdfs:range xsd:string ;
             rdfs:label "artist name" .
-
-
-###  http://example.org/music#durationInSeconds
-:durationInSeconds rdf:type owl:DatatypeProperty ;
-                   rdfs:range xsd:positiveInteger ;
-                   rdfs:label "duration in seconds" .
 
 
 ###  http://example.org/music#genreName
@@ -120,27 +61,8 @@ xsd:gYear rdf:type rdfs:Datatype .
            rdfs:label "genre name" .
 
 
-###  http://example.org/music#population
-:population rdf:type owl:DatatypeProperty ;
-            rdfs:domain :Country ;
-            rdfs:range xsd:positiveInteger ;
-            rdfs:label "population" .
-
-
-###  http://example.org/music#releaseYear
-:releaseYear rdf:type owl:DatatypeProperty ;
-             rdfs:range xsd:gYear ;
-             rdfs:label "release year" .
-
-
 ###  http://example.org/music#totalStreams
 :totalStreams rdf:type owl:DatatypeProperty .
-
-
-###  http://example.org/music#trackTitle
-:trackTitle rdf:type owl:DatatypeProperty ;
-            rdfs:range xsd:string ;
-            rdfs:label "track title" .
 
 
 #################################################################
