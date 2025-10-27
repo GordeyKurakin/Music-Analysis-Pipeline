@@ -107,7 +107,7 @@ xsd:gYear rdf:type rdfs:Datatype .
 
 
 #################################################################
-#    Classes
+#    Classes status reminders for Protege
 #################################################################
 
 ###  http://example.org/music#Artist
@@ -115,19 +115,14 @@ xsd:gYear rdf:type rdfs:Datatype .
 
 
 ###  http://example.org/music#City
-:City rdf:type owl:Class ;
-      rdfs:comment "A city, typically of origin for an artist or a music hub." ;
-      rdfs:label "City" .
-
+:City rdf:type owl:Class .
 
 ###  http://example.org/music#ElectronicGenre
 :ElectronicGenre rdf:type owl:Class .
 
 
 ###  http://example.org/music#Genre
-:Genre rdf:type owl:Class ;
-       rdfs:comment "A category of music (e.g., Rock, Pop, Electronic)." ;
-       rdfs:label "Genre" .
+:Genre rdf:type owl:Class .
 
 
 ###  http://example.org/music#HipHopGenre
