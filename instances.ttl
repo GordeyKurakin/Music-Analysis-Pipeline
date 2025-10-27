@@ -29,73 +29,47 @@ xsd:gYear rdf:type rdfs:Datatype .
 
 
 #################################################################
-#    Object Properties
+#    Object Properties status reminders for Protege
 #################################################################
 
 ###  http://example.org/music#hasGenre
-:hasGenre rdf:type owl:ObjectProperty ;
-          rdfs:range :Genre ;
-          rdfs:label "has genre" .
+:hasGenre rdf:type owl:ObjectProperty .
 
 
 ###  http://example.org/music#isFromCity
-:isFromCity rdf:type owl:ObjectProperty ;
-            rdfs:domain :Artist ;
-            rdfs:range :City ;
-            rdfs:label "is from city" .
+:isFromCity rdf:type owl:ObjectProperty .
 
 
 ###  http://example.org/music#performedBy
-:performedBy rdf:type owl:ObjectProperty ;
-             rdfs:domain :Track ;
-             rdfs:range :Artist ;
-             rdfs:label "performed by" .
+:performedBy rdf:type owl:ObjectProperty .
 
 
 ###  http://example.org/music#trackOfGenre
-:trackOfGenre rdf:type owl:ObjectProperty ;
-              rdfs:domain :Track ;
-              rdfs:range :Genre ;
-              rdfs:label "track of genre" .
+:trackOfGenre rdf:type owl:ObjectProperty .
 
 
 #################################################################
-#    Data properties
+#    Data properties status reminders for Protege
 #################################################################
 
 ###  http://example.org/music#artistName
-:artistName rdf:type owl:DatatypeProperty ;
-            rdfs:domain :Artist ;
-            rdfs:range xsd:string ;
-            rdfs:label "artist name" .
+:artistName rdf:type owl:DatatypeProperty .
 
 
 ###  http://example.org/music#numberOfTracks
-:numberOfTracks rdf:type owl:DatatypeProperty ;
-                rdfs:domain :Artist ;
-                rdfs:range xsd:integer ;
-                rdfs:label "number of tracks" .
+:numberOfTracks rdf:type owl:DatatypeProperty .
 
 
 ###  http://example.org/music#releaseYear
-:releaseYear rdf:type owl:DatatypeProperty ;
-             rdfs:domain :Track ;
-             rdfs:range xsd:gYear ;
-             rdfs:label "release year" .
+:releaseYear rdf:type owl:DatatypeProperty .
 
 
 ###  http://example.org/music#totalStreams
-:totalStreams rdf:type owl:DatatypeProperty ;
-              rdfs:domain :Artist ;
-              rdfs:range xsd:long ;
-              rdfs:label "total streams" .
+:totalStreams rdf:type owl:DatatypeProperty .
 
 
 ###  http://example.org/music#trackTitle
-:trackTitle rdf:type owl:DatatypeProperty ;
-            rdfs:domain :Track ;
-            rdfs:range xsd:string ;
-            rdfs:label "track title" .
+:trackTitle rdf:type owl:DatatypeProperty .
 
 
 #################################################################
