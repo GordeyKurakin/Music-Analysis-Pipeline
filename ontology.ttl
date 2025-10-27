@@ -76,7 +76,17 @@ xsd:gYear rdf:type rdfs:Datatype .
 
 
 ###  http://example.org/music#totalStreams
-:totalStreams rdf:type owl:DatatypeProperty .
+:totalStreams rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Artist ;
+              rdfs:range xsd:long ;
+              rdfs:label "total streams" .
+
+
+###  http://example.org/music#numberOfTracks
+:numberOfTracks rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Artist ;
+                rdfs:range xsd:integer ;
+                rdfs:label "number of tracks" .
 
 
 ###  http://example.org/music#trackTitle
